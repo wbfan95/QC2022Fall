@@ -1,0 +1,1097 @@
+
+% solutions for homeworks
+\chapter{作业解答}
+
+\section{第一次课}
+% \subsection{1.1}
+% \homework{
+% 重温黑体辐射的历史，论述 Wien's formula 和 Rayleigh--Jeans formula 的
+% 内在异同，以及 Planck 如何能利用``能量量子化''的概念，从 Rayleigh--Jeans
+% formula 中得到 Planck blackbody radiation formula。
+% }
+\subsection{1.1}
+\homework{
+    重温黑体辐射的历史，论述Wien公式和Rayleigh--Jeans公式的内在异同。以及Planck如何利用能量量子化的概念，得到Planck黑体辐射公式。
+}
+Wien从热力学理论出发，把光辐射现象用分子的行为来类比，认为辐射按频率的分布类似于分子按速率的分布，因此服从Maxwell速率分布律。
+在分析实验数据的基础上，他给出了一个关于黑体辐射光谱分布的公式
+\begin{equation}\label{wien}
+\rho(\nu,T) = C_1 \nu^3 \exp\qty(-\dfrac{C_2 \nu}{ T})
+\end{equation}
+其中$ C_1 $和$ C_2 $是经验参数，通过拟合实验曲线来确定。式\eqref{wien}称为Wien公式，这是一个半经验公式%，它的曲线如图1. 2 . ,1 所示
+。
+%进而求$ \rho(\lambda, T) $ 对$ \lambda $的导数：
+
+对$ \lambda $积分得到辐射总能量
+\begin{equation}
+E(T) = \int_0^\infty C_1\nu^3 \exp\qty(-\dfrac{C_2 \nu}{ T}) \dd\nu \propto T^4
+\end{equation}
+这符合Stefan--Boltzmann定律。
+
+Rayleigh和Jeans批评Wien在引入黑体辐射分布时的假设（辐射按频率的分布类似于分子按速率的分布）不可靠。
+他们认为黑体辐射是由带电粒子的振动引起的，当系统处于热平衡状态时，振子数目按能量的分布服从Boltzmann公式
+\begin{equation}
+f(\varepsilon) = \dfrac{\exp\qty(-\dfrac{\varepsilon}{k_B T})}{\displaystyle\int_0^\infty \exp\qty(-\dfrac{\varepsilon}{k_B T}) \dd\varepsilon}
+\end{equation}
+由此得到振子的平均辐射能量为
+\begin{equation}
+\ev{\varepsilon} = \dfrac{\displaystyle\int_0^\infty \varepsilon \exp\qty(-\dfrac{\varepsilon}{k_B T}) \dd\varepsilon
+}{\displaystyle\int_0^\infty \exp\qty(-\dfrac{\varepsilon}{k_B T}) \dd\varepsilon} = k_B T
+\end{equation}
+由振子密度
+\begin{equation}
+g(\nu) = \dfrac{8\pi\nu^2}{c^3}
+\end{equation} 
+得到黑体辐射的能量密度
+\begin{equation}
+\rho(\nu, T) = \dfrac{8\pi\nu^2}{c^3} k_B T
+\end{equation}
+
+这就是Rayleigh-Jeans公式。\\
+
+将它们与实验相比较时，可以看出，Wien线可以描述短波情况，而在长波部分与实验有明显偏离；
+而Rayleigh-Jeans线在长波部分与实验符合较好，但在短波部分与实验结果完全相反，它显示一种“紫外发散”。
+%事实上容易估算，如果黑体辐射能量密度真的像瑞利－琼斯公式所预言的	那样，当人眼睛盯着壁炉里的火光时，火光的紫外线会刺瞎人的眼睛，这显然是荒	谬的。
+%经典物理学面临一场“紫外灾难” 。
+Wien分布是一个半经验公式，与实验不完全符合是可以理解的；
+Rayleigh--Jeans公式是严格按照经典统计物理学理论和经典电磁场理论推导出来的，
+然而它在短波部分与实验结果出现了极端尖锐的矛盾，这给物理学带来极大的困惑。
+
+Planck试图寻求一个普遍适用的公式来刻画黑体辐射的光谱分布。
+1900年，他发现如果取一个非常奇怪的假设，可以获得成功。
+这个假设就是：黑体辐射的能量不是连续变化的，而是以$ h\nu $为单位一份一份进行的：
+\begin{equation}
+0, h\nu, 2h\nu, \cdots
+\end{equation}
+反映在计算中，就是将Rayleigh-Jeans公式推导中能量连续变化的积分，用分立变化的求和代替：
+\begin{align}
+\ev{\varepsilon} &= \dfrac{\displaystyle
+    \sum_{n=0}^\infty n h \nu \exp\qty(-\dfrac{n h\nu}{k_B T})}{\displaystyle
+    \sum_{n=0}^\infty \exp\qty(-\dfrac{n h\nu}{k_B T})} 
+= \dfrac{\displaystyle
+    \sum_{n=0}^\infty n h \nu \exp\qty(-n h\nu\beta)}{\displaystyle
+    \sum_{n=0}^\infty \exp\qty(-n h\nu\beta)} \notag\\
+&= -\pdv{\beta} \ln \qty[\sum_{n=0}^\infty \exp(-n h\nu\beta)]  \notag\\
+&= -\pdv{\beta} \ln \qty[\dfrac{1}{1 - \exp(-h\nu\beta)}]\notag\\
+&= \dfrac{h\nu}{\exp\qty(\dfrac{h\nu}{k_B T}) - 1}
+\end{align}
+\begin{equation}
+\rho(\nu, T) = \dfrac{8\pi\nu^2}{c^3} \dfrac{h\nu}{\exp\qty(\dfrac{h\nu}{k_B T}) - 1}
+\end{equation}
+
+对于短波情况 $ h\nu \gg k_B T $，
+\begin{equation}
+\rho(\lambda, T) = \dfrac{8\pi h\nu^3}{c^3} \exp\qty(-\dfrac{h\nu}{k_B T})
+\end{equation}
+符合Wien公式；
+
+对于长波情况 $ h\nu \ll k_B T $，
+\begin{equation}
+\rho(\lambda, T) = \dfrac{8\pi \nu^2}{c^3} k_B T
+\end{equation}
+符合Rayleigh--Jeans公式。
+
+参考文献：顾樵 \S 1.2 、曾谨言 \S 1.1.1。
+\subsection{1.2}
+\homework{
+    对于高斯波包
+    \begin{align}
+        \psi(x,t) = \int_{- \infty}^{+ \infty} \frac{\sqrt a}{(2\pi)^{3/4}} \exp\left[-\frac{a^2}4 (k-k_0)^2\right]\exp \big[ \ii \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k,
+    \end{align}
+    证明 $t > 0$ 时，满足如下函数形式
+    \begin{align}
+        \psi (x, t) = \left( \frac{2}{\pi a^2} \right)^{1/4} \exp \left[ - \frac{(x - ct)^2}{a^2} \right] \exp [ \ii k_0 (x - ct) ].
+    \end{align}
+}
+
+光波有
+\begin{eqnarray}
+    \omega = c k,
+\end{eqnarray}
+波包
+\begin{align}
+    \psi(x,t) = \frac{\sqrt a}{(2\pi)^{3/4}} \int_{- \infty}^{+ \infty} \exp\left[-\frac{a^2}4 (k-k_0)^2\right]\exp \big[ \ii k \big( x - c t \big) \big] \, \mathrm{d} k,
+\end{align}
+为了凑出傅里叶积分，令 $b \equiv \frac a2$、$l \equiv k-k_0$，有
+\begin{align}
+    \psi(x,0) & = \frac{\sqrt {2b}}{(2\pi)^{3/4}} \int_{- \infty}^{+ \infty} \exp\left(-b^2l^2\right) \, \exp \big[ \ii k ( x - c t ) \big] \, \notag\\ &\quad\quad \times\exp\big[ -\ii k_0 ( x - c t ) \big]\, \, \exp\big[ \ii k_0 ( x - c t ) \big] \,\mathrm{d} k \\
+    &=\frac{\sqrt {2b}}{(2\pi)^{3/4}} \exp\big[\ii k_0 (x-ct)\big] \intinf 
+    \exp\left(-b^2l^2\right) \, \exp\big[\ii l (x - c t)\big] \, \dd l,
+\end{align}
+令 $x - ct \equiv - 2\pi y$，则上式中的积分，可利用傅里叶变换得到
+\begin{align}
+    % \psi(y,0) = \frac{\sqrt {2b}}{(2\pi)^{3/4}} \exp\big[\ii k_0 (x-ct)\big] 
+    \intinf 
+    \exp\left(-b^2l^2\right) \, \exp(-\ii l \, 2 \pi y) \, \dd l = \frac{\sqrt \pi}b \exp \left(-\frac{\pi^2y^2}{b^2}\right),
+\end{align}
+因此，代回 $a$、$k$，可得结果。
+
+注意到 $\ee^{\ii kx} = \cos kx + \ii \sin kx$，$x-ct$ 的正负不影响积分结果，虚部是奇函数，对称的积分区间导致虚部抵消了。
+\begin{lstlisting}
+Integrate[
+    Sqrt[a]/(2 Pi)^(3/4)
+        Exp[-a^2/4 (k - k0)^2] Exp[I (k x - c k t)], {k, -Infinity, 
+        Infinity}, Assumptions -> {a > 0}]
+>> (E^(((c t - x) (-I a^2 k0 - c t + x))/a^2) (2/\[Pi])^(1/4))/Sqrt[a]
+\end{lstlisting}
+
+\section{第二次课}
+
+\subsection{2.1 (a)}
+\homework{化简 $\hat B$，其满足
+\begin{align}
+    \hat A = \pdv{x} x, \quad \hat B = \hat A^2.
+\end{align}
+}
+直接将 $\hat B$ 作用到波函数上，
+\begin{align}
+    \hat B \psi &= \hat A^2 \psi = \hat A \hat A \psi = \pdv{x}x \left(\pdv{x} x\psi\right) \\
+    & = \pdv x x\left(x \pdv{\psi}{x} + \psi\right) = x^2 \pdv[2]{x} \psi + 3x \pdv{x}\psi + \psi,
+\end{align}
+因此
+\begin{align}
+    \hat B = x^2 \pdv[2]{x} + 3x \pdv{x} + 1.
+\end{align}
+
+\subsection{2.1(b)}
+\homework{
+    计算对易子
+    \begin{align}
+        \left[x^3, \pdv{x}\right], \quad \left[\pdv{x}, 5x^2 + 3x + 4\right].
+    \end{align}
+}
+\begin{align}
+    \left[x^3, \pdv{x}\right]f(x) &=
+    x^3 \pdv{f(x)}{x} - \pdv{x} x^3 f(x) \\
+    &= x^3 \pdv{f(x)}{x} - 3x^2 f(x) - x^3 \pdv{f(x)}x \\
+    &= -3x^2 f(x)
+\end{align}
+\begin{align}
+    &\phantom{=}\left[\pdv{x}, 5x^2 + 3x + 4\right] \\
+    &= \pdv{x}(5x^2 + 3x + 4)f(x) - (5x^2 + 3x + 4) \pdv{x} f(x) \\
+    &= (3+10x)f(x) + (5x^2 + 3x + 4) \pdv{f(x)}{x} - (5x^2 + 3x + 4) \pdv{x} f(x) \\
+    &= (3+10x) f(x)
+\end{align}
+结果分别是 $-3x^2$ 和 $10x+3$。
+
+注意算符不能悬空，必须作用到波函数上。
+% 如果单独不作用到波函数上，
+% 第二个对易式子就会得到
+% \begin{align}
+%     \pdv{x}(5x^2 + 3x + 4) - (5x^2 + 3x + 4) \pdv{x} = (10x+3) - (5x^2 + 3x + 4) \pdv{x}
+% \end{align}
+% 等错误结果。
+
+\extraInfo{常见的错误证明}{用行内公式记号表述，即替代 $\frac{\partial}{\partial x}$ 为 $\partial_x$
+\begin{align}
+  \hat B &= \hat A^2 = (x \partial_x + 1)^2 \notag\\
+  &= (x \partial_x)^2 + 2 x \partial_x + 1 \notag\\
+  &\mathrel{\color{red}=} x^2 \partial_x^2 + 2 x \partial_x + 1
+\end{align}
+上式的证明中，红色等号是错误的。这是因为 $(x \partial_x)^2 = x \partial_x x \partial_x \neq x^2 \partial_x^2$。为了避免这种错误，才推荐在没有把握时，尽量在算符 $\hat B$ 后接函数 $\psi$ 进行分析。}
+
+\suppInfo{纯算符推导}{
+  上面的例子中，未必一定将 $\hat B \psi$ 才能给出 $\hat B$ 的形式。下面给出纯算符的证明方法。首先，知道
+  \begin{equation}
+    \partial_x x = x \partial_x + 1
+  \end{equation}
+  因此，
+  \begin{align}
+    \hat B = \hat A^2
+    &= (\partial_x x) (\partial_x x) = (x \partial_x + 1) (x \partial_x + 1) \notag\\
+    &= x \partial_x x \partial_x + 2 x \partial_x + 1 \notag\\
+    &= x (\partial_x x) \partial_x + 2 x \partial_x + 1 \notag\\
+    &= x (x \partial_x + 1) \partial_x + 2 x \partial_x + 1 \notag\\
+    &= x x \partial_x \partial_x + 3 x \partial_x + 1 \notag\\
+    &= x^2 \partial_x^2 + 3 x \partial_x + 1
+  \end{align}
+  结果正确，与不作用到波函数上的结果一致。
+}
+
+\subsection{2.2}
+\homework{
+    证明算符的左右分配律，
+
+    左分配律 $(\BB + \CC) \AA = \BB\AA + \CC\AA$ 对任何算符成立，
+
+    右分配律 $\AA (\BB + \CC) = \AA \BB + \AA\CC$ 仅对线性算符成立。
+}
+证明的关键是，仅当 $\AA$ 为线性算符时，根据定义才能得到
+\begin{align}
+    \AA \big(\BB \psi + \CC \psi) = \AA\BB \psi + \AA\CC \psi,
+\end{align}
+如果 $\AA$ 不是线性算符，这个等式不成立。
+
+\textbf{证明} \quad 左分配律
+\begin{align}
+(\hat A + \hat B) \hat C \psi &= (\hat A + \hat B) (\hat C \psi) \notag\\
+&= \hat A (\hat C \psi) + \hat B (\hat C \psi) \notag\\
+&= (\hat A\hat C + \hat B \hat C) \psi
+\end{align}
+因此
+\begin{equation}
+(\hat A + \hat B) \hat C = \hat A \hat C + \hat B \hat C
+\end{equation}
+右分配律
+\begin{align}
+\hat A (\hat B + \hat C) \psi = \hat A (\hat B \psi + \hat C \psi)
+\end{align}
+\begin{equation}
+(\hat A \hat B + \hat A \hat C) \psi = \hat A (\hat B \psi) + \hat A (\hat C \psi)
+\end{equation}
+若要满足
+\begin{equation}
+\hat A (\hat B + \hat C) \psi = (\hat A \hat B + \hat A \hat C) \psi
+\end{equation}
+则必须有
+\begin{equation}
+\hat A (\hat B \psi + \hat C \psi) = \hat A (\hat B \psi) + \hat A (\hat C \psi)
+\end{equation}
+这要求$ \hat A $为线性算符。
+
+\subsection{2.3}
+\homework{证明 $\hat p$、$\hat T$ 和 $\hat H$ 是厄米算符。}
+对动量算符来说，证明其厄米性即
+\begin{align}
+    \langle{\phi|\hat{p}\psi}\rangle=\langle{\psi|\hat{p}\phi}\rangle^*,
+\end{align}
+左边
+\begin{align}
+    \langle{\phi|\hat{p}\psi}\rangle=\int{\phi^*\left(-\ii\hbar \frac{\partial\psi}{\partial x}\right)\dd x},
+\end{align}
+右边
+\begin{align}
+    \langle{\psi|\hat{p}\phi}\rangle^*&=\left[\int{\psi^*\left(-\ii\hbar \frac{\partial\phi}{\partial x}\right)\dd x}\right]^* \\
+&=\int{\psi\left(\ii\hbar \frac{\partial\phi^*}{\partial x}\right)\dd x}\\
+&=\ii\hbar \int{\psi\left(\frac{\partial\phi^*}{\partial x}\right)\dd x}\\
+&=\ii\hbar \int \psi \dd\phi^*,
+\end{align}
+由分部积分公式 $\int u\dd v = uv - \int v\dd u$ 可知
+\begin{align}
+    \langle{\psi|\hat{p}\phi}\rangle^*=\phi^*\psi|_{-\infty}^{\infty}-\ii\hbar \int{\phi^*\left(\frac{\partial\psi}{\partial x}\right)\dd x},
+\end{align}
+根据品优波函数的条件，第一项为 0，那么显然左边等于右边。
+
+动能算符 $\hat T = \hat p^2$ 同理。需证明
+\begin{align}
+    \langle\phi| \hat T\psi \rangle = \langle\psi|\hat T\phi\rangle^*,
+\end{align}
+即
+\begin{align}
+    \left\langle\phi\middle| \pdv[2]{x}\psi \right\rangle = \left\langle\psi\middle|\pdv[2]{x}\phi\right\rangle^*,
+\end{align}
+左边
+\begin{align}
+    \int \phi^* \pdv[2]{x} \psi \dd x = 
+    \int \phi^* \dd \pdv{\psi}{x} =
+    \underbrace{\int \phi^* \pdv{\psi}{x} \Big|_{-\infty}^{\infty}}_{=0} - \int \pdv{\psi}{x} \pdv{\phi^*}{x} \dd x,
+\end{align}
+右边
+\begin{align}
+    &\phantom{=}\left(\int\psi^* \pdv[2]{x}\phi\dd x\right)^* = \int \psi \pdv[2]{x}\phi^* \dd x \\
+    &=\int \psi \dd \pdv{\phi^*}{x} = 
+    \underbrace{\psi \pdv{\phi^*}{x} \Big|_{-\infty}^{\infty}}_{=0} - \int \pdv{\psi^*}{x} \pdv{\phi}{x} = \text{LHS}.
+\end{align}
+
+另有 \textbf{Dirac 符号}的证明方法。动量算符\begin{align}
+	\Braket{\psi | \hat p | \psi} &= -i\hbar \Braket{\psi | \pdv{x} | \psi} \notag\\
+	&= -i\hbar \qty[\psi^* \psi \Big|_{x=-\infty}^\infty - \Braket{\pdv{\psi}{x} | \psi} ] \notag\\
+	&= i\hbar \Braket{\pdv{\psi}{x} | \psi}  \notag\\
+	&= \Braket{\hat p \psi | \psi}
+	\end{align}
+动能算符
+	\begin{align}
+	\Braket{\psi | \hat T | \psi} &= -\dfrac{\hbar^2}{2m} \Braket{\psi | \pdv[2]{x} | \psi} \notag\\
+	&= -\dfrac{\hbar^2}{2m} \qty[\psi^*\pdv{\psi}{x} \Bigg|_{x=-\infty}^\infty - \Braket{\pdv{\psi}{x} | \pdv{\psi}{x}}] \notag\\
+	&= \dfrac{\hbar^2}{2m} \Braket{\pdv{\psi}{x} | \pdv{\psi}{x}}
+	\end{align}
+考虑
+	\begin{align}
+	\Braket{\pdv[2]{\psi}{x} | \psi} &= \pdv{\psi^*}{x}\psi \Big|_{x=-\infty}^\infty - \Braket{\pdv{\psi}{x} | \pdv{\psi}{x}} \notag\\
+	&= - \Braket{\pdv{\psi}{x} | \pdv{\psi}{x}}
+	\end{align}
+所以
+	\begin{align}
+	\Braket{\psi | \hat T | \psi} &= -\dfrac{\hbar^2}{2m}\Braket{\pdv[2]{\psi}{x} | \psi} \notag\\
+	&= \Braket{\hat T \psi | \psi}
+	\end{align}
+对于势能算符，如果 $V(x)$ 是实的，那么显然有
+\begin{align}
+    \langle\phi | V\psi\rangle = \int \phi* V \psi \dd x = \int (V \phi)^* \psi \dd x = \langle V\phi | \psi\rangle.
+\end{align}
+根据后一题的结论可知，$\hat H = \hat T + \hat V$ 两个 Hermite 算符的和也是 Hermite 的。
+
+\subsection{2.4}
+\homework{证明对于线性的 Hermitian 算符 $\hat A$ ，我们有
+\begin{align}
+    \int u^* \hat A v \,\dd \tau = \int (\hat A u)^* v\, \dd\tau,
+\end{align}
+同时，对于线性的 Hermitian 算符 $\hat A$、$\hat B$，具有以下性质：
+
+a. $\hat A+\hat B$仍然是 Hermitian 算符
+
+b. 当 $[\hat A, \hat B] = 0$时， $\AA\BB$ 和 $\BB\AA$ 仍是 Hermitian 算符。}
+我们用 Dirac 记号简化证明过程。待证明的结论是
+\begin{equation}
+\langle u | \hat A u \rangle = \langle \hat A u | u \rangle \; \Rightarrow \; \langle f | \hat A g \rangle = \langle \hat A f | g \rangle
+\end{equation}
+
+对于任意的实变量复值域函数 $f, g$ 以及复数 $c$，令 $u = f + c g$，则
+\begin{align}
+\langle u | \hat A u \rangle
+&= \langle f + c g | \hat A | f + c g \rangle \notag\\
+&= \langle f | \hat A f \rangle + c \langle f | \hat A g \rangle + c^* \langle g | \hat A f \rangle + |c|^2 \langle g | \hat A g \rangle \\
+= \langle \hat A u | u \rangle
+&= \langle \hat A (f + c g) | f + c g \rangle \notag\\
+&= \langle \hat A f | f \rangle + c \langle \hat A f | g \rangle + c^* \langle \hat A g | f \rangle + |c|^2 \langle \hat A g | g \rangle
+\end{align}
+由于 $\langle \hat A f | f \rangle = \langle f | \hat A f \rangle$，以及 $\langle \hat A g | g \rangle = \langle g | \hat A g \rangle$，因此上述等式化为
+\begin{equation}
+c \langle f | \hat A g \rangle + c^* \langle g | \hat A f \rangle
+= c \langle \hat A f | g \rangle + c^* \langle \hat A g | f \rangle
+\end{equation}
+分别取 $c = 1, i$，可以得到
+\begin{align}
+\langle f | \hat A g \rangle + \langle g | \hat A f \rangle
+&= \langle \hat A f | g \rangle + \langle \hat A g | f \rangle \\
+\langle f | \hat A g \rangle - \langle g | \hat A f \rangle
+&= \langle \hat A f | g \rangle - \langle \hat A g | f \rangle
+\end{align}
+将上两式等号左右相加，就得到 $\langle f | \hat A g \rangle = \langle \hat A f | g \rangle$。
+
+参考资料：Griffiths，习题 3.3；徐光宪上册，\S 1.3.6。
+\suppInfo{左矢与右矢记号补充说明}{
+左矢的线性叠加会写成
+\begin{equation}
+| f + c g \rangle = | f \rangle + c | g \rangle
+\end{equation}
+右矢由于取了共轭，因此
+\begin{equation}
+\langle f + c g | = \langle f | + c^* \langle g |
+\end{equation}
+右矢中的常数 $c$ 也应当取共轭，这是容易忽视的。
+}
+
+Hermitian \textbf{算符和}
+  \begin{align}
+    \langle u | (\hat A + \hat B) u \rangle
+    &= \langle u | \hat A u + \hat B u \rangle = \langle u | \hat A u \rangle + \langle u | \hat B u \rangle \notag\\
+    &= \langle \hat A u | u \rangle + \langle \hat B u | u \rangle = \langle \hat A u + \hat B u | u \rangle \notag\\
+    &= \langle (\hat A + \hat B) u | u \rangle
+  \end{align}
+  \begin{itemize}[nosep]
+    \item 第 1, 5 等号是算符和的定义；
+    \item 第 3 个等号应用了 $\hat A, \hat B$ 作为 Hermitian 算符的性质；
+  \end{itemize}
+
+Hermitian \textbf{算符积}
+  \begin{align}
+    \langle u | \hat A \hat B u \rangle = \langle u | \hat A (\hat B u) \rangle = \langle \hat A u | \hat B u \rangle = \langle \hat B (\hat A u) | u \rangle = \langle \hat B \hat A u | u \rangle
+  \end{align}
+  \begin{itemize}[nosep]
+    \item 第 1、4 个等号是乘法结合律；
+    \item 第 2、3 个等号应用了 $\hat A, \hat B$ 作为 Hermitian 算符的性质；
+  \end{itemize}
+  由于题目要求算符可对易，$\hat A \hat B = \hat B \hat A$ ，因此
+  \begin{equation}
+    \langle u | \hat A \hat B u \rangle = \langle \hat B \hat A u | u \rangle = \langle \hat A \hat B u | u \rangle
+  \end{equation}
+
+需要注意，若 $\hat A \hat B \neq \hat B \hat A$ 或者等价地，$[\hat A, \hat B] \neq 0$，那么一般来说 $\langle u | \hat A \hat B u \rangle \neq \langle \hat A \hat B u | u \rangle$。但即使如此，$\langle u | \hat A \hat B u \rangle = \langle \hat B \hat A u | u \rangle$ 仍然成立。
+
+\subsection{3.5}
+\homework{
+    若 $\hat A, \hat B, \hat C$ 是线性算符，
+  \begin{enumerate}[nosep]
+    \item 若 $\hat A, \hat B$ 同时是 Hermitian 算符，那么 $\hat A \hat B + \hat B \hat A$ 与 $i (\hat A \hat B - \hat B \hat A)$ 是 Hermitian 算符；
+    \item $[\hat A, \hat B \hat C] = \hat B [\hat A, \hat C] + [\hat A, \hat B] \hat C$；
+    \item $[\hat A \hat B, \hat C] = \hat A [\hat B, \hat C] + [\hat A, \hat C] \hat B$；
+    \item $[\hat A, [\hat B, \hat C]] + [\hat B, [\hat C, \hat A]] + [\hat C, [\hat A, \hat B]] = 0$ (Jacobi 恒等式)
+  \end{enumerate}
+}
+
+1. 
+上一题中，我们已经得到了结论 $\langle u | \hat A \hat B u \rangle = \langle \hat B \hat A u | u \rangle$，因此
+  \begin{align}
+    \langle u | (\hat A \hat B + \hat B \hat A) u \rangle
+    &= \langle u | \hat A \hat B u \rangle + \langle u | \hat B \hat A u \rangle \notag\\
+    &= \langle \hat B \hat A u | u \rangle + \langle \hat A \hat B u | u \rangle \notag\\
+    &=  \langle (\hat A \hat B + \hat B \hat A) u | u \rangle
+  \end{align}
+  同时，
+  \begin{equation}
+    \langle u | i \hat A \hat B u \rangle
+    = i \langle u | \hat A \hat B u \rangle
+    = i \langle \hat B \hat A u | u \rangle
+    = - \langle i \hat B \hat A u | u \rangle
+  \end{equation}
+  其中，最后一个等号是由于左矢的常数系数提出或放入时，需要作共轭。因此
+  \begin{align}
+    \langle u | i (\hat A \hat B - \hat B \hat A) u \rangle
+    &= \langle u | i \hat A \hat B u \rangle - \langle u | i \hat B \hat A u \rangle \notag\\
+    &= - \langle i \hat B \hat A u | u \rangle + \langle i \hat A \hat B u | u \rangle \notag\\
+    &= \langle i (\hat A \hat B - \hat B \hat A) u | u \rangle
+  \end{align}
+  2.
+  \begin{align}
+    [\hat A, \hat B \hat C] f
+    &= \hat A \hat B \hat C f - \hat B \hat C \hat A f \notag\\
+    &= \hat A \hat B \hat C f - \hat B \hat A \hat C f + \hat B \hat A \hat C f - \hat B \hat C \hat A f \notag\\
+    &= [\hat A, \hat B] \hat C f + \hat B [\hat A, \hat C] f
+  \end{align}
+  3.
+  \begin{align}
+    [\hat A \hat B, \hat C] f
+    &= \hat A \hat B \hat C f - \hat C \hat A \hat B f \notag\\
+    &= \hat A \hat B \hat C f - \hat A \hat C \hat B f + \hat A \hat C \hat B f - \hat C \hat A \hat B f \notag\\
+    &= \hat A [\hat B, \hat C] f + [\hat A, \hat C] \hat B f
+  \end{align}
+  4.
+  \begin{align}
+    [\hat A, [\hat B, \hat C]] &= [\hat A, \hat B \hat C - \hat C \hat B] = [\hat A, \hat B \hat C] - [\hat A, \hat C \hat B] \notag\\
+    &= \hat B [\hat A, \hat C] + [\hat A, \hat B] \hat C - \hat C [\hat A, \hat B] - [\hat A, \hat C] \hat B \notag\\
+    &= (\hat B [\hat A, \hat C] - [\hat A, \hat C] \hat B) + ([\hat A, \hat B] \hat C - \hat C [\hat A, \hat B]) \notag\\
+    &= [\hat B, [\hat A, \hat C]] + [[\hat A, \hat B], \hat C] \notag\\
+    &= - [\hat B, [\hat C, \hat A]] - [\hat C, [\hat A, \hat B]]
+  \end{align}
+上式的证明中，利用到了对易子的加法结合律、以及自反性质 $[\hat A, \hat B] = - [\hat B,\hat A]$。
+
+\subsection{2.6}
+\homework{(a) 线性 Hermitian 算符的本征函数 $\{\psi_i\}$ 是正交归一的，
+\begin{align}
+    \begin{cases}
+        \langle i|j \rangle = 1, \quad & i = j,\\
+        \langle i|j \rangle = 0, \quad & i \neq j,
+    \end{cases}
+    \Rightarrow \delta_{ij},
+\end{align}
+
+(b) 若两个线性 Hermitian 算符有一个共同本征函数完备集，
+\begin{align}
+    \hat F \psi_i = f_i \psi_i, \quad \hat G \psi_i = g_i \psi_i,
+\end{align}
+则两个算符可以对易 $[\hat F, \hat G] = 0$，或者 $\hat F$ 或 $\hat G$ 可以同时测量。
+}
+第一问，设一 Hermite 算符 $\hat A$，有
+\begin{align}
+    \hat A |i\rangle = a_i |i\rangle, \quad \langle i | \hat A = a_i^* \langle i|,
+\end{align}
+由此可知
+\begin{align}
+    & \langle i |\hat A | j \rangle = a_j \langle i | j\rangle, \\
+    & \langle i |\hat A j \rangle = \langle\hat A i | j \rangle = a^*_i  \langle i | j\rangle,
+\end{align}
+当 $i\neq j$ 时，因为 $a^*_i \neq a_j$，必然有 $\langle i | j\rangle = 0$。
+
+当 $i = j$ 时，由波函数的品优性可知 $\langle i | i\rangle \neq 0$，所以 $a_i = a_i^*$，即 $\langle i | i\rangle = 1$。
+
+因此 $\langle i | j \rangle = \delta_{ij}$。
+
+第二问，直接计算对易子，有
+\begin{align}
+    [\hat F, \hat G] &= \hat F\hat G \psi_i - \hat G\hat F \psi_i \\
+    &= \hat F g_i \psi_i - \hat G f_i \psi_i \\
+    &= g_i \hat F \psi_i - f_i \hat G \psi_i \\
+    &= g_i f_i \psi_i - f_i g_i \psi_i \\
+    &= 0,
+\end{align}
+因此二者对易，即二者可以同时测量。
+
+
+\section{第三次课}
+\subsection{3.1}
+\homework{对于给出下述初态 $\psi(x,t=0)$，即初始时刻自由粒子（$V(x) = 0$）波函数，求出 $\psi(x,t)$ 含时演化波函数，其中 $a>0, b\in\mathbb{R}, x\in\mathbb{R}$，
+
+(a) $A \ee^{-a|x|}$, (b) $A\ee^{-ax^2}$, (c) $A \ee^{-ax^2} \ee^{-\ii b x}$. 
+}
+本题的求解思路是
+\begin{align}
+    \psi(x,0) \rightarrow A(k,0) \rightarrow A(k,t) \rightarrow \psi(x,t),
+\end{align}
+将 $t=0$ 的波函数变换到波矢 $k$ 表象，
+\begin{align}
+    &A(k,0) = \frac1{\sqrt{2\pi}} \intinf \psi(x,0) \, \ee^{-\ii k x} \, \dd x
+\end{align}
+波矢与坐标表象之间满足傅里叶变换关系。
+对于自由粒子的含时演化，可直接由 $k$ 表象下求得，
+\begin{align}
+    &A(k,t) = A(k,0)\, \exp\left(-\frac{\ii E(k) t}\hbar\right), \\
+    &\psi(x,t) = \frac{1}{\sqrt{2\pi}} \intinf A(k,t)\, \ee^{\ii kx} \, \dd k,
+\end{align}
+其中，粒子满足的波矢-能量关系式为
+\begin{align}
+    E(k) = \frac{\hbar k^2}{2m}. 
+\end{align}
+
+(a) 归一化
+\begin{align}
+    \int \psi \psi^* \dd x = \frac{A^2}a = 1,
+\end{align}
+解得 $A = \sqrt a$。
+容易写出以下结果，
+\begin{align}
+    A(k,0) = \sqrt{\frac{a}{2\pi}} \intinf \ee^{-a|x|}\ee^{-\ii k x} \, \dd x = \sqrt{\frac{2a}\pi} \frac{a}{a^2 + k^2},
+\end{align}
+\begin{align}
+    A(k,t) = \sqrt{\frac{2a}\pi} \frac{a}{a^2 + k^2} \exp \left( - \ii \frac{k^2}{2m} t\right),
+\end{align}
+\begin{align}
+    \psi(x,t) = \frac{a^{3/2}}{\pi} \intinf \frac1{a^2 + k^2} \exp\left( \ii k x - \ii \frac{k^2}{2m} t\right) \dd k. 
+\end{align}
+该积分无法继续求解。
+
+(b) 归一化
+\begin{align}
+    A^2 \sqrt{\pi/2a} = 1,
+\end{align}
+得到 $A = (2a/\pi)^{1/4}$.
+\begin{align}
+    A(k,0) = \frac{A}{\sqrt{2\pi}} \intinf \ee^{-a x^2} \ee^{-\ii k x}\, \dd x = \frac1{(2\pi a)^{1/4}} \exp\left(-\frac{k^2}{4a}\right). 
+\end{align}
+\begin{align}
+    \psi(x,t) &= \frac{1}{\sqrt{2\pi}} \frac1{(2\pi a)^{1/4}} \intinf \exp\left(- \frac{k^2}{4a} - \ii \frac{k^2}{2m}t + \ii k x\right) \dd k \\
+    &= \left(8\pi a\right)^{1/4} \frac1{\sqrt{1 + \frac{2\ii a t}{m}}} \exp\left(- \frac{ax^2}{1 + \frac{2\ii at}{m}}\right). 
+\end{align}
+
+(c) 归一化同 (b)，求出
+\begin{align}
+    A(k,0) = \frac1{(2a\pi)^{1/4}} \exp\left(-\frac{(b+k)^2}{4a}\right),
+\end{align}
+则含时波函数为
+\begin{align}
+    \psi(x,t) = (8\pi a)^{1/4} \frac1{\sqrt{1 + \frac{2\ii a t}{m}}} \exp\left(
+        -\frac{ax^2 + \ii b x + \frac{\ii b^2 t}{2m}}
+        {1 + \frac{2\ii a t}{m}}
+    \right). 
+\end{align}
+参考资料：
+Griffiths，\S 2.1 与 \S 2.4，习题 2.20。它讨论了离散谱、连续谱的波函数含时演化过程。我们的习题仅讨论了自由粒子连续谱的情况。离散谱的一个经典例子是半箱粒子 (Griffiths，习题 2.38)。
+
+\subsection{3.2}
+\homework{求以上两种情况的零点能，(a) 一个 \SI{100}{\gram} 的实心球限制在 \SI{5}{\metre} 的线道上，(b) 束缚在 \SI{1E-10}{\metre} 区域内的电子。}
+能级公式
+\begin{align}
+    E_n = \frac{n^2\hbar^2}{8 m l^2}, \quad E_1 = \frac{h^2}{8ml^2},
+\end{align}
+代入数据得
+\begin{align}
+    &E_1 = \frac{(\SI{6.63E-34}{\joule\second})^2}{8\times\SI{1E-1}{\kilo\gram}\times(\SI{5}{\metre})^2} = \SI{2.20E-68}{\joule}, \\
+    &E_1 = \frac{(\SI{6.63E-34}{\joule\second})^2}{8\times\SI{9.11E-34}{\kilo\gram}\times(\SI{1E-10}{\metre})^2} = \SI{6.03E-18}{\joule}. 
+\end{align}
+
+\subsection{3.3}
+\homework{
+    讨论如下定义的势箱中的粒子，
+    \begin{equation}
+        V(x) = 
+\begin{cases}
+    0, \quad &x\in \left[-\frac l2, \frac l2\right],\\
+    +\infty, \quad &\text{其它},
+\end{cases}
+    \end{equation}
+    求出能级与波函数。
+}
+在势箱以外的区域，波函数为 0。
+
+在势箱中 $x \in \left[-\frac l2, \frac l2\right]$，势能 $V(x) = 0$，薛定谔方程为
+\begin{align}
+    -\frac{\hbar^2}{2m} \pdv[2]{\psi}{x} = E\psi,
+\end{align}
+令 $a^2 = \frac{2mE}{\hbar^2}$，通解为
+\begin{align}
+    \psi(x) = C_1 \cos ax + C_2 \sin ax,
+\end{align}
+由边界条件波函数连续
+\begin{align}
+    \psi\left(-\frac l2\right) = \psi\left(\frac l2\right) = 0,
+\end{align}
+得到
+\begin{align}
+    \begin{cases}
+        C_1 = 0, \\
+        \sin \frac{al}2 = 0,
+    \end{cases}, \quad 
+    \begin{cases}
+        C_2 = 0, \\
+        \cos \frac{al}2 = 0,
+    \end{cases}
+\end{align}
+解得量子化条件为
+\begin{align}
+    \frac{al}2 = \frac{n\pi}2, \quad E = \frac{n^2h^2}{8 m l^2}.
+\end{align}
+归一化系数为
+\begin{align}
+    C_1 = C_2 = \sqrt{\frac2l},
+\end{align}
+波函数为
+\begin{align}
+    \psi(x) = \begin{cases}
+        \sqrt{\frac2l} \cos\frac{n\pi x}l, \quad\text{$n$为奇数},\\
+        \sqrt{\frac2l} \sin\frac{n\pi x}l, \quad\text{$n$为偶数}. \\
+    \end{cases}
+\end{align}
+
+\subsection{3.4 (a)}
+\homework{
+    求
+    $|C_1|^2$ 与 $|C_3|^2$ 
+     的关系，并比较二者大小。
+\begin{align}
+    &C_3 = \frac12 \left[
+        \left(1 + \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
+        \left(1 - \frac{k_2}{k_3}\right) \ee^{-\ii k _2 l}
+    \right] \ee^{-\ii k_3 l }C_1, \label{eq:half_inf_scat_c3}\\
+    &C_4 = \frac12 \left[
+        \left(1 - \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
+        \left(1 + \frac{k_2}{k_3}\right) \ee^{-\ii k_2 l}
+    \right] \ee^{\ii k_3 l} C_1, \label{eq:half_inf_scat_c4}
+\end{align}
+}
+\begin{align}
+    |C_3|^2 &= C_3C_3^* = |C_1|^2 \frac12 \left[
+        \left(1 + \frac{k_2^2}{k_3^2}\right) - 
+        \left(1 - \frac{k_2^2}{k_3^2}\right) \cos 2k_2l
+    \right] \\
+    &\leq |C_1|^2 \frac12 \left(
+        1 + \frac{k_2^2}{k_3^2} - 1 + \frac{k_2^2}{k_3^2}
+    \right) = |C_1|^2 \frac{k_2^2}{k_3^2} = |C_1|^2 \frac{E}{E - V_0}
+\end{align}
+因为 $V0 < E$，因此
+\begin{align}
+    |C_1|^2 < |C_3|^2.
+\end{align}
+
+\subsection{3.4(b)}
+\homework{推导并画出 $z=12$、$z_0=9$ 时的体系波函数。}
+由 $z$ 的定义可知
+\begin{align}
+    12 = \frac{l}{\hbar} \sqrt{2mE}, \quad 9 = \frac {l}{\hbar} \sqrt{2mV_0},
+\end{align}
+解得
+\begin{align}
+    V_0 = 72 \frac{\hbar^2}{ml^2}, \quad E = 81 \frac{\hbar^2}{ml^2},
+\end{align}
+% ref: https://www.yumpu.com/en/document/read/34504139/the-particle-in-a-half-infinite-well
+$E > V_0$ 为散射态，同时有
+\begin{align}
+    k_2 = \frac zl = \frac{12}l, \quad k_3 = \frac{\sqrt{z^2-z0^2}}l = \sqrt{3\sqrt7}l,
+\end{align}
+波函数为
+\begin{align}
+    \psi(x) = \begin{cases}
+        0, \quad & x < 0, \\
+        C_1 \sin k_2 x, \quad & 0 \leq x \leq l, \\
+        C_3 \ee^{\ii k_3 x} + C_4 \ee^{-\ii k_3 x}, &\quad x > l,
+    \end{cases}
+\end{align}
+因此，可画出图像。
+\begin{lstlisting}
+Clear["Global`*"]
+l = 1;
+z = 12; z0 = 9;
+k2 = z/l; k3 = Sqrt[z^2 - z0^2]/l;
+C1 = I;
+C3 = 1/2 ((1 + k2/k3) Exp[
+        I k2 l] - (1 - k2/k3) Exp[-I k2 l]) Exp[-I k3 l] C1;
+C4 = 1/2 ((1 - k2/k3) Exp[I k2 l] - (1 + k2/k3) Exp[-I k2 l]) Exp[
+    I k3 l] C1;
+\[Psi][x_] := 
+    Piecewise[{{0, x < 0}, {2 I  C1 Sin[k2 x], 
+    0 <= x <= l}, {C3 Exp[I k3 x] + C4 Exp[-I k3 x], x > l}}]
+Plot[\[Psi][x], {x, -0.5, 3}, PlotRange -> All]
+\end{lstlisting}
+
+\subsection{3.6}
+\homework{
+    求出有限高方势垒（$E<V_0$）的波函数。
+}
+势函数表达式为
+\begin{align}
+    V(x) = \begin{cases}
+        0, \quad &x <0,\\
+        V_0, \quad &0\leq x \leq l, \\
+        0, \quad &x>l,
+    \end{cases}
+\end{align}
+假设波不会从 $+\infty$ 向左传播，则波函数可以写成如下形式，
+\begin{align}
+    \psi(x) = \begin{cases}
+        C_1 \ee^{\ii k_1 x} + C_2 \ee^{-\ii k_2 x}, \quad &x < 0, \\
+        C_3 \ee^{k_2 x} + C_4 \ee^{-k_2 x}, \quad& 0\leq x \leq l,\\
+        C_5 \ee^{\ii k_1 x}, \quad&x>l,
+    \end{cases}
+\end{align}
+其中
+\begin{align}
+    k_1^2 = \frac{2mE}{\hbar^2}, \quad k_2^2 = \frac{2m(V_0 - E)}{\hbar^2}. 
+\end{align}
+按照波函数在 $x=0$ 连续和导数的条件，有
+\begin{align}
+    &C_1 + C_2 = C_3 + C_4, \\
+    &\ii k_1 (C_1 - C_2) = k_2 (C_3 - C_4),
+\end{align}
+波函数在 $x=l$ 连续和导数连续，有
+\begin{align}
+    &C_3 \ee^{k_2} + C_4 \ee^{-k_2} = C_5 \ee^{\ii k_1},\\
+    &C_3 k_2 \ee^{k_2} - C_4 k_2 \ee^{-k_2} = \ii k_1\, C_5 \ee^{\ii k_1},
+\end{align}
+加上波函数归一化的条件，共有 5 个方程、5 个未知数，则该波函数必然可解。
+
+用 $C_5$ 表示其它参数，可解得
+\begin{align}
+    &C_3 = C_5 \frac1{2k_2} \ee^{(\ii k_1 - k_2)l} (\ii k_1 + k_2), \\
+    &C_4 = C_5 \frac1{2k_2} \ee^{(\ii k_1 + k_2)l} (-\ii k_1 + k_2), \\
+    &C_1 = \frac12(C_3 + C_4) - \ii \frac{k_2}{2k_1} (C_3 - C_4) \\
+    &\phantom{C_1} = C_5 \ee^{\ii k_1 l} 
+    \left(
+         - \ii \frac{k_1^2 - k_2^2}{2k_1k_2} \sinh k_2 l
+         + \cosh k2 l
+    \right),
+    \\
+    &C_2 = \frac12(C_3 + C_3) + \ii \frac{k_2}{2k_1} (C_3 - C_4) \\
+    &\phantom{C_2} = C_5 \ee^{\ii k_1 l} \left(
+        -\ii \frac{k_1^2 + k_2^2}{2k_1k_2} \sinh k_2 l
+    \right).
+\end{align}
+
+当前模型可用来解释隧穿效应。当系数为 $C_1$ 的入射波到达势垒后，会产生 $C_2$ 的反射波、$C_3$ 的透射波，由此定义反射系数 $R$、透射系数 $T$，
+\begin{align}
+    &R = \frac{|C_2|^2}{|C_1|^2} = \frac{4 k_1^2 k_2^2}{4k_1^2 k_2^2 + (k_1^2 + k_2^2) \sinh^2 k_2 l}, \\
+    &T = \frac{|C_3|^2}{|C_1|^2} = \frac{(k_1^2 + k_2^2) \sinh^2 k_2 l}{4k_1^2 k_2^2 + (k_1^2 + k_2^2) \sinh^2 k_2 l},
+\end{align}
+显然二者之和 $R+T=1$。
+
+这个模型类似于隧道扫描显微镜，利用探测针尖 probe 和物体表面的隧穿电流测距，进而可扫描出样品表面形貌，精度可达 \SI{0.1}{\nano\metre}（氢原子直径 \SI{0.1}{\nano\metre}）。代入 $k_1$、$k_2$ 的定义，隧穿概率可表示为
+\begin{align}
+    T^{-1} = 1 + \frac1{4E \left(V_0 - \frac E{V_0}\right)} \sinh^2 \left(\frac l\hbar \sqrt{2m (V_0 - E)}\right),
+\end{align}
+利用 $V_0 \gg E$ 的条件，可推导得到
+\begin{align}
+    T \sim \exp(- k l),
+\end{align}
+其中隧穿系数、势垒宽度，可对应实验中的电流、探针样品距离。
+
+
+\section{第四次课}
+\subsection{4.2}
+\homework{
+    对谐振子标准方程
+\begin{align}
+    \pdv[2]{\psi(y)}{y} - (\lambda - y^2)\phi(y) = 0
+\end{align}
+做幂级数展开，给出系数的递推公式，并讨论能否从中得到量子化条件。
+}
+设 $\phi(y) = \sum_{n=0}^\infty c_n y^n$，其导数为
+\begin{align}
+    &\pdv{\psi(y)}{y} = \sum_{n=0}^{\infty} n c_n y^{n-1}, \\
+    &\pdv[2]{\psi(y)}{y} = \sum_{n=2}^\infty n(n-1)c_n y^{n-2} = \sum_{n=0}^\infty (n+2)(n+1) c_{n+2} y^n,
+\end{align}
+代回标准方程，有
+\begin{align}
+    \sum_{n=0}^\infty (n+2)(n+1) c_{n+2} y^n + (\lambda - y^2)\sum_{n=0}^\infty c_n y^n &= 0 \\
+    \sum_{n=0}^\infty (n+2)(n+1) c_{n+2} y^n 
+    + \sum_{n=0}^\infty \lambda c_n y^n 
+    - \sum_{n=0}^\infty c_n y^{n+2} &= 0
+\end{align}
+最后一项有 $y^{n+2}$，需要把前两项凑出 $y^{n+2}$。方法是，提出前两项 $n=0,1$ 的项，再把求和指标变换到 $n=0$ 开始。那么第一项为
+\begin{align}
+    &\phantom{=}2c_2 + 3\times2 c_3 y + \sum_{n=2}^{\infty} (n+2)(n+1) c_{n+2}y^n \\
+    &= 2c_2 + 6 c_3 y + \sum_{n=0}^{\infty} (n+4)(n+3) c_{n+4} y^{n+2},
+\end{align}
+第二项同理可得
+\begin{align}
+    \lambda c_0 + \lambda c_1 + \sum_{n=2}^\infty \lambda c_{n} y^{n} = \lambda c_0 + \lambda c_1 + \sum_{n=0}^\infty \lambda c_{n+2} y^{n+1},
+\end{align}
+则
+\begin{multline}
+    2 c_2 + \lambda c_0 + 6 c_3 y + \lambda c_1 y 
+    + \sum_{n=0}^{\infty} (n+4)(n+3) c_{n+4} y^{n+2} \\
+    + \sum_{n=0}^\infty c_{n+2} y^{n+1}
+    - \sum_{n=0}^\infty c_n y^{n+2} = 0,
+\end{multline}
+由多项式相等，可知各幂次的系数均为 0，得到
+\begin{align}
+    \begin{cases}
+        2c_2 + \lambda c_0 = 0,\\
+        6c_3 + \lambda c_1 = 0,\\
+        (n+4)(n+3) c_{n+4} + \lambda c_{n+2} - c_n = 0
+    \end{cases}
+\end{align}
+得到递推公式
+\begin{align}
+    &c_{n+4} = \frac{c_n - \lambda c_{n+2}}{(n+4) (n+3)}\\
+    \Rightarrow {}&c_{n+2} = \frac{c_{n-2} - \lambda c_{n}}{(n+2) (n+1)},
+\end{align}
+由品优波函数有限的条件，假设在 $c_{n+2}$ 项终止，即
+\begin{align}
+    c_{n+2} = 0 \Rightarrow c_{n-2} - \lambda c_n = 0, \\
+    c_{n+4} = 0 \Rightarrow c_n - \lambda c_{n+2} = 0,
+\end{align}
+易知 $c_n =0$，依次类推，每一项均为 0，因此难以得到量子化条件。
+
+也可直接写出递推条件
+\begin{align}
+    (n+2) (n+1) c_{n+2} + \lambda c_n - c_{n-2} = 0,
+\end{align}
+说明其无法剥离出两项之间的关系.
+
+\subsection{4.3}
+\homework{
+    针对谐振子 Hermite 方程
+\begin{align}
+    f''(y) - 2y f'(y) + (\lambda - 1) f(y) = 0,
+\end{align}
+引入变量 $\rho = y^2$，将 Hermite 方程演化为 Kummer's differential equation，并对其
+做幂级数展开，给出系数递推公式和量子化条件。
+}
+参考顾樵《量子力学 卷I》P221
+
+由 $\rho = y^2$ 得到 $y = \pm\sqrt\rho$，
+\begin{align}
+    &\frac{\dd f}{\dd\rho} = \frac{1}{2\sqrt\rho} \frac{\dd f}{\dd y}, \\
+    &\frac{\dd^2f}{\dd\rho^2} = \frac1{4\rho} \frac{\dd^2y}{\dd y^2} - \frac{1}{4\rho^{3/2}} \frac{\dd f}{\dd y},
+\end{align}
+也可由 $\rho = y^2$ 得到 $2y\dd y = \dd\rho$，有
+\begin{align}
+    &\frac{\dd f}{\dd\rho} = \frac1{2y} \frac{\dd y}{\dd\rho}, \\
+    &\frac{\dd^2 f}{\dd\rho^2} = \frac{1}{4\rho^2} \left(\frac{\dd^2 f}{\dd y^2} - \frac1y \frac{\dd f}{\dd y}\right),
+\end{align}
+后者避开了根号的正负号，二者结果一样，均可得到 Kummer 微分方程
+\begin{align}
+    \rho \frac{\dd^2y}{\dd\rho^2} + (c - \rho)\frac{\dd y}{\dd \rho} - a y = 0,
+\end{align}
+其中
+\begin{align}
+    a = - \frac{\lambda - 1}4, \quad c = \frac12,
+\end{align}
+设幂级数 $f = \sum_{n=0}^\infty b_n \rho^n$，
+其导数为
+\begin{align}
+    &f' = \sum_{n=0}^\infty n b_n \rho^{n-1} = \sum_{n=1} n b_n \rho^{n-1} = \sum_{n=0}^\infty (n+1) b_{n+1} \rho^n, \\
+    &f'' = \sum_{n=0}^\infty n(n-1) b_n \rho^{n-2} = \sum_{n=1}^\infty n(n-1) b_n \rho^{n-2} \notag \\
+    &\phantom{f''} = \sum_{n=0}^\infty (n+1)n b_{n+1} \rho^{n-1}
+\end{align}
+代回 Kummer's 方程，有
+\begin{align}
+    \sum_{n=0}^{\infty}(n+1) n b_{n+1} \rho^n+\sum_{n=0}^{\infty} c(n+1) b_{n+1} l^n-\sum_{n=1}^{\infty} n b_n \rho^n-a \sum_{n=0}^{\infty} b_n \rho^n&=0 \notag \\
+    \sum_{n=0}^{\infty}\left[(n+1) n b_{n+1}+c(n+1) b_{n+1}-(a+n) b_n\right] \rho^n&=0
+\end{align}
+系数满足
+\begin{align}
+    (n+1)(n+c) b_{n+1}-(a+n) b_n=0
+\end{align}
+前几项为
+\begin{align}
+    &b_1=\frac{a}{c} b_0 \\
+&b_2=\frac{a+1}{2 (a+1)}  b_1=\frac{a (a+1)}{c \cdot(c+1)} \frac{b_0}{2 !} \\
+&b_3=\frac{a+2}{3 (c+2)} b_2=\frac{a (a+1)(a+2)}{c \cdot(c+1)(c+2)} \frac{b_0}{3 !}
+&b_4=\frac{a(a+1)(a+2)(a+3)}{c(c+1)(c+2)(c+3)} \frac{b_0}{4 !}
+\end{align}
+推出递推公式
+\begin{align}
+    b_n = \frac{a(a+1) \cdots (a+n-1)}{c(c+1)\cdots (c+n-1)} \frac{b_0}{n!},
+\end{align}
+则 $f$ 的表达式为
+\begin{align}
+    \sum_{n=0}^{\infty} b_n p^n=\left[1+\frac{a}{c} \frac{p}{1 !}+\frac{a \cdot(a+1)}{c(c+1)} \frac{p^2}{2 !}+\cdots \frac{a(a+1) \cdots(a+n-1)}{c(c+1) \cdots(c+n-1)} \frac{p^n}{n !}\right] b_0. 
+\end{align}
+
+合流超几何函数是 Kummer's 微分方程的一个通解，其表达式为
+\begin{align}
+    { }_1 F_1(a, c ; \rho)=1+\frac{a}{c} \frac{\rho}{1 !}+\frac{a \cdot(a+1)}{c(c+1)} \frac{\rho^2}{2 !}+\cdots \frac{a(a+1) \cdots(a+n-1)}{c(c+1) \cdots(c+n-1)} \frac{\rho^n}{n !}
+\end{align}
+通解为
+\begin{align}
+    f(\rho) = A\, {}_1F_1 \left(a,\frac12;\rho\right) + B \rho^{1/2} \, {}_1F_1 \left(a+\frac12, \frac32; \rho\right),
+\end{align}
+对无穷级数 ${}_1F_1\left(a,\frac12;\rho\right)$ 而言，截断条件为 $a = -n$，此时第 $n$ 项
+\begin{align}
+    \frac{a(a+1)\cdots(a+n-1)}{c(c+1)(c+n-1)} \frac{\rho^n}{n!} = \frac{(-1)^n n! \rho^n}{c(c+1)\cdots(c+n-1)n!} = \frac{(-1)^n \rho^n}{c(c+1)\cdots(c+n-1)},
+\end{align}
+当 $n$ 增加到某恰好的值时，第 $n$ 项 $\rightarrow 0$，可截断。
+
+对于通解而言，截断条件为
+\begin{align}
+    \begin{cases}
+        a = -n,\\B= 0,
+    \end{cases}\ \text{or} \
+    \begin{cases}
+        a+\frac12=0,\\
+        A=0,
+    \end{cases}
+\end{align}
+第一种情况，$a = \frac{1-\lambda}4 = 0$，得到 $\lambda = 1+4n$，能量为
+\begin{align}
+    E = \frac{\hbar\omega}2 (1+4n) = \hbar\omega\left(2n+\frac12\right) \Rightarrow E_{2n},
+\end{align}
+第二种情况，$a+\frac12 = -n$，解得 $\lambda = 3+4n$，能量为
+\begin{align}
+    E = \hbar\omega\left(2n+1+\frac12\right) \Rightarrow E_{2n+1},
+\end{align}
+综上可知 $E = \hbar\omega \left(n + \frac12\right)$，与不引入 $\rho = y^2$ 的量子化条件和结果相同。
+% 代入 Kummer 方程
+% % \begin{align}
+% %     \sum_{n=0}^\infty \left[
+% %         2n(n+1)c_{n+1} + 2n c_{n+1} - 4n c_n + (\lambda -)
+% %     \right]
+% % \end{align}
+% 得到递推公式
+% \begin{align}
+%     c_{n+1} = \frac{n+a}{n^2 + (c-1) n + c} c_n,
+% \end{align}
+% 解得量子化条件 $n + a = 0$，即 $\lambda = 4n + 1$。
+
+\subsection{4.5}
+\homework{
+请证明
+\begin{align}
+    A_n = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4} \frac1 {\sqrt{2^n n!}},
+\end{align}
+提示，可利用 Hermite 多项式生成函数
+\begin{align}
+    S(x,r) = \ee^{2xr -r^2} = \sum_{n=0}^{\infty} H_n(x) \frac{r^n}{n!}, 
+\end{align}
+来讨论，这里可参考顾樵《量子力学》P208---211。
+}
+按照生成函数，写出两项，
+$$
+\begin{aligned}
+&\exp \left(2 \xi t-t^2\right)=\sum_{m=0}^{\infty} H_m(\xi) \frac{t^m}{m !} \\
+&\exp \left(2 \xi r-r^2\right)=\sum_{n=0}^{\infty} H_n(\xi) \frac{r^n}{n !}
+\end{aligned}
+$$
+上二式相乘，得到
+$$
+\exp \left(2 \xi t-t^2+2 \xi r-r^2\right)=\sum_{m=0}^{\infty} \sum_{n=0}^{\infty} H_m(\xi) H_n(\xi) \frac{t^m r^n}{m ! n !}
+$$
+为了凑出来波函数，用 $\mathrm{e}^{-\xi^2/2}\mathrm{e}^{-\xi^2/2}$ 乘上式两边，然后对 $\xi$ 从一 $-\infty$ 到 $\infty$ 积分, 得到
+$$
+\int_{-\infty}^{\infty} \exp \left[2 t r-(\xi+t+r)^2\right] \mathrm{d} \xi=\sum_{m=0}^{\infty} \sum_{n=0}^{\infty} \frac{t^m r^n}{m ! n !} \int_{-\infty}^{\infty} H_m(\xi) H_n(\xi) \mathrm{e}^{-\xi^2} \mathrm{~d} \xi
+$$
+现在上式左边的积分为
+$$
+\begin{aligned}
+\int_{-\infty}^{\infty} \exp \left[2 t r-(\xi+t+r)^2\right] \mathrm{d} \xi &=\mathrm{e}^{2 r} \int_{-\infty}^{\infty} \exp \left[-(\xi+t+r)^2\right] \mathrm{d} \xi \quad(u=\xi+t+r) \\
+&=\mathrm{e}^{2 r} \int_{-\infty}^{\infty} \mathrm{e}^{-u^2} \mathrm{~d} u=\mathrm{e}^{2 r} \sqrt{\pi}
+\end{aligned}
+$$
+将 $\mathrm{e}^{2 r}$ 展开成幂级数：
+$$
+\mathrm{e}^{2 r r}=\sum_{n=0}^{\infty} \frac{(2 t r)^n}{n !}=\sum_{n=0}^{\infty} 2^n \frac{(t r)^n}{n !}
+$$
+由此，得到
+$$
+\sqrt{\pi} \sum_{n=0}^{\infty} 2^n \frac{(t r)^n}{n !}=\sum_{m=0}^{\infty} \sum_{n=0}^{\infty} \frac{t^m r^n}{m ! n !} \int_{-\infty}^{\infty} H_m(\xi) H_n(\xi) \mathrm{e}^{-\xi^2} \mathrm{~d} \xi
+$$
+该等式成立要求
+$$
+\int_{-\infty}^{\infty} H_m(\xi) H_n(\xi) \mathrm{e}^{-\xi^2} \mathrm{~d} \xi=2^n n ! \sqrt{\pi} \delta_{m n}
+$$
+归一化系数满足
+$$
+A_n = \sqrt{a}2^n n ! \sqrt{\pi}. 
+$$
+
+解法 2　厄米多项式的微分形式
+\begin{align}
+    H_{n} (x)= (-1)^{n} \ee^{x^2} \pdv[n]{x} \ee^{-x^2}
+\end{align}
+归一化系数
+\begin{align}
+        N_n&=\int_{-\infty}^{+\infty} H_n(x) H_n(x) \ee^{-x^2} \dd x\\
+        &=(-1)^n \int_{-\infty}^{+\infty} H_n(x) \frac{\partial^n}{\partial x^n} \ee^{-x^2} \dd x\\
+        &=(-1)^n\left[H_n(x) \frac{\partial^{n-1}}{\partial x^{n-1}} \ee^{-x^2}\right]_{-\infty}^{+\infty}-(-1)^n \int_{-\infty}^{+\infty} \frac{\partial H_n(x)}{\partial x} \frac{\partial^{n-1}}{\partial x_{n-1}} \ee^{-x^2} \dd x \notag \\
+        &=(-1)^n\left[H_n(x) \frac{\partial^{n-1}}{\partial x^{n-1}} \ee^{-x^2}\right]_{-\infty}^{+\infty}+
+        (-1)^{n+1} \int_{-\infty}^{+\infty} \frac{\partial H_n(x)}{\partial x} \frac{\partial^{n-1}}{\partial x_{n-1}} \ee^{-x^2} \dd x
+\end{align}
+其中
+\begin{align}
+    H_n(x) \frac{\partial^{n-1}}{\partial x^{n-1}} \ee^{-x^2} = H_n(x) H_{n-1} \ee^{-x^2}
+\end{align}
+$H_n(x) H_{n-1}$ 是有限值，$\ee^{-x^2}|_{-\infty}^{\infty} = 0$，所以归一化系数只剩后面一项，
+\begin{align}
+    N_n = (-1)^{n+1} \int_{-\infty}^{+\infty} \frac{\partial H_n(x)}{\partial x} \frac{\partial^{n-1}}{\partial x_{n-1}} \ee^{-x^2} \dd x. 
+\end{align}
+同理，再进行 $n-1$ 次分部积分，可得
+\begin{align}
+    N_n &= \intinf H_n(x) H_n(x) \ee^{-x^2} \dd x \\
+    & = (-1)^{2n} \intinf \pdv[n]{H_n(x)}{x} \ee^{-x^2} \dd x.
+\end{align}
+$H_n(x)$ 的级数定义为
+\begin{align}
+    H_n(x) = \sum_{m=0}^{n/2} (-1)^m \frac{n!}{m!(n-2m)!} (2x)^{n-2m},
+\end{align}
+$x^n$ 中 $m=0$，系数为 $2^n$，
+\begin{align}
+    \pdv{H_n(x)}{x} = 2^n\times n x^{n-1} \times \cdots \times \pdv[n]{H_n(x)}{x} = 2^n n!
+\end{align}
+因此归一化系数 $N_n = 2^n n! \sqrt\pi$。
+
+\subsection{顾樵书中 Morse 势能的部分推导}
+在顾樵《量子力学》 \S 6.2.2，解 Morse 势的薛定谔方程，得到了微分方程
+\begin{align}
+    \xi^2 \pdv[2]{u}{\xi} + \xi \pdv{u}{\xi} + \left( - \lambda^2 + \frac{\eta}2\xi - \frac14\xi^2\right)u = 0,
+\end{align}
+并给出了在奇点 $\xi \rightarrow 0$ 的渐近形式
+\begin{align}
+    \xi\pdv{u}{\xi} - \lambda^2 u = 0,
+\end{align}
+问题在于，书上给出的解为 $u \propto \xi^\lambda$，它的确是所求微分方程的一个正确渐近形式，但显然这个渐近方程给出的解是 $\xi^{\lambda^2}$。
+
+如果按照 $u(\xi) = \xi^{\lambda^2} \ee^{-\frac12\xi}y(\xi)$ 求解，会有什么情况？这里讨论一下。至于如何得到渐近方程，不讨论。
+
+求一阶导数，
+\begin{align}
+    &\frac{\dd u(\xi)}{\dd \xi}=\lambda^2 \xi^{\lambda^2-1} e^{-\frac{1}{2} \xi} y(\xi)+\xi^2\left[\ee^{-\frac{1}{2} \xi} y(\xi)\right]^{\prime} \\
+    &\xi \frac{\dd u(\xi)}{\dd \xi}=\lambda^2 \xi^{\lambda^2} \ee^{-\frac{1}{2} \xi} y(s)+\xi^{\lambda^2+1}\left[e^{-\frac{1}{2} \xi} y(\xi)\right]^{\prime}
+\end{align}
+当 $y\rightarrow0$，有
+\begin{align}
+    \frac{\xi^{\lambda^2}}{\xi^{n+1}}=\frac{1}{\xi}\Big|_{\xi \rightarrow 0} \rightarrow \infty,
+\end{align}
+因此一阶导为
+\begin{align}
+    \xi \frac{\dd u(\xi)}{\dd \xi}={}& \lambda^2 \xi^{\lambda^2} \ee^{-\frac{1}{2} \xi} y(\xi) \\
+    ={}&\lambda^2 \xi^2 y(\xi)=\lambda^2 u. 
+\end{align}
+此时 $y(\xi) = 1$，推导出
+\begin{align}
+    \xi \dv[2]{y}{\xi} + (c-\xi) \dv{y}{\xi} - \frac12\left(
+        c - \eta + \frac{\lambda^2 - \lambda^4}{\xi}    \right) y = 0, \quad c = 2\lambda^2 + 1. 
+\end{align}
+
+按照顾书中，设 $u(\xi) = \xi^{\lambda} \ee^{-\frac12\xi}y(\xi)$ ，一阶导数为
+\begin{align}
+    &\frac{\dd u}{\dd \xi}=\lambda \xi^{\lambda-1} \ee^{-\frac{1}{2} \xi} y(\xi)+\xi^\lambda\left[\ee^{-\frac{1}{2} \xi} y(\xi)\right]^{\prime} \\
+    &\xi \frac{\dd y}{\dd \xi}=\lambda \xi^\lambda \ee^{-\frac{1}{2} \xi} y(\xi)+\xi^{\lambda+1}\left[\ee^{-\frac{1}{2} \xi} y(\xi)\right]^{\prime}\\
+    &\phantom{\xi \frac{\dd y}{\dd \xi}}=\lambda \xi^\lambda e^{-\frac{1}{2} \xi} y(\xi) \\
+    &\phantom{\xi \frac{\dd y}{\dd \xi}}=\lambda \underbrace{\xi^\lambda}_{u} y(\xi)=\lambda^2 u,
+\end{align}
+此时 $y(\xi) = \lambda$，推导出
+\begin{align}
+    \xi \dv[2]{y}{\xi} + (c-\xi) \dv{y}{\xi} - \frac12 (c-\eta) y = 0,
+    \quad c = 2\lambda^2 + 1. 
+\end{align}
+
+\chapter{Misc.}
+\section{后记}
+
+灰色背景的代码是 Mathematica，``> >'' 表示输出
+
+本笔记 (更像是课堂实录) 站在巨人的肩膀。
+
+习题解答中，大部分参照了祝震宇、王石嵘的解答。
+
+本课程的历任助教：
+\begin{itemize}
+    \item 2020：祝震宇、王艺臻
+    \item 2021：王石嵘、谭诗乾
+    \item 2022：李亚静、范文斌
+\end{itemize}
+
+感谢前辈们的付出。
+
+~
+
+内容仅供参考。
