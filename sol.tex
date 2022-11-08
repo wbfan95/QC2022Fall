@@ -653,7 +653,7 @@ Griffiths，\S 2.1 与 \S 2.4，习题 2.20。它讨论了离散谱、连续谱�
         \left(1 + \frac{k_2^2}{k_3^2}\right) - 
         \left(1 - \frac{k_2^2}{k_3^2}\right) \cos 2k_2l
     \right] \\
-    &\leq |C_1|^2 \frac12 \left(
+    &\leqslant |C_1|^2 \frac12 \left(
         1 + \frac{k_2^2}{k_3^2} - 1 + \frac{k_2^2}{k_3^2}
     \right) = |C_1|^2 \frac{k_2^2}{k_3^2} = |C_1|^2 \frac{E}{E - V_0}
 \end{align}
@@ -681,7 +681,7 @@ $E > V_0$ 为散射态，同时有
 \begin{align}
     \psi(x) = \begin{cases}
         0, \quad & x < 0, \\
-        C_1 \sin k_2 x, \quad & 0 \leq x \leq l, \\
+        C_1 \sin k_2 x, \quad & 0 \leqslant x \leqslant l, \\
         C_3 \ee^{\ii k_3 x} + C_4 \ee^{-\ii k_3 x}, &\quad x > l,
     \end{cases}
 \end{align}
@@ -710,7 +710,7 @@ Plot[\[Psi][x], {x, -0.5, 3}, PlotRange -> All]
 \begin{align}
     V(x) = \begin{cases}
         0, \quad &x <0,\\
-        V_0, \quad &0\leq x \leq l, \\
+        V_0, \quad &0\leqslant x \leqslant l, \\
         0, \quad &x>l,
     \end{cases}
 \end{align}
@@ -718,7 +718,7 @@ Plot[\[Psi][x], {x, -0.5, 3}, PlotRange -> All]
 \begin{align}
     \psi(x) = \begin{cases}
         C_1 \ee^{\ii k_1 x} + C_2 \ee^{-\ii k_2 x}, \quad &x < 0, \\
-        C_3 \ee^{k_2 x} + C_4 \ee^{-k_2 x}, \quad& 0\leq x \leq l,\\
+        C_3 \ee^{k_2 x} + C_4 \ee^{-k_2 x}, \quad& 0\leqslant x \leqslant l,\\
         C_5 \ee^{\ii k_1 x}, \quad&x>l,
     \end{cases}
 \end{align}
@@ -972,7 +972,8 @@ $$
 现在上式左边的积分为
 $$
 \begin{aligned}
-\int_{-\infty}^{\infty} \exp \left[2 t r-(\xi+t+r)^2\right] \mathrm{d} \xi &=\mathrm{e}^{2 r} \int_{-\infty}^{\infty} \exp \left[-(\xi+t+r)^2\right] \mathrm{d} \xi \quad(u=\xi+t+r) \\
+&\phantom{{}={}}\int_{-\infty}^{\infty} \exp \left[2 t r-(\xi+t+r)^2\right] \mathrm{d} \xi \\
+&=\mathrm{e}^{2 r} \int_{-\infty}^{\infty} \exp \left[-(\xi+t+r)^2\right] \mathrm{d} \xi \quad(u=\xi+t+r) \\
 &=\mathrm{e}^{2 r} \int_{-\infty}^{\infty} \mathrm{e}^{-u^2} \mathrm{~d} u=\mathrm{e}^{2 r} \sqrt{\pi}
 \end{aligned}
 $$
@@ -1075,6 +1076,24 @@ $x^n$ 中 $m=0$，系数为 $2^n$，
 \end{align}
 
 \chapter{Misc.}
+\section{记号说明}
+笔者总是分不清板书中的 psi $\psi$、Psi $\Psi$、phi $\phi$、Phi $\Phi$、varphi $\varphi$，造成内容混乱。因此，希望规定如下，
+\begin{table}[ht]
+    \centering
+    % \caption{Thicker horizontal lines above and below the table.}
+    \begin{tabular}[t]{lccc}
+    \toprule
+    &Text&Commands\\
+    \midrule
+    波函数 & psi & $\psi$ \\
+    二维环的角度 & Phi(phi) & $\Phi(\phi)$ \\
+    球面的第二个角度 & Phi(phi) & $\Phi(\phi) $ \\
+    极坐标第三个变量 & varphi & $\varphi$ \\
+    变分法的波函数 & Phi, phi & $\Phi, \phi$ \\
+    \bottomrule
+    \end{tabular}
+\end{table}%
+
 \section{后记}
 
 灰色背景的代码是 Mathematica，``> >'' 表示输出

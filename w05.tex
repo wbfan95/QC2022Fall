@@ -88,7 +88,7 @@ Plot[M[r], {r, 0, 5}]
         \infty, \quad &\sqrt{x^2 + y^2} \neq R, 
     \end{cases}
 \end{align}
-【讨论势能】
+% 【讨论势能】
 写出哈密顿量
 \begin{align}
     \hat H = -\frac{\hbar^2}{2m} \left(\pdv[2]x + \pdv[2]y\right) + V(x,y)
@@ -136,7 +136,7 @@ Simplify[%, Assumptions -> {x > 0, y > 0}]
 % 下面得快一点了
 那么对于波函数的导数
 \begin{align}
-    \pdv{\phi(x,y)}{x} = \cos\theta \pdv{\phi(r,\theta)}{r} - \frac{\sin\theta} r \pdv{\phi(r,\theta)}{\theta}, 
+    \pdv{\psi(x,y)}{x} = \cos\theta \pdv{\psi(r,\theta)}{r} - \frac{\sin\theta} r \pdv{\psi(r,\theta)}{\theta}, 
 \end{align}
 所以直接可给出
 \begin{align}
@@ -146,15 +146,15 @@ Simplify[%, Assumptions -> {x > 0, y > 0}]
 
 再做二次偏导
 \begin{align}
-    \pdv[2]{\phi(x,y)}{x} = \pdv{x} \left(\cos\theta \frac{\phi}r - \frac{\sin\theta}r \pdv{\phi}{\theta}\right)
+    \pdv[2]{\psi(x,y)}{x} = \pdv{x} \left(\cos\theta \frac{\psi}r - \frac{\sin\theta}r \pdv{\psi}{\theta}\right)
     \label{eq:polar_2nd_derv}
 \end{align}
 其中第一项
 \begin{align}
-    \pdv{x} \left(\cos\theta\pdv{\phi}{r}\right) 
-    &= \pdv{\cos\theta}{x}\pdv{\phi}{r} + \cos\theta \pdv{x} \pdv{\phi}{r} \\
-    &=\frac{\sin^2\theta}{r} \pdv{\phi}{r} + \cos\theta \left(\pdv[2]{\phi}{r} \pdv{r}{x} + \pdv[2]{\phi}{r}{\theta} \pdv{\theta}{x}\right) \\
-    & = \frac{\sin^2\theta}{r} \pdv{\phi}{r} + \cos\theta \left( \cos\theta \pdv[2]{\phi}{r} - \frac{\sin\theta}{r} \pdv[2]{\phi}{r}{\theta}\right)
+    \pdv{x} \left(\cos\theta\pdv{\psi}{r}\right) 
+    &= \pdv{\cos\theta}{x}\pdv{\psi}{r} + \cos\theta \pdv{x} \pdv{\psi}{r} \\
+    &=\frac{\sin^2\theta}{r} \pdv{\psi}{r} + \cos\theta \left(\pdv[2]{\psi}{r} \pdv{r}{x} + \pdv[2]{\psi}{r}{\theta} \pdv{\theta}{x}\right) \\
+    & = \frac{\sin^2\theta}{r} \pdv{\psi}{r} + \cos\theta \left( \cos\theta \pdv[2]{\psi}{r} - \frac{\sin\theta}{r} \pdv[2]{\psi}{r}{\theta}\right)
 \end{align}
 利用了
 \begin{align}
@@ -162,9 +162,9 @@ Simplify[%, Assumptions -> {x > 0, y > 0}]
 \end{align}
 第二项
 \begin{align}
-    \pdv{x} \left(\frac{\sin\theta}{r}\pdv{\phi}{x}\right) 
-    &= - \frac{2\sin\theta \cos\theta}{r^2} \pdv{\phi}{\theta} + \frac{\sin\theta}r \left(\pdv[2]{\phi}{r}{\theta} \pdv{r}{x} + \pdv[2]{\phi}{\theta} \pdv{\theta}{x}\right)\\
-    &=- \frac{2\sin\theta\cos\theta}{r^2} \pdv{\phi}{\theta} + \frac{\sin\theta \cos\theta}{r} \pdv[2]{\phi}{r}{\theta} - \frac{\sin^2\theta}{r^2} \pdv[2]{\phi}{\theta},
+    \pdv{x} \left(\frac{\sin\theta}{r}\pdv{\psi}{x}\right) 
+    &= - \frac{2\sin\theta \cos\theta}{r^2} \pdv{\psi}{\theta} + \frac{\sin\theta}r \left(\pdv[2]{\psi}{r}{\theta} \pdv{r}{x} + \pdv[2]{\psi}{\theta} \pdv{\theta}{x}\right)\\
+    &=- \frac{2\sin\theta\cos\theta}{r^2} \pdv{\psi}{\theta} + \frac{\sin\theta \cos\theta}{r} \pdv[2]{\psi}{r}{\theta} - \frac{\sin^2\theta}{r^2} \pdv[2]{\psi}{\theta},
 \end{align}
 利用了
 \begin{align}
@@ -172,7 +172,7 @@ Simplify[%, Assumptions -> {x > 0, y > 0}]
 \end{align}
 \begin{lstlisting}
 (* 对 x 的二阶偏导，输出略 *)
-D[\[Phi][Sqrt[x^2 + y^2], ArcCos[x/Sqrt[x^2 + y^2]]], {x, 2}];
+D[\[Psi][Sqrt[x^2 + y^2], ArcCos[x/Sqrt[x^2 + y^2]]], {x, 2}];
 Simplify[%, 
    Assumptions -> {x > 0, y > 0}] /. {y -> Sqrt[
     r^2 - r^2 Cos[\[Theta]]^2], x -> r Cos[\[Theta]]};
@@ -180,26 +180,26 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \end{lstlisting}
 于是
 \begin{align}
-    \pdv[2]{\phi(x,y)}{x}     
+    \pdv[2]{\psi(x,y)}{x}     
     &= \pdv{x} 
-    \left(\cos\theta \pdv{\phi}{r} - \frac{\sin\theta}{r} \pdv{\phi}{\theta}\right) \\
-    &= \cos^2\theta \pdv[2]{\phi}{r} - \frac{2\sin\theta\cos\theta}{r} \pdv[2]{\phi}{r}{\theta} + \frac{\sin^2\theta}{r^2} \pdv[2]{\phi}{\theta} \notag \\
-    &\phantom{=} \quad + \frac{\sin^2\theta}{r} \pdv[2]{\phi}{r} + \frac{2\sin\theta\cos\theta}{r^2} \pdv{\phi}{\theta},
+    \left(\cos\theta \pdv{\psi}{r} - \frac{\sin\theta}{r} \pdv{\psi}{\theta}\right) \\
+    &= \cos^2\theta \pdv[2]{\psi}{r} - \frac{2\sin\theta\cos\theta}{r} \pdv[2]{\psi}{r}{\theta} + \frac{\sin^2\theta}{r^2} \pdv[2]{\psi}{\theta} \notag \\
+    &\phantom{=} \quad + \frac{\sin^2\theta}{r} \pdv[2]{\psi}{r} + \frac{2\sin\theta\cos\theta}{r^2} \pdv{\psi}{\theta},
 \end{align}
 同理
 \begin{align}
-    \pdv[2]{\phi(x,y)}{y} &= \sin^2\!\theta \pdv[2]{\phi}{r} + \frac{2\sin\theta \cos\theta}{r} \pdv[2]{\phi}{r}{\theta} + \frac{\cos^2\theta}{r^2} \pdv[2]{\phi}{\theta} \notag\\
-    &\phantom{=}\quad+ \frac{\cos^2\theta}{r} \pdv{\phi}{r} - \frac{2\sin\theta \cos\theta}{r^2} \pdv{\phi}{\theta}, 
+    \pdv[2]{\psi(x,y)}{y} &= \sin^2\!\theta \pdv[2]{\psi}{r} + \frac{2\sin\theta \cos\theta}{r} \pdv[2]{\psi}{r}{\theta} + \frac{\cos^2\theta}{r^2} \pdv[2]{\psi}{\theta} \notag\\
+    &\phantom{=}\quad+ \frac{\cos^2\theta}{r} \pdv{\psi}{r} - \frac{2\sin\theta \cos\theta}{r^2} \pdv{\psi}{\theta}, 
 \end{align}
 于是 \eqref{eq:polar_2nd_derv} 为
 \begin{align}
-    \pdv[2]{\phi}{x} + \pdv[2]{\phi}{y} &= \pdv[2]{\phi}{r} + \frac1{r^2} \pdv[2]{\phi}{\theta} + \frac1r \pdv{\phi}{r} \\
-    &=\pdv[2]{\phi}{r} + \frac1r \pdv{\phi}{r} + \frac1{r^2}\pdv[2]{\phi}{\theta}, 
+    \pdv[2]{\psi}{x} + \pdv[2]{\psi}{y} &= \pdv[2]{\psi}{r} + \frac1{r^2} \pdv[2]{\psi}{\theta} + \frac1r \pdv{\psi}{r} \\
+    &=\pdv[2]{\psi}{r} + \frac1r \pdv{\psi}{r} + \frac1{r^2}\pdv[2]{\psi}{\theta}, 
 \end{align}
 
 最终哈密顿量写为
 \begin{align}
-    \hat H = - \frac{\hbar^2}{2m} \left(\pdv[2]{x} + \pdv[2]{y}\right) = -\frac{\hbar^2}{2m} \left(\pdv[2]{\phi}{r} + \frac1r \pdv{\phi}{r} + \frac1{r^2}\pdv[2]{\phi}{\theta}\right),
+    \hat H = - \frac{\hbar^2}{2m} \left(\pdv[2]{x} + \pdv[2]{y}\right) = -\frac{\hbar^2}{2m} \left(\pdv[2]{\psi}{r} + \frac1r \pdv{\psi}{r} + \frac1{r^2}\pdv[2]{\psi}{\theta}\right),
 \end{align}
 考虑本例中势能的特殊性，其径向部分为常数 $R$，因此哈密顿量仅与 $\theta$ 有关，
 \begin{align}
@@ -213,14 +213,14 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 
 薛定谔方程为
 \begin{align}
-    \hat H \phi(\theta) &= E\phi(\theta)\\
-    - \frac{\hbar^2}{2I} \pdv[2]{\phi}{\theta} &= E\phi
+    \hat H \varphi(\theta) &= E\varphi(\theta)\\
+    - \frac{\hbar^2}{2I} \pdv[2]{\varphi}{\theta} &= E\varphi
 \end{align}
 整理得到
 \begin{align}
-    \pdv[2]{\phi(\theta)}{\theta} + M^2 \phi(\theta) = 0, \quad M^2 = \frac{2IE}{\hbar^2},
+    \pdv[2]{\varphi(\theta)}{\theta} + M^2 \varphi(\theta) = 0, \quad M^2 = \frac{2IE}{\hbar^2},
 \end{align}
-这是个二阶微分方程，设 $\phi(\theta) = \ee^{s\theta}$，有
+这是个二阶微分方程，设 $\varphi(\theta) = \ee^{s\theta}$，有
 \begin{align}
     s^2 \ee^{s\theta} + M^2 \ee^{s\theta} = 0
 \end{align}
@@ -230,13 +230,13 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \end{align}
 可得方程通解
 \begin{align}
-    \phi(\theta) = A \ee^{\ii M\theta} + B \ee^{-\ii M \theta}
+    \varphi(\theta) = A \ee^{\ii M\theta} + B \ee^{-\ii M \theta}
 \end{align}
 共有三个待求变量 $\{A, B, M\}$。
 
 给出通解之后，利用边界条件得到量子化结果。在解无限深势阱的时候，利用了波函数连续、导数连续的条件。我们这里的二位极坐标体系，边界就是粒子转过 $2\pi$ 后又回来，所以有周期性边条件，
 \begin{align}
-    \phi(\theta) = \phi(\theta + 2\pi),
+    \varphi(\theta) = \varphi(\theta + 2\pi),
 \end{align}
 解得
 \begin{align}
@@ -244,7 +244,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \end{align}
 这里的 $M$ 称之为磁量子数 magnetic quantum number，从而可以解出能量
 \begin{align}
-    M^2 = \frac{2IE}{\hbar^2} \Rightarrow E = \frac{M^2\hbar^2} {2I} = \frac{m^2\hbar^2} {8\pi^2 L},
+    M^2 = \frac{2IE}{\hbar^2} \Rightarrow E = \frac{M^2\hbar^2} {2I} = \frac{M^2h^2} {8\pi^2 L},
 \end{align}
 知道了分子的转动惯量，就可以求出转动的精确谱、能量间隔。
 
@@ -277,7 +277,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 已经求出了环上粒子的通解，将
 角动量算符作用到通解波函数上，
 \begin{align}
-    \hat L_z \phi(\theta) \overset{?}{=} C\phi(\theta),
+    \hat L_z \varphi(\theta) \overset{?}{=} C\varphi(\theta),
 \end{align}
 会得到常数 $C$ 吗？不一定对吧，作用上去之后会有两个相反的系数 $\ii m$。这就很像动量算符和动能算符的关系，我们知道动量算符、动能算符是互易的，原则上可以共享同一个本征函数。
 % \homework{\textbf{5.2} (\emph{continued}) 证明}
@@ -300,15 +300,15 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 
 将环形势能变换到极坐标下，此时哈密顿量仅与 $\theta$ 有关，引入周期性边条件，得到磁量子数。随后演绎了角动量 $\hat l_z$ 的算符表示。
 
-环运动的通解是两个本征函数的线性组合，包含了顺时针和逆时针旋转的组合。哈密顿算符和 $\hat l_z$ 是队医的，可以构造同时属于二者的本征函数完备集，所以可以把 $\phi(\theta)$ 写成 $A \ee^{\ii m \phi}$ 的形式。
+环运动的通解是两个本征函数的线性组合，包含了顺时针和逆时针旋转的组合。哈密顿算符和 $\hat l_z$ 是队医的，可以构造同时属于二者的本征函数完备集，所以可以把 $\varphi(\theta)$ 写成 $A \ee^{\ii m \varphi}$ 的形式。
 
 接上午的求解。由归一化确定 $A$，
 \begin{align}
-    \int_0^{2\pi} \phi^*(\theta) \phi(\theta) \dd\theta = A^2 \int_{0}^{2\pi} \dd\theta = 2\pi A^2 = 1,
+    \int_0^{2\pi} \varphi^*(\theta) \varphi(\theta) \dd\theta = A^2 \int_{0}^{2\pi} \dd\theta = 2\pi A^2 = 1,
 \end{align}
 解之得
 \begin{align}
-    \phi(\theta) = \frac{1}{\sqrt{2\pi}} \ee^{\ii m \theta}, \quad \rho(\theta) = |\phi(\theta)|^2 = \frac1{2\pi},
+    \varphi(\theta) = \frac{1}{\sqrt{2\pi}} \ee^{\ii m \theta}, \quad \rho(\theta) = |\varphi(\theta)|^2 = \frac1{2\pi},
 \end{align}
 因此波函数没有节点，任何地方的取值都是一样。我们现在求解的模型，都是希望贴近化学真实体系，与这个模型最相近的是苯环。
 \homework{\textbf{5.2}  对于一维环形势箱，其能级为 
@@ -324,7 +324,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \section{柱面上的粒子}
 先讲一个简单的三维体系，（同学：球）真会找，找了个最难的。最简单的是自由粒子，三维自由粒子的算符，
 \begin{align}
-    \hat H = -\frac{\hbar^2}{2m} \left(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z}\right), \quad \hat H \phi(x,y,z) = E \phi (x,y,z),
+    \hat H = -\frac{\hbar^2}{2m} \left(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z}\right), \quad \hat H \psi(x,y,z) = E \psi (x,y,z),
 \end{align}
 通过分离变量，可以解耦，求出来各个分量的波函数。
 
@@ -338,7 +338,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \end{align}
 其中
 \begin{align}
-    \Omega = \left\{(x,y,z) \, |\,  x^2+y^2 \leq R^2, 0\leq z\leq l\right\}. 
+    \Omega = \left\{(x,y,z) \, |\,  x^2+y^2 \leqslant R^2, 0\leqslant z\leqslant l\right\}. 
 \end{align}
 可参考徐昕老师 2000 年的文章 Jian-Lin Yao, Xin Xu, De-Yin Wu, et al, \emph{Chem. Commum.} 2000, 1627。
 }

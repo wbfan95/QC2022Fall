@@ -34,7 +34,7 @@
     \sum_{j=1}^\infty
     \left\{
         (j+2)(j+1) a_{j+2} + \left[
-            (j+ |m_l| +1) - M^2
+            (j+ |m_l|)(j+ |m_l| +1) - M^2
         \right]a_j
     \right\} x^j = 0,
     % 2022-10-24 08:20:05  Wenbin Fan @FDU
@@ -63,7 +63,7 @@
 % 2022-10-24 08:24:28  Wenbin Fan @FDU
 再回到能量的量子化，体系的能量
 \begin{align}
-    - \frac{\hbar^2}{2m R^2} \hat\Lambda ^2 Y(\theta,\varphi) = E Y(\theta, \varphi), 
+    - \frac{\hbar^2}{2m R^2} \hat\Lambda ^2 Y(\theta, \varphi) = E Y(\theta, \varphi), 
     \label{eq:LambdaYEY}
 \end{align}
 分离变量得到
@@ -157,7 +157,7 @@ $z$ 方向一定有不确定性，类似于零点能。
 \end{align}
 面积分为
 \begin{align}
-    &\phantom{=}\oiint |Y_{00}(\theta,\varphi)|^2 \dd S 
+    &\phantom{=}\oiint |Y_{00}(\theta, \varphi)|^2 \dd S 
     = \oiint C^2 R^2 \sin\theta \dd\theta \dd\varphi\\
     &= C^2 R^2 \int_0^\pi \sin\theta \dd\theta \int_0^{2\pi} \dd\varphi \\
     &= 4 \pi C^2 R^2 = 1, 
@@ -169,7 +169,7 @@ $z$ 方向一定有不确定性，类似于零点能。
 其中的 $S$ 是球的表面积。
 密度
 \begin{align}
-    \rho_{00}(\theta,\varphi) = C^2 = \frac1S,
+    \rho_{00}(\theta, \varphi) = C^2 = \frac1S,
 \end{align}
 
 当 $l=1$、$m=\pm1$ 时，
@@ -182,7 +182,7 @@ $z$ 方向一定有不确定性，类似于零点能。
 \end{align}
 面积分
 \begin{align}
-    \oiint \rho_{1,\pm1} (\theta,\varphi) \dd S 
+    \oiint \rho_{1,\pm1} (\theta, \varphi) \dd S 
     &= C^2 R^2 \int_0^\pi \sin^3\theta \dd\theta \int_0^{2\pi} \dd\varphi \\
     &= 2\pi c^2 R^2 \int_0^\pi \sin^3\theta \,\dd\theta,
 \end{align}
@@ -221,7 +221,7 @@ $z$ 方向一定有不确定性，类似于零点能。
 \begin{align}
     \psi(x) = \begin{cases}
         C_1 \ee^{\ii k_1 x} + C_2 \ee^{-\ii k_1 x},\quad &x<0, \\
-        C_3 \ee^{k_2 x} + C_4 \ee^{-k_2 x},\quad &0\leq x \leq l,\\
+        C_3 \ee^{k_2 x} + C_4 \ee^{-k_2 x},\quad &0\leqslant x \leqslant l,\\
         C_5 \ee^{-\ii k_1 x}, \quad &x>l,
     \end{cases}
 \end{align}
