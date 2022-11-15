@@ -349,13 +349,13 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
 这个波包是否满足波动方程 \eqref{eq:mono_wave}？证明之。分别对坐标和时间求偏导，有
 \begin{align*}
     \frac{\partial^2\psi(x,t)}{x^2} 
-    &= \int_{-\infty} ^{+\infty} A(k) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp(-\ii\,\omega(k) t) \,\dd k \\ 
-    &= \int_{-\infty} ^{+\infty} A(k) (-k^2) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp[\ii(kx - \omega(k)t)] \,\dd k,
+    &= \int_{-\infty}^{+\infty} A(k) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp(-\ii\,\omega(k) t) \,\dd k \\ 
+    &= \int_{-\infty}^{+\infty} A(k) (-k^2) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp[\ii(kx - \omega(k)t)] \,\dd k,
 \end{align*}
 \begin{align*}
     \frac{\partial^2\psi(x,t)}{t^2} 
-    &= \int_{-\infty} ^{+\infty} A(k) \ee^{\ii kx} \frac{\partial}{\partial t^2}\exp(-\ii\,\omega(k) t) \,\dd k \\ 
-    &= \int_{-\infty} ^{+\infty} A(k) \left[-\omega(k)\right]^2 \ee^{\ii kx} \exp[\ii(kx - \omega(k)t)] \,\dd k, \\
+    &= \int_{-\infty}^{+\infty} A(k) \ee^{\ii kx} \frac{\partial}{\partial t^2}\exp(-\ii\,\omega(k) t) \,\dd k \\ 
+    &= \int_{-\infty}^{+\infty} A(k) \left[-\omega(k)\right]^2 \ee^{\ii kx} \exp[\ii(kx - \omega(k)t)] \,\dd k, \\
 \end{align*}
 观察可知，当 $\omega(k) = ck$ 时，满足波动方程 \eqref{eq:mono_wave}。结论是，单色波的各种分布的组合同样满足波动方程。下面引入一种特殊的波包。
 
@@ -372,18 +372,18 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
 
 首先讨论，当 $t = 0$ 的时波包的情况，此时的波函数
 \begin{equation}\label{eq:wp_t0}
-\psi(x, 0) = \int_{-\infty} ^{+\infty} \frac{\sqrt{a}}{(2 \pi)^{3/4}} \exp \left[ - \frac{a^2}{4} (k - k_0)^2 \right] \exp \left( i  k x  \right) \, \dd k. 
+\psi(x, 0) = \int_{-\infty}^{+\infty} \frac{\sqrt{a}}{(2 \pi)^{3/4}} \exp \left[ - \frac{a^2}{4} (k - k_0)^2 \right] \exp \left( i  k x  \right) \, \dd k. 
 \end{equation}
 为了求出这个积分，引入傅里叶变换（Fourier transform），
 \begin{align}
-    &F(x) = \int_{-\infty} ^{+\infty} f(k) \ee^{\ii kx}\,\dd k, \\
-    &f(k) = \frac1{2\pi}\int_{-\infty} ^{+\infty} F(x) \ee^{\ii kx}\, \dd x, 
+    &F(x) = \int_{-\infty}^{+\infty} f(k) \ee^{\ii kx}\,\dd k, \\
+    &f(k) = \frac1{2\pi}\int_{-\infty}^{+\infty} F(x) \ee^{\ii kx}\, \dd x, 
 \end{align}
 其中 $f(x)$ 右侧的 $\frac{1}{2\pi}$ 也可拆成两个 $\frac1{\sqrt{2\pi}}$、将其中一个 $\frac1{\sqrt{2\pi}}$ 乘在 $F(x)$ 右边，这是傅里叶变换的多种等价表示方式。傅里叶变换可将时域 $f$ 变换为频域 $F$，相当于一种卷积，这里仅将它用作求积分公式。Gaussian 函数的傅里叶变换为
 \begin{align}
     &G(k) = \frac a{\sqrt \pi} \ee^{-a^2 k^2}, \\
     &g(x) = %\frac{1}{\sqrt{2\pi}} 
-    \int_{-\infty} ^{+\infty} G(k) \ee^{\ii kx} \dd k =  \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{4a^2}\right), \label{eq:ift_gaussian}
+    \int_{-\infty}^{+\infty} G(k) \ee^{\ii kx} \dd k =  \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{4a^2}\right), \label{eq:ift_gaussian}
 \end{align}
 %{Gaussian 函数的逆变换}
 \begin{lstlisting}
@@ -393,16 +393,16 @@ Simplify[res, Assumptions -> {a > 0}]
 \end{lstlisting}
 因此将 $t_0$ 时的波包，拼凑成傅里叶逆变换 \eqref{eq:ift_gaussian} 的形式，有
 \begin{equation}
-    \psi(x, 0) = \frac{\sqrt{a}}{(2 \pi)^{3/4}}  \ee^{i  k_0 x} \int_{-\infty} ^{+\infty} \exp \left[ - \frac{a^2}{4} (k - k_0)^2 + i(k-k_0)x  \right] \dd k,
+    \psi(x, 0) = \frac{\sqrt{a}}{(2 \pi)^{3/4}}  \ee^{i  k_0 x} \int_{-\infty}^{+\infty} \exp \left[ - \frac{a^2}{4} (k - k_0)^2 + i(k-k_0)x  \right] \dd k,
 \end{equation}
 设 $b = \frac a2$，$l = k-k_0$，则上式为
 \begin{equation}
-    \psi(x, 0) = \frac{2b}{(2 \pi)^{3/4}} \ee^{i  k_0 x} \int_{-\infty} ^{+\infty} 
+    \psi(x, 0) = \frac{2b}{(2 \pi)^{3/4}} \ee^{i  k_0 x} \int_{-\infty}^{+\infty} 
     \ee^{-b^2l^2} \ee^{\ii l x} \dd l, 
 \end{equation}
 凑出 \eqref{eq:ift_gaussian} 中的形式，在积分内乘 $\frac b{\sqrt{\pi}}$，同时令 $x = - 2\pi x'$，
 \begin{align}
-    \psi(x,0) &= \frac{2b}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b \underbrace{\int_{-\infty} ^{+\infty} \frac b{\sqrt{\pi}} \ee^{-b^2l^2} \ee^{\ii l (-2\pi x')} \dd l}_{\text{inverse Fourier transform}} \\
+    \psi(x,0) &= \frac{2b}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b \underbrace{\int_{-\infty}^{+\infty} \frac b{\sqrt{\pi}} \ee^{-b^2l^2} \ee^{\ii l (-2\pi x')} \dd l}_{\text{inverse Fourier transform}} \\
     &= \frac{2b}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b  \exp\left(-\frac{\pi^2x'^2}{4 b^2}\right) \\
     &= \left(\frac{2}{a^2\pi}\right)^{1/4} \ee^{\ii k_0 x} \exp\left(-\frac{x^2}{a^2}\right). \label{eq:wp_photon_t0}
 \end{align}

@@ -1,0 +1,738 @@
+% 2022-11-14 07:59:19  Wenbin Fan @FDU
+\section{复习}
+\courseTime{第9次课，第11周，Nov04}
+今天人好少（只有 13 位同学，不包括助教等），被隔离了吗？
+
+% 2022-11-14 08:03:33  Wenbin Fan @FDU
+上周第十周，我们介绍了变分法。它本质上是为了求解定态薛定谔方程，
+\begin{align}
+    \hat H \psi = E \psi,
+\end{align}
+原理上是说，平均值可以写成
+\begin{align}
+    \hat F = \frac{\langle \psi | \hat F | \psi \rangle}{\langle \psi | \psi \rangle},
+\end{align}
+哈密顿算符是很复杂的，有动能和势能，
+\begin{align}
+    \hat H = \hat T + \hat V = -\frac{\hbar^2}{2} \sum_i \frac{1}{m_i}\hat \nabla_i^2
+    + \sum_i V_{\mathrm{ext}}(\vec r_i) 
+    +\sum_{i<j}V_{\mathrm{int}}(\vec r_i, \vec r_j),
+\end{align}
+% 2022-11-14 08:06:44  Wenbin Fan @FDU
+以氦原子为例，哈密顿算符为
+\begin{align}
+    \hat H = 
+    -\frac{\hbar^2}{2m_{\mathrm{He}}} \hat \nabla_1^2
+    -\frac{\hbar^2}{2m_{\mathrm{e}}} \left(\hat \nabla_2^2 + \hat \nabla_3^2\right)
+    - \frac{2e^2}{|\vec r_2 - \vec r_1|} - \frac{2e^2}{|\vec r_3 - \vec r_1|}
+    + \frac{e^2}{|\vec r_2 - \vec r_3|}
+\end{align}
+如果把原子核、电子都当作粒子本身，外势就不存在了。未来几周会讲全同粒子、自旋。氦原子的波函数 $\psi(\vec r_1, \vec r_2, \vec r_3)$ 是 $3\times3=9$ 维的。
+
+变分原理告诉我们，能量的期望值大于基态能量，对于试探波函数 $\psi_0$
+\begin{align}
+    \frac{\langle \psi_0 | \hat H | \psi_0 \rangle}{\langle \psi_0 | \psi_0 \rangle} = \bar E_0 \geqslant E_0
+\end{align}
+如果变分空间涵盖真实波函数，则一定可求解得到基态能量。若 $\psi_0$ 归一，则有
+\begin{align}
+    \langle \psi_0 | \hat H | \psi_0 \rangle \geqslant E_0. 
+\end{align}
+
+并不知道如何探索波函数空间，但我们可以引入超参数构成的波函数空间。设定试探波函数 $\psi_0(\vec r_1, \vec r_2, \cdots, \vec r_n; c_1, c_2, \cdots, c_n)$，
+%2022-11-14 08:12:34  Wenbin Fan @FDU
+方法是近似的，原理是精确的。对参数 $\{c_1, c_2, \cdots, c_n\}$ 求偏微分，满足 $\left\{\pdv{\bar E}{c_i}=0\right\}$。
+
+上节课讲过的第一个例子是谐振子，我们知道真实的基态波函数是高斯展宽的形式，
+\begin{align}
+    \Phi_0 = N \exp\!\left(-\frac12 \frac{m\omega}{\hbar}x^2\right),
+\end{align}
+为了验证这个解的正确性，设定试探波函数
+\begin{align}
+    \psi_0 = N \ee^{-ax^2} \ \Rightarrow \bar E(a). 
+\end{align}
+为什么 $\psi_0 = N \ee^{ax^2}$ 不能当作试探波函数？因为试探波函数必须与哈密顿量有共同的边界条件，这个试探波函数得到的并非是束缚态，所以得到的「基态」能量是错的。
+
+
+% 2022-11-14 08:17:52  Wenbin Fan @FDU
+第二个例子是氦原子。它是个 9 维的系统，对它做的第一件事是 BO 近似，分离原子核和电子的运动。
+把原子核当成独立的外势，
+原子核对电子的吸引看作是系统依赖的外势。
+氢分子和氦原子都是两个电子，如果要构建哈密顿量，动能算符是一样的，库伦排斥算符也是一样的，区别在于势能不同。更普适地，对于 $N$ 电子的系统，动能算符和库伦排斥算符都是一样的，只是势能不同。五彩斑斓的化学世界正是来自于这个势能。
+
+求解氦原子的第一步是把完整的哈密顿量近似成原子核的独立运动和电子的独立运动，原子核和电子的相互作用被看作成外势，这种近似称作 Born--Oppenheimer 近似。设试探波函数
+\begin{align}
+    \psi_0(r_1, r_2; \lambda) = \frac{\lambda^2}{\pi a_0^3} 
+    \ee^{-\frac{\lambda}{a_0}(r_1 + r_2)}, 
+\end{align}
+我们这么设，是因为确实不知道波函数是什么形式。这个形式来自于类氢离子的波函数，将核电荷数设定为变分参数，我们认为电子感受到的力并不是单纯来自原子核的吸引，而是有一部分电子的排斥，吸引和排斥的平均效应。由公式变分原理公式，得到 $\lambda = \num{1.6875}$，$E-\lambda = 0.3125$ 个排斥能，变分能量 $\bar E_{\mathrm{min}} = -\num{2.848} \frac{\hbar^2}{ma_0^2}$，真实能量为 $E_0 = -2.904 \frac{\hbar^2}{ma_0^2}$，误差 1.93\%。误差有点大，能否有更好的近似？
+
+从误差可知，我们设定的试探波函数还不够包含真实的氦原子波函数空间，人们找了很多合适的试探波函数。下面介绍一个非常直观的改进。
+% 2022-11-14 08:27:46  Wenbin Fan @FDU
+势能与两电子的距离有关 $\frac{e^2}{r_{23}}$，当两个电子越靠近，出现的概率越小，这里暂不考虑是交换还是相关贡献，只考虑库伦相互作用。也就是说，波函数不仅与两个电子独立的概率分布有关，也与两电子的距离相关。
+波函数仅仅表示成 $r_1, r_2$ 的形式不够，后来 Egil Hylleraas 提出了有明确物理意义的超参数，
+\begin{align}
+    \psi_0 = N \left[
+        \ee^{-\frac{\lambda}{a_0}(r_1+r_2)}(1 + b\, r\!_{12})
+    \right],
+\end{align}
+% 波函数与两个电子的距离有关。
+此时变分参数为 $\{\lambda, b\}$，对二者分别求偏微分得到 $\lambda = 1.849$、$b = 0.364$，有效屏蔽更小了，有一部分电子-电子相互作用，不再需要粗糙的平均场近似给出。变分能量 $\bar E_{\mathrm{min}}(\lambda, b) = \SI{-78.4}{\electronvolt}$，误差为 $0.4\%$。
+
+进一步考虑这种试探波函数，
+\begin{align}
+    \psi_0 = N \left[ 
+        \ee^{-\frac{\lambda}{a_0}(r_1 + r_2)}
+    \sum_{ijk} c_{ijk} (r_1 + r_2)^i (r_1 - r_2)^j r_{12}^k
+    \right],
+\end{align}
+变分超参数为 $\{\lambda, c_{ijk}\}$，得到近似值为 $E_0 = \num{-2.903724375} \frac{\hbar^2}{ma_0^2}$，实验值为 $E_0 = \num{-2.903724376} \frac{\hbar^2}{ma_0^2}$，误差小于 $\SI{2.7e-8}{\electronvolt}$。
+% 2022-11-14 08:36:17  Wenbin Fan @FDU
+如果更好地构造试探波函数、变分空间，可以得到更精确的解。我们不能搜索整个大海，只能构造子空间去搜索，所有的困难都在于如何让这个子空间包含精确解。
+
+有没有更系统的方法？
+
+\section{线性变分法}
+线性变分法是说，我不知道怎么构造这个复杂的函数空间。比如氦原子，从构造波函数开始就很困难，我们需要知道大致的解析解、假设参数、设定变分参数的物理意义，并创造性地构造尝试波函数。我们很自然地考虑，有没有另外的方式构造函数空间？
+% 搜索变得很困难。
+
+线性厄米算符的本征函数构成完备集，所有具有相同边界条件的品优波函数，都可以由这个完备集严格展开，意味着，我们可以把波函数写成任意一个具有相同本征函数的线性展开。
+% 那么将【】
+% 2022-11-14 08:39:55  Wenbin Fan @FDU
+原则上，展开后是无穷多项的，
+\begin{align}
+    \psi_0 = c_1 f_1 + c_2 f_2 + \cdots + c_n f_n = \sum_{i=1}^n c_i f_i,
+\end{align}
+如果 $\{f_i\}$ 就是 $\hat H$ 的本征解，变分可得 $\{c_1 = 1, c_2=0, \cdots, c_n =0\}$。如果 $\{f_i\}$ 不是 $\hat H$ 的本征解，但是 $\{f_i\}$ 为正交归一的完备集，那么可以解出
+\begin{align}
+    \langle f_i | \psi_0 \rangle = \sum_j \langle f_i | f_j \rangle = \sum_j c_j \delta_{ij} = c_i.
+\end{align}
+
+(1) 做归一化判断，
+\begin{align}
+    \langle \psi_0 | \psi_0 \rangle = \sum_{i}\sum_j c_i^* c_j = \sum_i \sum_j c_i^* c_j S_{ij}, 
+\end{align}
+其中
+\begin{align}
+    S_{ij} \equiv \langle f_i | f_j \rangle = \int f_i^* f_j \dd\tau, 
+\end{align}
+
+看起来人变少了。同学们还能自由选课吗，还是说逃课了。这对任课教师来说没有任何影响，只要同学们真正学到知识就好。
+上学期期末考试有点难，卷面成绩很少过 60 的，大都靠平时成绩提分，注意平时作业。
+
+\courseTime{2 of 4, week 09, Nov14}
+% 2022-11-14 08:55:42  Wenbin Fan @FDU
+(2) 重叠积分
+\begin{align}
+    \langle \psi_0 | \hat H | \psi_0 \rangle = 
+    \sum_i \sum_j c_j^* c_j \langle f_i | \hat H | f_i \rangle = \sum_i \sum_j c_i^* c_j H_{ij},
+\end{align}
+其中
+\begin{align}
+    H_{ij} \equiv \langle f_i | \hat H | f_j \rangle = \int f_i^* \hat H f_j \dd\tau. 
+\end{align}
+因此，平均能量，
+\begin{align}
+    \bar E(c_1, c_2, \cdots, c_n) = \frac{\langle \psi_0 | \hat H | \psi_0 \rangle}{\langle \psi_0 | \psi_0 \rangle} = \frac{\sum_i \sum_j c_i^* c_j H_{ij}}{\sum_i \sum_j c_i^* c_j S_{ij}},
+\end{align}
+把它写成一行
+\begin{align}
+    \bar E \sum_i \sum_j c_i^* c_j S_{ij} = \sum_i \sum_j c_i^* c_j H_{ij}. 
+\end{align}
+
+为了展开变分 $\left\{\frac{\partial \bar E}{\partial c_i} = 0\right\}$，对等式两边求偏导
+\begin{align}
+    \pdv{c_k} \left[
+        \bar E \sum_i \sum_j c_i^* c_j S_{ij}
+        \right]
+    &= \pdv{c_k} \sum_j \sum_j c_i^* c_j H_{ij} \notag\\
+    \pdv{\bar E}{c_k} \sum_i \sum_j c_i^* c_j S_{ij} + 
+    \bar E
+    \sum_i \sum_j \left(\pdv{c_k}c_i^* c_j\right) S_{ij} &= 
+    \sum_i \sum_j \left(\pdv{c_k}c_i^* c_j\right) H_{ij},
+    \label{eq:perb_vari_dedci_1}
+\end{align}
+% 2022-11-14 08:59:59  Wenbin Fan @FDU
+其中，关键的地方在于
+\begin{align}
+    \pdv{c_k} c_i^* c_j = \left(\pdv{c_k}c_i^*\right) c_j + c_i^* \left(\pdv{c_k} c_j\right),
+\end{align}
+因为各参数之间没有关系，
+% 【什么无关，返回去看平均能量定义】，
+所以
+\begin{align}
+    \pdv{c_i}{c_k} = \pdv{c_i^*}{c_k^*} = 0, \quad i\neq k. 
+\end{align}
+大家学过复变函数吗？
+\suppInfo{复变函数的连续性——柯西定理}{
+柯西连续性，有
+\begin{align}
+    \begin{cases}
+        \pdv{c_i}{c_i} = 1, \\ \pdv{c_i^*}{c_i} = 0, 
+    \end{cases}\quad \text{其中}
+    \begin{cases}
+        c_i = x+y \ii, \\
+        c_i^* = x - y \ii, 
+    \end{cases}
+\end{align}
+简单证明之。复变函数的普遍形式 $f(z) = \mu(x,y) + \ii\,\nu(x,y)$，并且设
+\begin{align}
+    & c_i \quad \mu = x, \nu = y,\\
+    & c_i^* \quad \mu = x, \nu = -y. 
+\end{align}
+求函数 $f(z)$ 的偏导，即函数随自变量的响应，
+\begin{align}
+    f'(z) = \lim_{\Delta z\rightarrow 0} \frac{f(z+\Delta z) - f(z)}{\Delta z} = ?, \quad \Delta z = \Delta x + \ii \Delta y. 
+\end{align}
+
+当 $\Delta z$ 是沿着 $x$ 轴方向逼近 $z$，则 $\Delta z = \Delta x$，$\Delta y = 0$，
+\begin{align}
+    f'(z) &= \lim_{\Delta x\rightarrow0} 
+    \left[
+        \frac{\mu(x+\Delta x, y) - \mu(x, y)}{\Delta x}
+        + \ii \frac{\nu(x+\Delta x, y) - \nu(x, y)}{\Delta x}
+    \right] \notag\\
+    &= \pdv{\mu}{x} + \ii\pdv{\nu}{x},
+\end{align}
+同理，当 $\Delta z$ 沿着 $y$ 轴逼近 $z$，则 $\Delta z = \ii\Delta y$、$\Delta x =0$，
+\begin{align}
+    f'(z) = \pdv{\nu}{y} - \ii\pdv{\mu}{y}. 
+\end{align}
+为了使得 $f(z)$ 处处可导，则
+\begin{align}
+    f'(z) = \pdv{\mu}{x} + \ii \pdv{\nu}{x} = \pdv{\nu}{y} - \ii\pdv{\mu}{y},
+\end{align}
+推知
+\begin{align}
+    \begin{cases}
+        \displaystyle
+        \pdv{\mu}{x} = \pdv{\nu}{y}, \\
+        \noalign{\vskip9pt}
+        \displaystyle
+        \pdv{\nu}{x} = -\pdv{\mu}{y},
+    \end{cases}
+\end{align}
+称作\boldtext{柯西--黎曼方程} Cauchy--Riemann。复空间的函数连续性要更严格。
+
+对本例来说，前设 $c_i$ 满足 CR 方程，但 $c_i^*$ 不满足。
+因此我们得到了复变函数中的结论，如果一个函数是连续可导的，那么它的共轭一定不是连续可导的。
+
+% 2022-11-14 09:13:06  Wenbin Fan @FDU
+在工程中，为了保证函数可导数，比如可采用 Wirtinger 导数定义，那么
+\begin{align}
+    \pdv{z} = \frac12 \left(\pdv{x} - \ii \pdv{y}\right), 
+    \quad
+    \pdv{z^*} = \frac12\left(\pdv{x}+\ii \pdv{y}\right),
+\end{align}
+证明了
+\begin{align}
+    \pdv{z}{z} = 1, \quad \pdv{z^*}{z} = 0,
+\end{align}
+可用 $\delta$ 记号写成
+\begin{align}
+    \pdv{c_i}{c_k} = \delta_{ik} = \begin{cases}
+        1, \quad &i=k,\\
+        0, \quad &i\neq k. 
+    \end{cases}
+\end{align}
+% 为了保证共轭与自身无关，工程上的应用。
+}
+
+按照复变函数的偏导，只留下第 $k$ 项，
+\begin{alignat}{2}
+    &\pdv{c_k} \sum_i \sum_j c_i^* c_j S_{ij} = \sum_i \sum_j c_i^* \pdv{c_i}{c_k} S_{ij} &&= \sum_i c_i^* S_{ik}, \\
+    &\pdv{c_k} \sum_j \sum_j c_i^* c_j H_{ij} &&= \sum_i c_i^* H_{ik}, 
+\end{alignat}
+这里是对 $c_k$ 求偏导，留下了 $c_k^*$，等价地，也可对 $c_k^*$ 求偏导留下 $c_k$。
+% % 2022-11-14 09:16:02  Wenbin Fan @FDU
+% 同理
+% \begin{align}
+%     1
+% \end{align}
+% 这之前的 S 写成了 delta，正确的是 S
+% 重要：前面某处漏了 \bar E，在某个求和之前
+继续求 \eqref{eq:perb_vari_dedci_1}，因为其中 $\pdv{\bar E}{c_k} =0$，只剩下了另外两项，有
+\begin{align}
+    \bar E \sum_i c_i^* S_{ik} = \sum_i c_i^* H_{ik},
+\end{align}
+% 2022-11-14 09:19:31  Wenbin Fan @FDU
+% 新一页
+两边都是对 $i$ 求和，重新规整得到
+\begin{align}
+    \sum_i  [c_i^* \left(\bar E S_{ik} - H_{ik}\right)] = 0, \quad k = 1, \cdots, n. 
+\end{align}
+如果我们重复一遍上述偏导的流程，但是对 $c_k^*$ 求偏导，那么得到
+\begin{align}
+    \sum_i  [c_i \left(\bar E S_{ik} - H_{ik}\right)] = 0, \quad k = 1, \cdots, n. 
+\end{align}
+我们得到了线性方程组。为了让这 $n$ 个方程有非平凡解，其久期行列式为 0，
+\begin{align}
+    \left|
+        \begin{matrix}
+            \bar E S_{11} - H_{11} & \bar E S_{12} - H_{12} & \cdots & \bar E S_{1n} - H_{1n} \\
+            \bar E S_{21} - H_{21} & \bar E S_{22} - H_{22} & \cdots & \bar E S_{2n} - H_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \bar E S_{n1} - H_{n1} & \bar E S_{n2} - H_{n2} & \cdots & \bar E S_{nn} - H_{nn} \\
+        \end{matrix}
+    \right| = 0,
+\end{align}
+可以解出 $N$ 个解，
+\begin{align}
+    \bar E_0 \leqslant \bar E_1 \leqslant \bar E_2 \leqslant \cdots \leqslant \bar E_n. 
+\end{align}
+上周没讲激发态变分，实际上激发态的变分跟基态变分是一样的，只需要激发态变分函数和基态是正交的，由此确定变分空间，可以证明说，这样的变分空间给出的激发态最低能量是要大于激发态的能量。这里求解的 $E_0$ 大于真实的基态能量，$E_1$ 大于真实的第一激发态能量
+\begin{align}
+    \bar E_0 \geqslant E_0, \quad \bar E_1 \geqslant E_1, \quad \cdots, \quad \bar E_n \geqslant E_n. 
+\end{align}
+求解激发态能量的困难在于，基态不准确的话，激发态也会更加不准。激发态的电子关联效应会更强，更难处理。从数学上来说，第一步的变分法（基态）没做好，后面的步骤（激发态）会偏离更多，误差累积效应。
+
+% 2022-11-14 09:23:40  Wenbin Fan @FDU
+\homework{\textbf{9.1} 求值
+\begin{align}
+    \left|\ \begin{matrix}
+        2 & \phantom{-}5 & \phantom{-}1 & \phantom{-}3 \\ 
+        8 & \phantom{-}0 & \phantom{-}4 & -1 \\ 
+        6 & \phantom{-}6 & \phantom{-}6 & \phantom{-}1 \\ 
+        5 & -2 & -2 & \phantom{-}2
+    \end{matrix}\ 
+    \right|
+\end{align}
+}
+
+变分讲完了，没有证明激发态变分法，同学们可参考物化课的讲解，跟这里的内容相互印证，以便更好理解。
+
+同学们觉得难吗？我们尽量一步步展开求解问题，没有跳步，这是教师的初衷。只要是一步步跟下来，肯定能学会，甚至能举一反三提出问题。如果是 PPT 填鸭教育，同学们可能学不到什么，最终「不知所然」。本课是配套强基计划教改，当时写过大纲，如果按照这个推导速度，一半内容都讲不到，后续的 Hartree--Fock、耦合簇 coupled cluster、微扰等实用方法都讲不到。本课的内容介于量子力学和高等量子力学之间，并不完全属于高等量子力学，因为高量中是用二次量子话的语言描述。
+
+% 2022-11-14 09:28:34  Wenbin Fan @FDU
+微扰理论跟变分法类似，都是不断逼近精确解的过程。微扰理论的难点在于如何更有效地构建变分空间，一旦构造成功，求解相对容易。这节课讲到了线性变分，提供了一条构造变分空间的策略。出发点是好的，但求解难度甚大。
+
+% 2022-11-14 09:29:02  Wenbin Fan @FDU
+对于复杂体系而言，线性厄米算符构成的完备集是无穷大的，我们是做了截断。真实体系中，高斯型基组通常是几千个，平面波基组会上万个，这里截断会引入基组不完备的误差。计算标度 scaling 与基组的数量 $N$ 呈指数关系，通常是 3---4 次方甚至更高。以相对小的三次方为例，假设 10 个水 10 秒算完，那么很容易算出来 20 个水是 80 秒算完，100 个水是 \num{10000} 秒算完，1000 个水将需要将耗时 $\SI{1e7}{\second} = \SI{116}{\day}$，\num{10000} 个水将耗时 $\SI{1e10}{\second} = \SI{317}{year}$。这种指数增长阻碍了大体系的求解，被形象地称作「指数墙」，一种解决途径是利用各种近似，也有课题组开发线性标度的计算软件。
+
+\chapter{微扰}
+当我们找不到较好的变分空间时，应该怎么做？
+
+% 2022-11-14 09:31:19  Wenbin Fan @FDU
+假设定态薛定谔方程 $\hat H \psi_n = E_n \psi_n$ 不能精确求解，又假设 $\hat H$ 与 $\hat H_0$ 只有微小差别，且 $\hat H_0$ 相对容易求解
+\begin{align}
+    \hat H_0 \psi_n^{(0)} = E_n^{(0)} \psi_n^{(0)}. 
+\end{align}
+高数中讲级数展开，前提是在定义域、收敛域内展开。在我们的假设下，整体的哈密顿量 $\hat H$ 分成了两部分。
+% 微扰展开【】，是能求解的
+% \begin{align}
+%     \hat H_0 []
+% \end{align}
+
+例1，一维非谐振子，在光谱研究中常常会考虑超越谐振近似的非谐效应，
+\begin{align}
+    \hat H = -\frac{\hbar^2}{2m} \pdv[2]{x} + \frac12 kx^2 + cx^3 + dx^4,
+\end{align}
+其中的谐振子部分
+\begin{align}
+    \hat H_0 = -\frac{\hbar^2}{2m} \pdv[2]{x} + \frac12 kx^2, 
+\end{align}
+是可以求出精确解的。若 $c,d$ 足够小，$\hat H' = cx^3 + dx^4$ 可看作对谐振子哈密顿量的微小扰动。称 $\hat H_0$ 为未微扰体系、$\hat H$ 为微扰体系。
+
+由此可构造微扰途径，从未微扰到微扰，
+\begin{align}
+    \hat H = \hat H_0 + \lambda \hat H', \quad \lambda\in[0,1]. 
+\end{align}
+% 这个 approach 在后面用到了吗？没用到的话，可以忽略 % 2022-11-15 11:50:53 Wenbin FAN @FDU
+先考虑没有能级简并的情况。如果能级有简并，可能会出现奇点。
+
+\courseTime{3 of 4, w09, Nov 14}
+\section{非简并的微扰理论}
+把哈密顿量拆成两部分，
+\begin{align}
+    (\hat H_0 + \lambda \hat H') \psi_n = E_n \psi_n, 
+    \label{eq:perb_bb_1}
+\end{align}
+其中 $\psi_n = \psi_n(\tau, \lambda)$，$E_n = E_n(\lambda)$，$\tau$ 表示全体坐标。 
+% % 2022-11-14 13:33:13  Wenbin Fan @FDU
+% 老师到
+% % 2022-11-14 13:34:51  Wenbin Fan @FDU
+% 继续早上的讲。早上讲了线性变分，我们继续讲微扰。微扰理论中最简单的是非简并理论。
+什么样的微扰才算足够小？这是一个开放式的、case-by-case 的问题。
+
+一旦做了这样的分解，波函数和能量自然就是线性微扰参数 $\lambda$ 的函数，对二者做幂级数展开，
+\begin{align}
+    &\psi_n = \psi_n |_{\lambda = 0} + \pdv{\psi_n}{\lambda}\Big|_{\lambda = 0}\lambda + \pdv[2]{\psi_n}{\lambda}\Big|_{\lambda = 0} \frac{\lambda^2}{2!} + \cdots, 
+    \label{eq:perb_bb_2} %% bb -> blackboard
+    \\
+    &E_n = E_n |_{\lambda = 0} + \pdv{E_n}{\lambda}\Big|_{\lambda = 0}\lambda + \pdv[2]{E_n}{\lambda}\Big|_{\lambda = 0} \frac{\lambda^2}{2!} + \cdots. 
+    \label{eq:perb_bb_3}
+\end{align}
+我们稍微讨论一下。当 $\lambda = 0$ 时，$(\psi_n, E_n) \rightarrow (\psi_n^{(0)}, E_n^{(0)})$ 未微扰，
+\begin{align}
+    \psi_n |_{\lambda=0} = \psi_n^{(0)}, \quad E_n|_{\lambda=0} = E_n^{(0)}. 
+\end{align}
+再定义 $k$ 阶微扰，
+\begin{align}
+    \psi_n^{(k)} = \frac1{k!} \pdv[k]{\psi}{\lambda},
+\end{align}
+则波函数、能量可以写成
+\begin{align}
+    &\psi_n = \psi_n^{(0)} + \psi_n^{(1)}\lambda + \psi_n^{(2)} \lambda^2 + \cdots, \label{eq:perb_bb_4}\\
+    &E_n = E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)}\lambda^2 + \cdots, \label{eq:perb_bb_5}
+\end{align}
+零级、一级、二级波函数和能量。其实 \eqref{eq:perb_bb_4}、\eqref{eq:perb_bb_5} 是 \eqref{eq:perb_bb_2}、\eqref{eq:perb_bb_3} 重写的。把 \eqref{eq:perb_bb_4} 和 \eqref{eq:perb_bb_5} 代回到 \eqref{eq:perb_bb_1} 中，有
+\begin{multline}
+    (\hat H_0 + \lambda \hat H') \left(
+        \psi_n^{(0)} + \psi_n^{(1)}\lambda + \psi_n^{2} \lambda^2 + \cdots
+    \right) \\= 
+    \left(
+        E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)}\lambda^2 + \cdots
+    \right)
+    \left(
+        \psi_n^{(0)} + \psi_n^{(1)}\lambda + \psi_n^{(2)} \lambda^2 + \cdots
+    \right)
+\end{multline}
+将 $\lambda$ 相同幂级数的项归并，重写成
+\begin{multline}
+    \hat H_0 + \lambda \left(
+        \hat H' \psi_n^{(0)} + \hat H_0 \psi_n^{(1)}
+    \right) + \lambda^2 \left(
+        \hat H' \psi_n^{(1)} + \hat H_0 \psi_n^{(2)}
+    \right) \cdots \\ = 
+    E_n^{(0)} \psi_n^{(0)} + \lambda \left(
+        E_n^{(1)} \psi_n^{(0)} + E_n^{(0)} \psi_n^{(1)} + 
+    \right) 
+    \\+ \lambda^2 \left(
+        E_n^{(0)} \psi_n^{(2)} +E_n^{(1)} \psi_n^{(1)} + E_n^{(2)} \psi_n^{(0)}
+    \right) + \cdots
+\end{multline}
+各项对应相等。对于 $\lambda^0$，
+\begin{align}
+    \hat H_0 \psi_n^{(0)} = E_n^{(0)} \psi_n^{(0)},
+\end{align}
+对于 $\lambda^1$，
+\begin{align}
+    \hat H' \psi_n^{(0)} + \hat H_0 \psi_n^{(1)} &= E_n^{(1)} \psi_n^{(0)} + E_n^{(0)} \psi_n^{(0)} \\
+    (\hat H_0 - E_n^{(1)})\psi_n^{(1)}&= - (\hat H' - E_n^{(1)}) \psi_n^{(0)},
+\end{align}
+左边是一级波函数。因为 $\hat H_0$ 是线性厄米算符，$\{\psi_n^{(0)}\}$ 正交归一，构成完备集，
+\begin{align}
+    \psi_n^{(0)} = \sum_j a_j \psi_j^{(0)}
+\end{align}
+用零级波函数展开一级波函数，
+\begin{align}
+    \sum_j a_j (\hat H_0 - E_n^{(0)}) \psi_j^{(0)} &= - (\hat H' - E_n^{(1)}) \psi_n^{(0)}\\
+    \sum_j a_j (E_j^{(0)} - E_n^{0)}) \psi_j^{(0)} &= - (\hat H' - E_n^{(1)}) \psi_n^{(0)},
+\end{align}
+左乘 $\langle \psi_m^{(0)}|$,
+\begin{align}
+    \sum_j a_j (E_j^{(0)} - E_n^{(0)}) 
+    \underbrace{\langle \psi_m^{(0)} | \psi_j^{(0)} \rangle}_{\delta_{mj}}
+    &= E_n^{(1)} 
+    \underbrace{\langle \psi_m^{(0)} | \psi_n^{(0)} \rangle}_{\delta_{mn}}
+    - 
+    \underbrace{\langle \psi_m^{(0)} | \hat H' | \psi_n^{(0)} \rangle}_{H'_{mn}} \\
+    a_m (E_m^{(0)} - E_n^{(0)}) &= E_n^{(1)} \delta_{mn} - H'_{mn}, 
+\end{align}
+其中 $n$ 是我们希望求得的量子态，如果是基态则 $n=0$，记得我们是对 $n$ 做展开的。
+% 【前面方程的 (1)(0) 有修改】
+% 已改 % 2022-11-15 13:07:54 Wenbin FAN @FDU
+
+讨论 (1) 当 $m=n$ 时，一级微扰的校正能量等于未微扰哈密顿矩阵的对角元，
+\begin{align}
+    E_n^{(1)} = H_{nn}' = \langle \psi_n^{(0)} | \hat H | \psi_n^{(0)} \rangle
+\end{align}
+能量逐级累加，更高阶的能量在后面会求，
+\begin{align}
+    E_n = E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)}\lambda ^2 + \cdots.
+\end{align}
+当 $\lambda = 1$ 时，即微扰完全存在时，
+% 【没拍……】【录像滚屏，凑合看吧】
+\begin{align}
+    E_n = E_n^{(0)} + E_n^{(1)} + E_n^{(2)} + \cdots, 
+\end{align}
+其中 $E_n^{(1)}$ 为体系能量的一级校正值，体系能量近似为
+\begin{align}
+    E_n \approx E_n^{(0)} + E_n^{(1)} = E_n^{(0)} + \langle \psi_n^{(0)} | \hat H ' | \psi_n^{(0)} \rangle. 
+\end{align}
+
+% 2022-11-14 13:55:53  Wenbin Fan @FDU
+(2) 当 $m \neq n$ 时，
+\begin{align}
+    a_m (E_m^{(0)} - E_n^{(0)}) = - H'_{mn},\ \Rightarrow \ a_m = \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}, 
+\end{align}
+分子相当于基态减去激发态的能量。
+% 有些忘记微扰法的整体思路了。这样板书推导定理，容易陷在局部，对整体缺少把握。应该多做题就好了
+未微扰的一级波函数
+\begin{align}
+    \psi_n^{(1)} = \sum_{j\neq n} a_j \psi_j^{(0)} = \sum_{j\neq n} \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}\psi_j^{(0)}. 
+\end{align}
+利用 \eqref{eq:perb_bb_4}，当 $\lambda = 1$，
+\begin{align}
+    \psi_n \approx \psi_n^{(0)} + \sum_{m\neq n} \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}\psi_j^{(0)}. 
+\end{align}
+% 当 $\lambda = 1$，
+% \begin{align}
+%     \psi_n \approx 
+% \end{align}
+
+% subsection? 
+现考虑二级校正能量，对于 $\lambda^2$ 有
+\begin{align}
+    \hat H' \psi_n^{(1)} + \hat H_0 \psi_n^{(2)} &= E_n^{(0)} \psi_n^{(2)} +E_n^{(1)} \psi_n^{(1)} + E_n^{(2)} \\
+    (\hat H_0 - E_n^{(0)}) \psi_n^{(2)} &= E_n^{(2)} \psi_n^{(0)} + (E_n^{(1)} - \hat H') \psi_n^{(1)}, 
+\end{align}
+展开 LHS 波函数的二级校正，
+\begin{align}
+    \psi_n^{(2)} = \sum_j b_j \psi_j^{(0)},
+\end{align}
+代回去有
+\begin{align}
+    \sum_j b_j (\hat H_0 - E_n^{(0)}) \psi_j^{(2)} = E_n^{(2)} \psi_n^{(0)} + (E_n^{(1)} - \hat H') \psi_n^{(1)},
+\end{align}
+左乘 $\langle \psi_m^{(0)}|$ 并积分
+\begin{align}
+    \sum_j b_j (E_j^{(0)} - E_n^{(0)}) \delta_{mj} &= E_n^{(2)} \delta_{mn} + E_n^{(1)} \langle \psi_m^{(0)} | \psi_n^{(1)} \rangle - \langle \psi_m | \hat H' | \psi_n^{(1)} \rangle \notag \\
+    b_m (E_j^{(0)} - E_n^{(0)}) &= \cdots
+\end{align}
+只考虑 $m=n$ 的情况，
+\begin{align}
+    0 = E_n^{(2)}  + E_n^{(1)} \langle \psi_n^{(0)} | \psi_n^{(1)} \rangle - \langle \psi_n | \hat H' | \psi_n^{(1)} \rangle
+    \label{eq:perb_lambdaSquared_meqn_1}
+\end{align}
+由一级微扰波函数可知三级微扰能量，更普适的定理是
+\begin{align}
+    \psi_n^{(k)} \rightarrow E_n^{(2k+1)}. 
+\end{align}
+% 2022-11-14 14:07:31  Wenbin Fan @FDU
+继续求解 $m=n$ 的情况，
+\begin{align}
+    \langle \psi_n^{(0)} | \psi_n^{(1)} \rangle
+    & = \langle \psi_n^{(0)} | \sum_{m\neq n}\frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}} \psi_n^{(1)} \rangle \\
+    & = \sum_{j\neq n}\frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}} \langle \psi_m^{(0)} | \psi_j^{(0)} \rangle, 
+\end{align}
+其中 $\langle \psi_m^{(0)} | \psi_j^{(0)} \rangle = \delta_{mj}$。
+% 2022-11-14 14:09:19  Wenbin Fan @FDU
+从根本来说，二级微扰波函数能量就等于 \eqref{eq:perb_lambdaSquared_meqn_1} 最后一项。
+% 【只考虑 m eq n 后面的式子的最后一项】。
+
+当 $m=n$ 时，$\langle \psi_n^{(0)} | \psi_n^{(1)} \rangle = 0$，二级能量
+\begin{align}
+    E_n^{(2)} &= \langle \psi_n^{(0)} | \hat H' | \psi_n^{(1)} \rangle \\
+    &= \langle \psi_n^{(0)} | \hat H' | \sum_{j\neq n}\frac{H'_{jn}}{E_n^{(0)} - E_j^{(0)}} \psi_j^{(0)} \rangle \\
+    &= \sum_{j\neq n}\frac{H'_{jn}}{E_n^{(0)} - E_m^{(0)}}
+    \underbrace{\langle \psi_n^{(0)} | \hat H' | \psi_j^{(0)} \rangle}_{H'_{nj}} \\
+    &= \sum_{j\neq n}\frac{|H'_{jn}|^2}{E_n^{(0)} - E_m^{(0)}},
+\end{align}
+% 其中 $\langle \psi_n^{(0)} | \hat H' | \psi_j^{(0)} \rangle$ 记作 $H_{ij}'$。
+由此可知，
+\begin{align}
+    E_n &\approx E_n^{(0)} + E_n^{(1)} + E_n^{(2)} \\
+    &= E_n^{(0)} + H'_{nn} + \sum_{j\neq n} \sum_{j\neq n}\frac{|H'_{jn}|^2}{E_n^{(0)} - E_m^{(0)}}. 
+\end{align}
+
+\section{氦原子的微扰求解}
+\courseTime{4th 第9次课}
+在 BO 近似下，哈密顿量
+\begin{align}
+    &\hat H = -\frac{\hbar^2}{2m_{\mathrm e}} \left(\hat\nabla_1^2 + \hat \nabla_2^2\right) - \frac{2e^2}{r_1} - \frac{2e^2}{r_2} + \frac{e^2}{r_{12}}, \\
+    &\hat H_0 = -\frac{\hbar^2}{2m_{\mathrm e}} \left(\hat\nabla_1^2 + \hat \nabla_2^2\right) - \frac{2e^2}{r_1} - \frac{2e^2}{r_2} = \hat H_1 + \hat H_2, 
+\end{align}
+微扰哈密顿相当于电子间的库伦排斥能。如果不考虑微扰，两个电子没有耦合了，基态波函数相当于类氢离子，
+\begin{align}
+    \psi_{\text{1s}^2}(\vec r_1, \vec r_2) = \psi_0^{(0)} (\vec r_1, \vec r_2) = \psi_{\text{1s}}(\vec r_1) \psi_{\text{1s}}(\vec r_2) = \frac{1}{\pi} \left(\frac2{a_0}\right)^3 \ee^{-\frac2{a_0}}(r_1 + r_2), 
+\end{align}
+基态能量
+\begin{align}
+    E_0 = E_{1,\text{1s}} + E_{2, \text{1s}} = -\frac{4\hbar^2}{m_{\mathrm e}a_0^2} = \SI{-108.8}{\electronvolt}, 
+\end{align}
+这个能量数值来自于
+\begin{align}
+    E_{\text{1s}} = - \frac{Z^2\hbar^2}{2m_{\mathrm{e}}a_0} = - \frac{Z^2e^2}{2a_0}, \quad a_0= \frac{\hbar^2}{m_\mathrm{e}e^2} = \SI{0.529}{\angstrom}. 
+\end{align}
+因此可以求出来一级校正能量
+\begin{align}
+    E_{1s}^{(1)} &= H'_{\text{1s, 1s}} = \langle \psi_{\mathrm{1s}}^{(0)} | \hat H' | \psi_{1s}^{(0)} \rangle 
+    &= \frac{64}{\pi^2a_0^6} \iint \ee^{-\frac2{a_0}(r_1 + r_2)} \frac{e^2}{r_{12}} \ee^{-\frac2{a_0}(r_1+r_2)}\dd\tau_1 \dd\tau_2 \notag \\
+    &= \frac54 \frac{\hbar^2}{m_\mathrm{e}a_0^2}. 
+\end{align}
+% 二级校正能量
+% 已经写不下了。
+我们已知氦原子的基态能量 $E_{\mathrm{1s^2}} = -2.904\frac{\hbar^2}{m_{\mathrm e}a_0^2}$，零级近似的误差为 37.7\%，一级近似的误差为 5.3\%。相比之下，变分法的误差只有 1.9\%。当然，我们可以通过高级近似，降低微扰法的误差，那么二级微扰能量
+\begin{align}
+    E_{\mathrm{1s^2}}^{(0)} = \sum_{j\neq n}^{\infty} \frac{|H'_{jn}|^2}{E_n^{(0)} - E_j^{(0)}}, 
+\end{align}
+二级微扰能量需要一级波函数
+\begin{align}
+    \psi_1 = \psi_1^{(0)} + \sum_{j\neq1}\frac{|H_{j1}'|^2}{E_1^{(0)} - E_j^{(0)}} \psi_j^{(0)}, 
+\end{align}
+零级波函数可以写出具体的形式
+\begin{align}
+    &\psi_1^{(0)} = \psi_{\mathrm{1s}}(\vec r_1) \psi_{\mathrm{1s}}(\vec r_2) = \psi_{\mathrm{1s^2}}, \\
+    &\psi_2^{(0)} = \psi_{\mathrm{1s}}(\vec r_1) \psi_{\mathrm{2s}} (\vec r_2), \\
+    &\psi_3^{(0)} = \psi_{\mathrm{2s}}(\vec r_1) \psi_{\mathrm{1s}}(\vec r_2),
+\end{align}
+这称作组态相互作用 configuration interaction (CI)。
+从解析形式来说，已经没法手写了，所以不再往下细讲。
+
+% 2022-11-14 14:35:25  Wenbin Fan @FDU
+微扰和变分是两种求解薛定谔方程的数值方法，都有各自的方法去逼近精确能量。在某种程度上，微扰和变分能否组合起来？
+
+\section{Hylleraas 变分微扰法}
+二级微扰能量为
+\begin{align}
+    E_n^{(2)} = \sum_{j\neq n}^{\infty} \frac{|H_{jn}'|^2}{E_n^{(0)}-E_j^{(0)}} = \langle \psi_n^{(0)} | \hat H' | \psi_n^{(1)} \rangle, 
+\end{align}
+从波函数展开的角度来说，这是第 $n$ 组态零级波函数和一级波函数的耦合。在 Hylleraas 变分微扰法中，构造变分积分 
+% 构造【】
+\begin{align}
+    W = \langle \psi_n^{(1)} | \hat H_0 - E^{(1)} | \psi_n^{(1)} \rangle 
+    + \langle \psi_n^{(1)} | \hat H' - E^{(1)} | \psi_n^{(1)} \rangle 
+    + \langle \psi_n^{(0)} | \hat H' - E^{(1)} | \psi_n^{(1)} \rangle. 
+\end{align}
+% 构造一级微扰波函数的乘积，
+前面构造了一级微扰波函数 $\psi_n^{(1)}(c_1, c_2, \cdots, c_n)$，是线性展开的，有严格解。对系数变分，可以构造微扰波函数的尝试空间，代入上面积分 $W$ 中，有 $W(c_1, c_2, \cdots, c_n) \geqslant E_n^{(2)}$。
+% 代入后有 $W[][][]\geqslant E_n^{(2)}$。
+参考 Knight, Robert E., and Charles W. Scherr. "Two-electron atoms II. A perturbation study of some excited states." \textit{Reviews of Modern Physics} 35.3 (1963): 431. DOI: 10.1103/RevModPhys.35.431 
+
+这里有个有趣的地方，我们可以跳过构造一级微扰波函数，因为我们需要一级微扰波函数才能得到能量，通常这一步很复杂，我们可以转化成变分求解的过程，变成对一级微扰波函数的搜索。
+不断逼近二阶微扰能量，有
+\begin{align}
+    E_0^{(2)} = -0.1581 \frac{\hbar^2}{ma_0^2}, \quad E_0^{(3)} = \num{-0.0037} \frac{\hbar^2}{ma_0^2},
+\end{align}
+那么最终能量有
+\begin{align}
+    E_0 = E_0^{(0)} + E_0^{(1)} + E_0^{(2)} + E_0^{(3)} = \num{-2.9044} \frac{\hbar^2}{ma_0^2},
+\end{align}
+已经非常接近精确值了。注意到这种方法求出的能量比真实能量更低，因为我们是在逐级逼近真实能量。变分法，能量永远都是高于 $E_0$ 的，但这里的微扰是个震荡校正的过程，不能保证某一级的能量高于基态能量。
+
+\homework{\textbf{9.3} 写出对应于 $\lambda^3$ 的微扰方程，并给出态 $n$ 的三阶能量 $E_n^{(3)}$。}
+本章讲过了，三阶能量一定依赖于零级能量、零级波函数、一级波函数。知道一级微扰波函数，可以知道三级微扰能量，所以本题写起来并不复杂。
+
+下面是本次课最后一个内容。
+
+% 【上面好多内容忘记拍了……】
+% 课后拍了老师的讲稿，补上了   many thanks % 2022-11-15 16:27:22 Wenbin FAN @FDU
+\section{简并能级的微扰理论}
+我们已经知道，微扰波函数写作
+\begin{align}
+    \psi_n \approx \psi_n^{(0)} + \sum{j\neq n } \frac{H_{jn}'}{E_j^{(0)} - E_n^{(0)}} \psi_j^{(0)},
+\end{align}
+当有 $j\neq n$ 但 $E_j^{(0)} = E_n^{(0)}$ 的简并情况出现，后一项微扰校正项发散，微扰法失效。传统做法是，修正 $\hat H$ 的形式，使得简并减少，但并不太容易。
+
+考虑 $n$ 重简并的情况，对应有 $n$ 个线性独立的未微扰波函数，
+\begin{align}
+    \hat H_0 \psi_n^{(0)} = E_n^{(0)} \psi_n^{(0)}, \quad 
+    E_1^{(0)} = E_1^{(0)} = \cdots = E_n^{(0)}, 
+\end{align}
+还是跟非简并的情况一样，把哈密顿量拆出一个微扰部分，
+\begin{align}
+    % E_1^{(0)} = ? \\
+    \hat H = \hat H_0 + \lambda \hat H', \quad \hat H \psi_n = E_n \psi_n, 
+    % []\\
+    % []\\ % 少拍了一行
+\end{align}
+与此同时，我们设 $\lambda$ 的行为
+\begin{align}
+    \lim_{\lambda \rightarrow 0} E_n(\lambda) = E_n^{(0)}, \quad \lim_{\lambda \rightarrow 0} \psi_n = \psi_n^{(0)},
+\end{align}
+% 2022-11-14 14:49:56  Wenbin Fan @FDU
+% 换句话说，什么时候出现的？
+换句话说，简并是在未微扰的时候出现的，在有微扰之后不一定要简并，但是上面的极限保证了 $\lambda \rightarrow 0$ 时波函数和能量都要趋近于简并能量。对于简并情况，对零级波函数线性展开，
+% \begin{align}
+%     \lim_{\lambda \rightarrow 0} E_n(\lambda) = E_n^{(0)} \\
+%     [][]
+% \end{align}
+% 展开
+\begin{align}
+    \lim_{\lambda \rightarrow 0} \psi_n = c_1 \psi_1^{(0)} + c_2 \psi_2^{(0)} + c_3 \psi_3^{(0)} + \cdots + c_m\psi_m^{(0)} = \sum_{i=1}^{m} c_i\psi_i^{(0)}\equiv\Psi_n^{(0)}. 
+\end{align}
+% % 2022-11-14 14:51:14  Wenbin Fan @FDU
+% 不能保证趋近于【】？是 $n$ 个波函数的线性组合。
+我们不能保证 $\lambda \rightarrow 0$ 时，微扰波函数都可以趋近于量子数为 $n$ 的未微扰波函数，因为能量是简并的。因此，微扰波函数写成未微扰波函数的线性组合。
+
+问题就变成了如何确定 $\{c_i\}$？
+\begin{align}
+    \psi_n = \Psi_n^{(0)} + \psi_n^{(1)} \lambda + \psi_n^{(2)} \lambda^2 + \cdots ,\\
+    E_n = E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)} \lambda^2 + \cdots ,
+\end{align}
+代回薛定谔方程 $\hat H \psi_n = E_n \psi$，
+\begin{multline}
+    (\hat H_0 + \lambda \hat H ') 
+    \left(
+        \Psi_n^{(0)} + \psi_n^{(1)} \lambda + \psi_n^{(2)} \lambda^2 + \cdots
+    \right) \\
+    = 
+    \left(
+        E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)} \lambda^2 + \cdots
+    \right)
+    \left(
+        \Psi_n^{(0)} + \psi_n^{(1)} \lambda + \psi_n^{(2)} \lambda^2 + \cdots
+    \right), 
+\end{multline}
+对能量做归并，对 $\lambda^0$ 有
+\begin{align}
+    \hat H_0 \Psi_n^{(0)} &= E_n^{(0)} \Psi_n^{(0)} \\
+    \hat H_0 \sum_{i=1}^m c_i \psi_i^{(0)} &= E_n^{(0)} \sum_{i=1}^m c_i \psi_i^{(0)},
+\end{align}
+对于 $\lambda^1$ 有
+\begin{align}
+    \hat{H}^{\prime} \Phi_n^{(0)}+\hat{H}^0 \psi_n^{(1)}&=E_n^{(0)} \psi_n^{(1)}+E_n^{(1)} \Psi_n^{(0)} \\
+    \left(\hat{H}_0-E_n^{(1)}\right) \psi_n^{(1)}&=\sum_{i=1}^m c_i\left(E_n^{(1)}-\bar{H}^{\prime}\right) \psi_i^{(0)},
+\end{align}
+展开波函数
+\begin{align}
+    \psi_n^{(1)} = \sum_{k=1}^{\infty} a_k \psi_k^{(0)},
+\end{align}
+代回上面归并后的式子，有
+\begin{align}
+    \sum_{k=1}^{\infty} a_k (E_n^{(0)} - \hat H_0) \psi_k^{(0)} &= \sum_{k=1} c_i (\hat H' - E_n^{(1)}) \psi_i^{(0)} \\
+    \sum_{k=1}^{\infty} a_k (E_n^{(0)} - E_k^{(0)}) \psi_k^{(0)} &= \cdots
+\end{align}
+两边同时乘以 $\langle \psi_j^{(0)} |$ 半积分，积分可得
+\begin{align}
+    \sum_{k=1}^{\infty} a_k (E_n^{(0)} - E_k^{(0)}) \langle \psi_j^{(0)} | \psi_k^{(0)} \rangle = \sum_{i=1}^{m} c_i \left[
+        \langle \psi_j^{(0)} | \hat H' | \psi_i^{(0)}
+        - E_n^{(1)} \langle \psi_j^{(0)} | \psi_i^{(0)} \rangle
+    \right]. 
+\end{align}
+
+1) 考虑 $j$ 是 $m$重简并的态之一，$1 \leqslant j \leqslant m$，
+\begin{align}
+    &\text{LHS} = 
+    \sum_{k=1}^m a_k 
+    \underbrace{(E_n^{(0)} - E_l^{(0)})}_{=0}
+    \langle \psi_j^{(0)} | \psi_k^{(0)} \rangle
+    +
+    \sum_{k=m+1}^\infty a_k 
+    (E_n^{(0)} - E_l^{(0)})
+    \underbrace{\langle \psi_j^{(0)} | \psi_k^{(0)} \rangle}_{\delta_{jk}=0}
+    \\
+    &\text{RHS} = \sum_{i=1}^{m} c_i (H_{ji}' - E_n^{(1)}S_{ji}) = \text{LHS} = 0,
+\end{align}
+关于 $n$ 个未知参数 $c_1, c_2, \cdots, c_n$ 的线性齐次方程，有解的条件是系数行列式必须为零，即
+\begin{align}
+    \det\left(H_{ji}' - E_n^{(1)} \delta_{ji}\right) = 0
+\end{align}
+当 $m = 1$ 时，即同归非简并体系，则
+\begin{align}
+    c_n (H'_{nn} - E_n^{(1)}) = 0 \ \Rightarrow \ E_n^{(1)} = H_{nn}', 
+\end{align}
+可得久期方程
+\begin{align}
+    \left|\begin{matrix}
+        H_{11}' - E_1^{(1)} & H_{12}' & \cdots & H_{1n}' \\
+        H_{21}' & H_{22} - E_2^{(1)} & \cdots & H_{2n}' \\
+        \vdots & \vdots & \ddots & \vdots \\
+        H_{n1}' & H_{n2} & \cdots & H_{nn}' - E_n^{(1)}
+    \end{matrix}
+    \right|=0,
+\end{align}
+$n$ 个解分别对应于 $E_1^{(1)}$、$E_2^{(1)}$、$\cdots$、$E_n^{(1)}$。因此，对于简并的能级，可给出一级微扰校正后的能量，
+\begin{align}
+    E_n^{(0)}+E_1^{(1)}, \quad E_n^{(0)}+E_2^{(1)}, \quad\cdots,\quad E_n^{(0)}+E_n^{(1)}. 
+\end{align}
+
+% 2022-11-14 15:07:13  Wenbin Fan @FDU
+对于 $n$ 组的简并，如果是零级近似波函数给出的微扰，并不一定是真实体系必然有的微扰。可能微扰之后简并解除，给出正确的能级顺序，也有可能微扰之后简并存在。
+
+% 【】那么就可以打破假的简并，给出真的能级顺序。
+这有点像姜--泰勒效应 Jahn--Teller effect (JTE)，在晶体配位场理论，金属 d 轨道五重简并，有了配位场之后能级劈裂，配位场可以当作微扰，求出劈裂能级。
+
+下周习题课和上机操作一起。虽然还没讲到电脑计算，但是还是要先讲这部分，内容包括登录服务器、命令行提交任务、查看模拟结果。这周 elearning 上会上传一些材料，还有服务器的账号密码，大家请对照操作。
+
+这节课是有很多内容不懂吧？如果觉得哪里不清楚，下节课重新讲一次。

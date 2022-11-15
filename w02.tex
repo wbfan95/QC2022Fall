@@ -96,7 +96,7 @@ D[\[Psi][x, t], {x, 2}]/D[\[Psi][x, t], {t, 2}]
 \end{lstlisting}
 但物质波的波包并不满足，
 \begin{eqnarray}
-    \frac{\partial^2 \psi}{\partial x^2} = \frac{4 m^2}{k^2 \hbar ^2} \frac{\partial^2 \psi}{\partial t^2}. 
+    \frac{\partial^2 \psi}{\partial x^2} = \frac{4 m^2}{k^2 \hbar^2} \frac{\partial^2 \psi}{\partial t^2}. 
 \end{eqnarray}
 \begin{lstlisting}
 \[Psi][x_, t_] := A[k] Exp[I (k x - (\[HBar] k^2)/(2 m) t)];
@@ -198,7 +198,7 @@ D[\[Psi][x, t], {x, 2}]/D[\[Psi][x, t], {t, 2}]
     \langle p(t) \rangle = \frac{\ii\hbar}2 \intinf \frac{\partial}{\partial x}(x f(x)) \dd x - \frac{\ii\hbar}2 \intinf f(x) \dd x,
     \label{eq:pt_ave_5}
 \end{eqnarray}
-其中第一项为 $x f(x) | ^{+\infty}_{-\infty}$。
+其中第一项为 $x f(x) |^{+\infty}_{-\infty}$。
 
 \suppInfo{波函数的有限性}{
 对于实际的原子分子体系，波函数必须在无穷远处趋于 0。比如坐标的平均值
@@ -222,7 +222,7 @@ D[\[Psi][x, t], {x, 2}]/D[\[Psi][x, t], {t, 2}]
 
 动能算符
 \begin{eqnarray}
-    \hat T = \frac{\hat p^2}{2m} = -\frac{\hbar^2}{2m} \frac{\partial ^2}{\partial x^2}
+    \hat T = \frac{\hat p^2}{2m} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
 \end{eqnarray}
 即薛定谔方程左边。
 
@@ -505,7 +505,7 @@ $\ev{A}$ 不是实数，进而 $\hat A$ 不对应物理可观测量。
 我们讨论的大部分算符不只是 Hermite 的，也都是线性的。
 \homework{\textbf{4.} 对于线性的 Hermite 算符 $\hat A$，我们有
 \begin{eqnarray}
-    \int u ^* \hat A \nu \,\dd \tau = \int (\hat A u)^* \nu \,\dd \tau,
+    \int u^* \hat A \nu \,\dd \tau = \int (\hat A u)^* \nu \,\dd \tau,
 \end{eqnarray}
 同时，对于线性的 Hermite 算符，$\hat A, \hat B$ 具有以下性质，
 \begin{enumerate}
@@ -529,13 +529,13 @@ Hermite 算符之后，还有个重要的约定。
 
 它是用来描述期望值。如果算符作用在波函数上，
 \begin{eqnarray}
-    \int \phi_m^* \hat A \phi _n \dd\tau = \langle \phi_m | \hat A | \phi _m \rangle \equiv \langle m | \hat A | m \rangle \equiv A_{mn}
+    \int \phi_m^* \hat A \phi_n \dd\tau = \langle \phi_m | \hat A | \phi_m \rangle \equiv \langle m | \hat A | m \rangle \equiv A_{mn}
 \end{eqnarray}
 如果 $m = n$ 则表示期望值，如果不等于则表示跃迁矩阵元，
 \begin{eqnarray}
     A_{mn} \equiv \langle m | \hat A | n \rangle
 \end{eqnarray}
-% $\langle \phi_m | \hat A | \phi _m \rangle$ Dirac 记号，$A_{mn}$ 矩阵元表述，$\langle m | n \rangle = \int \phi_m^* \phi_n \dd\tau$ 重叠积分。所以
+% $\langle \phi_m | \hat A | \phi_m \rangle$ Dirac 记号，$A_{mn}$ 矩阵元表述，$\langle m | n \rangle = \int \phi_m^* \phi_n \dd\tau$ 重叠积分。所以
 左矢表示 $\langle m| = \phi_m^*$ 波函数的共轭，右矢表示 $\ket{m} = \phi_m$ 波函数。还有更多自由的写法，
 $\hat A n$ 自身可以看成一个函数，
 \begin{eqnarray}
@@ -665,7 +665,7 @@ $\hat A n$ 自身可以看成一个函数，
 
 其实波函数本身没有物理意义，波函数的平方是概率，有物理意义。
 \begin{eqnarray}
-    |\psi (x,t)|^2 = \psi ^*(x,t) \psi(x,t)
+    |\psi (x,t)|^2 = \psi^*(x,t) \psi(x,t)
 \end{eqnarray}
 为概率密度 probability density，在 $t$ 时刻 $x$ 位置到 $x + \dd x$ 为之内发现粒子的概率，
 \begin{eqnarray}

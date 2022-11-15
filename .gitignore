@@ -2,6 +2,7 @@ tikz*
 *.pdf
 *.sty
 *test*
+tutorial*
 # allow
 !fig/*.pdf
 

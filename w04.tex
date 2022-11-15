@@ -335,7 +335,7 @@
 \end{align}
 解得 $s = \frac12$。得到了波函数在无穷远处的渐进性为，
 \begin{equation}
-    \psi(y) | _{y \rightarrow \pm\infty} = \ee^{-y^2/2}.
+    \psi(y) |_{y \rightarrow \pm\infty} = \ee^{-y^2/2}.
 \end{equation}
 \section{引入 Hermite 方程}
 波函数可以写为
@@ -486,7 +486,7 @@ Table[c[2 i], {i, 1, 5}]
 \end{align}
 当 $y\rightarrow\infty$ 时，$f_0(y)$、$f_1(y)$ 与 $\exp y^2$ 的性质主要取决于 $n$ 较大时的高次项，即当 $n$ 很大时，$\exp y^2$ 与 $f(y)$ 有相同的性质，所以二者在 $y\rightarrow\infty$ 时有相同的渐进性为，
 \begin{align}
-    \psi(y) = f(y) \ee^{-y^2/2} | _{y\rightarrow \infty} = \exp y^2 \exp \left(-\frac{y^2}2\right) = \exp \frac{y^2}2 \rightarrow \infty.
+    \psi(y) = f(y) \ee^{-y^2/2} |_{y\rightarrow \infty} = \exp y^2 \exp \left(-\frac{y^2}2\right) = \exp \frac{y^2}2 \rightarrow \infty.
 \end{align}
 这个波函数必须满足的品优性质。品优波函数的有限性，限制 $f(y)$ 必须在某一项终止，使它成为多项式。具体来说，品优波函数的限制对 Hermite 方程
 \eqref{eq:harm_lambda_y_simp}
@@ -630,8 +630,8 @@ Plot[Table[\[Psi][i, x], {i, 0, 3}] // Evaluate, {x, -5, 5}]
 
     提示，
     \begin{align}
-        &(\Delta x)_n^2 = \langle \psi_n | \hat x ^2 | \psi_n \rangle - \langle \psi_n | \hat x | \psi_n \rangle ^2, \\
-        &(\Delta p)_n^2 = \langle \psi_n | \hat p ^2 | \psi_n \rangle - \langle \psi_n | \hat p | \psi_n \rangle ^2,
+        &(\Delta x)_n^2 = \langle \psi_n | \hat x^2 | \psi_n \rangle - \langle \psi_n | \hat x | \psi_n \rangle^2, \\
+        &(\Delta p)_n^2 = \langle \psi_n | \hat p^2 | \psi_n \rangle - \langle \psi_n | \hat p | \psi_n \rangle^2,
     \end{align}
 }
 
@@ -701,7 +701,7 @@ Plot[Table[\[Psi][i, x], {i, 0, 3}] // Evaluate, {x, -5, 5}]
 
 引入经典禁区 (classical restricted area) 的概念，谐振子的势能是 $V(x) = \frac 12 m\omega^2 x^2$，量子化的条件
 \begin{align}
-    \hbar\omega \left(n+\frac12\right) = \frac12 m\omega^2 \bar A_n ^2,
+    \hbar\omega \left(n+\frac12\right) = \frac12 m\omega^2 \bar A_n^2,
 \end{align}
 其中 $\bar A_n$ 为量子振幅，那么
 \begin{align}
@@ -720,7 +720,7 @@ Plot[Table[\[Psi][i, x], {i, 0, 3}] // Evaluate, {x, -5, 5}]
 依然是个高斯展宽，经典禁区的概率
 \begin{align}
     Q_0 &= \int_{-\infty}^{-\bar A_n} |\psi_0(x)|^2 \dd x + \int_{\bar A_n}^{\infty} |\psi_0(x)|^2 \dd x \\
-    &= 2 \int _{-\infty}^{-\bar A_n} |\psi_0(x)|^2 \dd x \\
+    &= 2 \int_{-\infty}^{-\bar A_n} |\psi_0(x)|^2 \dd x \\
     &= \frac{2}{\sqrt{\pi}} \int_{\bar a_0}^{\infty} \ee^{-y^2}\,\dd y \\
     &= \mathrm{erfc}(y),
 \end{align}

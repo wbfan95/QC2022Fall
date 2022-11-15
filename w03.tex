@@ -128,7 +128,7 @@ $\psi$ 归一化是不会随时间演化而破坏的，需要满足
     J &= -\frac{\ii\hbar}{2m} \left( \psi^* \frac{\partial \psi}{\partial x} - \psi \frac{\partial \psi^*}{\partial x}\right) \\
     &= \frac{1}{2m} \left[
         \psi^* \left(-\ii\hbar\frac{\partial}{\partial x}\right) \psi +
-        \psi \left(-\ii\hbar\frac{\partial}{\partial x} \psi\right) ^*
+        \psi \left(-\ii\hbar\frac{\partial}{\partial x} \psi\right)^*
     \right] \\
     &= \frac1{2m} \left[\psi^* \hat p \psi + (\hat p\psi)^* \psi\right]
 \end{align}
@@ -306,10 +306,10 @@ $\psi$ 归一化是不会随时间演化而破坏的，需要满足
 
 \subsection{一维势箱的性质}
 
-(1) 归一化 $\left\langle \psi_n \middle | \psi _n \right\rangle = 1$, 即
+(1) 归一化 $\left\langle \psi_n \middle | \psi_n \right\rangle = 1$, 即
 \begin{align}
     &= B^2 \int_0^l \sin^2 \frac{n\pi x}{l} \dd x \\
-    &=  B ^2 \int_0^l \left[\cos 0 - \cos \frac{2 n \pi x}l \right] \dd x \\
+    &=  B^2 \int_0^l \left[\cos 0 - \cos \frac{2 n \pi x}l \right] \dd x \\
     &= \frac l2 B^2 + 0 = 1
 \end{align}
 其中利用了三角函数的变换
@@ -334,7 +334,7 @@ Plot[Table[Sqrt[2/l] Sin[(n \[Pi] x)/l], {n, 0, 5}] // Evaluate, {x, 0, l}, Fill
 
 当 $m \neq n$ 时，
 \begin{align}
-    \left\langle \psi_n \middle | \psi _n \right\rangle 
+    \left\langle \psi_n \middle | \psi_n \right\rangle 
     &= \intinf \psi_n^* (x) \psi_m(x) \dd x \\
     &= \frac2l \int_0^l \sin \frac{n\pi x}{l} \sin \frac{n\pi m }{l} \dd x, \\
     &= \frac 1l \int_0^l \left[
@@ -344,7 +344,7 @@ Plot[Table[Sqrt[2/l] Sin[(n \[Pi] x)/l], {n, 0, 5}] // Evaluate, {x, 0, l}, Fill
 \end{align}
 因此波函数之间均满足正交归一，
 \begin{eqnarray}
-    \left\langle \psi_n \middle | \psi _n \right\rangle = \delta_{mn} = \begin{cases}
+    \left\langle \psi_n \middle | \psi_n \right\rangle = \delta_{mn} = \begin{cases}
         1, \quad &m=n,\\
         0, \quad &m\neq n,
     \end{cases}
@@ -357,7 +357,7 @@ Plot[Table[Sqrt[2/l] Sin[(n \[Pi] x)/l], {n, 0, 5}] // Evaluate, {x, 0, l}, Fill
     &= - \ii \hbar \int_0^l \cos\frac{n \pi x}l \frac{\partial}{\partial x} \cos \frac{n\pi x}l \dd x \\
     &= \ii\hbar \frac{n\pi}l \int_0^l \cos \frac{n\pi x}l \sin\frac{n\pi x}l \dd x \\
     &= \frac{\ii\hbar}2 \frac{n\pi}l \int_0^l \left(\sin\frac{2n\pi x}{l} - \sin 0\right)\dd x \\
-    &= \frac{\ii\hbar}2 \frac{n\pi}l \left(- \cos \frac{2n\pi x}l\right) \bigg| _0^l = 0,  
+    &= \frac{\ii\hbar}2 \frac{n\pi}l \left(- \cos \frac{2n\pi x}l\right) \bigg|_0^l = 0,  
 \end{align}
 \begin{lstlisting}
 Clear["Global`*"]
@@ -399,7 +399,7 @@ Simplify[res,
 \extraInfo{不确定关系}{
     求出以下算符的平均值，
     \begin{align}
-        &\ev{x} = \frac l2, \quad \ev{x^2} = \frac{1}{6} l^2 \left(\frac{3}{\pi ^2 n^2}+2\right), \\
+        &\ev{x} = \frac l2, \quad \ev{x^2} = \frac{1}{6} l^2 \left(\frac{3}{\pi^2 n^2}+2\right), \\
         &\ev{p} = 0, \quad \ev{p^2} = \left(\frac{n \pi\hbar}l\right)^2,
     \end{align}
     因此坐标和动量的涨落为
@@ -598,7 +598,7 @@ Plot[Table[2/l Sin[(n \[Pi] x)/l]^2, {n, 1, 5}] // Evaluate, {x, 0,
 边界条件 4，在 $x=l$ 的地方，左右波函数对坐标的偏导相等，
 \begin{eqnarray}
     C_1 \ii k_2 \left[
-        \ee ^{\ii k_2 l} + \ee^{-\ii k_2 l} 
+        \ee^{\ii k_2 l} + \ee^{-\ii k_2 l} 
     \right] = - C_4 k_3 \ee^{-k_3 l} \label{eq:half_condition_4}
 \end{eqnarray}
 目前只剩能量 $E$ 待求。
@@ -725,7 +725,7 @@ Manipulate[
 %2022-09-26 14:12:50  Wenbin Fan @FDU
 % 将 $E_i$ 代入边界条件3中，得到
 % \begin{align}
-%     C_1 (\ee ^{\ii k_2 l} - \ee^{-\ii k_2 l}) &= C_4 \ee^{-k_3 l}
+%     C_1 (\ee^{\ii k_2 l} - \ee^{-\ii k_2 l}) &= C_4 \ee^{-k_3 l}
 % \end{align}
 再给出\textbf{边界条件 5}，波函数归一化
 \begin{eqnarray}
@@ -770,11 +770,11 @@ Solve[res == 1, Subscript[C, 1]] // FullSimplify
 
 \boldtext{散射态}  $E > V_0$，解得
 \begin{eqnarray}
-    s^2 = \frac{(V_0 - E) 2 m}{\hbar ^2} \rightarrow s = \pm \frac{\ii \sqrt{2m(E- V_0)}}{\hbar},
+    s^2 = \frac{(V_0 - E) 2 m}{\hbar^2} \rightarrow s = \pm \frac{\ii \sqrt{2m(E- V_0)}}{\hbar},
 \end{eqnarray}
 即
 \begin{eqnarray}
-    \psi(x) = C_3 \ee^{\ii k_3 x} + C_4 \ee ^{-\ii k_3 x}, \quad k_3 = \frac{\ii\sqrt{2m(E-V_0)}}{\hbar},
+    \psi(x) = C_3 \ee^{\ii k_3 x} + C_4 \ee^{-\ii k_3 x}, \quad k_3 = \frac{\ii\sqrt{2m(E-V_0)}}{\hbar},
 \end{eqnarray}
 这里有虚数，所以不能用无穷大的边界条件了。
 
@@ -800,7 +800,7 @@ Solve[res == 1, Subscript[C, 1]] // FullSimplify
 \begin{align}
     &C_3 = \frac12 \left[
         \left(1 + \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
-        \left(1 - \frac{k_2}{k_3}\right) \ee^{-\ii k _2 l}
+        \left(1 - \frac{k_2}{k_3}\right) \ee^{-\ii k_2 l}
     \right] \ee^{-\ii k_3 l }C_1, \label{eq:half_inf_scat_c3}\\
     &C_4 = \frac12 \left[
         \left(1 - \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
@@ -877,7 +877,7 @@ Solve[{Subscript[C, 1] (Exp[I k2 l] - Exp[-I k2 l]) ==
 
 对于 block I, 解出
 \begin{eqnarray}
-    \psi(x) = C_1 \ee^{\ii k _1 x} + C_2 \ee^{- \ii k_2 x},
+    \psi(x) = C_1 \ee^{\ii k_1 x} + C_2 \ee^{- \ii k_2 x},
 \end{eqnarray}
 其中
 \begin{eqnarray}
