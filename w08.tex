@@ -396,10 +396,17 @@ $V(x) = \begin{cases}
     &= \int_0^{+\infty} r^2 \exp\left(- \frac{2\lambda}{a_0} r\right) 
     \underbrace{\int_0^\pi \sin\theta\,\dd\theta \int_0^{2\pi} \dd\varphi}_{4\pi},
 \end{align}
-补充一个下面经常用到的积分公式，在徐光宪《量子化学：基本原理和从头计算法（中册）》(9.4.6)，
+\extraInfo{补充积分}{
+    补充一个下面经常用到的积分公式，在徐光宪《量子化学：基本原理和从头计算法（中册）》(9.4.6)，
 \begin{align}
     \int_\rho^{+\infty} r^n \ee^{-ar} \dd r = a^{-(n+1)} \ee^{-a\rho} \ee^{-a\rho} \sum_{k=0}^n \frac{n!}{k!}(a\rho)^k,
 \end{align}
+    按照这个积分公式，当 $\rho = 0$ 会得到 $0^0$，这是个不定式。如果积分下限为 $\rho$，再取极限
+    \begin{align}
+        \lim_{\rho\rightarrow0}\rho^0 = 1
+    \end{align}
+    是可行的。
+}
 利用该公式，继续求解积分，
 \begin{align}
     I = 4\pi \times \left(\frac{2\lambda}{a_0}\right)^{-3} \frac{2!}{0!} 0^0 = 4\pi \frac{2a_0^3}{8\lambda^3} = \pi\left(\frac{a_0}{\lambda}\right)^3,

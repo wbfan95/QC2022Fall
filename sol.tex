@@ -1075,6 +1075,580 @@ $x^n$ 中 $m=0$，系数为 $2^n$，
     \quad c = 2\lambda^2 + 1. 
 \end{align}
 
+\section{Week 5}
+\subsection{5.1}
+\homework{
+比较谐振子和 Morse 势函数。
+
+参考文献:
+The Morse oscillator in position space, momentum space, and phase space. J. Chem. 
+Phys. 1988, 88(7), 4535–4547, doi: 10.1063/1.453761
+
+也可以尝试采用 Numerov 方法数值求解，Levine《Quantum Chemistry》4.4 p74}
+
+\textbf{推荐阅读：}
+量子力学本征值问题的数值方法——打靶法与Numerov方法 \url{https://zhuanlan.zhihu.com/p/59099100}
+
+Numerov法解一维定态问题 \url{https://zhuanlan.zhihu.com/p/78619365}
+
+\textbf{程序：}
+Numerov: 
+A python script that solves the one dimensional time-independent Schrodinger equation for bound states. The script uses a Numerov method to solve the differential equation and displays the desired energy levels and a figure with an approximate wave function for each of these energy levels.
+\url{https://github.com/FelixDesrochers/Numerov}
+
+\subsection{5.2}
+\homework{
+推导极坐标下的
+$\hat{L}_z$
+算符表示
+\begin{align}
+    \hat L_z = -\ii\hbar \pdv{\theta}
+\end{align}
+}
+课上已推导极坐标下的偏导
+\begin{align}
+    &\pdv{x} = \cos\theta\pdv{r} - \frac{\sin\theta}r \pdv\theta , \\
+    &\pdv{y} = \sin\theta\pdv{r} + \frac{\cos\theta}r \pdv\theta,
+\end{align}
+代入 $\hat L_z$ 的定义中得到
+\begin{align}
+    \hat L_z &= -\ii\hbar \left(x\pdv{y} - y\pdv{x}\right)\\
+    &=-\ii\hbar \left[
+        r\cos\theta \left(
+            \sin\pdv{r} + \frac{\cos\theta}r \pdv\theta
+        \right)
+        - r\sin\theta \left(
+            \cos\theta\pdv{r} - \frac{\sin\theta}r \pdv\theta
+        \right)
+    \right] \notag\\
+    &= -\ii\hbar \pdv\theta. 
+\end{align}
+\subsection{5.3}
+\homework{
+对于一维环形势箱，其能级为
+\begin{align}
+    E_n = \frac{n^2h^2}{8\pi^2mR^2},\quad n=0,\pm1, \pm2, \cdots,
+\end{align}
+苯环的 $\mathrm{\pi}$
+电子可以近似看成是电子限制在一个环上的运动，$\mathrm{\pi}$
+电子环的半径为
+\SI{1.4}{\angstrom}。请以一维环形势箱的模型，计算其最低激发能。
+
+（以下选做）激发能的实验值是 \SI{2600}{\angstrom}，讨论误差可能的来源。
+}
+对于该体系，HOMO 对应 $n = 1$，LUMO 对应 $n = 2$。因此，
+\begin{align}
+\Delta E &= E_2 - E_1 = \frac{3 h^2}{8 \pi^2 m R^2} \\&= \frac{3 \times \num{6.626e-34} \si{J.s}}{8 \pi^2 \times \num{9.109e-31} \si{kg} \times (\num{1.4e-10} \si{m})^2} = \num{9.344e-19} \si{J}
+\end{align}
+同时，$\Delta E = h c / \lambda$
+\begin{equation}
+\frac1{\lambda} = \frac{h c}{\Delta E} = \frac{\num{6.626e-34} \si{J.s} \times \num{2.998e8} \si{m.s^{-1}}}{\num{9.344e-19} \si{J}} = \SI{2126}{\angstrom}
+\end{equation}
+事实上，我们可以从两方面考虑改进。一方面，苯环可以当作六边形而非圆形；另一方面，离域键不可能只限定于一维，而会一定程度上弥散到周围。从这两方面，可以对苯环的能级作改性。
+\subsection{5.4}
+\homework{求解长为 $l$，半径为 $R$ 的圆柱体体系的能级，这里的势函数定义为
+\begin{align}
+    V(x,y,z) = \begin{cases}
+        0, \quad &(x,y,z) \in \Omega, \\
+        +\infty,\quad &(x,y,z) \notin \Omega,
+    \end{cases}
+\end{align}
+其中
+\begin{align}
+    \Omega = \left\{
+    (x,y,z) | x^2+ y^2 \leqslant R^2,\ 0\leqslant z\leqslant l
+\right\}. 
+\end{align}
+参考文献：Yao, J.; Xu, X; Wu, D.; et al. Chem. Commum. 2000, 1627–1628, DOI: 
+10.1039/b002717k
+}
+首先，我们列出圆柱坐标的 Laplacian 算符：
+\begin{equation}
+\nabla^2 = \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial}{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \phi^2} + \frac{\partial^2}{\partial z^2}
+\end{equation}
+该问题可以作变量分离。我们可以令 $\psi = \mathcal{R}(r) \Phi(\phi) Z(z)$。那么 Schrodinger 方程可以写为
+\begin{equation}
+\frac{1}{\mathcal{R}} \left( \frac{\partial^2 \mathcal{R}}{\partial r^2} + \frac{1}{r} \frac{\partial \mathcal{R}}{\partial r} \right) + \frac{1}{r^2} \frac{1}{\Phi} \frac{\partial^2 \Phi}{\partial \phi^2} + \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} = - \frac{2 m E}{\hbar^2}
+\end{equation}
+一个平凡的变量分离是将 $z$ 分开，我们写出下述方程：
+\begin{equation}
+\frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} = - \frac{2 m E_z}{\hbar^2}
+\end{equation}
+根据边界条件 $Z(0) = Z(l) = 0$，可以给出关于 $z$ 方向的量子数 (这等同于一维势箱问题)：
+\begin{align}
+E_{n_z} &= \frac{n_z^2 \hbar^2 \pi^2}{2 m l^2},\; n_z = 1, 2, 3, \cdots \\
+Z_{n_z} (z) &= \sqrt{\frac{2}{l}} \sin \left( \frac{n_z \pi z}{l} \right)
+\end{align}
+
+随后我们处理关于 $r, \phi$ 的问题。首先，关于 $\phi$ 的边界条件 $\Phi(0) = \Phi(2 \pi)$，以及 $\Phi^{-1} \partial_\phi^2 \Phi$ 为常数的条件，就能给出下述结论：
+\begin{equation}
+\frac{1}{\Phi} \frac{\partial^2 \Phi}{\partial \phi^2} = - n_\phi^2
+\end{equation}
+\begin{align}
+\Phi_{n_\phi} (\phi) &= \sqrt{\frac{1}{2\pi}} \ee^{i n_\phi \phi},\; n_\phi = 0, \pm 1, \pm 2, \cdots
+\end{align}
+%因此，
+
+从而径向函数的方程化为
+\begin{equation}
+\frac{\partial^2 \mathcal{R}}{\partial r^2} + \frac{1}{r} \frac{\partial \mathcal{R}}{\partial r} - \frac{n_\phi^2}{r^2} \mathcal{R} = - k^2 \mathcal{R}
+\end{equation}
+其中，
+\begin{equation}
+k = \frac{\sqrt{2 m (E - E_{n_z})}}{\hbar}
+\end{equation}
+这恰好是 Bessel 方程问题，其有两个通解：
+\begin{equation}
+\mathcal{R}(r) = C_1 J_{n_\phi} (k r) + C_2 Y_{n_\phi} (k r)
+\end{equation}
+其中，$J_m (r)$ 与 $Y_m (r)$ 分别为第一类与第二类 $m$ 阶 Bessel 函数。由于 $Y_m (0)$ 对任意 $m$ 都为无穷大，不能作为品优波函数，因此
+\begin{equation}
+\mathcal{R}(r) = C_1 J_{n_\phi} \left( \frac{\sqrt{2 m (E - E_{n_z})}}{\hbar} r \right)
+\end{equation}
+随后引入 $\mathcal{R}(R) = 0$ 的边界条件：
+\begin{equation}
+J_{n_\phi} \left( \frac{\sqrt{2 m (E - E_{n_z})}}{\hbar} R \right) = 0
+\end{equation}
+设 $\beta_{n_r n_\phi}$ 是 $n_\phi$ 阶第一类 Bessel 的第 $n_r$ 个根：
+\begin{equation}
+J_{n_\phi} (\beta_{n_r n_\phi}) = 0
+\end{equation}
+那么
+\begin{align}
+E_{n_r n_\phi} &= \frac{\beta_{n_r n_\phi}^2 \hbar^2}{2 m R^2} \\
+\mathcal{R}_{n_r n_\phi} (r) &= C_{n_r n_\phi} J_{n_\phi} \left( \frac{\sqrt{2 m E_\mathrm{n_r n_\phi}}}{\hbar} r \right)
+\end{align}
+其中，$C_{n_r n_\phi}$ 是归一化系数。
+
+综上，
+\begin{align}
+\psi(r, \phi, z) &= C_{n_r n_\phi} \sqrt{\frac{1}{\pi l}} J_{n_\phi} \left( \frac{\sqrt{2 m E_{n_r n_\phi}}}{\hbar} r \right) \ee^{i n_\phi \phi} \sin \left( \frac{n_z \pi z}{l} \right) \\
+E_{n_r n_\phi n_z} &= \frac{\beta_{n_r n_\phi}^2 \hbar^2}{2 m R^2} + \frac{n_z^2 \hbar^2 \pi^2}{2 m l^2}
+\end{align}
+参考：
+顾樵《数学物理方法》 \S 13.3
+\subsection{5.5}
+\homework{
+证明
+\begin{align}
+&\hat L_x = -\ii\hbar \left(
+    \sin\varphi \pdv{\theta} + \cot\theta \, \cos\varphi \pdv{\varphi}
+\right), \\
+&\hat L_y = -\ii\hbar
+\left(
+    \cos\varphi \pdv{\theta} - \cot\theta \sin\varphi \pdv{\varphi}
+\right),
+\end{align}
+并且利用
+\begin{align}
+\hat L = \hat L_x \vec i + \hat L_y \vec j + \hat L_z \vec k
+\end{align}
+推导
+\begin{align}
+\hat L^2 = \hat L_x^2 + \hat L_y^2 + \hat L_z^2 = -\hbar^2 \left(
+    \frac{1}{\sin^2\theta}
+    \pdv[2]{\varphi} + \cot\theta \pdv{\theta} + \pdv[2]{\theta}
+\right). 
+\end{align}
+}
+\begin{equation}\label{key}
+x = r\sin\theta\cos\phi ,\; y = r\sin\theta\sin\phi, z = r\cos\theta
+\end{equation}
+\begin{align}
+\pdv{r}{x} &= \dfrac{x}{r} = \sin\theta\cos\phi \\
+\pdv{r}{y} &= \sin\theta\sin\phi \\
+\pdv{r}{z} &= \cos\theta
+\end{align}
+\begin{align}
+\pdv{\theta}{x} &= \dfrac{1}{r}\cos\theta\cos\phi \\
+\pdv{\theta}{y} &= \dfrac{1}{r}\cos\theta\sin\phi \\
+\pdv{\theta}{z} &= -\dfrac{1}{r}\sin\theta
+\end{align}
+\begin{align}
+\pdv{\phi}{x} &= -\dfrac{\sin\phi}{r\sin\theta} \\
+\pdv{\phi}{y} &= \dfrac{\cos\phi}{r\sin\theta} \\
+\pdv{\phi}{z} &= 0
+\end{align}
+所以
+\begin{align}
+\pdv{x} &= \pdv{r}{x} \pdv{r} + \pdv{\theta}{x} \pdv{\theta} + \pdv{\phi}{x} \pdv{\phi} = \sin\theta\cos\phi \pdv{r} + \dfrac{1}{r}\cos\theta\cos\phi \pdv{\theta} -\dfrac{\sin\phi}{r\sin\theta} \pdv{\phi} \\
+\pdv{y} &= \pdv{r}{y} \pdv{r} + \pdv{\theta}{y} \pdv{\theta} + \pdv{\phi}{y} \pdv{\phi} = \sin\theta\sin\phi \pdv{r} + \dfrac{1}{r}\cos\theta\sin\phi \pdv{\theta} +\dfrac{\cos\phi}{r\sin\theta} \pdv{\phi} \\
+\pdv{z} &= \pdv{r}{z} \pdv{r} + \pdv{\theta}{z} \pdv{\theta} + \pdv{\phi}{z} \pdv{\phi} = \cos\theta \pdv{r} - \dfrac{1}{r}\sin\theta \pdv{\theta}
+\end{align}
+\begin{align}\label{key}
+\hat L_x &= y \hat p_z - z \hat p_y = -i\hbar \qty(y \pdv{z} - z\pdv{y}) \notag\\
+&= ... = i\hbar \qty(\sin\phi \pdv{\theta} + \cot\theta\cos\phi\pdv{\phi}) \\
+\hat L_y &= z \hat p_x - x \hat p_z = -i\hbar \qty(z \pdv{x} - x\pdv{z}) \notag\\
+&= ... = -i\hbar \qty(\cos\phi \pdv{\theta} - \cot\theta\sin\phi\pdv{\phi}) 
+\end{align}
+
+\begin{align}
+\hat L^2 &= \hat L_x^2 + \hat L_y^2 + \hat L_z^2 \notag\\
+&= -\hbar^2 \left[\pdv[2]{\theta} + \cot^2\theta \cos\phi \qty(-\sin\phi\pdv{\phi} + \cos\phi\pdv[2]{\phi})  \right. \notag\\
+&{}\quad + \cot^2\theta \sin\phi \qty(\cos\phi\pdv{\phi} + \sin\phi\pdv[2]{\phi}) \notag\\
+& {}\quad \left. + (\text{cross terms}) + \pdv[2]{\phi} \right] \notag\\
+&= -\hbar^2 \qty[\pdv[2]{\theta} + \cot^2\theta \pdv[2]{\phi} + \cot\theta\pdv\theta + \pdv[2]{\phi} ] \notag\\
+&= -\hbar^2 \qty[\dfrac{1}{\sin\theta}\pdv{\theta}\qty(\sin\theta\pdv{\theta})  + \csc^2\theta \pdv[2]{\phi}  ]
+\end{align}
+
+\section{Week 6}
+\subsection{6.1}
+\homework{
+对于一个电子 $m_{\mathrm{e}}=\SI{9.11E-31}{\kilo\gram}$，以及一个陀螺 $m=\SI{0.02}{\kilo\gram}$，如果转动半径均为
+$r=\SI{1.0}{\centi\metre}$，且运动速度均为 $\SI{1}{\metre\per\second}$，求被允许的角动量最小的$\theta$值。
+}
+经典的角动量公式为 $|l| = |r \times p| = |m r v|$。对于电子，其角动量为
+\begin{equation*}
+|l| = \num{9.11e-31} \si{kg} \cdot \num{0.01} \si{m} \cdot \num{1} \si{m.s^{-1}} = \num{9.11e-33} \si{J.s} \simeq \sqrt{86 \times (86+1)} \hbar
+\end{equation*}
+因此，电子的最小夹角为
+\begin{equation*}
+\theta_\mathrm{min} = \arccos \frac{86}{\sqrt{86 \times 87}} = 6.15^\circ
+\end{equation*}
+对于普通的陀螺，其角动量为
+\begin{equation*}
+|l| = \num{0.02} \si{kg} \cdot \num{0.01} \si{m} \cdot \num{1} \si{m.s^{-1}}= \num{0.0002} \si{J.s}
+\end{equation*}
+由此推断其 $l = \num{1.897e30}$；那么最小夹角为
+\begin{equation*}
+\theta_\mathrm{min} = \arccos \frac{l}{\sqrt{l (l + 1)}} \simeq \sqrt{1/l} = \num{4.16e-14} {}^\circ
+\end{equation*}
+其中的近似由 $\arccos \rightarrow \arcsin$ 变换后得到。
+
+对于 cos 求夹角，在求解时不太方便，所以利用勾股定理求出 $\hat L$、$\hat L_z$ 组成的零一条边的长度为 $\hbar \sqrt{l}$，那么夹角也可表示为
+\begin{align}
+    \theta = \arctan \frac1{\sqrt{l}} \sim \frac1{\sqrt l}, 
+\end{align}
+这样更容易近似和求数值解。
+
+\section{Week 7}
+\subsection{7.1}
+\homework{
+对于包含 3 个粒子的体系，约化质量后的 $\hat H$
+能否分离变量？对于包含 $N$ 个
+粒子的体系情况呢？为什么要引入 Born--Oppenheimer 近似？
+}
+% \\vec\{(.)(.{2,3})\}
+% \\vec{$1}$2
+对于第一个问题很难清楚地回答，因为可以分离变量能写出清楚的表达式，但不能分离变量则难以证明。一个结论是量子力学中，仅包含\textsf{库伦相互作用}的三粒子体系是不可分离变量的。
+%关于天体的三体问题，可以参考 \href{http://www.phys.lsu.edu/faculty/gonzalez/Teaching/Phys7221/ThreeBodyProblem.pdf}{参考资料 1}、\href{https://dx.doi.org/10.1007/s12045-019-0760-1}{参考资料 2}。
+
+如果单纯地是将体系的约化质心分离出去，那么我们定义
+\begin{align*}
+M_3 &= m_1 + m_2 + m_3 \\
+\mu_{13}^{-1} &= m_1^{-1} + m_3^{-1} \\
+\mu_{23}^{-1} &= m_2^{-1} + m_3^{-1} \\
+\vec{r}_\mathrm{CM} &= \frac{m_1 \vec{r}_1 + m_2 \vec{r}_2 + m_3 \vec{r}_3}{m_1 + m_2 + m_3}
+\end{align*}
+我们为了势能表示的方便，换取的坐标系形式是
+\begin{align*}
+\vec{J}_1 &= \vec{r}_1 - \vec{r}_3 \\
+\vec{J}_2 &= \vec{r}_2 - \vec{r}_3 \\
+\vec{J}_3 &= \vec{r}_\mathrm{CM}
+\end{align*}
+可以验证，动能算符可以表示为
+\begin{equation*}
+\hat T
+= - \frac{\hbar^2}{2} \left( \frac{1}{m_1} \nabla_{\vec{r}_1}^2 + \frac{1}{m_2} \nabla_{\vec{r}_2}^2 + \frac{1}{m_3} \nabla_{\vec{r}_3}^2 \right)
+= - \frac{\hbar^2}{2} \left( \frac{1}{\mu_{13}} \nabla_{\vec{J}_1}^2 + \frac{1}{\mu_{23}} \nabla_{\vec{J}_2}^2 + \frac{1}{M} \nabla_{\vec{J}_3}^2 + {\color{red} \frac{2}{m_3} \nabla_{\vec{J}_1} \cdot \nabla_{\vec{J}_2}} \right)
+\end{equation*}
+势能算符可以表示为
+\begin{equation*}
+\hat V
+= \frac{e^2}{4 \pi \varepsilon_0} \left( \frac{Z_1 Z_2}{|\vec{r}_1 - \vec{r}_2|} + \frac{Z_1 Z_3}{|\vec{r}_1 - \vec{r}_3|} + \frac{Z_2 Z_3}{|\vec{r}_2 - \vec{r}_3|} \right)
+= \frac{e^2}{4 \pi \varepsilon_0} \left( \frac{Z_1 Z_2}{|\vec{J}_1 - \vec{J}_2|} + \frac{Z_1 Z_3}{|\vec{J}_1|} + \frac{Z_2 Z_3}{|\vec{J}_2|} \right)
+\end{equation*}
+这种做法下，$\vec{J}_1, \vec{J}_2$ 近乎于是不能变量分离的。
+
+注意这里不能分离变量并不是单纯由于动能算符引起的。如果粒子间无相互作用，动能算符显然是可以分离变量的；这里是由于有相互作用，才需要进行坐标变换，导致动能算符看起来也不能分离变量。
+
+% 但第一个问题可能会产生下述误解：三体问题的 Schrodinger 方程是否可解？这样一个问题要作重新界定。我们求解的是非定态方程还是定态方程？我们是求解能量还是波函数？
+% \begin{itemize}[nosep]
+% \item 如果对象是非定态方程的波函数，即波包随着时间的演化而变化的过程，那么这\textsf{猜测}是混沌的；一般称混沌是不可解的。
+% \item 如果对象是定态方程的波函数，那么以 \ce{He} 原子为例，是可以清楚地通过 Full-CI (Full Configuration Interaction) 与 Infinite-Basis 方法作级数展开求解；只是这种级数展开不是单粒子函数，而是两粒子函数的。
+% \item 上面又涉及到“可解”是如何定义的。这并不是一个清楚界定的概念 (\href{https://en.wikipedia.org/wiki/Closed-form_expression}{Wikipedia: Closed-form expression})，但大致上可以认为可以级数求和的函数是解析的，因此称为可解的。解析的函数未必一定要是具有现成定义的函数，譬如超几何函数；它只要在计算机中可以在任意精度下数值地实现即可。
+% \item 如果对象是定态方程的能量，那么也称为是可解的，因为通过上述波函数 $| \psi \rangle$ 的级数求和，定态体系的能量可以通过 $\langle \psi | \hat H | \psi \rangle$ 同样地级数求和。因此，\ce{He} 原子的能量尽管不具有简单的形式，但确实是可以求得的。
+% \end{itemize}
+
+第二个问题的分析等同于第一个问题，因此不再赘述。
+
+第三个问题：目的单纯地是将电子与原子核的运动进行分离，这使得问题的讨论简洁与有效，在电子能级中排除了原子核运动 (振动、与电子运动的耦合) 的贡献。在实际的量化计算中，Gaussian 型基组一般设为原子轨道，它与原子核坐标有关；如果不使用 BO 近似，这个方法就从根本上不能成立。而一些要同时考虑电子与原子运动的情况 (分子动力学、光谱等) 一般也不需要考虑电子与原子耦合的情况，至多只需要将电子波函数与原子波函数的乘积构成总波函数即可。
+
+它对于绝大多数体系的精确求解上并没有贡献：氢原子在 BO 近似下仍然可以简单地求解，\ce{He} 原子或各种分子在 BO 近似下仍然不能简单地求解。为数不多在 BO 近似下可简单且精确求解的体系可以是 \ce{H^+_2}，它将三体问题化为 Euler 问题 (\href{https://en.wikipedia.org/wiki/Euler\%27s_three-body_problem}{Wikipedia: Euler's three-body problem}，并可参考 Levine 13.4 节) 从而可分离变量地求解。
+%因此，可能更为关键的问题是 BO 近似的合理性，但这是后话了。
+
+\subsection{7.2}
+\homework{
+氢原子轨道径向函数的表达式为
+\begin{align}
+R_{nl}(r) = N r^l \ee^{-\frac{Zr}{na_0}} \sum_{k=0}^{n-l-1} b_k r^k
+\end{align}
+求归一化因子 $N$。
+}
+这里我们认为级数求和式为广义 Laguerre 多项式，微分定义方式参考徐光宪式 (3.4.9, 3.4.14)：
+\begin{align}
+L_n (\rho) &= e^n \frac{\partial^n}{\partial \rho^n} (e^{-\rho} \rho^n) \\
+L_n^m (\rho) &= \frac{\partial^m}{\partial \rho^m} L_n (\rho)
+\end{align}
+原题的证明化为
+\begin{equation}
+R_{nl} (\rho) = N \rho^l e^{- \rho / 2} L_{n + l}^{2 l + 1} (\rho)
+\end{equation}
+但从积分的角度上，使用生成函数 (徐光宪，式 3.4.18) 会方便很多：
+\begin{equation}
+U_m (\rho, u) = \sum_{p = s}^\infty \frac{L_p^s (\rho)}{p!} u^p = (-1)^s (1 - u)^{- (s + 1)} \exp \left( - \frac{\rho u}{1 - u} \right) u^s
+\end{equation}
+
+下面的讨论都参考徐光宪 \S 3.4.8。我们首先确定归一化积分形式：
+\begin{align}
+1 = \int_0^{+\infty} r^2 R_{nl}^2 (\rho) \, \mathrm{d} r
+&= \left( \frac{n a_0}{2 Z} \right)^3 \int_0^{+\infty} \rho^2 R_{nl}^2 (\rho) \, \mathrm{d} \rho \\
+&= \left( \frac{n a_0}{2 Z} \right)^3 N_{nl}^2 \int_0^{+\infty} e^{-\rho} \rho^{2 l + 2} [L_{n + l}^{2 l + 1} (\rho)]^2 \, \mathrm{d} \rho
+\end{align}
+注意到上式中利用到 $\rho = \frac{2 Z r}{n a_0}$ 的换元。基于这个情况，我们下面先证明：
+\begin{equation}
+\int_0^{+\infty} e^{-\rho} \rho^{s+1} [L_p^s(\rho)]^2 \, \mathrm{d} \rho = \frac{(p!)^3 (2 p - s + 1)}{(p - s)!}
+\end{equation}
+我们让两个生成函数相乘，并作积分：
+\begin{align}
+&\quad \int_0^{+\infty} e^{-\rho} \rho^{s+1} U_s(\rho, u) U_s(\rho, v) \, \mathrm{d} \rho \\
+&= \sum_{p = 0}^\infty \sum_{q = 0}^\infty \frac{u^p v^q}{p! q!} \int_0^{+\infty} e^{- \rho} \rho^{s+1} L_p^s (\rho) L_q^s (\rho) \, \mathrm{d} \rho \\
+&= (-1)^{2s} \frac{u^s v^s}{(1-u)^{s+1} (1-v)^{s+1}} \int_0^{+\infty} \rho^{s+1} \exp \left[ - \rho \left( 1 + \frac{u}{1-u} + \frac{v}{1-v} \right) \right] \, \mathrm{d} \rho \\
+&= \frac{u^s v^s}{(1-u)^{s+1} (1-v)^{s+1}} \left( 1 + \frac{u}{1-u} + \frac{v}{1-v} \right)^{-(s+2)} (s+1)! \\
+&= (s+1)! (1-u) (1-v) \frac{(uv)^s}{(1-uv)^{s+2}} \\
+&= (s+1)! (1-u-v+uv) \sum_{k=0}^\infty \frac{(s+k+1)!}{k!(s+1)!} (uv)^{s+k}
+\end{align}
+\suppInfo{Note}{
+上式使用到许多技巧。其中，第 1 个等号是用生成函数在广义 Laguerre 多项式下展开的定义，第 2 个等号是用生成函数本身的定义给出，第 4 个等号是化简表达式。第 3 个等号是一个关于 Gamma 函数的积分：
+\begin{equation*}
+\int_0^{+\infty} \rho^{s+1} \exp(-a \rho) \, \mathrm{d} \rho = \frac{\Gamma(s+2)}{q^{s+2}} = \frac{(s+1)!}{q^{s+2}}
+\end{equation*}
+第 5 个等号是在 $uv = 0$ 邻域的泰勒展开；如果我们定义 $f(x) = (1-x)^{-s-2}$，那么：
+\begin{align*}
+f(x) &= \sum_{k=0}^\infty \frac{1}{k!} f^{(k)}(0) x^k = \sum_{k=0}^\infty \frac{1}{k!} x^k \frac{\partial^k}{\partial x^k} (1 - x)^{- s - 2} \\
+&= \sum_{k=0}^\infty \frac{1}{k!} x^k \frac{(s+2+k-1)!}{(s+2-1)!} = \sum_{k=0}^\infty \frac{(s+k+1)!}{k!(s+1)!} x^k
+\end{align*}
+将上式的 $x$ 替换为 $uv$ 即得到结果。
+}
+我们注意到上面连等式的 $u, v$ 可以是任意复数。现在我们是希望求当角标 $p = q$ 时，广义 Laguerre 多项式的积分。我们取上面连等式中 $(uv)^p$ 幂次的系数出来：
+\begin{align}
+\frac{1}{(p!)^2} \int_0^{+\infty} e^{- \rho} \rho^{s+1} [L_p^s (\rho)]^2 \, \mathrm{d} \rho
+&= (s+1)! \left[ \left. \frac{(s+k+1)!}{k!(s+1)!} \right|_{s+k=p} + \left. \frac{(s+k+1)!}{k!(s+1)!} \right|_{s+k=p-1} \right] \\
+&= \frac{(p+1)!}{(p-s)!} + \frac{p!}{(p-s-1)!} = \frac{(2t-s+1) p!}{(p-s)!} \\
+\int_0^{+\infty} e^{- \rho} \rho^{s+1} [L_p^s (\rho)]^2 \, \mathrm{d} \rho
+&= \frac{(2t-s+1) (p!)^3}{(p-s)!}
+\end{align}
+
+现在我们可以代入 $p=n+l, s=2l+1$ 的条件进来，立即得到
+\begin{align*}
+1 = \int_0^{+\infty} r^2 R_{nl}^2 (\rho) \, \mathrm{d} r
+&= \left( \frac{n a_0}{2 Z} \right)^3 N_{nl}^2 \int_0^{+\infty} e^{-\rho} \rho^{2 l + 2} [L_{n + l}^{2 l + 1} (\rho)]^2 \, \mathrm{d} \rho \\
+&= N_{nl}^2 \left( \frac{n a_0}{2 Z} \right)^3 \frac{2n [(n+l)!]^3}{(n-l-1)!} \\
+N_{nl} &= \sqrt{\left( \frac{2 Z}{n a_0} \right)^3 \frac{(n-l-1)!}{2n [(n+l)!]^3}}
+\end{align*}
+至于归一化系数前的负号，可能是由于其它原因导致的，但这不是我们需要关心的。
+
+
+\subsection{7.3}
+\homework{写一个生成连带 Laguerre 多项式的代码，以 $n$ 和 $l$ 为输入。}
+
+\textbf{明确目标}：事实上我们需要生成的是连带Laguerre多项式有几项和各项的系数(最好用有理数表示)。
+
+以 $n$ 和 $l$ 为输入，或$ \nu,\alpha $为输入都是可以的(见下面定义)。
+
+例如，假如我们知道$n=3,l=0$时，$L_{n-l-1}^{2l+1}(x) = L_2^1(x) = \dfrac{1}{2}(6-6x+x^2) $，程序应当能满足
+\begin{itemize}[nosep]
+\item 输入 \texttt{[3,0]} 或 \texttt{[2,1]}
+\item 输出 \texttt{[3, -3, 1/2]} 或  \texttt{"3 - 3x + (1/2)x\textasciicircum2"}
+\end{itemize}
+\textbf{方法}：
+比较直接的方法是通过级数定义\eqref{poly}\eqref{poly2}。也可通过微分表示\eqref{diff}\eqref{diff2}或Rodrigues公式\eqref{rodr}或递推关系。
+
+难点在于如何实现有理数的运算，甚至求导运算(如采用微分公式)。
+这在数值计算语言中是比较麻烦的(C, Python)，但在符号计算语言中十分自然(Wolfram, sympy)。
+当然，直接调用符号计算语言中的广义Laguerre函数是不允许的。
+
+\subsection{7.4}
+\homework{
+a. 实轨道 $\mathrm{p}_x$、$\mathrm{p}_y$、$\mathrm{p}_z$ 和复轨道 $\mathrm{p}_{-1}$、$\mathrm{p}_0$、$\mathrm{p}_{+1}$ 之间的变换关系是怎样的？
+
+b. 分别画出 $\mathrm{p}_x$、$\mathrm{p}_y$、$\mathrm{p}_z$ 和 $\mathrm{p}_{-1}$、$\mathrm{p}_0$、$\mathrm{p}_{+1}$ 轨道的图像并进行比较。
+}
+
+\subsection{7.5}
+\homework{
+画出 1s、2s、3s、3p、3d 的轨道径向函数 $R(r)$---$r$ 和径向分布函数 $D(r)$---$r$ 的图
+像。
+}
+
+\section{Week8}
+第8次课，第10个教学周
+\subsection{8.1}
+\homework{采用下列 Gaussian 函数作为氢原子的基态波函数
+\begin{align}
+    \psi = \exp\!\left(-\frac{\lambda r^2}{a_0^2}\right)
+\end{align}
+其中，$\lambda$
+是变分参数，$a_0$
+是 Bohr 半径。通过变分法给出能量表达式，并求出与
+真实氢原子基态能量的差别。
+}
+\subsection{8.2}
+\homework{
+从变分原理出发，推导定态薛定谔方程。}
+变分原理告诉我们，给定一个体系的 Hamiltonian $\hat H$，%其有正交归一完备本征波函数集合 $\{ \Psi_i \}$ 以及对应的本征能量 $\{ E_i \}$，且
+最低能级为 $E_0$。如果 $\Phi$ 是任意一个满足此问题边界条件的品优波函数，那么
+\begin{equation}
+	\dfrac{\Braket{ \Phi | \hat H | \Phi }}{\Braket{ \Phi | \Phi }} \geq E_0
+\end{equation}
+把 $ \Phi $用$\hat H$的正交归一本征波函数展开
+\begin{align}\label{key}
+	\dfrac{\Braket{ \Phi | \hat H | \Phi }}{\Braket{ \Phi | \Phi }} &= \dfrac{\sum_i\sum_j c_i^* c_j \Braket{\psi_i | \hat H | \psi_j}}{\sum_i\sum_j c_i^* c_j \Braket{\psi_i |  \psi_j}} 
+	= \dfrac{\sum_i\sum_j c_i^* c_j E_j \delta_{ij}}{\sum_i \sum_j c_i^* c_j \delta_{ij}} \notag\\
+	&= \dfrac{ \sum_i |c_i|^2 E_i }{\sum_i  |c_i|^2} 
+\end{align}
+那么取等号的条件是$ c_0 = 1, c_{i\neq 0} = 0$。所以$ \Phi = \psi_0 $，满足
+\begin{equation}\label{key}
+	\hat H \Phi = E_0 \Phi
+\end{equation}
+%\tcbline
+也可使用 曾谨言 \S 14.1.1 的表述。
+
+
+\subsection{8.3}
+\homework{请用下述波函数作为尝试波函数
+\begin{align}
+    \psi_0 = N \left(
+        \ee^{-\frac{\lambda_1 r_1}{a_0}}
+        \ee^{-\frac{\lambda_2 r_2}{a_0}} + 
+        \ee^{-\frac{\lambda_2 r_1}{a_0}}
+        \ee^{-\frac{\lambda_1 r_2}{a_0}}
+    \right),
+\end{align}
+变分积分为
+\begin{align}
+    f(\lambda_1, \lambda_2) = \langle \psi_0 |\hat H | \psi_0 \rangle,
+\end{align}
+对于 BO 近似下氦原子的电子基态能量进行变分。能量
+应当约为 $-2.88\frac{\hbar^2}{ma_0}$。
+
+参考 Eckart, C. Phys. Rev. 36, 878, DOI: 10.1103/PhysRev.36.878
+}
+
+那么试探波函数可以写为
+\begin{equation}
+    \Phi = \sqrt{\frac{1}{2 (1+c^2)}} \big( \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) + \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2) \big)
+\end{equation}
+如果我们定义下述量(注意$ E_H $不是原子单位)：
+\begin{equation*}
+    E_\mathrm{H} = - \frac{\hbar^2}{2 m a_0^2}, \quad \hat h (r) = - \frac{\hbar^2}{2m} \left( \nabla^2 + \frac{2 Z}{a_0 r} \right)
+\end{equation*}
+那么原始的 Hamiltonian 可以写为%({\color{red}25\%})
+\begin{equation}
+    \hat H = \hat h (r_1) + \hat h (r_2) - E_\mathrm{H} \frac{2 a_0}{r_{12}}
+\end{equation}
+%\tcbline
+下面我们要求
+$
+w = \Braket{\Phi | \hat h (r_1) + \hat h (r_2) - E_\mathrm{H} \frac{2 a_0}{r_{12}} | \Phi }
+$
+
+其中一些比较容易给出的积分是
+\begin{align}
+\langle \psi_\zeta | \hat h | \psi_\zeta \rangle &= \big( 2 Z \zeta - \zeta^2 \big) E_\mathrm{H} \\
+\langle \psi_{\zeta_1} | \hat h | \psi_{\zeta_2} \rangle &= c [ Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 ] E_\mathrm{H}
+\end{align}
+
+
+
+
+从而，
+\begin{align}
+    &\quad\ \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_1) + \hat h (r_2) | \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) \rangle \\
+    %&= \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_1) | \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) \rangle
+    %+ \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_2) | \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) \rangle \\
+    &= \langle \psi_{\zeta_1} (r_1) | \hat h (r_1) | \psi_{\zeta_1} (r_1) \rangle \cdot \langle \psi_{\zeta_2} (r_2) | \psi_{\zeta_2} (r_2) \rangle
+    + \langle \psi_{\zeta_1} (r_1) | \psi_{\zeta_1} (r_1) \rangle \cdot \langle \psi_{\zeta_2} (r_2) | \hat h (r_2) | \psi_{\zeta_2} (r_2) \rangle \notag\\
+    &= \big( 2 Z \zeta_1 - \zeta_1^2 \big) E_\mathrm{H} \cdot 1 + 1 \cdot \big( 2 Z \zeta_2 - \zeta_2^2 \big) E_\mathrm{H} \notag\\
+    &= \big( 2 Z \zeta_1 - \zeta_1^2 + 2 Z \zeta_2 - \zeta_2^2 \big) E_\mathrm{H} \\
+    &\quad\ \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_1) + \hat h (r_2) | \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2) \rangle \\
+    %&= \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_1) | \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2) \rangle
+    %+ \langle \psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) | \hat h (r_2) | \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2) \rangle \\
+    &= \langle \psi_{\zeta_1} (r_1) | \hat h (r_1) | \psi_{\zeta_2} (r_1) \rangle \cdot \langle \psi_{\zeta_2} (r_2) | \psi_{\zeta_1} (r_2) \rangle
+    + \langle \psi_{\zeta_1} (r_1) | \psi_{\zeta_2} (r_1) \rangle \cdot \langle \psi_{\zeta_2} (r_2) | \hat h (r_2) | \psi_{\zeta_1} (r_2) \rangle \notag\\
+    %&= c \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H} \cdot c + c \cdot c \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H} \\
+    &= 2 c^2 \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H}
+\end{align}
+这是其中的两项；剩下的两项也是完全相同的。因此，单电子部分的积分为%({\color{red}25\%})
+\begin{align}
+    \quad\ \langle \Phi | \hat h (r_1) + \hat (h_2) | \Phi \rangle 
+    &= \frac{E_\mathrm{H}}{2 (1+c^2)} \cdot 2 \cdot \left[ 2 Z \zeta_1 - \zeta_1^2 + 2 Z \zeta_2 - \zeta_2^2 + 2 c^2 \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) \right] \notag\\
+    &= \left[ 2 Z (\zeta_1 + \zeta_2) - \frac{\zeta_1^2 + 2 \zeta_1 \zeta_2 c^2 + \zeta_2^2}{1 + c^2} \right] E_\mathrm{H}
+\end{align}
+%\tcbline
+
+
+
+
+
+剩下的部分是关于 $1/r_{12}$ 的积分。对于当前的体系，任何的中心对称波函数 (不含角向部分) $f(r_1, r_2)$ 可以写为下述积分：
+\begin{align*}
+    \iint  \frac{f(r_1, r_2)}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2 
+    &= 4\pi \int_0^{+\infty} r_1^2 \dd r_1 \int_0^{2\pi} \dd\phi_2 \int_0^\pi \sin\theta_2 \dd\theta_2 \int_0^{+\infty}   \dfrac{\dd r_2 \;r_2^2 f(r_1, r_2) }{\sqrt{r_1^2 + r_2^2 - 2r_1 r_2\cos\theta_2}} \notag\\
+    &= 4\pi \int_0^{+\infty} r_1^2 \dd r_1  (2\pi)  \int_0^{+\infty}  \dd r_2 r_2^2 f(r_1, r_2) \dfrac{2}{\max(r_1,r_2)} \notag\\
+    &= (4 \pi)^2 \int_0^{+\infty} r_1^2 \, \mathrm{d} r_1 
+    \qty[\int_0^{r_1} r_2^2 \, \mathrm{d} r_2 \cdot f(r_1, r_2) \frac{1}{r_1}
+    + \int_{r_1}^{+\infty} r_2^2 \, \mathrm{d} r_2 \cdot f(r_1, r_2) \frac{1}{r_2}]
+\end{align*}
+如果 $f(r_1, r_2)$ 是 $\psi_{\zeta_1}^2 (r_1) \psi_{\zeta_2}^2 (r_2)$，那么
+\begin{equation*}
+    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2
+    = \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2^3 (4 \zeta_1 + \zeta_2)}{(\zeta_1 + \zeta_2)^4} \right)
+    = \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} \right)
+\end{equation*}
+如果 $f(r_1, r_2)$ 是 $\psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2)$，那么
+\begin{equation*}
+    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2
+    = \frac{1}{a_0} \left( \frac{10 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} + \frac{10 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right)
+    = \frac{1}{a_0} \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5}
+\end{equation*}
+
+
+
+
+
+对于其它两种情况也是同理的。那么%({\color{red}25\%})
+\begin{align*}
+    &\quad\ - E_\mathrm{H} \langle \Phi | \frac{2 a_0}{r_{12}} | \Phi \rangle \\
+    &= - 2 E_\mathrm{H} a_0 \cdot 2 \cdot \frac{1}{2 (1 + c^2)} \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} + \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right) \\
+    &= - E_\mathrm{H} \frac{2}{1 + c^2} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} + \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right)
+\end{align*}
+%\tcbline
+
+
+
+
+因此，最终的能量总和是
+\begin{equation}
+    w(\zeta_1, \zeta_2) = \left[ 2 Z (\zeta_1 + \zeta_2) - \frac{\zeta_1^2 + 2 \zeta_1 \zeta_2 c^2 + \zeta_2^2}{1 + c^2} - \frac{2}{1 + c^2} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} + \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right) \right] E_{\mathrm{H}}
+\end{equation}
+
+通过对上述方程求导 $\partial_{\zeta_1} w = \partial_{\zeta_2} = 0$ 可以得到变分极值能量。其中有三个合理的解 ($\zeta_1 > 0, \zeta_2 > 0$ 的情况)%({\color{red}25\%})
+：
+\begin{gather*}
+    \zeta_1 = 1.6875, \zeta_2 = 1.6875 \Rightarrow w = 5.69531 E_\mathrm{H} \\
+    \zeta_1 = 2.1832, \zeta_2 = 1.1885 \Rightarrow w = 5.75132 E_\mathrm{H} \\
+    \zeta_1 = 1.1885, \zeta_2 = 2.1832 \Rightarrow w = 5.75132 E_\mathrm{H}
+\end{gather*}
+其中，第二、第三个解是我们需要的，这两个解本身也等价。其化为原子单位是 $-2.87566 $ a.u.。
+
+第一个解恰好是单 $\zeta$ 情形下的变分解。
+
+%\tcbline
+
+%需要注意到，第一个解与基态能量也很接近。我们在线性变分法中提到过，通过该方法得到的次小的能量是体系第一激发态的上界；但这个结论只能在线性变分法中成立，而在普通的 Rayleigh 变分法中不成立。实验的第一激发态与基态之间相差大约 20.62 eV (激发光谱实验数据参考 \url{10.6028/jres.064A.003}{}，基态能量参考 Wikipedia)，这会导致第一激发态能量大约在 $-2.1458$ a.u. 左右。但通过刚才的变分法得到的次小能量是 -2.84766 a.u.，并非第一激发态能量的上界。
+
+
 \chapter{Misc.}
 \section{记号说明}
 笔者总是分不清板书中的 psi $\psi$、Psi $\Psi$、phi $\phi$、Phi $\Phi$、varphi $\varphi$，造成内容混乱。因此，希望规定如下，

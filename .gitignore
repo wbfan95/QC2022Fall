@@ -3,6 +3,7 @@ tikz*
 *.sty
 *test*
 tutorial*
+subject*
 # allow
 !fig/*.pdf
 
