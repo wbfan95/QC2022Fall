@@ -1,10 +1,14 @@
 \courseTime{Nov7 2022}
 \section{复习}
+\chat{
 总结前半学期的内容。
 
 讲变分法。变分的原因是无法精确求解，用数值方法逼近。到这节课为止，之前的所有的体系（自由粒子、氢原子等等）都是可以精确求解的。现在复习以前的内容。
 
-上半学期，由演绎和类比，得到量子力学的基本假设和框架。从原理上来说，本质上来说需要知道微观状态波函数。在一次量子化中可以由一次量子化求解薛定谔方程得到。因为哈密顿算符不含时，可分离得到静态薛定谔方程和含时部分。这门课里所有的体系都是围绕定态薛定谔方程展开的，
+上半学期，由演绎和类比，得到量子力学的基本假设和框架。从原理上来说，本质上来说需要知道微观状态波函数。在一次量子化中可以由一次量子化求解薛定谔方程得到。因为哈密顿算符不含时，可分离得到静态薛定谔方程和含时部分。
+}
+
+这门课里所有的体系都是围绕定态薛定谔方程展开的，
 \begin{align}
     \hat H \psi_i = E_i \psi_i.
 \end{align}
@@ -33,7 +37,9 @@ $V(x) = \begin{cases}
     0, \quad &x\in(0,l)
 \end{cases}$
 
+\chat{
 尽管这些模型很简单，也有它实际的意义。求解薛定谔方程，由品优波函数的假设，可以得到量子化条件。
+}
 
 5. 谐振子 $V(x) = \frac12 kx^2$，最复杂的一维单粒子模型，用幂级数求解。
 
@@ -88,9 +94,11 @@ $V(x) = \begin{cases}
 \end{align}
 通过求解球面体系，我们知道要利用坐标变换，把哈密顿量变换到极坐标下 $(x,y,z) \rightarrow (r,\theta,\phi)$。
 
+\chat{
 到底什么体系才是可以精确求解的？微分方程的通解是\boldtext{闭合表示}。数学中的闭合表示指可以通过有限次操作完成。前面可以精确求解的体系，都是可以由哈密顿量求出闭合解，进而求解。
 
 对于三体的问题，氢分子能否精确求解？
+}
 \begin{figure}[tp]\centering
     \begin{tikzpicture}[scale=0.5]
         \draw[->] (-3,0) -- (2.5, 0);
@@ -116,13 +124,17 @@ $V(x) = \begin{cases}
 \end{align}
 实际上它不可能通过坐标变换的方式分离三个变量。在 Born--Oppenheimer 近似下，将原子和电子运动分离开。
 
-为什么不可以分离？三体是完全耦合的，数学上可以证明做不到。
+% 为什么不可以分离？三体是完全耦合的，数学上可以证明做不到。
 
 分开原子核和电子的哈密顿量，其中电子的部分
 \begin{align}
     \hat H = - \frac{\hbar^2}{2m} \hat\nabla_1^2 - \frac{\hbar^2}{2m} \hat\nabla_2^2 - \frac{\hbar^2}{2m_\mathrm{e}} \hat\nabla_{\mathrm{e}}^2 + \frac{e^2}{r_3} - \frac{e^2}{r_1} - \frac{e^2}{r_2},
 \end{align}
-三体全部两两耦合在一起，从数学角度不可能分离变量。因为原子核质量远大于电子质量，有三个数量级以上的差别，所以电子的运动会远远快于原子核。假设电子能迅速响应原子核位置的变化，或者假设原子核位置不动、将原子核坐标视为电子波函数的参数，从而分离原子核与电子的波函数，这称作 Born--Oppenheimer 近似。
+三体全部两两耦合在一起，从数学角度不可能分离变量。
+
+\suppInfo{波恩--奥本海默近似}{
+因为原子核质量远大于电子质量，有三个数量级以上的差别，所以电子的运动会远远快于原子核。假设电子能迅速响应原子核位置的变化，或者假设原子核位置不动、将原子核坐标视为电子波函数的参数，从而分离原子核与电子的波函数，这称作 Born--Oppenheimer 近似。
+}
 
 分离之后，电子部分的哈密顿算符
 \begin{align}
@@ -167,7 +179,9 @@ $V(x) = \begin{cases}
 \end{align}
 这时候依然不可能精确求解，因为两个电子间的耦合 $r_{23}^{-1}$ 是必然存在的。
 
+\chat{
 这就是本周（第十周，第 8 次课）的内容——变分法，用数值方法逼近体系的精确解。
+}
 
 \chapter{变分法}
 \section{变分原理}
@@ -220,7 +234,9 @@ $V(x) = \begin{cases}
 
 下面要讲，如何利用变分原理求解能量。
 \section{Rayleigh 变分法}
+\chat{
 变分原理对尝试波函数没有任何限制，但我们很难构造所有可能的尝试波函数。所以，人们尝试构造一个波函数的参数空间，使得尝试波函数包含某些系数，通过调整这些参数来改变尝试波函数。
+}
 
 设 $\Phi=\Phi(c_1, c_2, c_3, \cdots, c_n)$，它的变分积分形式
 \begin{align}
@@ -250,7 +266,7 @@ $V(x) = \begin{cases}
 \begin{align}
     \langle\psi_0 | \psi_0\rangle = 1 \Rightarrow N^2 \intinf \ee^{-2\lambda x^2} \dd x = 1, \label{eq:var_norm_step1}
 \end{align}
-\suppInfo{高斯积分}{\small 来自 \url{https://mathworld.wolfram.com/GaussianIntegral.html}\normalsize
+\suppInfo{高斯积分}{有解析解，摘自 MathWorld\footnote{\url{https://mathworld.wolfram.com/GaussianIntegral.htm}。}
 \begin{align}
     & \int_0^\infty \ee^{-ax^2} \dd x = \frac12 \sqrt{\pi}a, \\
     & \int_0^\infty x\,\ee^{-ax^2}\, \dd x = \frac1{2a},\\
@@ -303,12 +319,14 @@ $V(x) = \begin{cases}
 \end{align}
 由变分法得到了精确的能量和波函数。
 
+\chat{
 所以说，只要采用正确的尝试波函数，总是可以由变分法来严格确定真实的波函数。实际上，真实的体系是复杂到无法构造尝试波函数的。
 
 % 2022-11-07 09:30:00 Wenbin FAN @FDU
 % 总是可以构造解决
 
 变分法给了基态波函数最高的能量下限。通过尝试不同的试探波函数来逼近求解。
+}
 
 \homework{\textbf{8.1} 采用下列 Gaussian 函数作为氢原子的基态波函数，
 \begin{align}
@@ -326,7 +344,9 @@ $V(x) = \begin{cases}
 % 2022-11-07 09:37:26 Wenbin FAN @FDU
 % 【思路比较简单】怎么构造尝试波函数？
 
+\chat{
 如果对氢原子感兴趣，可进一步思考：电子围绕着两个原子核运动，如果引入两个氢原子波函数的线性组合，是否能得到更准确的能量？下午会讲到。
+}
 
 \extraInfo{谐振子试探波函数}{
     已知谐振子波函数的精确解，所以我们设试探波函数的指数上为 $-\lambda x^2$，如果我们不知道是多少次方，假设是 $2k$ 次方，会是什么结果？此时试探波函数写作
@@ -347,10 +367,11 @@ $V(x) = \begin{cases}
 }
 
 \courseTime{下午 | 第8次课，第10周}
+\chat{
 线上上课可能不容易控制时间，请见谅。
 
 早上复习了从开课到现在的所有模型体系。我们在上午引入了氦原子，即使有 BO 近似，也无法精确求解，因为电子和电子之间有耦合项，因此又引入了变分法。
-
+}
 % 【】
 \section{氦原子体系基态的变分处理}
 氦原子包括一个原子核、两个电子，其电子部分的哈密顿量为
@@ -372,13 +393,17 @@ $V(x) = \begin{cases}
     \exp\!\left(-\frac{Zr}{a_0}\right) \\
     &= \frac{Z^3}{\pi a_0^3} \exp\!\left[-\frac Z{a_0}(r_1 + r_2)\right],
 \end{align}
+\chat{
 现在毫无疑问，由于电子间相互作用，肯定跟无相互作用的波函数不一样，我们需要对它处理。如果要对它变分处理，如同早先对谐振子模型一样，需要构造尝试波函数的形状。尝试波函数的形状越合理，则能量越逼近真实情况。
 
-我们可否通过无相互作用的基态波函数，得到构造尝试波函数的灵感呢？无相互作用的波函数中，其中有个 $Z$ 表示有效核电荷，如果有了电子-电子间的相互作用，第一个电子感受到第二个电子对于核电荷的屏蔽，于是，我们依照无相互作用的本征波函数，构造尝试波函数如下，
+我们可否通过无相互作用的基态波函数，得到构造尝试波函数的灵感呢？无相互作用的波函数中，其中有个 $Z$ 表示有效核电荷，如果有了电子-电子间的相互作用，第一个电子感受到第二个电子对于核电荷的屏蔽。}
+于是，我们依照无相互作用的本征波函数，构造尝试波函数如下，
 \begin{align}
     \psi_0(r_1, r_2; \lambda) = \psi_\lambda (r_1) \psi_\lambda(r_2) =  \frac{\lambda^3}{\pi a_0^3} \exp\!\left[-\frac \lambda{a_0}(r_1 + r_2)\right]. \label{eq:he_trial}
 \end{align}
+\chat{
 尝试波函数的构造和求解，是为了寻找更合适的 $Z$，使得能恰好描述屏蔽效应，进而得到具有物理意义的波函数。其中 $\lambda$ 是核电相互作用的有效电荷。
+}
 
 当我们构造了这样一个尝试波函数，按照 Rayleigh 的方法，第一步求出归一化系数，或者说验证是否归一，
 \begin{align}
@@ -396,10 +421,12 @@ $V(x) = \begin{cases}
     &= \int_0^{+\infty} r^2 \exp\left(- \frac{2\lambda}{a_0} r\right) 
     \underbrace{\int_0^\pi \sin\theta\,\dd\theta \int_0^{2\pi} \dd\varphi}_{4\pi},
 \end{align}
+\chat{
 补充一个下面经常用到的积分公式，在徐光宪《量子化学：基本原理和从头计算法（中册）》(9.4.6)，
 \begin{align}
     \int_\rho^{+\infty} r^n \ee^{-ar} \dd r = a^{-(n+1)} \ee^{-a\rho} \ee^{-a\rho} \sum_{k=0}^n \frac{n!}{k!}(a\rho)^k,
 \end{align}
+}
 利用该公式，继续求解积分，
 \begin{align}
     I = 4\pi \times \left(\frac{2\lambda}{a_0}\right)^{-3} \frac{2!}{0!} 0^0 = 4\pi \frac{2a_0^3}{8\lambda^3} = \pi\left(\frac{a_0}{\lambda}\right)^3,
@@ -439,7 +466,9 @@ $V(x) = \begin{cases}
         \frac1{r_{12}}
     \right),
 \end{align}
+\chat{
 我们把尝试波函数拆成了，其本征函数，加上其与真实波函数的差别。有什么好处？$\hat h$ 可精确求解，避免了动能算符的偏导，剩下的只是势能算符的积分，就比较好处理。
+}
 
 为何说 $\hat h$ 是试探波函数的本征函数，因为
 \begin{align}
@@ -507,7 +536,9 @@ $V(x) = \begin{cases}
     \caption{耦合积分中的坐标选择，本图来自 Griffth 书的图 7.4}
     \label{fig:coupled_r2}
 \end{figure}
-注意到，这两个电子的坐标都是自由的。我们尝试\textbf{分开求解}，分而治之，把 $r_1$ 看成是固定的，能否积掉 $r_2$？利用这个假设，参照图 \ref{fig:coupled_r2} 的定义，那么
+\chat{
+注意到，这两个电子的坐标都是自由的。我们尝试\textbf{分开求解}，分而治之，把 $r_1$ 看成是固定的，能否积掉 $r_2$？利用这个假设，参照图 \ref{fig:coupled_r2} 的定义，}
+那么
 \begin{align}
     r_12 = |r_1 - r_2| = \sqrt{r_1^2 + r_2^2 - 2r_1 r_2 \cos\theta_2}. 
 \end{align}
@@ -520,10 +551,12 @@ $V(x) = \begin{cases}
 \begin{align}
     I_2 &= \int_{-1}^1 \frac{\dd x}{\sqrt{r_1^2 + r_2^2 - 2r_1 r_2 x }}
 \end{align}
+\chat{
 利用积分公式
 \begin{align}
     \int \frac{\dd x}{\sqrt{a+bx}} = \frac2b \sqrt{a+bx}
 \end{align}
+}
 继续求解
 \begin{align}
     I_2&= \frac{2}{2r_1r_2} \left(
@@ -563,11 +596,13 @@ $V(x) = \begin{cases}
             \int_0^{r_1} r_2^2 \exp\left(- \frac{2\lambda}{a_0}r_2\right) \frac1{r_1} + \int_{r_1}^{r_2} \exp\!\left(-\frac{2\lambda}{a_0}r_2\right) \frac1{r_2} \dd r_2
         \right]
 \end{align}
+\chat{
 利用已知积分
 \begin{align}
     &\int r \ee^{-ar} \dd r= - \frac{ra + 1}{a^2} \ee^{-a r}, \\
     &\int r^2 \ee^{-ar}\dd r = - \frac{r^2a^2 + 2ra + 2}{a^3} \ee^{-ar},
 \end{align}
+}
 继续求解积分，
 \begin{align}
     I_3 &= 4\pi \exp\left(- \frac{2\lambda}{a_0}r_1\right) 
@@ -619,9 +654,14 @@ $V(x) = \begin{cases}
 由参数 $\lambda$ 便可以给出氦原子基态能量的近似值，我们看到确实变分能量高于真实能量。
 
 % 2022-11-07 15:03:15 Wenbin FAN @FDU
+\chat{
 变分法不能保证，构造出的试探波函数空间一定涵盖真实的波函数，如果能够涵盖基态波函数，如谐振子模型，但绝大多数体系是不可能的，如氦原子是最简单的一个做不到的例子。虽然我们做不到精确，但是我们可以不断逼近。
+}
 
-有没有办法可以更好地逼近？回头来审视最初的设定，如果两个例子感受到的有效电荷不一样，是否能更精确地求解？
+有没有办法可以更好地逼近？
+\chat{
+回头来审视最初的设定，如果两个例子感受到的有效电荷不一样，是否能更精确地求解？
+}
 \homework{\textbf{8.3}  请用下述波函数作为尝试波函数，
 \begin{align}
     \Phi_0 = N \left(
@@ -633,4 +673,7 @@ $V(x) = \begin{cases}
 }
 
 %2022-11-07 15:09:03 Wenbin FAN @FDU
-能否得到激发态能量？也可以的，通过正交的方式得到，具体拓展下节课线下再讲。
+能否得到激发态能量？
+\chat{
+也可以的，通过正交的方式得到，具体拓展下节课线下再讲。
+}
