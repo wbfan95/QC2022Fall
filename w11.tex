@@ -24,14 +24,14 @@
 \begin{align}
     \bar E = \frac{\langle \psi | \hat H |\psi\rangle}{\langle \psi | \psi \rangle} \geqslant E_0,
 \end{align}
-变分原理告诉我们能量大于等于 $E_0$，其中的 $\psi$ 是试探波函数，试探波函数必须满足哈密顿量的边条件。
+变分原理告诉我们能量大于等于 $E_0$，其中的 $\psi$ 是尝试波函数，尝试波函数必须满足哈密顿量的边条件。
 \chat{这里包含了量子力学中两个最基本的假设。第一，微观粒子的所有行为都由波函数表述。我们如何从波函数中抽提出物理可观测量？讲该可观测量所对应的算符作用在波函数上，如果这个算符是可观测量的本征函数，那么就得到了本征值，如果不是本征函数，那么可以积分得到期望值。
 
 变分法很有趣。如果我们将变分法当作原理，可以看出变分法给出了一条探索体系基态能量的途径。这是从物理角度来说的，如果从数学角度切入，或者从量子力学基本原理阐述，变分法将薛定谔方程这个偏微分方程，转化成了积分的方程，并找到了波函数与基态能量的映射关系，这种映射关系也可以称作泛函。
 
 什么是泛函？我们知道函数是 $x \xrightarrow{f} y$ 数值到数值的映射，泛函是函数到数值的映射。从更朴素的角度来说，函数或泛函的映射关系，相当于以某种方式消除了自变量，在变分法中，这种消除方式是全空间积分。
 
-用变分法求解能量的极小值，相当于寻找``试探波函数-能量''泛函上的极小值。这里为什么不说是最小值，因为人们通常不可能掌握一个高维函数的全部信息，找到极小点仅相当于井底之蛙，在井底是不可能知道旁边是否有更深的井。更严格地说，寻找全局最小值是个 NP 问题。
+用变分法求解能量的极小值，相当于寻找``尝试波函数-能量''泛函上的极小值。这里为什么不说是最小值，因为人们通常不可能掌握一个高维函数的全部信息，找到极小点仅相当于井底之蛙，在井底是不可能知道旁边是否有更深的井。更严格地说，寻找全局最小值是个 NP 问题。
 
 实践当中，通常都以优化极小点为目标，部分课题组致力于探索完整的势能面空间。只要初始猜测足够接近极小点，都是可以优化到极小点的。这里的足够接近，定义是在极小点的二次区域内，只要在这个区域内，这些利用二阶导数的优化算法均可以顺利优化到极小点。
 
@@ -177,7 +177,7 @@
 
 这里的密度是指，在这一组空间点 $r$ 处找到任意一个电子的概率，我们并不关心是哪个电子。系数 $N!$ 确保了任意交换两电子的坐标后概率都不变，因此我们从概率得到了密度。
 
-从不可区分性可以看出，单电子的试探波函数比较容易构造，多电子的试探波函数就很难构造了。
+从不可区分性可以看出，单电子的尝试波函数比较容易构造，多电子的尝试波函数就很难构造了。
 % 这里的 $r$ 表示一系列坐标，这种记法称作 compact notation。%% 搜了一下并没有这种叫法，应该是跟电子态里的什么记法搞混了，参考 Charge and Energy Transfer Dynamics in Molecular Systems 2011
 }
 % % 2022-12-05 09:01:46  Wenbin Fan @FDU
@@ -366,117 +366,306 @@ E_{\text{X}}^{\text{LDA}}[\rho] = -\frac34 \left(\frac34\right)^{\frac13} \int\d
 \chat{%
 本题的结论可以从侧面证明，密度泛函一定存在，尽管表达形式不确定。
 
-% 试卷中会有一点点密度泛函的内容。
+下节课会讲自旋，这将补全量子力学的最后一个公设，也由此真正迈入多电子体系的求解大门。
+
+试卷中会有一点点密度泛函的内容。
 }
 
+\chapter{自旋}
 \courseTime{3 of 4}
 %%%% 笔者的电脑出问题了，这节课没用电脑记笔记，回去听录音整理吧，质量恐怕会下降（当然本来就不太高（
 % 2022-12-05 14:13:58  Wenbin Fan @FDU
-自旋存在的证据
-1. 钠原子 黄光（D线）
-有两条间隔很近的谱线
-2. 1925年，Uhlenbeck和Goudsmit基于原子光谱精细结构提出了电子除了轨道角动量，还有自旋角
-动量。
-在Dirac的相对论量子力学中，电子自旋自然出现。对相对论量子力学做非相对论演化，可以得到电子自
-旋在非相对论情况下的算符表述
+\chat{%
+相信同学们对自旋这个概念并不陌生。只看名字，非常像宏观物体的自转，可惜自旋并没有可参照的宏观物理量。
 
+有许多实验给出了电子自旋存在的证据，最早可追溯到 1922 年，Stern--Gerlach 实验观测到了磁场中分裂成两束的粒子流。1925 年，两位年轻的荷兰物理学家 Uhlenbeck 和 Goudsmit 提出了自旋的概念。在光谱实验中，精细测量表示钠原子的 3p 谱线有 $\sim$\SI{0.6}{\nano\metre} 的分裂。
+}
+
+自旋已经被许多实验证实，这里列举两条证据。一是钠原子 D 线的分裂，从 1s$^2$ 2s$^2$ 2p$^6$ 3s 跃迁到 1s$^2$ 2s$^2$ 2p$^6$ 3p 的谱线分裂成了两条。二是 1925年 Uhlenbeck 和 Goudsmit 基于原子光谱精细结构提出了电子的\boldtext{自旋角动量}，并提出自旋角动量在任何方向只能取 $\pm \frac{\hbar}2$。
+
+\chat{%
+尽管人们早在一个世纪以前就观测到了电子自旋，但是并不能解释这种现象。直到 1928 年，Dirac 提出了著名的 Dirac 方程，首次囊括了量子力学、相对论，自发得到了电子的自旋，也可推导处氢谱线的精细结构修正值。
+
+在非相对论情况下，电子的自旋是量子力学第五大公设，只能是人为引入。同学们可能有些听不懂，没关系，目前知道自旋是电子的一种内禀属性即可。
+
+人类以智慧适应适应和改造自然，量子力学理论闪耀着人类的智慧。理论学家从实验中总结规律，甚至启发性地指导实验。
+}
+% 在Dirac的相对论量子力学中，电子自旋自然出现。对相对论量子力学做非相对论演化，可以得到电子自
+% 旋在非相对论情况下的算符表述
+
+自旋这一内禀属性尽管不对应旋转，但也有\textbf{角动量}。仿照角动量算符，自旋算符有最基本的规则
+\begin{align}
+    \hat S \times \hat S = \ii \hbar \hat S,
+\end{align}
+写成分量形式为
+\begin{align}
+[\hat S_x, \hat S_y] = \ii\hbar \hat S_z, \quad
+[\hat S_y, \hat S_z] = \ii\hbar \hat S_x, \quad
+[\hat S_z, \hat S_z] = \ii\hbar \hat S_y,
+\label{eq:spin_bb_2}
+\end{align}
+总自旋
+\begin{align}
+    \hat S^2 = \hat S_x^2 + \hat S_y^2 + \hat S_z^2. 
+    \label{eq:spin_bb_1}
+\end{align}
+\homework{\textbf{11.2}  由自旋算符的定义，求证对易关系
+\begin{align}%
+[\hat S^2, \hat S_x] = [\hat S^2, \hat S_y] = [\hat S^2, \hat S_z] = 0. \label{eq:ex_11_2}
+\end{align}}
+
+电子自旋算符的矩阵表示很容易求得。如果我们不知道自旋算符的本征值，对于任意粒子，自旋算符的本征值如何求解？
+
+引入自旋的\boldtext{升降算符} ladder operator，
+\begin{align}
+    \hat S_+ \equiv \hat S_z + \ii \hat S_y, \quad \hat S_- \equiv \hat S_z - \ii \hat S_y, 
+    \label{eq:spin_bb_4}
+    % \label{eq:spin_bb_5}
+\end{align}
+由此尝试求解任意粒子的自旋算符本征值
+\begin{align}
+    \hat S^2 \psi = c \psi, \quad \hat S_z \psi = b \psi, 
+    \label{eq:spin_bb_10}
+    % \label{eq:spin_bb_11}
+\end{align}
+
+\chat{%
+即使我们写出了上述薛定谔方程，仍然无法直接求解。简单来说，是因为目前的自旋算符并不是在笛卡尔空间中的表述。比如动能算符是实空间坐标的二阶偏导，库仑相互作用是实空间中距离的函数，但自旋并不是。所以，模型体系中先猜测函数形式、再求解待定系数的方式，完全行不通。
+
+下面，我们将完全通过符号推演，不再走求解偏微分方程的路，尝试给出自旋算符的本征值。
+
+先做一些基本的算符运算，
+\begin{align}
+\hat S_+ \hat S_- &= (\hat S_z + \ii \hat S_y) (\hat S_z - \ii \hat S_y) 
+% \notag \\ &
+= \hat S_x^2 - \ii\hat S_x \hat S_y + \ii \hat S_y \hat S_x + \hat S_y^2 \notag \\
+&= \hat S^2 - \hat S_z^2 + \ii [\hat S_y, \hat S_x] \notag \\
+&= \hat S^2 - \hat S_z^2 + \hbar \hat S_z,
+\label{eq:spin_bb_6}
+\end{align}
+同理有
+\begin{align}
+    \hat S_- \hat S+ = \hat S^2 - \hat S_z^2 + \hbar \hat S_z,
+    \label{eq:spin_bb_7}
+\end{align}
+再由一个对易关系
+\begin{align}
+[\hat S_+, \hat S_z] &=
+(\hat S_x + \ii \hat S_y) \hat S_z - \hat S_z (\hat S_z + \ii \hat S_y) 
+% \notag \\ &
+= \hat S_z \hat S_z + \ii\hat S_y \hat S_z - \hat S_z \hat S_x - \ii \hat S_z \hat S_y \notag \\
+&= [\hat S_z, \hat S_z] + \ii [\hat S_y, \hat S_z] 
+% \notag \\ &
+= -\ii\hbar \hat S_y + \ii (-\ii\hbar \hat S_x) \notag \\
+&= -\hbar [\hat S_x, \ii\hat S_y] = - \hbar S_+,
+\end{align}
+得到
+\begin{align}
+    \hat S_+\hat S_z = \hat S_z \hat S_+ - \hbar \bar S_+,
+    \label{eq:spin_bb_8}
+\end{align}
+同理
+\begin{align}
+    \hat S_- \hat S_z = \hat S_z \hat S_- + \hbar \hat S_-.
+    \label{eq:spin_bb_9}
+\end{align}
+
+需要注意，$\hat S^2$ 和 $\hat S_z$ 是对易的，二者共享相同的本征函数集。我们的目标就是找到这样一个本征函数集。
+}
+将 $\hat S_+$ 作用到 $\hat S_z$ 的本征方程 \eqref{eq:spin_bb_10} 中，有
+\begin{align}
+    \hat S_+ \hat S_z \psi &= \hat S_+ b \psi \notag \\
+    (\hat S_z \hat S_+ - \hbar \hat S_+) \psi &= b \hat S_+ \psi \notag \\
+    \hat S_z \colorbox{fudanBlue!10!white}{$\hat S_+ \psi$} &= (b + \hbar) \colorbox{fudanBlue!10!white}{$\hat S_+ \psi$}, 
+    \label{eq:spin_bb_12}
+\end{align}
+\chat{
+算符作用在本征函数上，又得到了新的函数和新的本征值。
+上式指出，$\hat S_+ \psi$ 也是 $\hat S_z$ 的本征函数，且本征值为 $b + \hbar$。
+}
+再次将升算符 $\hat S_+$ 作用到 \eqref{eq:spin_bb_12} 中，利用 \eqref{eq:spin_bb_8} 展开，得到
+\begin{align}
+    \hat S_z \hat S_+^2 \psi = (b + 2\hbar) \hat S_+^2 \psi, 
+\end{align}
+以此类推，重复作用升算符可得
+\begin{align}
+    \hat S_z \hat S_+^k \psi = (b + k\hbar) \hat S_+^k \psi, \quad k = 0, 1, 2, \cdots, 
+    \label{eq:spin_bb_13}
+\end{align}
+同理，重复将降算符 $S_-$ 作用到 \eqref{eq:spin_bb_12} 的本征方程中可得
+\begin{align}
+    \hat S_z \hat S_-^k \psi = (b-k\hbar) \hat S_-^k \psi, \quad k = 0, 1, 2, \cdots. 
+\end{align}
+因此，$\hat S_\pm^k \psi$ 是 $\hat S_z$ 的本征函数，且本征值为 $b\pm k\hbar$。仿照 $S_z$ 的证明过程，易知
+\begin{align}
+    \hat S^2 \hat S_\pm^k \psi = c \hat S_\pm^k \psi, \quad k=0,1,2,\cdots. 
+    \label{eq:spin_bb_15}
+\end{align}
+\homework{\textbf{11.3} ~ 证明 \eqref{eq:spin_bb_15}，即 $\hat S_\pm^k\psi$ 是 $\hat S^2$ 的本征函数，且本征值为 $c$。}
 
 % 2022-12-05 14:27:38  Wenbin Fan @FDU
 \courseTime{4 of 4, Dec 05}
-利用规则，给出递增递减后新的本征函数，并且这些本征函数都具有相同的性质：Sz 不同的本征值、S2 相同的本征值。
+% 利用规则，给出递增递减后新的本征函数，并且这些本征函数都具有相同的性质：Sz 不同的本征值、S2 相同的本征值。
+% 接下来的问题是，对 $k$ 有什么限制条件？定义
+很自然地，需要讨论 $k$ 有何限制。将 $\hat S_z$ 两次作用到 $\hat S_\pm^k \psi$ 上，有
+\begin{align}
+    \hat S_z^2 \hat S_\pm^k \psi = (b \pm k\hbar)^2 \hat S_\pm^k \psi, 
+    \label{eq:spin_bb_17}
+\end{align}
+用 \eqref{eq:spin_bb_15} 减去 \eqref{eq:spin_bb_17} 有
+\begin{align}
+    (\hat S^2 - \hat S_z^2) \hat S_\pm^k \psi &= \bigl[
+        c - (b \pm k\hbar)^2
+    \bigr] \hat S_\pm^2 \psi \notag \\
+    (\hat S_x^2 + S_y^2) \hat S_\pm^k \psi &= \cdots, 
+\end{align}
+左侧是非负的量，所以右侧的本征值必为正，得到不等式
+\begin{align}
+    -\sqrt c \leqslant b + k\hbar \leqslant \sqrt c, \quad k=0, \pm1, \pm2, \cdots, 
+\end{align}
+\chat{%
+其中 $c$ 相当于外部约束条件，看作是不变的。不管如何递增、递减，都不可超出上述范围。
+}
+因此我们得到了 $b \pm k\hbar$ 的上下限。设上下限分别为 $b_{\text{max}}$、$b_{\text{min}}$，对应于 $b\pm k\hbar$ 的最大值和最小值。把上下限代回 $\hat S_z$ 中有
+\begin{align}
+    \hat S_z \psi_{\text{min}} = b_{\text{min}} \psi_{\text{min}}, \quad 
+    \hat S_z \psi_{\text{max}} = b_{\text{max}} \psi_{\text{max}}. 
+\end{align}
+将升算符作用到最大值的本征方程上，有
+\begin{align}
+    \hat S_+ \hat S_z \psi_{\text{max}} &= b_{\text{max}} \hat S_+ \psi_{\text{max}} \notag \\
+    \hat S_z \hat S_+ \psi_{\text{max}} &= (b_{\text{max}} + \hbar) \hat S_+ \psi_{\text{max}},
+\end{align}
+\chat{
+很显然 $b_{\text{max}} + \hbar$ 超出了最大值，直观理解是 $z$ 方向的自旋大于总自旋，这种情况不可能存在。
+}
+因此 $\hat S_+ \psi_\text{max} = 0$。再将 $\hat S_-$ 作用上去，得到 $\hat S_- \hat S_+ \psi_{\text{max}} = 0$。利用 \eqref{eq:spin_bb_7} 式子，可得
+\begin{align}
+    (\hat S^2 - \hat S_z^2 - \hbar \hat S_z) \psi_\text{max} &=0 \notag \\
+    c - b_\text{max}^2 - \hbar b_\text{max}^2 &= 0,
+\end{align}
+解得
+\begin{align}
+    c = b_\text{max} (b_\text{max} + \hbar).
+    \label{eq:spin_bb_20}
+\end{align}
+同理，将 $\hat S_-$ 作用在 $\psi_\text{min}$ 上可得
+\begin{align}
+    c = b_\text{min} (b_\text{min} - \hbar). 
+    \label{eq:spin_bb_21}
+\end{align}
+联立 \eqref{eq:spin_bb_20} 和 \eqref{eq:spin_bb_21} 解得
+\begin{align}
+    b_\text{max} = b_\text{min}, \quad b_\text{max} = b_\text{min} \ \text{（舍去）}. 
+\end{align}
+一个很关键的条件是，$b_\text{min}$ 和 $b_\text{max}$ 之间是量子化的，必然会有 $b_\text{max} - b_\text{min} = n\hbar$，因此 $b_\text{max} = \frac12 n\hbar \ (n=0,1,2,\cdots)$。选用 $s$ 作为自旋量子数，有
+\begin{align}
+    b = -s\hbar,\ (-s+1)\hbar, \ \cdots, \ (s+1)\hbar, s\hbar. 
+\end{align}
+由 \eqref{eq:spin_bb_20} 可得
+\begin{align}
+    c = b_\text{max} + \hbar b_\text{max} = s(s+1) \hbar^2, 
+\end{align}
+到这里，我们求出了 $\hat S^2$ 和 $\hat S_z$ 的本征值，
+\begin{align}
+&\hat S^2  = s(s+1)\hbar^2 , \quad s = 0,\, \frac12,\, 1,\, \frac32,\, \cdots, \\
+&\hat S_z  = m_s \hbar , \quad m_s = -s,\, -s+1,\, \cdots,\, s-1,\, s. 
+\end{align}
+\chat{%
+看似自旋很简单，因为课上只挑选了一些初等解释。每个人学新知识的时候都会迷茫，这是非常正常的。同学们初学时不要尝试去理解，记住结论、做题，最终发现……还是不能理解。
 
-接下来的问题是，对 $k$ 有什么限制条件？定义
-\begin{align}
-Y_k = \hat S_{\pm}, []
-\end{align}
-作用两次有
-\begin{align}
-    \hat S_z^2 Y_k = [].
-\end{align}
-将 {15} 减去 {17} 可得
-\begin{align}
-    [][]
-\end{align}
-代入 {1} 可得
-\begin{align}
-    (\hat S_x^2 + \hat S_y^2) Y_k = [c - (b \pm k\hbar)^2] Y_k, 
-\end{align}
-左侧显然是非负的物理量，那么可以推知右侧的本征值为正 $c-(b\pm k\hbar)^2 \geqslant 0$，移项开方后
-\begin{align}
-    -\sqrt c \leqslant b \pm k\hbar \leqslant \sqrt c,
-\end{align}
-因此我们得到了 $b \pm k\hbar$ 的上下限，设上下限分别为 $b_{\text{max}}$、$b_{\text{min}}$，对应于 $b_k$ 的最大值和最小值。把上下限代回 $\hat S_z$ 中有
-\begin{align}
-    \hat S_z Y_{\text{max}} = b_{\text{max}} Y_{\text{max}}, \quad \hat S_z [][]
-\end{align}
+我们利用了非相对论量子力学的框架，推导出了自旋的本征值。当考虑相对论时，轨道 orbital 与自旋会产生耦合，自旋便不再是一个\boldtext{好量子数}了，届时 $\hat J = \hat L + \hat S$ 是好量子数。所以，只有在非相对论框架中，才能近似地分离出自旋。
 
-% 2022-12-05 14:35:36  Wenbin Fan @FDU
-把 z 两次作用上去得到平方，又因为 S2 对应于 c，那么递增递减所构造的本征函数【？】。
-递增递减不改变 c，
+升降算符有两个作用，一是推导 $S_z$ 的本征值，二是导出 $k$ 的限制。升降算符只是一个工具，帮助我们挖掘出角动量算符背后隐藏的量子化条件。
 
-将递增算符作用上去，
-\begin{align}
-    [][]
-\end{align}
-% 2022-12-05 14:38:26  Wenbin Fan @FDU
-大于最大值，不成立
-【少拍了一行】
+更普遍地，只要是满足对易的角动量，都可以构造出相同的本征函数，要注意细节还是不尽相同。类比求解角动量本征值的过程，角动量的本征值是整数，自旋是半整数。我们目前还不能自发地导出半整数的要求，只能借助实验结论。
+}
 
-同理，将递减算符作用上去，得到
-\begin{align}
-    \hat S_- \hat S_+ Y_{\text{max}} = 0. 
-\end{align}
-利用 {7} 式，
-\begin{align}
-    (\hat S^2 - \hat S_z^2 - \hbar \hat S_z) Y_{\text{max}} &= 0 \\
-    c - b_{\text{max}} ^2 - \hbar b_{\text{max}} &= 0\\
-    c &= b_{\text{max}} ( b_{\text{max}} + \hbar),
-\end{align}
-同样的论证过程可以证明，由 $\hat S_- Y_{\text{min}} = 0$ 可推知
-\begin{align}
-    c = b_{\text{min}} ( b_{\text{min}} - \hbar), 
-\end{align}
-联立 {20} 和 {21} 可得
-\begin{align}
-    b_{\text{max}}^2 + \hbar b_{\text{max}} - b_{\text{min}}^2 + \hbar b_{\text{min}} = 0,
-\end{align}
-解得 $b_{\text{min}} = - b_{\text{max}}$，舍去另一个相等的解。又因为
-\begin{align}
-    b_{\text{max}} - b_{\text{min}} = n\hbar, 
-\end{align}
-立刻知道
-\begin{align}
-    b_{\text{max}} = \frac12 n\hbar, \quad n = 0, \frac12, 1, \frac32, \cdots,
-\end{align}
-【】【】
+% % 2022-12-05 14:49:15  Wenbin Fan @FDU
+% 利用自旋算符的对易关系，在非相对论的近似框架下的近似，一到相对论的框架下就不是这种形式，会有自旋-轨道耦合，那么自旋就不是一个\boldtext{好量子数}了。这有点类似 BO 近似下的电子和原子核运动可分离。那么在相对论近似下，我们只给出了【】。如何求出了量子化条件？由递增递减算符，看到了新的本征函数，并且与原来的本征函数有量子化的跃迁。升降算符不是凭空的来的，【】，两个作用，第一是 S2 Sz 作用上去有新的本征函数，【】，可以导出 $k$ 的限制，进而得到量子化的条件。
 
-% 2022-12-05 14:48:20  Wenbin Fan @FDU
-如何定义 k，如何确定量子化条件。这里没问题就往下推了。这对同学们应该都是新知识，【】
+% 自由粒子的波动方程，你可以发现在解无限深势阱的时候，也是这个方程，不过我们需要约束边界条件。目前自旋部分我们还有没有做任何的约束，只要满足 {1} 的关系，本征函数都可以写成上面的形式。电子也有类似的关系【？】，角动量是整数，这与自旋不一样。【】
 
-% 2022-12-05 14:49:15  Wenbin Fan @FDU
-利用自旋算符的互易关系，在非相对论的近似框架下的近似，一到相对论的框架下就不是这种形式，会有自旋-轨道耦合，那么自旋就不是一个\boldtext{好量子数}了。这有点类似 BO 近似下的电子和原子核运动可分离。那么在相对论近似下，我们只给出了【】。如何求出了量子化条件？由递增递减算符，看到了新的本征函数，并且与原来的本征函数有量子化的跃迁。升降算符不是凭空的来的，【】，两个作用，第一是 S2 Sz 作用上去有新的本征函数，【】，可以导出 $k$ 的限制，进而得到量子化的条件。
+% % 2022-12-05 14:55:06  Wenbin Fan @FDU
+% 这个量子化条件过于宽松。2 是 d 轨道，$m_l$ -2, -1,0,1,2，我们约束了 $\hat L$ 的本征值为整数，否则多项式不能截断。
 
-自由粒子的波动方程，你可以发现在解无限深势阱的时候，也是这个方程，不过我们需要约束边界条件。目前自旋部分我们还有没有做任何的约束，只要满足 {1} 的关系，本征函数都可以写成上面的形式。电子也有类似的关系【？】，角动量是整数，这与自旋不一样。【】
+% 因为本课不涉及更高级的理论，所以这里
+不加证明地引入实验结论：\textbf{所有电子的自旋本征值}均为 $s = \frac12$。
+\chat{%
+此外，中子和质子的自旋也是 $\frac12$，$\pi$ 介子的自旋为 0。
+% 【录像】
+% % 2022-12-05 14:58:55  Wenbin Fan @FDU
+% []
 
-% 2022-12-05 14:55:06  Wenbin Fan @FDU
-这个量子化条件过于宽松。2 是 d 轨道，$m_l$ -2, -1,0,1,2，我们约束了 $\hat L$ 的本征值为整数，否则多项式不能截断。
-
-因为本课不涉及更高级的理论，所以这里不加证明地引入实验结论：\textbf{所有电子具有单一的 $S$ 数值}，中子与之子的自旋也是 $\frac12$，$\pi$ 介子。
-【录像】
-% 2022-12-05 14:58:55  Wenbin Fan @FDU
-[]
-自旋给出了量子化条件是普适的，【】只能看到两条谱线，$S = \frac12$, $m_s = -\frac12, \frac12$，
-
+% 自旋给出了量子化条件是普适的，【】只能看到两条谱线，$S = \frac12$, $m_s = -\frac12, \frac12$，
+我们得到的量子化条件是普适的，具体 $s$ 取值多少由体系自身属性决定。比如钠的 D 线分裂成两条，这就对应于 $m_s = -\frac12, \frac12$，而不是 $-1,0,1$ 整数的三条。
+}
+自旋算符的本征值为
 % 2022-12-05 14:59:58  Wenbin Fan @FDU
 \begin{align}
-    \hat S^2 Y = \left[\frac12\left(\frac12 + 1\right)\hbar^2\right] Y  = \frac34 \hbar^2 Y,
+    \hat S^2 \psi = \left[\frac12\left(\frac12 + 1\right)\hbar^2\right] \psi  = \frac34 \hbar^2 \psi,
 \end{align}
-那么 $|S| = \frac12 \sqrt3 \hbar$，【图】
-也就是说，电子自旋只有两个本征态。这与角量子数很像。一旦定了自旋是 S2 Sz 的本征函数，那么就一定不是 Sx Sy 的本征函数，那么 Sx Sy 与 Sz 也不对易。
+那么 $|\hat S| = \frac12 \sqrt3 \hbar$。
+% ，【图】
+\chat{
+这表明了电子自旋只有两个本征态，自旋有 $\frac\hbar2$ 在 $z$ 轴方向。
+
+这与角量子数很像。自旋一旦确定了是 $\hat S^2$ 和 $\hat S_z$ 的本征函数，那么就一定不是 $\hat S_x$ 或 $\hat S_y$ 的本征函数，那么 $\hat S_x$ 和 $\hat S_y$ 均与 $\hat S_z$ 不对易。
+}
+
+\suppInfo{自旋算符的矩阵表示}
+{%
+算符是矩阵、波函数是向量，我们用矩阵描述量子力学。对于自旋算符，同样有矩阵表述。
+
+选定自旋处于 $z$ 方向，则 $\hat S_z$ 的本征值 $s_z=\pm\frac\hbar2$。
+对于任意波函数 $\psi$，假设其含有两个自旋分量，
+\begin{align}
+    \psi = \begin{pmatrix}
+        \psi\bigl(\vec r, \ +\frac\hbar2\bigr) \\
+        \psi\bigl(\vec r, \ - \frac\hbar2\bigr) 
+    \end{pmatrix}
+\end{align}
+则两种自旋状态的波函数可以写为
+\begin{align}
+\psi_+ = \begin{pmatrix}
+    \psi\bigl(\vec r, \ +\frac\hbar2\bigr) \\
+    0 
+\end{pmatrix}, \quad 
+\psi_- = \begin{pmatrix}
+    0 \\
+    \psi\bigl(\vec r, \ - \frac\hbar2\bigr) 
+\end{pmatrix},
+\end{align}
+按照薛定谔方程，或者算符本征值的定义，有
+\begin{align}
+\hat S_z \psi_+ = \frac\hbar2 \hat S_z, \quad 
+\hat S_z \psi_- = -\frac\hbar2 \hat S_z, 
+\end{align}
+由此解得 $\hat S_z$ 是个二维矩阵，再由自旋算符的对易关系可求出另外两个分量，它们是
+\begin{align}
+\hat S_x = \frac\hbar2 \begin{pmatrix}
+    0 & 1 \\ 1 & 0
+\end{pmatrix}, \quad 
+\hat S_y = \frac\hbar2 \begin{pmatrix}
+    0 & -\ii \\ \ii & \phantom{-}0
+\end{pmatrix}, \quad 
+\hat S_z = \frac\hbar2 \begin{pmatrix}
+    1 & \phantom{-}0 \\ 0 & -1
+\end{pmatrix},
+\end{align}
+以上算符称为自旋在 $\hat S_z$ 表象中的表示。因此，电子的自旋算符的本征值为
+\begin{align}
+    \hat S_x^2 = \hat S_y^2 = \hat S_z^2 = \frac{\hbar^2}{4}, \quad \hat S^2 = \frac34 \hbar^2. 
+\end{align}
+
+为了表示方便，引入与自旋算符成线性关系的泡利算符 $\sigma$，其满足
+\begin{align}
+    \hat S = \frac \hbar 2 \hat \sigma . 
+\end{align}
+}
 
 % 2022-12-05 15:02:57  Wenbin Fan @FDU
-【】
-没有用到实空间的表述。所以把自旋当成【】，定义
+从推导自旋开始，就没用到实空间的表述。所以把自旋当成独立在实空间外的自由度，定义
 \begin{align}
     \alpha(m_s) = \begin{cases}
         1, \quad & m_s = \frac12, \\
@@ -489,26 +678,46 @@ Y_k = \hat S_{\pm}, []
 \end{align}
 全空间积分
 \begin{align}
-\langle \alpha | \beta \rangle = \sum_{m_s = -\frac12}^{\frac12} \partial ^* [][]
+&\langle \alpha | \beta \rangle = \sum_{m_s = -\frac12}^{\frac12} 
+\alpha^*(m_s)\, \beta(m_s) = 0\times1 + 1\times 0 = 0, \\
+&\langle \alpha | \alpha \rangle = \sum_{m_s = -\frac12}^{\frac12} \alpha^*(m_s)\, \alpha(m_s) = 0\times0 + 1\times1 = 1, \\
+&\langle \beta | \beta \rangle = \sum_{m_s = -\frac12}^{\frac12} \beta^*(m_s)\, \beta(m_s) = 1\times1 + 0\times 0 = 1. 
 \end{align}
-有了这个定义之后，单电子的波函数必须拓展到自旋，
-\begin{align}
-    [] \rightarrow
-\end{align}
-归一化条件也要扩展成
-\begin{align}
-    [][]
-\end{align}
-为什么自旋是量子力学公设？因为是从实验总结出来的公设，不能简单地从非相对论量子力学原理中导出，我们要把自旋当成粒子内禀的性质。
 
-有了这样的说法，
-自旋与氢原子，
+有了自旋的定义之后，单电子的波函数必须拓展到自旋，
 \begin{align}
-    []
+    \psi(x,y,z) \rightarrow \psi(x,y,z, m_s),
 \end{align}
-哈密顿算符跟自旋算符一定是互易的，因为二者没有关系，所以总是可以把氢原子的薛定谔方程写成
+归一化条件
 \begin{align}
-    []
+    \int |psi(x,y,z,m_s)|^2\,\dd\tau = 1,
 \end{align}
-氢原子的简并度 $n^2 \rightarrow 2n^2$，所有的谱项都会一份为二。自从实验上观测到谱线的精细结构，（压力给到理论这边）
+完整写出来是
+\begin{align}
+    \iiint |\psi(x,y,z)|^2 \,\dd x\dd y \dd z 
+    \rightarrow \sum_{m_s=-\frac12}^{\frac12} \iiint |\psi(x,y,z,m_s)|^2\,\dd x\dd y\dd z = 1. 
+\end{align}
+\chat{
+为什么自旋是量子力学公设？因为是从实验总结出来的结论，不能简单地从非相对论量子力学原理中导出。既不能证明，也不能证伪。我们要把自旋当成粒子内禀的性质。
+}
 
+% 有了这样的说法，
+氢原子的薛定谔方程为
+\begin{align}
+    \hat H(x,y,z) \, \psi_{n,l,m_l}(x,y,z) = E_n \, \psi_{n,l,m_l}(x,y,z),
+\end{align}
+\chat{
+哈密顿算符跟自旋算符一定是对易的，因为二者没有关系，
+}
+当氢原子有了自旋，其波函数总是可以写成
+\begin{align}
+    \psi_{n,l,m_l}(x,y,z) \alpha(m_s), \ \text{或} \ 
+    \psi_{n,l,m_l}(x,y,z) \beta(m_s).
+\end{align}
+\chat{
+引入自旋后，氢原子能级的简并度从 $n^2$ 到了 $2n^2$，所有的谱项都会一分为二。
+
+自从实验上观测到谱线的精细结构，压力给到理论这边，人们只用了几年的时间就构造了自洽的理论。本节课从自旋对易的数学结构开始，逐步求出了自旋的本征值，填补了量子力学的基本假设。
+
+下次课开始讲多电子体系，主要是 Hartree--Fock 的近似方法。
+}

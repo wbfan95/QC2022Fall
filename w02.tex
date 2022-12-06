@@ -447,11 +447,11 @@ f (t) = \exp \left( - \frac{i}{\hbar} E t \right),
     \begin{equation}
         [\hat A, \hat B] \equiv \hat A \hat B -\hat B \hat A
     \end{equation}
-    若 $\hat A \hat B = \hat B \hat A$ 则$[\hat A,\hat B] = 0$，则称算符 $\hat A, \hat B$ 互易，否则不互易。
+    若 $\hat A \hat B = \hat B \hat A$ 则$[\hat A,\hat B] = 0$，则称算符 $\hat A, \hat B$ 对易，否则不对易。
 \end{theorem}
 
 \chat{%
-简单的例子，$\hat A = \frac{\partial}{\partial x}, \hat B = 3$，则二者互易。若 $\hat A = \frac{\partial}{\partial x}, \hat B = \hat x$， 则 $[\frac{\partial}{\partial x},\hat x] = 1$。
+简单的例子，$\hat A = \frac{\partial}{\partial x}, \hat B = 3$，则二者对易。若 $\hat A = \frac{\partial}{\partial x}, \hat B = \hat x$， 则 $[\frac{\partial}{\partial x},\hat x] = 1$。
 }
 
 \homework{
@@ -686,7 +686,7 @@ $\hat A n$ 自身可以看成一个函数，
 \chat{%
 薛定谔猫是处在生态和死态叠加中，如果猫的状态是生和死的叠加，它并不是一定生或死的。那么数学上来说，我对某状态做某测量得到某值的概率是多少。
 
-我们知道，动量算符和位置算符互易，不能同时测量，换句话说，它们不能同时拥有相同的本征函数。如果对动量的本征函数做位置的测量，也就是把位置的算符作用到动量的本征函数上去。
+我们知道，动量算符和位置算符对易，不能同时测量，换句话说，它们不能同时拥有相同的本征函数。如果对动量的本征函数做位置的测量，也就是把位置的算符作用到动量的本征函数上去。
 假设所有东西都是离散的。设 $\{\phi_i\}$ 为 $\hat p$ 的本征函数，一定不是位置算符的本征函数。将坐标作用上去，平均值为 $\int \phi_i^* \hat x \phi_i \dd \tau$。位置算符 $\hat x$ 的本征函数 $\{f_m\}$，将动量的本征函数展开为 $\phi_i = \sum_m c_i f_i$，所以在某个动量的本征函数 $\phi_i$ 上找到位于 $x_m$ 电子的概率就是 $|c_m|^2$，
 测量后就有 $|c_m|^2$ 概率坍缩到 $f_m$ 上去。这个时候再测量位置，那么这个体系将永远处在 $f_m$ 上了。
 如果再去测量动量，重新展开成 $f_m = \sum_i c_i \phi_i$，动量是全空间覆盖的，那么就有 $|c_i|$ 的概率处在 $\phi_i$ 态上。
@@ -699,7 +699,7 @@ $\hat A n$ 自身可以看成一个函数，
 \begin{eqnarray}
     \hat F \psi_i = f_i \psi_i. \hat G \psi_i = g_i \psi_i,
 \end{eqnarray}
-则二者互易 $[\hat F, \hat G] = 0$ 或二者可以同时测量
+则二者对易 $[\hat F, \hat G] = 0$ 或二者可以同时测量
 \end{theorem}
 
 \homework{\textbf{6.} 证明 (a) 与 (d)}

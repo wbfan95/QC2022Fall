@@ -1,11 +1,11 @@
-\documentclass[b5paper]{book}
+\documentclass[a4paper]{book}
 % \usepackage[
 %     textwidth=\textwidth,
 %     textheight=\textheight,
 %     paperwidth=\dimexpr\textwidth+0.1cm,
 %     paperheight=\dimexpr\textheight+0.1cm
 %     ]{geometry}
-% \usepackage[top=1in,bottom=1in,inner=1in,outer=2in]{geometry}
+\usepackage[top=1in,bottom=1in,inner=1in,outer=2in]{geometry}
 \usepackage[UTF8, fontset=windows]{ctex}
 \punctstyle{kaiming}
 \let\fangsong\relax
@@ -16,6 +16,14 @@
 % \usepackage[no-math]{fontspec}
 \setmainfont{Times New Roman}
 \setCJKsansfont{SourceHanSansCN-Regular.otf}[BoldFont=SourceHanSansCN-Bold.otf]
+\raggedbottom
+
+\usepackage{xcolor}
+\definecolor{fudanBlue}{RGB}{14,65,156}
+\definecolor{fudanRed}{RGB}{204,26,26}
+\definecolor{fudanOrange}{RGB}{243,152,0}
+\definecolor{fudanYellow}{RGB}{253,209,8}
+\newcommand\boldtext[1]{\textcolor{fudanBlue}{\textbf{#1}}\index{#1}}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
@@ -23,6 +31,27 @@
 \usepackage{makeidx}
 \makeindex
 \usepackage{nomencl}
+\usepackage{titlesec}
+\usepackage{titletoc}
+% indented subsection (in toc)
+\titlecontents{chapter}
+[0.0cm]             % left margin
+{\vspace{1cm}\large\color{fudanBlue}\sffamily}                  % above code
+{%                  % numbered format
+{{\scshape Chapter} \thecontentslabel ~---~}%
+}%
+{}         % unnumbered format
+{}         % filler-page-format, e.g dots
+% indented subsection (in toc)
+\titlecontents*{subsection}
+[1.0cm]             % left margin
+{\small\kaishu}                  % above code
+{%                  % numbered format
+{\thecontentslabel ~ }%
+}%
+{}         % unnumbered format
+{ (\thecontentspage) $\quad$}         % filler-page-format
+[~]
 
 % math
 \usepackage{amsmath}
@@ -66,13 +95,6 @@
 \usepackage{multirow}
 % tikz
 \usetikzlibrary{decorations.pathmorphing,patterns}
-
-\usepackage{xcolor}
-\definecolor{fudanBlue}{RGB}{14,65,156}
-\definecolor{fudanRed}{RGB}{204,26,26}
-\definecolor{fudanOrange}{RGB}{243,152,0}
-\definecolor{fudanYellow}{RGB}{253,209,8}
-\newcommand\boldtext[1]{\textcolor{fudanBlue}{\textbf{#1}}\index{#1}}
 
 % caption
 \usepackage{caption}
@@ -170,7 +192,7 @@
     toptitle=3pt,
     ]
     \kaishu
-    #1\normalfont\normalsize
+    #1%\normalfont\normalsize
 \end{tcolorbox}
 }
 
@@ -278,7 +300,7 @@ GitHub: \url{https://github.com/fanwenbin95/QC2022Fall}
 \input{w09.tex}
 \input{w10.tex}
 \input{w11.tex}
-% \input{sol.tex}
+\input{sol.tex}
 
 \backmatter
 \printindex

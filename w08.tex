@@ -257,7 +257,7 @@ $V(x) = \begin{cases}
 \begin{align}
     \hat H &= - \frac{\hbar^2}{2m} \pdv[2]x + \frac12 kx^2, \quad k=m\omega^2, 
 \end{align}
-我们有试探波函数 $\psi_0(\lambda) = N \ee^{-\lambda x^2}$，其中 $N$ 是归一化因子，$\lambda$ 是变分参数，下面求解变分积分，
+我们有尝试波函数 $\psi_0(\lambda) = N \ee^{-\lambda x^2}$，其中 $N$ 是归一化因子，$\lambda$ 是变分参数，下面求解变分积分，
 \begin{align}
     f(\lambda) = \langle \psi_0 | \hat H | \psi_0 \rangle = N^2 \bigg\langle \ee^{-\lambda x^2} \bigg| -\frac{\hbar^2}{2m} \pdv[2]{x} + \frac12 k x^2 \bigg| \ee^{-\lambda x^2} \bigg\rangle,
 \end{align}
@@ -313,7 +313,7 @@ $V(x) = \begin{cases}
 \begin{align}
     f_\mathrm{min}(\lambda) = \frac{\hbar^2}{2m} \frac{m\omega}{2\hbar} + \frac k8 \frac{2\hbar}{m\omega} = \frac{\hbar\omega}2,
 \end{align}
-所以试探波函数为
+所以尝试波函数为
 \begin{align}
     \psi_0 = N \exp\left(-\frac12 \frac{m\omega}{\hbar}x^2\right). 
 \end{align}
@@ -325,7 +325,7 @@ $V(x) = \begin{cases}
 % 2022-11-07 09:30:00 Wenbin FAN @FDU
 % 总是可以构造解决
 
-变分法给了基态波函数最高的能量下限。通过尝试不同的试探波函数来逼近求解。
+变分法给了基态波函数最高的能量下限。通过尝试不同的尝试波函数来逼近求解。
 }
 
 \homework{\textbf{8.1} 采用下列 Gaussian 函数作为氢原子的基态波函数，
@@ -335,7 +335,7 @@ $V(x) = \begin{cases}
 其中 $\lambda$ 是变分参数，$a_0$ 为 Bohr 半径，通过变分法给出能量表达式，并求出与真实氢原子基态能量的差别。
 }
 
-从上述求解可知，只要试探波函数的形式合理，一定可通过调整变分参数使得试探波函数足够接近精确解。换句话说，在完备的变分空间里，变分法等价于求解薛定谔方程。
+从上述求解可知，只要尝试波函数的形式合理，一定可通过调整变分参数使得尝试波函数足够接近精确解。换句话说，在完备的变分空间里，变分法等价于求解薛定谔方程。
 \homework{
     \textbf{8.2}  从变分原理出发，推导定态薛定谔方程。
 }
@@ -348,8 +348,8 @@ $V(x) = \begin{cases}
 如果对氢原子感兴趣，可进一步思考：电子围绕着两个原子核运动，如果引入两个氢原子波函数的线性组合，是否能得到更准确的能量？下午会讲到。
 }
 
-\extraInfo{谐振子试探波函数}{
-    已知谐振子波函数的精确解，所以我们设试探波函数的指数上为 $-\lambda x^2$，如果我们不知道是多少次方，假设是 $2k$ 次方，会是什么结果？此时试探波函数写作
+\extraInfo{谐振子尝试波函数}{
+    已知谐振子波函数的精确解，所以我们设尝试波函数的指数上为 $-\lambda x^2$，如果我们不知道是多少次方，假设是 $2k$ 次方，会是什么结果？此时尝试波函数写作
     \begin{align}
         \psi_0 = N^2 \ee^{-\lambda x^{2k}}, \quad N^2 = \frac12\frac{(2\lambda)^{\frac{1}{2 k}}}{\Gamma\!\left(1+\frac{1}{2 k}\right)},
     \end{align}
@@ -363,7 +363,7 @@ $V(x) = \begin{cases}
     \begin{align}
         f_{\mathrm{min}} = \omega\hbar k \sqrt{\Gamma\left(2-\frac1{2k}\right)\Gamma\left(\frac3{2k}\right)} \left[\Gamma\left(\frac1{2k}\right)\right]^{-1},
     \end{align}
-    说这个点是极小值是因为二阶导大于 0。当 $k=1$ 时显然有 $f = \frac{\omega\hbar}2$，只有当 $k=1$ 时取得 $f_{\mathrm{min}}$ 的极小点，所以试探波函数的指数上取 2 是最合适的。
+    说这个点是极小值是因为二阶导大于 0。当 $k=1$ 时显然有 $f = \frac{\omega\hbar}2$，只有当 $k=1$ 时取得 $f_{\mathrm{min}}$ 的极小点，所以尝试波函数的指数上取 2 是最合适的。
 }
 
 \courseTime{下午 | 第8次课，第10周}
@@ -436,7 +436,7 @@ $V(x) = \begin{cases}
     \langle \psi_0 | \psi_0 \rangle = \frac{\lambda^6}{\pi^2a_0^6} \times \pi\left(\frac{a_0}{\lambda}\right)^3 \times \pi\left(\frac{a_0}{\lambda}\right)^3 = 1,
 \end{align}
 %2022-11-07 13:52:54 Wenbin FAN @FDU
-验证了该试探波函数是归一化的。
+验证了该尝试波函数是归一化的。
 %2022-11-07 13:54:16 Wenbin FAN @FDU
 所以，无论 $\lambda$ 取任何值，波函数都可以归一化的。
 
@@ -470,11 +470,11 @@ $V(x) = \begin{cases}
 我们把尝试波函数拆成了，其本征函数，加上其与真实波函数的差别。有什么好处？$\hat h$ 可精确求解，避免了动能算符的偏导，剩下的只是势能算符的积分，就比较好处理。
 }
 
-为何说 $\hat h$ 是试探波函数的本征函数，因为
+为何说 $\hat h$ 是尝试波函数的本征函数，因为
 \begin{align}
     \langle \psi_0 | \hat h | \psi_0 \rangle = - \lambda^2 \frac{\hbar^2}{2m a_0^2} = \lambda^2 E_{\text{H}}. 
 \end{align}
-无论 $\lambda$ 取任何值，试探波函数 \eqref{eq:he_trial}
+无论 $\lambda$ 取任何值，尝试波函数 \eqref{eq:he_trial}
 % \begin{align}
 %     \psi_0(r_1, r_2, \lambda) = \frac{\lambda^2}{\pi a_0^3} [][]
 % \end{align}
@@ -655,7 +655,7 @@ $V(x) = \begin{cases}
 
 % 2022-11-07 15:03:15 Wenbin FAN @FDU
 \chat{%
-变分法不能保证，构造出的试探波函数空间一定涵盖真实的波函数，如果能够涵盖基态波函数，如谐振子模型，但绝大多数体系是不可能的，如氦原子是最简单的一个做不到的例子。虽然我们做不到精确，但是我们可以不断逼近。
+变分法不能保证，构造出的尝试波函数空间一定涵盖真实的波函数，如果能够涵盖基态波函数，如谐振子模型，但绝大多数体系是不可能的，如氦原子是最简单的一个做不到的例子。虽然我们做不到精确，但是我们可以不断逼近。
 }
 
 有没有办法可以更好地逼近？
