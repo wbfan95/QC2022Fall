@@ -1,7 +1,7 @@
 % 2022-11-14 07:59:19  Wenbin Fan @FDU
 \section{复习}
 \courseTime{第9次课，第11周，Nov04}
-\chat{
+\chat{%
 今天人好少（只有 13 位同学，不包括助教等），被隔离了吗？
 
 % 2022-11-14 08:03:33  Wenbin Fan @FDU
@@ -40,13 +40,13 @@
     \langle \psi_0 | \hat H | \psi_0 \rangle \geqslant E_0. 
 \end{align}
 
-\chat{
+\chat{%
 并不知道如何探索波函数空间，但我们可以引入超参数构成的波函数空间。
 }设定试探波函数 $\psi_0(\vec r_1, \vec r_2, \cdots, \vec r_n; c_1, c_2, \cdots, c_n)$，
 %2022-11-14 08:12:34  Wenbin Fan @FDU
 方法是近似的，原理是精确的。对参数 $\{c_1, c_2, \cdots, c_n\}$ 求偏微分，满足 $\left\{\pdv{\bar E}{c_i}=0\right\}$。
 
-\chat{
+\chat{%
 上节课讲过的第一个例子是谐振子，我们知道真实的基态波函数是高斯展宽的形式，
 \begin{align}
     \Phi_0 = N \exp\!\left(-\frac12 \frac{m\omega}{\hbar}x^2\right),
@@ -69,11 +69,11 @@
     \psi_0(r_1, r_2; \lambda) = \frac{\lambda^2}{\pi a_0^3} 
     \ee^{-\frac{\lambda}{a_0}(r_1 + r_2)}, 
 \end{align}
-\chat{
+\chat{%
 我们这么设，是因为确实不知道波函数是什么形式。这个形式来自于类氢离子的波函数，将核电荷数设定为变分参数，我们认为电子感受到的力并不是单纯来自原子核的吸引，而是有一部分电子的排斥，吸引和排斥的平均效应。
 }
 由公式变分原理公式，得到 $\lambda = \num{1.6875}$，$E-\lambda = 0.3125$ 个排斥能，变分能量 $\bar E_{\mathrm{min}} = -\num{2.848} \frac{\hbar^2}{ma_0^2}$，真实能量为 $E_0 = -2.904 \frac{\hbar^2}{ma_0^2}$，误差 1.93\%。
-\chat{
+\chat{%
 误差有点大，能否有更好的近似？
 
 从误差可知，我们设定的试探波函数还不够包含真实的氦原子波函数空间，人们找了很多合适的试探波函数。下面介绍一个非常直观的改进。
@@ -99,14 +99,14 @@
 \end{align}
 变分超参数为 $\{\lambda, c_{ijk}\}$，得到近似值为 $E_0 = \num{-2.903724375} \frac{\hbar^2}{ma_0^2}$，实验值为 $E_0 = \num{-2.903724376} \frac{\hbar^2}{ma_0^2}$，误差小于 $\SI{2.7e-8}{\electronvolt}$。
 % 2022-11-14 08:36:17  Wenbin Fan @FDU
-\chat{
+\chat{%
 如果更好地构造试探波函数、变分空间，可以得到更精确的解。我们不能搜索整个大海，只能构造子空间去搜索，所有的困难都在于如何让这个子空间包含精确解。
 
 有没有更系统的方法？
 }
 
 \section{线性变分法}
-\chat{
+\chat{%
 线性变分法是说，我不知道怎么构造这个复杂的函数空间。比如氦原子，从构造波函数开始就很困难，我们需要知道大致的解析解、假设参数、设定变分参数的物理意义，并创造性地构造尝试波函数。我们很自然地考虑，有没有另外的方式构造函数空间？
 % 搜索变得很困难。
 
@@ -136,7 +136,7 @@
 \end{align}
 这里 $S_{ij}$ 和 $\delta_{ij}$ 是不同的，因为没有假设 $\{f_i\}$ 之间正交。
 
-\chat{
+\chat{%
 看起来人变少了。同学们还能自由选课吗，还是说逃课了。这对任课教师来说没有任何影响，只要同学们真正学到知识就好。
 上学期期末考试有点难，卷面成绩很少过 60 的，大都靠平时成绩提分，注意平时作业。
 }
@@ -184,7 +184,7 @@
 \begin{align}
     \pdv{c_i}{c_k} = \pdv{c_i^*}{c_k^*} = 0, \quad i\neq k. 
 \end{align}
-\chat{
+\chat{%
 大家学过复变函数吗？这里要用到复变函数里的关键结论。
 }
 \suppInfo{复变函数的连续性——柯西定理}{
@@ -303,13 +303,13 @@
 \begin{align}
     \bar E_0 \leqslant \bar E_1 \leqslant \bar E_2 \leqslant \cdots \leqslant \bar E_n. 
 \end{align}
-\chat{
+\chat{%
 上周没讲激发态变分，实际上激发态的变分跟基态变分是一样的，只需要激发态变分函数和基态是正交的，由此确定变分空间，可以证明说，这样的变分空间给出的激发态最低能量是要大于激发态的能量。}
 这里求解的 $E_0$ 大于真实的基态能量，$E_1$ 大于真实的第一激发态能量
 \begin{align}
     \bar E_0 \geqslant E_0, \quad \bar E_1 \geqslant E_1, \quad \cdots, \quad \bar E_n \geqslant E_n. 
 \end{align}
-\chat{
+\chat{%
 求解激发态能量的困难在于，基态不准确的话，激发态也会更加不准。激发态的电子关联效应会更强，更难处理。从数学上来说，第一步的变分法（基态）没做好，后面的步骤（激发态）会偏离更多，称作误差累积效应。
 }
 
@@ -326,7 +326,7 @@
 \end{align}
 }
 
-\chat{
+\chat{%
 变分讲完了，没有证明激发态变分法，同学们可参考物化课的讲解，跟这里的内容相互印证，以便更好理解。
 
 同学们觉得难吗？我们尽量一步步展开求解问题，没有跳步，这是教师的初衷。只要是一步步跟下来，肯定能学会，甚至能举一反三提出问题。如果是 PPT 填鸭教育，同学们可能学不到什么，最终「不知所然」。本课是配套强基计划教改，当时写过大纲，如果按照这个推导速度，一半内容都讲不到，后续的 Hartree--Fock、耦合簇 coupled cluster、微扰等实用方法都讲不到。本课的内容介于量子力学和高等量子力学之间，并不完全属于高等量子力学，因为高量中是用二次量子话的语言描述。
@@ -339,7 +339,7 @@
 }
 
 \chapter{微扰}
-\chat{
+\chat{%
 当我们找不到较好的变分空间时，应该怎么做？
 }
 
@@ -348,7 +348,7 @@
 \begin{align}
     \hat H_0 \psi_n^{(0)} = E_n^{(0)} \psi_n^{(0)}. 
 \end{align}
-\chat{
+\chat{%
 高数中讲级数展开，前提是在定义域、收敛域内展开。在我们的假设下，整体的哈密顿量 $\hat H$ 分成了两部分。
 }
 % 微扰展开【】，是能求解的
@@ -385,11 +385,11 @@
 % 老师到
 % % 2022-11-14 13:34:51  Wenbin Fan @FDU
 % 继续早上的讲。早上讲了线性变分，我们继续讲微扰。微扰理论中最简单的是非简并理论。
-\chat{
+\chat{%
 什么样的微扰才算足够小？这是一个开放式的、case-by-case 的问题。
+一旦做了这样的分解，波函数和能量自然就是线性微扰参数 $\lambda$ 的函数。
 }
-
-一旦做了这样的分解，波函数和能量自然就是线性微扰参数 $\lambda$ 的函数，对二者做幂级数展开，
+对波函数和能量做幂级数展开，
 \begin{align}
     &\psi_n = \psi_n |_{\lambda = 0} + \pdv{\psi_n}{\lambda}\Big|_{\lambda = 0}\lambda + \pdv[2]{\psi_n}{\lambda}\Big|_{\lambda = 0} \frac{\lambda^2}{2!} + \cdots, 
     \label{eq:perb_bb_2} %% bb -> blackboard
@@ -410,7 +410,11 @@
     &\psi_n = \psi_n^{(0)} + \psi_n^{(1)}\lambda + \psi_n^{(2)} \lambda^2 + \cdots, \label{eq:perb_bb_4}\\
     &E_n = E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)}\lambda^2 + \cdots, \label{eq:perb_bb_5}
 \end{align}
-零级、一级、二级波函数和能量。其实 \eqref{eq:perb_bb_4}、\eqref{eq:perb_bb_5} 是 \eqref{eq:perb_bb_2}、\eqref{eq:perb_bb_3} 重写的。把 \eqref{eq:perb_bb_4} 和 \eqref{eq:perb_bb_5} 代回到 \eqref{eq:perb_bb_1} 中，有
+零级、一级、二级等高阶项。
+\chat{%
+其实 \eqref{eq:perb_bb_4}、\eqref{eq:perb_bb_5} 是 \eqref{eq:perb_bb_2}、\eqref{eq:perb_bb_3} 重写的。
+}
+把 \eqref{eq:perb_bb_4} 和 \eqref{eq:perb_bb_5} 代回到 \eqref{eq:perb_bb_1} 中，有
 \begin{multline}
     (\hat H_0 + \lambda \hat H') \left(
         \psi_n^{(0)} + \psi_n^{(1)}\lambda + \psi_n^{2} \lambda^2 + \cdots
@@ -464,15 +468,17 @@
     \underbrace{\langle \psi_m^{(0)} | \hat H' | \psi_n^{(0)} \rangle}_{H'_{mn}} \\
     a_m (E_m^{(0)} - E_n^{(0)}) &= E_n^{(1)} \delta_{mn} - H'_{mn}, 
 \end{align}
-其中 $n$ 是我们希望求得的量子态，如果是基态则 $n=0$，记得我们是对 $n$ 做展开的。
+其中 $n$ 是我们希望求得的量子态。
+\chat{如果是基态则 $n=0$。记得我们是对 $n$ 做展开的。}
 % 【前面方程的 (1)(0) 有修改】
 % 已改 % 2022-11-15 13:07:54 Wenbin FAN @FDU
 
-讨论 (1) 当 $m=n$ 时，一级微扰的校正能量等于未微扰哈密顿矩阵的对角元，
+讨论 (1) 当 $m=n$ 时，
 \begin{align}
-    E_n^{(1)} = H_{nn}' = \langle \psi_n^{(0)} | \hat H | \psi_n^{(0)} \rangle
+    E_n^{(1)} = H_{nn}' = \langle \psi_n^{(0)} | \hat H' | \psi_n^{(0)} \rangle
 \end{align}
-能量逐级累加，更高阶的能量在后面会求，
+\chat{一级微扰的校正能量等于微扰哈密顿矩阵的对角元。}
+能量逐级累加，更高阶的能量在后面会讲到，
 \begin{align}
     E_n = E_n^{(0)} + E_n^{(1)} \lambda + E_n^{(2)}\lambda ^2 + \cdots.
 \end{align}
@@ -589,7 +595,7 @@
 % 二级校正能量
 % 已经写不下了。
 我们已知氦原子的基态能量 $E_{\mathrm{1s^2}} = -2.904\frac{\hbar^2}{m_{\mathrm e}a_0^2}$，零级近似的误差为 37.7\%，一级近似的误差为 5.3\%。相比之下，变分法的误差只有 1.9\%。
-\chat{
+\chat{%
 当然，我们可以通过高级近似，降低微扰法的误差，那么二级微扰能量
 \begin{align}
     E_{\mathrm{1s^2}}^{(0)} = \sum_{j\neq n}^{\infty} \frac{|H'_{jn}|^2}{E_n^{(0)} - E_j^{(0)}}, 
@@ -628,7 +634,7 @@
 % 代入后有 $W[][][]\geqslant E_n^{(2)}$。
 参考 Knight, Robert E., and Charles W. Scherr. "Two-electron atoms II. A perturbation study of some excited states." \textit{Reviews of Modern Physics} 35.3 (1963): 431. DOI: 10.1103/RevModPhys.35.431 
 
-\chat{
+\chat{%
 这里有个有趣的地方，我们可以跳过构造一级微扰波函数，因为我们需要一级微扰波函数才能得到能量，通常这一步很复杂，我们可以转化成变分求解的过程，变成对一级微扰波函数的搜索。
 不断逼近二阶微扰能量，有
 \begin{align}
@@ -642,7 +648,7 @@
 }
 
 \homework{\textbf{9.3} 写出对应于 $\lambda^3$ 的微扰方程，并给出态 $n$ 的三阶能量 $E_n^{(3)}$。}
-\chat{
+\chat{%
 本章讲过了，三阶能量一定依赖于零级能量、零级波函数、一级波函数。知道一级微扰波函数，可以知道三级微扰能量，所以本题写起来并不复杂。
 
 下面是本次课最后一个内容。
@@ -674,7 +680,7 @@
 \end{align}
 % 2022-11-14 14:49:56  Wenbin Fan @FDU
 % 换句话说，什么时候出现的？
-\chat{
+\chat{%
 换句话说，简并是在未微扰的时候出现的，在有微扰之后不一定要简并，但是上面的极限保证了 $\lambda \rightarrow 0$ 时波函数和能量都要趋近于简并能量。
 }
 对于简并情况，对零级波函数线性展开，
@@ -688,7 +694,7 @@
 \end{align}
 % % 2022-11-14 14:51:14  Wenbin Fan @FDU
 % 不能保证趋近于【】？是 $n$ 个波函数的线性组合。
-\chat{
+\chat{%
 我们不能保证 $\lambda \rightarrow 0$ 时，微扰波函数都可以趋近于量子数为 $n$ 的未微扰波函数，因为能量是简并的。}
 因此，微扰波函数写成未微扰波函数的线性组合，
 问题就变成了如何确定 $\{c_i\}$。
@@ -778,7 +784,7 @@ $m$ 个解分别对应于 $E_1^{(1)}$、$E_2^{(1)}$、$\cdots$、$E_m^{(1)}$。�
 对于 $n$ 组的简并，如果是零级近似波函数给出的微扰，并不一定是真实体系必然有的微扰。可能微扰之后简并解除，给出正确的能级顺序，也有可能微扰之后简并存在。
 
 % 【】那么就可以打破假的简并，给出真的能级顺序。
-\chat{
+\chat{%
 这有点像姜--泰勒效应 Jahn--Teller effect (JTE)，在晶体配位场理论，金属 d 轨道五重简并，有了配位场之后能级劈裂，配位场可以当作微扰，求出劈裂能级。
 
 下周习题课和上机操作一起。虽然还没讲到电脑计算，但是还是要先讲这部分，内容包括登录服务器、命令行提交任务、查看模拟结果。这周 elearning 上会上传一些材料，还有服务器的账号密码，大家请对照操作。

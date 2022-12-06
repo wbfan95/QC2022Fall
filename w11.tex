@@ -1,5 +1,6 @@
+\section{复习}
 \courseTime{Dec 05, 11th}
-\chat{
+\chat{%
 今天到场的同学有点少啊（只有 8 位同学），看来我们要点名了。
 
 我们还有 3 次课（算上本次），最后一次课徐昕老师来讲密度泛函，他会从头开始讲密度泛函的原理和发展。
@@ -16,7 +17,7 @@
     \hat H \psi = E \psi,
 \end{align}
 这里写出的是定态、不含时、非相对论的薛定谔方程，这儿有很多约束条件。% 2022-12-05 12:47:01  Wenbin Fan @FDU
-\chat{
+\chat{%
 因为一旦其中的势函数显含时间或时间空间不能分离，那就不能得到定态薛定谔方程。幸运的是，人们感兴趣的很多化学性质，都是能由定态薛定谔方程求解出来的。诚然，一旦涉及到动力学性质等，薛定谔方程就不够用了，需要用含时薛定谔方程。话说回来，变分和微扰是求解薛定谔方程的方法，必然会考。}
 
 变分法说的是，能量的期望值总是可以写成
@@ -82,7 +83,7 @@
 \begin{align}
     \hat H' = \hat H - \hat H_0,
 \end{align}
-\chat{
+\chat{%
 一口吃不成个胖子，一步也没法登上月亮，但是为了登上月亮，人们可以先爬上摩天大楼的楼顶，当然这个摩天大楼和地月距离的对比有些夸张。
 
 第一点边界条件的要求是为了用这一组零级波函数展开真实波函数，第二点微扰足够小的要求是确保高级别微扰收敛。如果一级微扰都会发散，微扰就没有意义了。
@@ -104,11 +105,11 @@
 当 $\lambda \rightarrow 1$ 时，可得真实体系的能量。
 % 2022-12-05 08:31:18  Wenbin Fan @FDU
 % 2022-12-05 08:31:43  Wenbin Fan @FDU
-\chat{
+\chat{%
 用线性变分法，不再有构造边界条件的困难，因为我们已经通过零级哈密顿量构建了展开真是波函数所需的辅助基函数。
 }
 微扰的困难在于如何合理地构建 $\hat H_0$ 使之更接近于 $\hat H$。
-\chat{
+\chat{%
 这包含了两层目标，第一是为了微扰更快地收敛到真实解，如果 $E_n^{(0)}$ 更接近真实能量，那么就可以算更少的微扰项。第二个是更基本的问题，为了使得 $H_0$ 接近 $H$，以便在数学上展开合理，也就是 $\lambda \in [0,1]$ 不能超出波函数和能量的收敛半径。特别在强关联体系中,需要考虑，人为选定组态波函数，才能继续做微扰。
 
 刚才用半小时梳理了变分和微扰，因为期末考试会有近似方法的大题。不用担心，所有的技术细节不会超出作业的难度。
@@ -117,11 +118,11 @@
 }
 
 \section{DFT 基础}
-\chat{
+\chat{%
 前面复习了两种基于波函数的近似方法——变分和微扰。变分法的思路是将薛定谔方程这一偏微分方程转化成波函数积分的泛函，使得能量成为波函数的泛函。
 }
 体系能量 $E$ 可以是体系密度 $\rho$ 的函数吗？
-\chat{
+\chat{%
 如果从波函数入手，并不能直接推知。但这个想法持续吸引着人们，因为波函数实在太复杂了，不考虑自旋已经是 $3N$ 维的。人们需要一种更简单的方式求解薛定谔方程。
 }
 % 波函数方法，是【？】
@@ -136,7 +137,7 @@
 }
 
 我们遇到的第一个问题是，什么是密度？
-\chat{
+\chat{%
 哥本哈根统计学派告诉我们，波函数模的平方是概率，
 \begin{align}
 |\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2 \,\dd \vec r_1\, \dd\vec r_2 \cdots \dd\vec r_N,
@@ -152,7 +153,7 @@
 \begin{align}
 |\psi(\vec r_1, \vec r_2, \cdots, \vec r_i, \vec r_j, \cdots, \vec r_n)|^2 = |\psi(\vec r_1, \vec r_2, \cdots, \vec r_j, \vec r_i, \cdots, \vec r_n)|^2
 \end{align}
-\chat{
+\chat{%
 因为电子的不可区分性，``第 $i$ 个电子出现在 $\vec r_i$、第 $j$ 个电子出现在 $\vec r_j$'' 的概率，必须等于``第 $i$ 个电子出现在 $\vec r_j$、第 $j$ 个电子出现在 $\vec r_i$'' 的概率。显式地写出波函数的自变量，必然会人为指定每个电子的顺序，这是数学记号的缺陷。
 
 单个电子的密度，可以用谐振子或一维势箱辅助理解。对于多个电子，尽管我们能够在波函数中标记每个电子，但仍要提醒自己电子是不可区分的。
@@ -164,19 +165,20 @@
 \courseTime{2 of 4}
 \chat{尽管本课是选修课，我相信选了这门课的同学都是对量子化学感兴趣的。今天很多同学不来，非常遗憾不能带领那些同学在量子化学的大海里遨游了。
 
-本节课的密度泛函不在考试范围，接下来的自旋、泡利不相容原理、Hartree--Fock 会考到的，难度不会超过课后习题。
+本节课的密度泛函不在考试范围，接下来的自旋、泡利不相容原理、Hartree--Fock 会考到的，试题难度不会超过课后习题。
 }
 
 从全同粒子的\textbf{不可区分性}出发，给定一组空间点 $r = (\vec r_1, \vec r_2, \cdots, \vec r_N)$，任意交换两个电子，共有 $N!$ 种排布方式，那么密度
 \begin{align}
     \rho(\vec r_1, \vec r_2, \cdots, \vec r_N) = N! \,|\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2,
 \end{align}
-\chat{
+\chat{%
 电子是全同粒子，第一个位置可以是 1、2、3、$\cdots$、$N$，第二个位置可以是 2、3、$\cdots$、$N$，依次类推，可得到 $N(N-1)(N-2)\times\cdots2\times1 = N!$ 种互换方式。
 
 这里的密度是指，在这一组空间点 $r$ 处找到任意一个电子的概率，我们并不关心是哪个电子。系数 $N!$ 确保了任意交换两电子的坐标后概率都不变，因此我们从概率得到了密度。
 
 从不可区分性可以看出，单电子的试探波函数比较容易构造，多电子的试探波函数就很难构造了。
+% 这里的 $r$ 表示一系列坐标，这种记法称作 compact notation。%% 搜了一下并没有这种叫法，应该是跟电子态里的什么记法搞混了，参考 Charge and Energy Transfer Dynamics in Molecular Systems 2011
 }
 % % 2022-12-05 09:01:46  Wenbin Fan @FDU
 % 如果波函数不满足这个条件，那么满足这个规则就很困难【】，
@@ -205,79 +207,167 @@
 \begin{align}
     \int \rho_1 (\vec r_1) \dd\vec r_1 = 1,
 \end{align}
-\chat{
-$\rho_1$ 已经积掉了 $\vec r_2$、$\vec r_3$、$\cdots$、$\vec r_N$，剩下 $\vec r_1$ 相当于要补齐波函数的归一化，是要等于 1 的。
+\chat{%
+$\rho_1$ 已经积掉了 $\vec r_2$、$\vec r_3$、$\cdots$、$\vec r_N$，剩下 $\vec r_1$ 积分相当于要补齐波函数的归一化，是要等于 1 的。这里有些类似循环论证，因为我们还不能理解技术细节，只需要知道原理上是可行的。
+}
+因此，全空间的密度积分为
+\begin{align}
+    \int\rho(r) \,\dd r = N,
+\end{align}
+推知
+\begin{align}
+\rho(r) = N \int\!\cdots\!\int |\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2 \, \dd\vec r_1\, \dd\vec r_2 \cdots \dd\vec r_N. 
+\end{align}
+\chat{%
+我们用一节课的时间理了密度和波函数的关系，二者最大的差别是粒子的可区分性。在波函数中，粒子被编号，由于函数的特性而必须显式写出粒子的顺序，这强制粒子成为可区分的。在密度表述中，将概率密度乘以特定权重以得到密度的概念，进而推知密度的全空间积分正是电子数 $N$。
+}
+% 我们用了一节课讲清楚了密度和波函数的概念。【】
+% % 2022-12-05 09:08:39  Wenbin Fan @FDU
+% 粒子的不可区分性，一定成为了波函数的性质，而不是从函数【】体现出来。
+% 推出来密度
+% \begin{align}
+%     \rho (r) = N \int \cdots \int ...
+% \end{align}
+
+$\rho(\vec r)$ 仅为三维坐标的函数，那么能否直接从密度 $\rho(\vec r)$ 得到能量 $E$？
+
+\chat{%
+函数与泛函的区别在于输入不同。函数是 $x \xrightarrow{f} y$ 数值到数值的映射，一个 $x$ 只有一个 $y$，泛函是 $f(x) \xrightarrow{F} y$，函数到数值的映射。如图 \ref{fig:function_vs_fuctional}。
+}
+% 2022-12-05 09:11:52  Wenbin Fan @FDU
+哈密顿量中，哪些是泛函？
+\begin{align}
+\hat H = \sum_i^N \hat T_i + \sum_{i<j}^N V_{\text{ee}}(r_{ij}) + \sum_i^N V_{\text{ext}}(\vec r_i), \quad 
+V_{\text{ext}}(\vec r_i) = -\sum_A \frac{Z_A}{r_{iA}}
+\end{align}
+\chat{%
+哈密顿量包含了动能、电子电子相互作用，以及在无外场情况下被视作\boldtext{外势}的电子-原子核相互作用，其中 $A$ 是原子核的指标、$N$ 是总电子数。原子核与电子是吸引的，所以外势项是负的。
+% 没有考虑外场时，外势是电子与核的相互作用。单电子算符【】。
+
+动能和电子-电子相互作用，二者在任何体系中都是一样的，都有通用的方法求解，比如动能部分可利用单电子近似求解。因此，二者合并起来称作\boldtext{普适泛函} $F[\rho]$。
+
+由于原子核各不相同，外势并没有通用的求解方法。
+}
+单独考虑外势的期望
+\begin{align}
+\langle V_{\text{ext}} \rangle &= \sum_i^N \int\!\cdots\!\int |\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2 V_{\text{ext}}(\vec r_i) \dd \vec r_1 \dd \vec r_2 \notag \\
+&=\sum_i^N \int V_{\text{ext}}(\vec r_i)\dd r_i 
+\underbrace{
+    \int\!\cdots\!\int |\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2 \dd\vec r_1 \cdots \dd\vec r_{i-1} \, \dd \vec r_{i+1} \cdots \dd\vec r_N
+}_{\rho_i(\vec r_i)}
+\notag \\
+&= N \int V_{\text{ext}}(\vec r_i) \,\dd r_i \ \rho_i (\vec r_i) \notag \\
+&= \int V_{\text{ext}}(\vec r_i) \,\dd r_i \ \rho (\vec r_i), 
+\end{align}
+% 【讨论 psi ** 2】
+% 把第 i 个电子的【】提出来，积分掉非 i 的【】，【红色行】第 i 个电子出现在 i 的密度 $\rho_i(\vec r_i)$，
+% \begin{align}
+%     &=\\
+%     &=
+% \end{align}
+% 电子是一样的，但是原子核会有不同，
+% \begin{align}
+%     =N \int V_{ext} (\vec r_1) []
+% \end{align}
+所以外势能是密度\textbf{显式}的泛函。
+\chat{%
+这里利用了电子是全同粒子的这一等价性，某点的密度不会因为是第一个电子就吸引一些、最后一个电子就排斥一些，因此得到了系数 $N$。
+
+% 为什么要给大家讲这个？明天要给华中师范大学的学生讲四节课，准备了 PPT。
+徐老师的 DFT 课上应该不会讲这些基础的知识。如果你以后要做理论模拟，99.9\% 的可能性会用到密度泛函。
+
+DFT 出发点是``能量成密度的泛函''，这个假设一定是对的吗？徐老师会部分否定这个结论，请听课堂上的讲解。
 }
 
-我们用了一节课讲清楚了密度和波函数的概念。【】
-% 2022-12-05 09:08:39  Wenbin Fan @FDU
-粒子的不可区分性，一定成为了波函数的性质，而不是从函数【】体现出来。
-推出来密度
+% \textbf{泛函}。
+以\boldtext{局域密度近似} local density approximation 泛函为例，形式为
 \begin{align}
-    \rho (r) = N \int \cdots \int ...
+E_{\text{X}}^{\text{LDA}}[\rho] = -\frac34 \left(\frac34\right)^{\frac13} \int\dd\vec r [\rho(\vec r)]^{\frac43}.
 \end{align}
-【】$\rho(\vec r)$ 仅为三维坐标的函数，$\rho(\vec r)\rightarrow E$？
+\chat{%
+这是一种交换相关泛函，密度指数上的 $\frac43$ 是均匀电子气模型推导来的。我们不关心它是如何构造的，先对 DFT 中的泛函有个直观的了解。
 
-函数与泛函。函数是 $x -f-> y$，一个 $x$ 只有一个 $y$，泛函是 $f(x) -F[f(x)]-> y$，一个函数对应一个数。
+% 不用管这是啥，以后交换相关用得到。LDA 的泛函
+% 也不用管它是怎么来的。
+从公式里能清楚地看到，能量是密度的函数。
+}
 
-% 2022-12-05 09:11:52  Wenbin Fan @FDU
-哈密顿体系中，哪些是泛函？
+% 【】
+% \boldtext{泛函的偏导}。对于函数
+能量是泛函的最小值，必然会涉及到微分。
+\suppInfo{泛函的微分}{
+微分是指输出对输入微小变化的响应，
+\begin{alignat}{2}
+&\delta f = f(x+\delta x) - f(x) &&= \left(\frac{\delta f}{\delta x}\right)\delta x 
+%= f' \cdot \delta x
+, \\
+&\delta F = F[f + \delta \!f] - F[f] &&= \int \dd x \left(\frac{\delta F}{\delta f}\right) \delta \!f,
+\end{alignat}
+这里不再展开数学讨论。函数或者泛函，可以理解为消去自变量的一种方式。通常来说，可微分的函数对数值算法比较友好，
+% 最好的方式是全空间积分，
+% 通常数值可导可微的是积分，
+由此定义积分形式的泛函为\textbf{最简泛函}，
 \begin{align}
-\hat H = \sum_i^N \hat T_i + 
+    F[y(x)] = \int F(x, y, y')\,\dd x. 
 \end{align}
-没有考虑外场时，外势是电子与核的相互作用。单电子算符【】。
+}
+外势的期望值是密度的泛函 $V_{\text{ext}}[\rho]$，其微分为
+\begin{align}
+\delta V_{\text{ext}}[\rho] 
+&= \int \dd \vec r \, V_{\text{ext}}(\vec r) 
+\bigl[
+    \rho(\vec r) + \delta\rho(\vec r)
+\bigr] - 
+\int \dd \vec r \, V_{\text{ext}}(\vec r)\, \rho(\vec r) \\
+&= \int \dd \vec r \, V_{\text{ext}} \, \delta \rho(\vec r) 
+% not break line % 2022-12-06 17:28:16 Wenbin FAN @FDU
+= \int \dd\vec r\, \frac{\delta V_{\text{ext}}[\rho]}{\delta\rho} \delta\rho, 
+\end{align}
+对于 LDA 泛函，令其系数为 $A_{\text X} = - \frac34\left(\frac3\pi\right)^{\frac13}$，其微分为
+% \begin{align}
+% \langle V_{\text{ext}} \rangle = \int \dd r V_{ext} (\vec r) (\rho(r) + \delta \rho(r) ) - \int \dd r V_{ext} (\vec r) \rho(\vec r) [][][]
+% \end{align}
+\begin{align}
+\delta E_{\text{X}}^{\text{LDA}}[\rho] 
+&= A_{\text X} \left\{
+    \int \dd\vec r \bigl[
+        \rho(\vec r) + \delta \rho(\vec r)
+    \bigr]^{\frac43} - \int \dd\vec r\, [\rho(\vec r)]^{4/3}
+\right\} \notag\\
+& = A_{\text X} \left\{
+    \int \dd\vec r\left[
+        [\rho(r)]^{\frac43} + \frac43 [\rho(r)]^{\frac13} \,\delta \rho(\vec r) + \cdots
+    \right] - \int \dd\vec r\, [\rho(\vec r)]^{\frac43}
+\right\} \notag\\
+&= A_{\text X} \int\dd\vec r \ \frac43 [\rho(\vec r)]^{\frac43} \,\delta \rho(\vec r),
+\end{align}
+泛函微分之后依然是函数。
+% 偏微分给出了一个 kernel 核，微分完是个函数。有了这些定义，可以来操作【】。
+\chat{
+上式中非整数次幂，同样可由二项式定理展开，
+\begin{align}
+(x+y)^\alpha = \sum_{k=0}^{\infty}C_\alpha^k x^{\alpha - k}y^k, 
+\quad C_\alpha^k = 
+{\alpha \choose k}
+ = \frac{\alpha (\alpha-1) \cdots (\alpha-k+1)}{k!}. 
+\end{align}
+}
 
-对于外场的积分，
-\begin{align}
-\langle V_{ext} \rangle = \sum_i^N \int \cdots \int |\psi(\vec r_1, \vec r_2, \cdots, \vec r_N)|^2 V_{ext}(\vec r_i) \dd \vec r_1 \dd \vec r_2 []
-\end{align}
-【讨论 psi ** 2】
-把第 i 个电子的【】提出来，积分掉非 i 的【】，【红色行】第 i 个电子出现在 i 的密度 $\rho_i(\vec r_i)$，
-\begin{align}
-    &=\\
-    &=
-\end{align}
-电子是一样的，但是原子核会有不同，
-\begin{align}
-    =N \int V_{ext} (\vec r_1) []
-\end{align}
-所以外势能是密度\textbf{显式}的泛函。
+% 有了这些基本定义，就可以来操作
 
-为什么要给大家讲这个？明天要给华中师范大学的学生讲四节课，准备了 PPT。徐老师上课应该不会讲这些基础的知识。如果你以后要做理论模拟，99.9\% 都要用密度泛函。DFT 起点就是能量表示成密度的泛函，这个一定是对的吗？徐老师会部分否定这个结论。
+哈密顿量中，系统依赖的参数有电子数 $N$、核电荷数 $Z$、原子核坐标 $\vec R_{\text{A}}$。由薛定谔方程，原则上可以给出精确的波函数，进而得到任何可观测量。人们提出了许多方法来近似求解，比如本课讲过的变分和微扰。
+\chat{%
+动能算符 $\hat T$ 和电子-电子排斥势 $V_{\text{ee}}$ 仅由电子数 $N$ 决定，不管系统如何变化，这两者是不变的，所以称作普适算符。
+}
+如果 $\rho_0(r)$ 唯一映射 $(N, Z, R_{\text{A}})$，那么密度可以确定能量。所以问题来啦，
+\homework{\textbf{11.1} 不用反证法，由密度 $\rho(\vec r)$ 直接得到 $\hat H$，包括总电子数 $N$、总原子核数 $M$、核电荷数 $Z_{\text{A}}$、原子核坐标 $\vec r_{\text{A}}$。
 
-\textbf{泛函}。局域密度近似 local density approximation，不用管这是啥，以后交换相关用得到。LDA 的泛函形式
-\begin{align}
-E_{\text{X}}^{\text{LDA}}[\rho] = 
-\end{align}
-也不用管它是怎么来的。我们能看到，这里能量是密度的函数。密度指数上的 4/3 是均匀电子气模型推导来的。
+提示 (\textbf{1}) $R_A$ 由密度的尖点决定，(\textbf{2}) $\lim_{r_{i、text{A}}\rightarrow 0} \qty[\pdv{r} + 2Z_\text{A}] \rho(r) = 0$。}
+\chat{%
+本题的结论可以从侧面证明，密度泛函一定存在，尽管表达形式不确定。
 
-【】
-\boldtext{泛函的偏导}。对于函数
-\begin{align}
-    \delta f = f(x+\dd x) - f(x) = \left(\frac{\delta f}{\delta x}\right)\delta x = f' \cdot \delta x
-\end{align}
-最好的方式是全空间积分，
-通常数值可导可微的是积分，积分形式的泛函为\textbf{最简泛函}。
-对于泛函
-\begin{align}
-    \delta F = F[f + \delta f] - F[f] = \int \dd x \left(\frac{\delta F}{\delta f}\right) \delta f
-\end{align}
-对于 LDA 泛函，
-\begin{align}
-\langle V_ext \rangle = \int \dd r V_{ext} (\vec r) (\rho(r) + \delta \rho(r) ) - \int \dd r V_{ext} (\vec r) \rho(\vec r) [][][]
-\end{align}
-\begin{align}
-\delta E_{\text{X}}^{\text{LDA}}[\rho] = Ax \left[
-    \int \dd\vec r \
-\right]
-\end{align}
-
-偏微分给出了一个 kernel 核，微分完是个函数。有了这些定义，可以来操作【】。
-
-有了哈密顿方程，原则上可以给出精确的波函数，以及任何性质，包括响应性质。哈密顿量有哪些系统依赖的属性？电子数，核电荷数，核坐标。有了这三个，原则上可以确定哈密顿，原则可以给出所有的信息。
-
-如果 $\rho_0(r)$ 唯一映射 $(N, Z, R)$，那么密度也就可以确定能量。所以问题来啦，
-\homework{\textbf{11.1} $R_A$ 决定于密度的 cusp，}
+% 试卷中会有一点点密度泛函的内容。
+}
 
 \courseTime{3 of 4}
 %%%% 笔者的电脑出问题了，这节课没用电脑记笔记，回去听录音整理吧，质量恐怕会下降（当然本来就不太高（

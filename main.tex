@@ -5,24 +5,32 @@
 %     paperwidth=\dimexpr\textwidth+0.1cm,
 %     paperheight=\dimexpr\textheight+0.1cm
 %     ]{geometry}
-\usepackage{ctex}
+% \usepackage[top=1in,bottom=1in,inner=1in,outer=2in]{geometry}
+\usepackage[UTF8, fontset=windows]{ctex}
 \punctstyle{kaiming}
 \let\fangsong\relax
 \let\kaishu\relax
-\newCJKfontfamily\fangsong{仿宋}[BoldFont=黑体]
-\newCJKfontfamily\kaishu{楷体}[BoldFont=黑体]
+\newCJKfontfamily\fangsong{simfang.ttf}[BoldFont=simhei.ttf]
+\newCJKfontfamily\kaishu{simkai.ttf}[BoldFont=simhei.ttf]
+% \usepackage[T1]{fontenc}
+% \usepackage[no-math]{fontspec}
+\setmainfont{Times New Roman}
+\setCJKsansfont{SourceHanSansCN-Regular.otf}[BoldFont=SourceHanSansCN-Bold.otf]
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usepackage{siunitx}
 \usepackage{makeidx}
 \makeindex
+\usepackage{nomencl}
 
 % math
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb} % geqslant
 \usepackage{amsfonts}
+\usepackage[nofontspec]{newtxtext} % must modify the newtxtext % ref: https://bbs.pku.edu.cn/v2/post-read.php?bid=346&threadid=18179665
+\usepackage{newtxmath}
 \usepackage[version=4]{mhchem}
 \usepackage{cases}
 \usepackage{esint}
@@ -42,6 +50,16 @@
 \usepackage{mathtools} % text over rightarrow
 \usepackage{braket}
 \numberwithin{equation}{section}
+% reduce equation spaces
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{6pt}
+  \setlength\belowdisplayskip{6pt}
+  \setlength\abovedisplayshortskip{3pt}
+  \setlength\belowdisplayshortskip{3pt}
+}
+\makeatother
+% \allowdisplaybreaks[4]
 
 \usepackage{booktabs}
 \usepackage{array} % table for align center vertically
@@ -56,26 +74,23 @@
 \definecolor{fudanYellow}{RGB}{253,209,8}
 \newcommand\boldtext[1]{\textcolor{fudanBlue}{\textbf{#1}}\index{#1}}
 
-\usepackage{hyperref}
-\hypersetup{
-    breaklinks,
-    unicode,
-    linktoc=all,
-    bookmarksnumbered=true,
-    bookmarksopen=true,
-    pdfkeywords={ElegantBook},
-    colorlinks,
-    linkcolor=fudanRed,
-    citecolor=fudanRed,
-    urlcolor=fudanRed,
-    plainpages=false,
-    pdfstartview=FitH,
-    pdfborder={0 0 0},
-    linktocpage
-}
+% caption
+\usepackage{caption}
+\DeclareCaptionFont{fang}{\fangsong}
+\captionsetup{font={small,fang,stretch=1.3},labelfont={sf,color=fudanBlue},labelsep=quad}
+\captionsetup[table]{skip=3pt}
+\captionsetup[figure]{skip=10pt}
+
+% section title
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge\color{fudanBlue}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\sffamily\Large\color{fudanBlue}}
+  {\thesection}{1em}{}
 
 \usepackage{wrapfig}
-\usepackage{cleveref} % reference for tcolorbox
 \usepackage{tcolorbox}
 \tcbuselibrary{hooks, breakable, skins}
 % do not break line after tcolorbox
@@ -136,10 +151,10 @@
     enhanced jigsaw,
     % fonttitle={\bfseries}, 
     % title={\textcolor{black}{#1}}
-    ]
-    \setlength{\parskip}{1pt}
-    \fangsong\small
-    #1
+    ]%
+    \setlength{\parskip}{1pt}%
+    \noindent\ignorespaces%
+    \fangsong\small#1
 \end{tcolorbox}
 }
 \renewcommand\homework[1]{
@@ -208,6 +223,25 @@ xrightmargin=24pt,
 % framerule=10pt,
 }
 
+
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks,
+    unicode,
+    linktoc=all,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    colorlinks,
+    linkcolor=fudanRed,
+    citecolor=fudanRed,
+    urlcolor=fudanRed,
+    plainpages=false,
+    pdfstartview=FitH,
+    pdfborder={0 0 0},
+    linktocpage
+}
+\usepackage{cleveref} % reference for tcolorbox
+
 \title{\Huge \textbf{量子化学原理与应用} \\
 % \footnote{This is a footnote.} \\ 
 \huge 课堂内容记录 
@@ -216,12 +250,11 @@ xrightmargin=24pt,
 % Author
 \author{
     % \textsc{First-name Last-name}\thanks{\url{www.example.com}}
-主讲人：张颖\\
+主讲人：张颖  Igor Ying Zhang\\
 ~\\
 \normalsize
 GitHub: \url{https://github.com/fanwenbin95/QC2022Fall}
 }
-
 
 
 \begin{document}
@@ -234,7 +267,6 @@ GitHub: \url{https://github.com/fanwenbin95/QC2022Fall}
 % \listoftables
 
 \mainmatter
-
 \input{w01.tex}
 \input{w02.tex}
 \input{w03.tex}
@@ -246,7 +278,8 @@ GitHub: \url{https://github.com/fanwenbin95/QC2022Fall}
 \input{w09.tex}
 \input{w10.tex}
 \input{w11.tex}
-\input{sol.tex}
+% \input{sol.tex}
 
+\backmatter
 \printindex
 \end{document}
