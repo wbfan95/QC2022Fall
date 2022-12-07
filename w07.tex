@@ -482,7 +482,7 @@
     -\frac{\hbar^2}{2m} \hat\nabla_\mu^2 \psi + V(x,y,z) \psi = E_\mathrm{int} \psi, 
 \end{align}
 
-\homework{\textbf{7.1}  对于3个粒子的体系，约化质量后的 $\hat H$ 能否分离变量，$N$ 个粒子呢？为什么要引入 Born--Oppenheimer 近似？}
+\homework{\textbf{7.1} ~  对于3个粒子的体系，约化质量后的 $\hat H$ 能否分离变量，$N$ 个粒子呢？为什么要引入 Born--Oppenheimer 近似？}
 举个简单的粒子，三粒子可以用 He 原子或氢分子离子来理解，那么能否分离变量呢？下午讲。
 
 \courseTime{OCT31 2022 下午}
@@ -518,7 +518,10 @@
     -\frac{\hbar^2}{2m} \frac1{R(r)} 
     \left(\pdv[2]r + \frac2r \pdv{r}\right) R(r)  \\ + \frac1{2\mu r^2} \frac1{Y_l^{m_l}(\theta,\varphi)} \hat L^2 \frac1{Y_l^{m_l}(\theta,\varphi)}  = E_{\mathrm{int}} - V(r)
 \end{multline}
-第一项与角度无关，但是第二项里有个 $\frac1{r^2}$，争取把第二项变成与 $r$ 无关的项。继续化简，
+\chat{
+第一项与角度无关，但是第二项里有个 $\frac1{r^2}$，争取把第二项变成与 $r$ 无关的项。
+}
+继续化简，
 \begin{align}
     &\text{LHS} = -\frac{\hbar^2}{2m} \frac{r^2}{R(r)} 
     \left(\pdv[2]r + \frac2r \pdv{r}\right) R(r) - (E_{\mathrm{int}} - V(r)) r^2, \\
@@ -710,9 +713,9 @@ D[R[k r], {r, 2}] /. {r -> \[Rho]/k}
 \end{align}
 发散，所以必须截断。由 $k+l+ = \lambda$，定义\boldtext{主量子数}。$n=l+1, l+2, \cdots$，因为 $l=0,1,2,3,\cdots$，$n$ 允许的取值是 $1,2,3,\cdots$。
 
-氢原子的能级 $n = \lambda = \frac{\mu Z \ee^2}{\hbar a}$，代入 $a$ 的定义有
+氢原子的能级 $n = \lambda = \frac{\mu Z e^2}{\hbar a}$，代入 $a$ 的定义有
 \begin{align}
-    E_{\mathrm{int}} = -\frac{\hbar^2a^2}{2\mu} = - \frac{\mu^2 \ee^4} {2\hbar^2 n^2} = - R\frac{Z^2}{n^2},
+    E_{\mathrm{int}} = -\frac{\hbar^2a^2}{2\mu} = - \frac{\mu^2 e^4} {2\hbar^2 n^2} = - R\frac{Z^2}{n^2},
 \end{align}
 式子中
 \begin{align}
@@ -743,7 +746,7 @@ D[R[k r], {r, 2}] /. {r -> \[Rho]/k}
     R_{n,l}(r) = N r^l \ee^{- \frac{Zr}{na_0}} \sum_{k=0}^{n-l-1} b_k r^k,
 \end{align}
 其中 $N$ 是归一化系数。
-\homework{\textbf{7.2} 求这个归一化系数。}
+\homework{\textbf{7.2} ~ 求这个归一化系数。}
 
 我们最开始求解的是 \eqref{eq:hydro_L_initial_def}
 ，它与连带拉盖尔方程是同样的形式。因此各项相等，有
@@ -828,7 +831,7 @@ D[Exp[r] D[Exp[-r] r, r], r] // Simplify
     R_{1,0} (r) = 2 \left(\frac Za\right)^{3/2} \ee^{-Zr/a}. 
 \end{align}
 % 有几行没拍
-\homework{\textbf{7.3} （选做）写一个生成连带拉盖尔多项式的程序，要求 $n,l$ 为输入。}
+\homework{\textbf{7.3} ~ （选做）写一个生成连带拉盖尔多项式的程序，要求 $n,l$ 为输入。}
 
 \section{类氢离子}
 类氢离子的波函数
@@ -838,10 +841,11 @@ D[Exp[r] D[Exp[-r] r, r], r] // Simplify
 
 主量子数 $n$ 唯一确定能量，对于任意 $n$ 都有 $\sum_{l=0}^{n-1} (2l+1) = n^2$ 个角动量。
 
-化学中，对不同的角动量有不同的名字，即。
+化学中，对不同的角动量有不同的名字，即表 \ref{tab:spdf}。
 \begin{table}[ht]
     \centering
     % \caption{Thicker horizontal lines above and below the table.}
+    \caption{主量子数与光谱记号}
     \begin{tabular}[t]{ccccccc}
     \toprule
     主量子数 & 1&2&3&4&5&6\\
@@ -849,7 +853,7 @@ D[Exp[r] D[Exp[-r] r, r], r] // Simplify
     光谱记号 & s&p&d&f&g&h\\
     \bottomrule
     \end{tabular}
-    \caption{主量子数与光谱记号}
+    \label{tab:spdf}
     \end{table}%
 
     列举一些具体的波函数
@@ -886,8 +890,8 @@ D[Exp[r] D[Exp[-r] r, r], r] // Simplify
 % % \end{align}
 % 实际上我们发现，$r \,\sin\theta\,\cos\varphi = x$，这也是它们称之为 $xyz$ 的原因，相当于投影。
 
-\homework{\textbf{7.4}  (a) 探讨实轨道 $\mathrm{p}_x, \mathrm{p}_y, \mathrm{p}_z$ 与复轨道 $\mathrm{p}_{-1}, \mathrm{p}_0, \mathrm{p}_1$ 的变换关系，(b) 分别画出 $\mathrm{p}_x, \mathrm{p}_y, \mathrm{p}_z$ 与 $\mathrm{p}_{-1}, \mathrm{p}_0, \mathrm{p}_1$ 轨道的图形，并进行比较。
+\homework{\textbf{7.4} ~  (a) 探讨实轨道 $\mathrm{p}_x, \mathrm{p}_y, \mathrm{p}_z$ 与复轨道 $\mathrm{p}_{-1}, \mathrm{p}_0, \mathrm{p}_1$ 的变换关系，(b) 分别画出 $\mathrm{p}_x, \mathrm{p}_y, \mathrm{p}_z$ 与 $\mathrm{p}_{-1}, \mathrm{p}_0, \mathrm{p}_1$ 轨道的图形，并进行比较。
 
-\textbf{7.5}  画出 1s、2s、3s、3p、3d 轨道的径向函数（$R(r)$-$r$）和径向分布函数（$D(r)$-$r$）的图像。}
+\textbf{7.5} ~  画出 1s、2s、3s、3p、3d 轨道的径向函数（$R(r)$-$r$）和径向分布函数（$D(r)$-$r$）的图像。}
 
 % 预告：第9次课、第 11 次课为上机。

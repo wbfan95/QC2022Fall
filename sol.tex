@@ -6,7 +6,7 @@
 % \subsection{1.1}
 % \homework{
 % 重温黑体辐射的历史，论述 Wien's formula 和 Rayleigh--Jeans formula 的
-% 内在异同，以及 Planck 如何能利用``能量量子化''的概念，从 Rayleigh--Jeans
+% 内在异同，以及 Planck 如何能利用「能量量子化」的概念，从 Rayleigh--Jeans
 % formula 中得到 Planck blackbody radiation formula。
 % }
 \subsection{1.1}
@@ -186,7 +186,7 @@ Integrate[
 \begin{align}
   \hat B &= \hat A^2 = (x \partial_x + 1)^2 \notag\\
   &= (x \partial_x)^2 + 2 x \partial_x + 1 \notag\\
-  &\mathrel{\color{red}=} x^2 \partial_x^2 + 2 x \partial_x + 1
+  &\mathrel{\color{fudanRed}=} x^2 \partial_x^2 + 2 x \partial_x + 1
 \end{align}
 上式的证明中，红色等号是错误的。这是因为 $(x \partial_x)^2 = x \partial_x x \partial_x \neq x^2 \partial_x^2$。为了避免这种错误，才推荐在没有把握时，尽量在算符 $\hat B$ 后接函数 $\psi$ 进行分析。}
 
@@ -1350,7 +1350,7 @@ M_3 &= m_1 + m_2 + m_3 \\
 \begin{equation*}
 \hat T
 = - \frac{\hbar^2}{2} \left( \frac{1}{m_1} \nabla_{\vec{r}_1}^2 + \frac{1}{m_2} \nabla_{\vec{r}_2}^2 + \frac{1}{m_3} \nabla_{\vec{r}_3}^2 \right)
-= - \frac{\hbar^2}{2} \left( \frac{1}{\mu_{13}} \nabla_{\vec{J}_1}^2 + \frac{1}{\mu_{23}} \nabla_{\vec{J}_2}^2 + \frac{1}{M} \nabla_{\vec{J}_3}^2 + {\color{red} \frac{2}{m_3} \nabla_{\vec{J}_1} \cdot \nabla_{\vec{J}_2}} \right)
+= - \frac{\hbar^2}{2} \left( \frac{1}{\mu_{13}} \nabla_{\vec{J}_1}^2 + \frac{1}{\mu_{23}} \nabla_{\vec{J}_2}^2 + \frac{1}{M} \nabla_{\vec{J}_3}^2 + {\color{fudanRed} \frac{2}{m_3} \nabla_{\vec{J}_1} \cdot \nabla_{\vec{J}_2}} \right)
 \end{equation*}
 势能算符可以表示为
 \begin{equation*}
@@ -1543,7 +1543,7 @@ b. 分别画出 $\mathrm{p}_x$、$\mathrm{p}_y$、$\mathrm{p}_z$ 和 $\mathrm{p}
 \begin{equation*}
     E_\mathrm{H} = - \frac{\hbar^2}{2 m a_0^2}, \quad \hat h (r) = - \frac{\hbar^2}{2m} \left( \nabla^2 + \frac{2 Z}{a_0 r} \right)
 \end{equation*}
-那么原始的 Hamiltonian 可以写为%({\color{red}25\%})
+那么原始的 Hamiltonian 可以写为%({\color{fudanRed}25\%})
 \begin{equation}
     \hat H = \hat h (r_1) + \hat h (r_2) - E_\mathrm{H} \frac{2 a_0}{r_{12}}
 \end{equation}
@@ -1579,7 +1579,7 @@ $
     %&= c \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H} \cdot c + c \cdot c \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H} \\
     &= 2 c^2 \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) E_\mathrm{H}
 \end{align}
-这是其中的两项；剩下的两项也是完全相同的。因此，单电子部分的积分为%({\color{red}25\%})
+这是其中的两项；剩下的两项也是完全相同的。因此，单电子部分的积分为%({\color{fudanRed}25\%})
 \begin{align}
     \quad\ \langle \Phi | \hat h (r_1) + \hat (h_2) | \Phi \rangle 
     &= \frac{E_\mathrm{H}}{2 (1+c^2)} \cdot 2 \cdot \left[ 2 Z \zeta_1 - \zeta_1^2 + 2 Z \zeta_2 - \zeta_2^2 + 2 c^2 \big( Z (\zeta_1 + \zeta_2) - \zeta_1 \zeta_2 \big) \right] \notag\\
@@ -1617,7 +1617,7 @@ $
 
 
 
-对于其它两种情况也是同理的。那么%({\color{red}25\%})
+对于其它两种情况也是同理的。那么%({\color{fudanRed}25\%})
 \begin{align*}
     &\quad\ - E_\mathrm{H} \langle \Phi | \frac{2 a_0}{r_{12}} | \Phi \rangle \\
     &= - 2 E_\mathrm{H} a_0 \cdot 2 \cdot \frac{1}{2 (1 + c^2)} \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} + \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right) \\
@@ -1633,7 +1633,7 @@ $
     w(\zeta_1, \zeta_2) = \left[ 2 Z (\zeta_1 + \zeta_2) - \frac{\zeta_1^2 + 2 \zeta_1 \zeta_2 c^2 + \zeta_2^2}{1 + c^2} - \frac{2}{1 + c^2} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} + \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right) \right] E_{\mathrm{H}}
 \end{equation}
 
-通过对上述方程求导 $\partial_{\zeta_1} w = \partial_{\zeta_2} = 0$ 可以得到变分极值能量。其中有三个合理的解 ($\zeta_1 > 0, \zeta_2 > 0$ 的情况)%({\color{red}25\%})
+通过对上述方程求导 $\partial_{\zeta_1} w = \partial_{\zeta_2} = 0$ 可以得到变分极值能量。其中有三个合理的解 ($\zeta_1 > 0, \zeta_2 > 0$ 的情况)%({\color{fudanRed}25\%})
 ：
 \begin{gather*}
     \zeta_1 = 1.6875, \zeta_2 = 1.6875 \Rightarrow w = 5.69531 E_\mathrm{H} \\
@@ -1672,7 +1672,7 @@ $
 
 \section{后记}
 
-灰色背景的代码是 Mathematica，``> >'' 表示输出
+灰色背景的代码是 Mathematica，「> >」 表示输出
 
 本笔记 (更像是课堂实录) 站在巨人的肩膀。
 

@@ -22,11 +22,11 @@ De = 1; \[Alpha] = 1; re = 1;
 M[r_] := De (1 - Exp[-\[Alpha] (r - re)])^2
 Plot[M[r], {r, 0, 5}]
 \end{lstlisting}
-\homework{\textbf{5.1} 比较谐振子与 Morse 势能函数，参考 JCP 1988, 88(7) 4535 ``The Morse oscillator in position space and phase space''}
+\homework{\textbf{5.1} ~ 比较谐振子与 Morse 势能函数，参考 JCP 1988, 88(7) 4535 「The Morse oscillator in position space and phase space」}
 \chat{%
 越接近真实体系，薛定谔方程越难求解。从没有限制的自由粒子开始，到简单的势能（仅通过边界条件求解），到现在势能形状也接近真实物理。当势能复杂到无法解析求解时，便可以通过\textbf{数值}求解。
 }
-\homework{\textbf{5.1} (\emph{continued}) （选做）采用 Numerov 方法数值求解。见 Levin \emph{Quantum Chemistry} Sec 4.4 P70}
+\homework{\textbf{5.1} ~ (\emph{continued}) （选做）采用 Numerov 方法数值求解。见 Levin \emph{Quantum Chemistry} Sec 4.4 P70}
 
 \chapter{粒子的转动与角动量}
 \chat{%
@@ -280,7 +280,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
     \hat L_z = -\ii \hbar \pdv{\theta},
 \end{align}
 作为作业。
-\homework{\textbf{5.2}  推导极坐标下的 $z$ 轴角动量算符 $\hat L_z$ 表达式。}
+\homework{\textbf{5.2} ~  推导极坐标下的 $z$ 轴角动量算符 $\hat L_z$ 表达式。}
 \chat{%
 有个问题，我们说是量子化，其实直接用了动量算符的定义，但这是演绎，不是推导。如果在经典情况，$x$ 的位置无所谓，放在算符前后均可，以便跟量子情况相对于，实际上量子化不是直接加个 $\hat\cdot$ 得到的，角动量的量子化过程不具有普适性。
 }
@@ -293,7 +293,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 会得到常数 $C$ 吗？
 \chat{%
 不一定对吧，作用上去之后会有两个相反的系数 $\ii m$。这就很像动量算符和动能算符的关系，我们知道动量算符、动能算符是对易的，原则上可以共享同一个本征函数。
-% \homework{\textbf{5.2} (\emph{continued}) 证明}
+% \homework{\textbf{5.2} ~ (\emph{continued}) 证明}
 
 环上粒子的哈密顿量 $\hat H$ 和角动量 $\hat L_z$ 显然是对易的，所以它们可以共享相同的本征函数。通过构造本征函数，能求出通解，因为 $m$ 是任意的。并不要求角动量的本征函数是 $z$ 方向的。
 
@@ -332,7 +332,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \chat{%
 我们现在求解的模型，都是希望贴近化学真实体系，与这个模型最相近的是苯环。}
 
-\homework{\textbf{5.2}  对于一维环形势箱，其能级为 
+\homework{\textbf{5.2} ~  对于一维环形势箱，其能级为 
 \begin{align}
     E_n = \frac{n^2 h^2}{8\pi^2 m R^2}, \quad n = 0, 1, 2, \cdots,
 \end{align}
@@ -345,7 +345,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 }
 
 \section{柱面上的粒子}
-\textbf{先讲一个简单的三维体系，（同学：球）真会找，找了个最难的。}
+\chat{先讲一个简单的三维体系，（同学：球）真会找，找了个最难的。}
 
 最简单的是自由粒子，三维自由粒子的算符，
 \begin{align}
@@ -353,9 +353,9 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
 \end{align}
 通过分离变量，可以解耦，求出来各个分量的波函数。
 
-\textbf{
+\chat{
 其次是无限深势阱的拓展，三维势能箱。比球简单一些的（安静），是圆柱啊！圆柱可以分离变量。接近真实的碳纳米管，这里以铜丝为例。}
-\homework{\textbf{5.3}  一圆柱体，长为 $l$、半径为 $R$，求解该圆柱体体系的能级，这里的势函数定义为
+\homework{\textbf{5.3} ~  一圆柱体，长为 $l$、半径为 $R$，求解该圆柱体体系的能级，这里的势函数定义为
 \begin{align}
     V(x,y,z) = \begin{cases}
         0, \quad &(x,y,z) \in \Omega,\\
@@ -468,7 +468,7 @@ Simplify[%, Assumptions -> {r > 0, \[Theta] > 0, \[Theta] < Pi/2}]
     &\text{三维极坐标} \quad && \hat L_z = -\ii\hbar \pdv{\varphi},
 \end{alignat}
 % 【这里角动量分量好像不太对耶】
-\homework{\textbf{5.4} 证明 
+\homework{\textbf{5.4} ~ 证明 
 \begin{align}
     \hat L_x = -\ii\hbar \left(
         \sin\varphi \pdv{\theta} + \cot\theta \cos\varphi \pdv{\varphi}

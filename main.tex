@@ -11,12 +11,14 @@
 \let\fangsong\relax
 \let\kaishu\relax
 \newCJKfontfamily\fangsong{simfang.ttf}[BoldFont=simhei.ttf]
-\newCJKfontfamily\kaishu{simkai.ttf}[BoldFont=simhei.ttf]
-% \usepackage[T1]{fontenc}
+\newCJKfontfamily\kaishu{FZXKTK.TTF}[BoldFont=simhei.ttf]
+\setCJKmainfont{FZXSSK.TTF}[BoldFont=simhei.ttf]
 % \usepackage[no-math]{fontspec}
-\setmainfont{Times New Roman}
+% \setmainfont{Times New Roman}
 \setCJKsansfont{SourceHanSansCN-Regular.otf}[BoldFont=SourceHanSansCN-Bold.otf]
-\raggedbottom
+\raggedbottom % do not fill whole page
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 \usepackage{xcolor}
 \definecolor{fudanBlue}{RGB}{14,65,156}
@@ -58,13 +60,13 @@
 \usepackage{amsthm}
 \usepackage{amssymb} % geqslant
 \usepackage{amsfonts}
-\usepackage[nofontspec]{newtxtext} % must modify the newtxtext % ref: https://bbs.pku.edu.cn/v2/post-read.php?bid=346&threadid=18179665
-\usepackage{newtxmath}
+\usepackage[nofontspec]{newpxtext} % must modify the newtxtext % ref: https://bbs.pku.edu.cn/v2/post-read.php?bid=346&threadid=18179665
+\usepackage{newpxmath}
 \usepackage[version=4]{mhchem}
 \usepackage{cases}
 \usepackage{esint}
-\newcommand\ii{\mathrm{i}}
-\newcommand\ee{\mathrm{e}}
+\newcommand\ii{\vmathbb{i}}
+\newcommand\ee{\vmathbb{e}}
 \newcommand\dd{\mathrm{d}}
 \renewcommand\AA{\hat A}
 \newcommand\BB{\hat B}
@@ -234,7 +236,7 @@ breaklines=true,                % sets automatic line breaking
 breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
 title=\lstname,                   % show the filename of files included with \lstinputlisting;
                                 % also try caption instead of title
-keywordstyle=\color{blue},          % keyword style
+keywordstyle=\color{fudanBlue},          % keyword style
 commentstyle=\color{dkgreen},       % comment style
 stringstyle=\color{mauve},         % string literal style
 escapeinside={\%*}{*)},            % if you want to add LaTeX within your code

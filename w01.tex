@@ -206,7 +206,7 @@ Planck--Einstein 关系式
 }
 
 \homework{
-    \textbf{1.1} 重温黑体辐射的历史，论述 Wein 与 Rayleigh--Jeans 公式的内在异同。论述 Planck 如何利用「能量量子化」的概念，从 Rayleigh--Jeans 公式中得到 Planck 黑体辐射公式。
+    \textbf{1.1} ~ 重温黑体辐射的历史，论述 Wein 与 Rayleigh--Jeans 公式的内在异同。论述 Planck 如何利用「能量量子化」的概念，从 Rayleigh--Jeans 公式中得到 Planck 黑体辐射公式。
 }
 
 \chat{%
@@ -358,8 +358,8 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
         \draw[->] (0,-2.5) -- (0, 2.5);
         % functions
         \draw[domain=0:10,black,thick,samples=100] plot (\x,{2*cos(deg(\x))});
-        \draw[domain=0:10,blue,thick,samples=100,dashed] plot (\x,{2*cos(deg(\x-0.7))});
-        \draw[domain=0:10,red,thick,samples=100,dotted] plot (\x,{2*cos(deg(\x+0.7))});
+        \draw[domain=0:10,fudanBlue,thick,samples=100,dashed] plot (\x,{2*cos(deg(\x-0.7))});
+        \draw[domain=0:10,fudanRed,thick,samples=100,dotted] plot (\x,{2*cos(deg(\x+0.7))});
     \end{tikzpicture}
     \caption{实空间内波动方程的运动方向，虚线表示右移，点线表示左移}
 \end{figure}
@@ -458,7 +458,7 @@ Integrate[
     \psi (x, t) = \left( \frac{2}{\pi a^2} \right)^{1/4} \exp \left[ - \frac{(x - ct)^2}{a^2} \right] \exp [ \ii k_0 (x - ct) ]. 
 \end{equation}
 \homework{
-    \textbf{1.2}  利用傅里叶变换，推导 $t>0$ 的 Gaussian 波包。
+    \textbf{1.2} ~  利用傅里叶变换，推导 $t>0$ 的 Gaussian 波包。
 }
 
 \begin{figure}\centering
@@ -467,7 +467,7 @@ Integrate[
         \draw[->] (-4.4,0) -- (4.4, 0);
         \draw[->] (0,-2.2) -- (0, 2.2);
         % functions
-        \draw[domain=-4:4,black,thick,samples=100] plot (\x,{1.75*cos(deg(7*\x))});
+        \draw[domain=-4:4,black,thick,samples=300] plot (\x,{1.75*cos(deg(7*\x))});
     \end{tikzpicture}
     \begin{tikzpicture}[scale=0.5]
         % axis
@@ -480,7 +480,7 @@ Integrate[
         \draw[->] (-4.4,0) -- (4.4, 0);
         \draw[->] (0,-2.2) -- (0, 2.2);
         % functions
-        \draw[domain=-4:4,black,thick,samples=100] plot (\x,{1.75*exp(-0.25*\x*\x)});
+        \draw[domain=-4:4,black,thick,samples=300] plot (\x,{1.75*exp(-0.25*\x*\x)});
     \end{tikzpicture}
     \begin{tikzpicture}[scale=0.5]
         % axis
@@ -493,9 +493,9 @@ Integrate[
         \draw[->] (-4.4,0) -- (4.4, 0);
         \draw[->] (0,-2.2) -- (0, 2.2);
         % functions
-        \draw[domain=-4:4,black,thick,samples=100] plot (\x,{1.75*exp(-0.25*\x*\x)*cos(deg(7*\x))});
-        \draw[domain=-4:4,black,samples=100,dashed] plot (\x,{1.75*exp(-0.25*\x*\x)});
-        \draw[domain=-4:4,black,samples=100,dashed] plot (\x,{-1.75*exp(-0.25*\x*\x)});
+        \draw[domain=-4:4,black,thick,samples=300] plot (\x,{1.75*exp(-0.25*\x*\x)*cos(deg(7*\x))});
+        \draw[domain=-4:4,black,samples=300,dashed] plot (\x,{1.75*exp(-0.25*\x*\x)});
+        \draw[domain=-4:4,black,samples=300,dashed] plot (\x,{-1.75*exp(-0.25*\x*\x)});
     \end{tikzpicture}
     \caption{0 时刻波包的组成}
 \end{figure}
@@ -578,7 +578,7 @@ Sqrt[1 + (4 \[HBar]^2 1)/(me^2 re^4)]
 
 \subsection{非相对论 Schr\"odinger 方程}
 
-Schr\"odinger 方程 \textbf{不可导出} ，它一般会作为量子力学的假定出现 (尽管说从 Dirac-von Neumann 公理体系能导出 Schr\"odinger 方程)。但若我们只考虑自由电子 (即不考虑外加势场)，那么 Schr\"odinger 方程某种程度上可以通过波包函数导出。
+Schr\"odinger 方程\textbf{不可导出} ，它一般会作为量子力学的假定出现 (尽管说从 Dirac-von Neumann 公理体系能导出 Schr\"odinger 方程)。但若我们只考虑自由电子 (即不考虑外加势场)，那么 Schr\"odinger 方程某种程度上可以通过波包函数导出。
 
 我们仍然以实物粒子的波包函数出发：
 \begin{gather}

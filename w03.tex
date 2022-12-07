@@ -8,9 +8,9 @@
 
 如果势函数 $V$ 与时间无关，那么则可以分离时间和坐标，对于仅包含坐标的方程为定态薛定谔方程。% 如果是自由粒子
 
-2021 年，\emph{Science} 发布了《125 个问题：发现与发现》，其中 ``What is quantum uncertainty and why is it important?'' 是其中一个问题。\footnote{\url{https://www.science.org/content/resource/125-questions-exploration-and-discovery}}目前的量子计算、量子测量是热门领域。
+2021 年，\emph{Science} 发布了《125 个问题：发现与发现》，其中 「What is quantum uncertainty and why is it important?」 是其中一个问题。\footnote{\url{https://www.science.org/content/resource/125-questions-exploration-and-discovery}}目前的量子计算、量子测量是热门领域。
 \extraInfo{什么是量子不确定性，为什么它很重要？}{
-海森堡不确定性原理是量子力学的一个关键原则，它指出我们不能同时测量一个物体的速度和位置。天文学家和科学记者Ethan Siegel写道：``你越是精确地测量一个物体的位置，你对其动量的了解就越是内在不准确。这不仅仅是我们仪器的失败，这种不确定性是宇宙的根本。''不确定性在量子计算中起着重要作用，它依靠电子叠加来存储信息。但是量子叠加是很棘手的事情。当你试图测量它们时，或者甚至通过与环境的共同作用，如遇到随机的电磁辐射脉冲，它们会坍缩（用量子术语）。
+海森堡不确定性原理是量子力学的一个关键原则，它指出我们不能同时测量一个物体的速度和位置。天文学家和科学记者Ethan Siegel写道：「你越是精确地测量一个物体的位置，你对其动量的了解就越是内在不准确。这不仅仅是我们仪器的失败，这种不确定性是宇宙的根本。」不确定性在量子计算中起着重要作用，它依靠电子叠加来存储信息。但是量子叠加是很棘手的事情。当你试图测量它们时，或者甚至通过与环境的共同作用，如遇到随机的电磁辐射脉冲，它们会坍缩（用量子术语）。
 }
 
 \chat{%
@@ -235,7 +235,7 @@ $\psi$ 归一化是不会随时间演化而破坏的，需要满足
 当 $k\rightarrow 0$ 时，$A(k)$ 取极大值，即 $|A(k)|^2$ 取极大值。此时位置不确定，动量确定。
 
 \homework{
-    \textbf{3.1}  对于给出下述初态 $\psi(x,t=0)$，即初始时刻自由粒子（$V(x) = 0$）波函数，求出 $\psi(x,t)$ 含时演化波函数，其中 $a>0, b\in\mathbb{R}, x\in\mathbb{R}$，
+    \textbf{3.1} ~  对于给出下述初态 $\psi(x,t=0)$，即初始时刻自由粒子（$V(x) = 0$）波函数，求出 $\psi(x,t)$ 含时演化波函数，其中 $a>0, b\in\mathbb{R}, x\in\mathbb{R}$，
 
     (a) $A \ee^{-a|x|}$, (b) $A\ee^{-ax^2}$, (c) $A \ee^{-ax^2} \ee^{-\ii b x}$. 
 }
@@ -251,9 +251,9 @@ $\psi$ 归一化是不会随时间演化而破坏的，需要满足
         \draw[->] (-2.2,0) -- (5.2, 0);
         \draw[->] (0,-1) -- (0, 3.2);
         % potential
-        \draw[thick,blue] (0,0) -- (3,0);
-        \draw[thick,blue] (0,0) -- (0,3);
-        \draw[thick,blue] (3,0) -- (3,3); 
+        \draw[thick,fudanBlue] (0,0) -- (3,0);
+        \draw[thick,fudanBlue] (0,0) -- (0,3);
+        \draw[thick,fudanBlue] (3,0) -- (3,3); 
         % text
         \node[] at (-1,2) {I};
         \node[] at (1.5,2) {II};
@@ -469,9 +469,9 @@ Plot[Table[2/l Sin[(n \[Pi] x)/l]^2, {n, 1, 5}] // Evaluate, {x, 0,
 % 下午课
 %2022-09-26 13:26:28  Wenbin Fan @FDU
 \homework{
-    \textbf{3.2} (a) 一个 \SI{100}{\gram} 的实心球限制在 \SI{5}{\metre} 的线道上，(b) 束缚在 \SI{10E-10}{\metre} 区域内的电子。求以上两种情况的零点能。
+    \textbf{3.2} ~ (a) 一个 \SI{100}{\gram} 的实心球限制在 \SI{5}{\metre} 的线道上，(b) 束缚在 \SI{10E-10}{\metre} 区域内的电子。求以上两种情况的零点能。
 
-    \textbf{3.3} 讨论如下定义的势箱中的粒子，
+    \textbf{3.3} ~ 讨论如下定义的势箱中的粒子，
     \begin{equation}
         V(x) = 
 \begin{cases}
@@ -496,10 +496,10 @@ Plot[Table[2/l Sin[(n \[Pi] x)/l]^2, {n, 1, 5}] // Evaluate, {x, 0,
         \draw[->] (-2.2,0) -- (5.2, 0);
         \draw[->] (0,-1) -- (0, 3.2);
         % potential
-        \draw[thick,blue] (0,0) -- (3,0);
-        \draw[thick,blue] (0,0) -- (0,3);
-        \draw[thick,blue] (3,0) -- (3,2); 
-        \draw[thick,blue] (3,2) -- (5,2); 
+        \draw[thick,fudanBlue] (0,0) -- (3,0);
+        \draw[thick,fudanBlue] (0,0) -- (0,3);
+        \draw[thick,fudanBlue] (3,0) -- (3,2); 
+        \draw[thick,fudanBlue] (3,2) -- (5,2); 
         \draw[dashed] (0,2) -- (3,2);
         % text
         \node[] at (-1,1) {I};
@@ -701,11 +701,11 @@ Manipulate[
         \node[above] at (3*pi,0) {$3\pi$};
         % \node[above right ] at (0,2) {$V_0$};
         % functions
-        \draw[domain=pi/4:pi-0.17,red,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
-        \draw[domain=pi+pi/4:2*pi-0.17,red,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
-        \draw[domain=2*pi+pi/4:3*pi-0.17,red,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
+        \draw[domain=pi/4:pi-0.17,fudanRed,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
+        \draw[domain=pi+pi/4:2*pi-0.17,fudanRed,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
+        \draw[domain=2*pi+pi/4:3*pi-0.17,fudanRed,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
         
-        \draw[domain=1.5:9,blue,thick,samples=100] plot (\x,{-sqrt(81/(\x*\x) - 1)});
+        \draw[domain=1.5:9,fudanBlue,thick,samples=100] plot (\x,{-sqrt(81/(\x*\x) - 1)});
         \draw[domain=0.17:1,gray,thick,samples=100] plot (\x,{-sqrt(1/(\x*\x) - 1)});
         \draw[domain=0.52:pi,gray,thick,samples=100] plot (\x,{-sqrt(pi*pi/(\x*\x) - 1)});
         \draw[domain=1.04:2*pi,gray,thick,samples=100] plot (\x,{-sqrt(4*pi*pi/(\x*\x) - 1)});
@@ -842,7 +842,7 @@ Solve[{Subscript[C, 1] (Exp[I k2 l] - Exp[-I k2 l]) ==
 (2) $k_2$ 与 $k_3(E)$ 没有任何限制要求，即本征值无限多，散射态是连续谱。因为没有其它可用的边界条件了，所以没有了量子化的能级。尽管这有点违背直觉。
 
 \homework{
-    \textbf{3.4}
+    \textbf{3.4} ~ 
     (1) 利用公式 \eqref{eq:half_inf_scat_c4}，求
     $|C_1|^2$ 与 $|C_3|^2$ 
      的关系，并比较二者大小。
@@ -859,21 +859,21 @@ Solve[{Subscript[C, 1] (Exp[I k2 l] - Exp[-I k2 l]) ==
 直觉上来理解，$|C_1|^2$ 是粒子散射态反射回来的概率，$|C_3|^2$ 是投射过去的概率。
 
 \homework{
-    \textbf{3.4} (2) 推导并画出 $z = 12$, $z_0 = 9$ 时的体系波函数。
+    \textbf{3.4} ~ (2) 推导并画出 $z = 12$, $z_0 = 9$ 时的体系波函数。
 }
 
 \section{阶梯势垒体系}
 \begin{figure}[tp]\centering
     \begin{tikzpicture}[scale=0.5]
+        % axis
+        \draw[->] (-5,0) -- (5, 0);
+        \draw[->] (0,-2) -- (0, 4);
         % region
         % \fill[lightgray] (-5,0) rectangle (0,4);
         \fill[lightgray] (0,0) rectangle (4.5,3);
         \draw[blue,thick] (-4.5,0) -- (0,0);
         \draw[blue,thick] (0,0) -- (0,3);
         \draw[blue,thick] (0,3) -- (4.5,3);
-        % axis
-        \draw[->] (-5,0) -- (5, 0);
-        \draw[->] (0,-2) -- (0, 4);
         % text
         \node[below] at (5,0) {$x$};
         \node[left] at (0,3) {$V_0$};
@@ -923,14 +923,14 @@ Solve[{Subscript[C, 1] (Exp[I k2 l] - Exp[-I k2 l]) ==
 \begin{figure}[tp]\centering
     \begin{tikzpicture}[scale=0.5]
         % region
-        % \fill[lightgray] (-5,0) rectangle (0,4);
-        \fill[lightgray] (0,0) rectangle (4.5,3);
-        \draw[blue,thick] (-4.5,0) -- (0,0);
-        \draw[blue,thick] (0,0) -- (0,3);
-        \draw[blue,thick] (0,3) -- (4.5,3);
         % axis
         \draw[->] (-5,0) -- (5, 0);
         \draw[->] (0,-1) -- (0, 10);
+        % \fill[lightgray] (-5,0) rectangle (0,4);
+        \fill[lightgray] (0,0) rectangle (4.5,3);
+        \draw[fudanBlue,thick] (-4.5,0) -- (0,0);
+        \draw[fudanBlue,thick] (0,0) -- (0,3);
+        \draw[fudanBlue,thick] (0,3) -- (4.5,3);
         % text
         \node[below] at (5,0) {$x$};
         \node[left] at (0,3) {$V_0$};
@@ -950,7 +950,7 @@ Solve[{Subscript[C, 1] (Exp[I k2 l] - Exp[-I k2 l]) ==
         \node[below] at (2.5, 7) {$\phantom{0=}C_4 \mathrm{e}^{-\mathrm ik_2 x} = 0$};
     
         % functions
-        % \draw[domain=pi/4:pi-0.17,red,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
+        % \draw[domain=pi/4:pi-0.17,fudanRed,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
     \end{tikzpicture}
     \caption{波的方向示意图}
 \end{figure}
@@ -1029,11 +1029,11 @@ Plot[(-1 + Sqrt[1 - x])^2/(1 + Sqrt[1 - x])^2, {x, 0, 1},
         \draw[->] (-2.2,0) -- (5.2, 0);
         \draw[->] (0,-1) -- (0, 3.2);
         % potential
-        \draw[thick,blue] (-2,0) -- (0,0);
-        \draw[thick,blue] (0,0) -- (0,2);
-        \draw[thick,blue] (0,2) -- (3,2);
-        \draw[thick,blue] (3,0) -- (3,2); 
-        \draw[thick,blue] (3,0) -- (5,0);
+        \draw[thick,fudanBlue] (-2,0) -- (0,0);
+        \draw[thick,fudanBlue] (0,0) -- (0,2);
+        \draw[thick,fudanBlue] (0,2) -- (3,2);
+        \draw[thick,fudanBlue] (3,0) -- (3,2); 
+        \draw[thick,fudanBlue] (3,0) -- (5,0);
         % text
         \node[] at (-1,1) {I};
         \node[] at (1.5,1) {II};
@@ -1041,7 +1041,7 @@ Plot[(-1 + Sqrt[1 - x])^2/(1 + Sqrt[1 - x])^2, {x, 0, 1},
         
         \node[below] at (3,0) {$l$};
         % functions
-        % \draw[domain=pi/4:pi-0.17,red,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
+        % \draw[domain=pi/4:pi-0.17,fudanRed,thick,dashed,samples=100] plot (\x,{cot(deg(\x))});
     \end{tikzpicture}
     \caption{有限高方势垒}
     \end{figure}
@@ -1065,5 +1065,5 @@ Plot[(-1 + Sqrt[1 - x])^2/(1 + Sqrt[1 - x])^2, {x, 0, 1},
 \end{cases}
 \end{eqnarray}
 \homework{
-    \textbf{3.5} 求出有限高方势垒（$E<V_0$）的波函数。
+    \textbf{3.5} ~ 求出有限高方势垒（$E<V_0$）的波函数。
 }
