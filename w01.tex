@@ -338,7 +338,7 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
 \end{lstlisting}
 在实数域 $\mathbb{R}$ 上，波动方程为
 \begin{equation}
-    \phi(x,t)|_\mathbb{R} = C \cos(k x\pm \omega x),
+    \phi(x,t)|_\mathbb{R} = C \cos(k x\pm \omega t),
 \end{equation}
 当 $kx\pm\omega t=2\pi n, n \in \mathbb{Z}$ 时，波动方程处于节点，观察这些节点的移动方式。
 
@@ -521,7 +521,7 @@ Integrate[
 \end{align}
 上两式同样也适用于无质量的光子。对于实物粒子而言，联立上面的式子消去 $E,p$ 可得
 \begin{equation}
-    \omega = \frac{\hbar^2k^2}{2m},
+    \omega = \frac{\hbar k^2}{2m},
 \end{equation}
 注意到，实物粒子的波矢与角频率是平方的关系，这是与光子最大的区别。
 
@@ -582,7 +582,7 @@ Schr\"odinger 方程\textbf{不可导出} ，它一般会作为量子力学的�
 
 我们仍然以实物粒子的波包函数出发：
 \begin{gather}
-  \psi(x, t) = \int_{- \infty}^{+ \infty} A(k) \exp \big[ i \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k \\
+  \psi(x, t) = \int_{- \infty}^{+ \infty} A(k) \exp \big[ \ii \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k \\
   E = \hbar \omega \quad p = \hbar k \\
   E = \frac{p^2}{2 m} \quad \omega = \frac{\hbar k^2}{2 m}
 \end{gather}
@@ -596,16 +596,16 @@ Schr\"odinger 方程\textbf{不可导出} ，它一般会作为量子力学的�
 
 沿着这个思路，我们就尝试对 $\psi(x, t)$ 分别作 $x$ 的二阶导、$t$ 的一阶导：
 \begin{align}
-  \frac{\partial^2 \psi}{\partial x^2} &= - \int_{- \infty}^{+ \infty} k^2 A(k) \exp \big[ i \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k \\
-  \frac{\partial \psi}{\partial t} &= - \int_{- \infty}^{+ \infty} \frac{i \hbar k^2}{2 m} A(k) \exp \big[ i \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k
+  \frac{\partial^2 \psi}{\partial x^2} &= - \int_{- \infty}^{+ \infty} k^2 A(k) \exp \big[ \ii \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k \\
+  \frac{\partial \psi}{\partial t} &= - \int_{- \infty}^{+ \infty} \frac{\ii \hbar k^2}{2 m} A(k) \exp \big[ i \big( k x - \omega(k) t \big) \big] \, \mathrm{d} k
 \end{align}
 因此，
 \begin{equation}
-\frac{\partial \psi}{\partial t} = \frac{i \hbar}{2 m} \frac{\partial^2 \psi}{\partial x^2}
+\frac{\partial \psi}{\partial t} = \frac{\ii \hbar}{2 m} \frac{\partial^2 \psi}{\partial x^2}
 \end{equation}
 即
 \begin{equation}
-i \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar^2}{2 m} \frac{\partial^2 \psi}{\partial x^2}
+\ii \hbar \frac{\partial \psi}{\partial t} = - \frac{\hbar^2}{2 m} \frac{\partial^2 \psi}{\partial x^2}
 \end{equation}
 这就是自由粒子所满足的 Schr\"odinger 方程。
 

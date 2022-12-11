@@ -26,7 +26,7 @@
 \end{eqnarray}
 对于光而言的话，在相对论的框架下，
 \begin{eqnarray}
-    m = \frac{m_0}{\sqrt{1+\left(\frac vc\right)^2}}. 
+    m = \frac{m_0}{\sqrt{1-\left(\frac vc\right)^2}}. 
 \end{eqnarray}
 所以当速度接近于光速的时候，$\Delta m \rightarrow \infty$。所以在相对论的框架下，光的初始质量一定是要为零，才能保证运动质量是常数。
 
@@ -616,7 +616,9 @@ $\hat A n$ 自身可以看成一个函数，
 即 $\lambda$ 是 $\hat F$ 的本征值，而 $\psi$ 是 $\hat F$ 的本征函数。
 \end{theorem}
 
+\chat{
 以前有同学问：为什么实验中的基态在测完之后还是在基态？化学中的实验，为什么能提前知道物质处在基态，为什么没有不确定性？比如为什么物质的生成焓都是确定的？我觉得这个问题非常好。
+}
 
 \begin{theorem}[公设4]
 对于任意一个线性 Hermite 算符，其本征方程
@@ -627,7 +629,7 @@ $\hat A n$ 自身可以看成一个函数，
 \begin{eqnarray}
     \Psi = \sum_i c_i \psi_i
 \end{eqnarray}
-都可以可以展开
+都可以可以展开。
 \end{theorem}
 
 这是一个非常强的定理，有它物理意义。
@@ -736,7 +738,7 @@ a) $|\psi|^2$ 是概率密度，可知 $|\psi(x,t)|^2 \dd x$ 有限。
 
 \suppInfo{波函数一定为有限值才能平方可积吗？}
 {
-    假设在三位空间中 $x_0 $ 处，波函数存在孤立奇点 $ |\Psi(x_0)|^2 \rightarrow \infty $。看似违反了「有限」的公设，实际上，
+    假设在三维空间中 $x_0 $ 处，波函数存在孤立奇点 $ |\Psi(x_0)|^2 \rightarrow \infty $。看似违反了「有限」的公设，实际上，
 	只需要 $\int_{\tau_0} |\psi(x)|^2 \dd[3] x$ 为有限值，在物理上就可以接受，
 	$ \tau_0 $为包围$ x_0 $附近的任意小体积。
 	

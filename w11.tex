@@ -418,7 +418,7 @@ E_{\text{X}}^{\text{LDA}}[\rho] = -\frac34 \left(\frac34\right)^{\frac13} \int\d
 
 引入自旋的\boldtext{升降算符} ladder operator，
 \begin{align}
-    \hat S_+ \equiv \hat S_z + \ii \hat S_y, \quad \hat S_- \equiv \hat S_z - \ii \hat S_y, 
+    \hat S_+ \equiv \hat S_x + \ii \hat S_y, \quad \hat S_- \equiv \hat S_x - \ii \hat S_y, 
     \label{eq:spin_bb_4}
     % \label{eq:spin_bb_5}
 \end{align}
@@ -445,7 +445,7 @@ E_{\text{X}}^{\text{LDA}}[\rho] = -\frac34 \left(\frac34\right)^{\frac13} \int\d
 \end{align}
 同理有
 \begin{align}
-    \hat S_- \hat S+ = \hat S^2 - \hat S_z^2 + \hbar \hat S_z,
+    \hat S_- \hat S+ = \hat S^2 - \hat S_z^2 - \hbar \hat S_z,
     \label{eq:spin_bb_7}
 \end{align}
 再由一个对易关系
@@ -556,7 +556,7 @@ E_{\text{X}}^{\text{LDA}}[\rho] = -\frac34 \left(\frac34\right)^{\frac13} \int\d
 \end{align}
 联立 \eqref{eq:spin_bb_20} 和 \eqref{eq:spin_bb_21} 解得
 \begin{align}
-    b_\text{max} = b_\text{min}, \quad b_\text{max} = b_\text{min} \ \text{（舍去）}. 
+    b_\text{max} = -b_\text{min}, \quad b_\text{max} = b_\text{min} \ \text{（舍去）}. 
 \end{align}
 一个很关键的条件是，$b_\text{min}$ 和 $b_\text{max}$ 之间是量子化的，必然会有 $b_\text{max} - b_\text{min} = n\hbar$，因此 $b_\text{max} = \frac12 n\hbar \ (n=0,1,2,\cdots)$。选用 $s$ 作为自旋量子数，有
 \begin{align}

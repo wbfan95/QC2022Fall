@@ -6,6 +6,9 @@ tutorial*
 subject*
 # allow
 !fig/*.pdf
+*.docx
+*.doc
+*.tmp
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
