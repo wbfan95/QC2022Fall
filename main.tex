@@ -84,10 +84,10 @@
 % reduce equation spaces
 \makeatletter
 \g@addto@macro\normalsize{%
-  \setlength\abovedisplayskip{6pt}
-  \setlength\belowdisplayskip{6pt}
-  \setlength\abovedisplayshortskip{3pt}
-  \setlength\belowdisplayshortskip{3pt}
+  \setlength\abovedisplayskip{3pt}
+  \setlength\belowdisplayskip{3pt}
+  \setlength\abovedisplayshortskip{1pt}
+  \setlength\belowdisplayshortskip{1pt}
 }
 \makeatother
 % \allowdisplaybreaks[4]
@@ -116,7 +116,8 @@
 
 \usepackage{wrapfig}
 \usepackage{tcolorbox}
-\tcbuselibrary{hooks, breakable, skins}
+\tcbuselibrary{hooks, breakable, skins, theorems}
+\usepackage{nccmath}
 % do not break line after tcolorbox
 \makeatletter
 \tcbset{
@@ -141,8 +142,8 @@
     title={\textcolor{black}{#1}},
     top=0pt,
     toptitle=3pt,
-    ]
-    \kaishu\small
+    ]%
+    \kaishu\small%
     #2%\normalfont\normalsize
 \end{tcolorbox}
 }
@@ -155,8 +156,8 @@
     before upper={\parindent2em\parskip3pt},
     fonttitle={\bfseries}, 
     title={\textcolor{black}{#1}}
-    ]
-    \kaishu\small
+    ]%
+    \kaishu\small%
     #2%\normalfont\normalsize
 \end{tcolorbox}
 }
@@ -173,12 +174,18 @@
     right skip=10pt,
     arc=4mm,
     enhanced jigsaw,
+    % ams nodisplayskip,
     % fonttitle={\bfseries}, 
     % title={\textcolor{black}{#1}}
     ]%
+    % \setlength\abovedisplayskip{-5pt}% %% it doesn't work. sad  :-(
+    % \setlength\belowdisplayskip{-5pt}%
+    % \setlength\abovedisplayshortskip{-5pt}%
+    % \setlength\belowdisplayshortskip{-5pt}%
     \setlength{\parskip}{1pt}%
-    \noindent\ignorespaces%
-    \fangsong\small#1
+    \noindent%\ignorespaces%
+    \fangsong\small%
+    #1
 \end{tcolorbox}
 }
 \renewcommand\homework[1]{
@@ -192,16 +199,24 @@
     title={\textcolor{black}{作业}},
     top=0pt,
     toptitle=3pt,
-    ]
-    \kaishu
+    ]%
+    \kaishu%
     #1%\normalfont\normalsize
 \end{tcolorbox}
 }
 
 % time stamp
-\newcommand\courseTime[1]{
-    \marginpar{\small\kaishu\textcolor{gray}{\textsf{#1}}\normalfont}
+\newcommand\courseTime[1]{%
+    \marginpar{\small\kaishu\textcolor{gray}{\textsf{#1}}\normalfont}%
+    \addcontentsline{ctime}{figure}{#1}%
 }
+\makeatletter
+\newcommand\listctimename{时间戳 Timestamps}%
+\newcommand\listofctimes{%
+\chapter*{\listctimename}\@starttoc{ctime}%
+\cleardoublepage
+}%
+\makeatother
 
 \setlength{\parskip}{3pt}
 
@@ -246,7 +261,6 @@ xleftmargin=24pt,
 xrightmargin=24pt,
 % framerule=10pt,
 }
-
 
 \usepackage{hyperref}
 \hypersetup{
@@ -302,8 +316,10 @@ GitHub: \url{https://github.com/fanwenbin95/QC2022Fall}
 \input{w09.tex}
 \input{w10.tex}
 \input{w11.tex}
+\input{w12.tex}
 \input{sol.tex}
 
 \backmatter
 \printindex
+\listofctimes
 \end{document}

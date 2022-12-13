@@ -1,5 +1,5 @@
 \section{前言}
-\courseTime{Sep. 6, 2022\\Week 1}
+\courseTime{Sep. 6, 2022 - Week 1}
 \chat{%
 先简单介绍一下这门课的总体情况。
 
@@ -10,7 +10,7 @@
 到了大学之后，每个人的价值取向、人生追求是不一样的。这门课是为了以后硕士阶段的科研准备的，并且紧扣研究生的课程。并不是说你以前成绩不好，就不推荐学习这门课。如果你对物化、物质内部的基本原理感兴趣，我也非常期待你有好成绩。
 }
 
-这门课是由徐昕老师和张颖老师主讲，徐老师比较忙，张老师会先上一部分课，请同学们多担待。我们有两位助教同学：李亚静、范文斌（\url{wbfan21@m.fudan.edu.cn}）。关于课堂内容和作业，有不懂的地方，可咨询助教同学。
+这门课是由徐昕老师和张颖老师主讲，徐老师比较忙，张老师会先上一部分课，请同学们多担待。我们有两位助教同学：李亚静、范文斌。关于课堂内容和作业，有不懂的地方，可咨询助教同学。
 
 我们的课程基于量子力学，掰开揉碎了讲。主要有以下几本参考书：
 \begin{enumerate}
@@ -19,11 +19,13 @@
     \item  Atkins P. W and R. S Friedman. \emph{Molecular Quantum Mechanics.} 4th ed. Oxford University Press 2005.
 \end{enumerate}
 
+\chat{%
 我们的课以板书为主，辅以幻灯片讲解。徐老师上了很多年的课，全部用的板书，我们延续这个传统。如果有任何地方看不清、看不懂，请随时打断我。板书的好处是，所有公式的呈现都是易于理解的，希望能达到对所有公式都「知其然，知其所以然」的程度。
 
 我们还会有一些上机练习，操作 Gaussian 软件。我们学过物化 A I，知道微观世界遵循量子力学原理。化学上感兴趣的绝大多数体系，用薛定谔方程可得到所有的性质。含有重原子的体系，需要求解 Dirac 方程。如果只关心基态、定态信息，定态薛定谔方程就足够了。哪怕是定态薛定谔方程，大于两个电子的体系都无法精确求解，所以要用到一些近似方法，如 Hartree--Fock、耦合簇、DFT 等。对我们来说，学习了近似方法之后，要练习如何使用它们。我们以一个水分子为例，水分子的基态能量是多少？氢氧键的键能、键长是多少？等到上机时都可以一试。
 
 稍微有点尴尬的是，从量化的这门课本身来说，其实一学期是不够的。我们学完 18 周，只能讲一些最基础的知识，甚至连最基本近似方法都还讲不到。以至于这门课的后面的上机练习，原则上匹配的是本课程的后续内容。但依然要通过上机对理论计算有个基本的认识。
+}
 
 知识储备要有\boldtext{大学物理}、\boldtext{线性代数}、物理化学 A I。想要能够更深理解，要对线性代数有一些了解。
 
@@ -48,13 +50,17 @@
 一个微观粒子，不仅有宏观粒子的属性，也有波的属性。宏观世界中的粒子，可以比作刚性小球，波动性则比作声波，二者用完全不同的方法描述。
 
 粒子用位置和动量描述。波是在整个实空间内离域的，没有局域状态，用频率和振幅描述。
+经典物理中，二者是二元对立的。1900 年后的实验表明，二元对立并不能解释实验现象，这说明量子力学是从光的思考中得到的。
 
-经典物理里，二者是二元对立的。1900 年后的实验表明，二元对立并不能解释实验现象，说明量子力学是从光的思考中得到的。同学们之前都学过，所以这里讲几个重要事件，帮助同学们理清逻辑。
+同学们之前都学过，所以这里讲几个重要事件，帮助同学们理清逻辑。
 
 \subsection{黑体辐射}
-黑体辐射是指，处于热力学平衡态的黑体发出的电磁辐射的过程。它的重要性来自工业，任何物体的温度与其辐射出的电磁波都有关系，所以可以用颜色来观测冶金过程中金属的温度。特别重要的是，没有黑体辐射的精确解，就不会有发达的武器锻造。太阳光和太阳温度的关系，宇宙微波背景辐射……黑体辐射是物理学中非常基础的现象。
+黑体辐射是指，处于热力学平衡态的黑体发出的电磁辐射的过程。
+\chat{
+它的重要性来自工业，任何物体的温度与其辐射出的电磁波都有关系，所以可以用颜色来观测冶金过程中金属的温度。特别重要的是，没有黑体辐射的精确解，就不会有发达的武器锻造。太阳光和太阳温度的关系，宇宙微波背景辐射……黑体辐射是物理学中非常基础的现象。
 
 维恩（Wilhelm Wien, 1864---1928）拿了诺贝尔奖（1911 年），他提出的公式在短波相符。瑞丽从统计力学出发，得到了另一个公式，该公式在长波相符较好，在短波爆炸。当时的人们并不认为这里会有新的物理。
+}
 
 1900 年，Planck 从数学模拟出发，讲积分变为求和，让求和的量有固定的间隔，于是得到了量子化的假设，
 \begin{equation}
@@ -221,7 +227,7 @@ Planck--Einstein 关系式
 下节课，我们会从波动方程，推导出薛定谔方程，演绎出算符。本质上并不意味着这些内容可以推导，同学们要把这些定理和公式当成公理般的存在，这些公理的基础是来自实验的能量量子化结论。
 }
 \section{一维单色平面波}
-\courseTime{Sep. 5, 2022\\Week 1}
+\courseTime{Sep. 5, 2022 - Week 1}
 \chat{%
 我们回顾了量子力学的发展的这个过程，重要的是波粒二象性的发现。当大家从无数的实验中间承认了波粒二象性之后，大家已经接受了微观跟宏观世界是不一样的，微观粒子并不遵循牛顿力学，因果率不一样。既是波又是粒子，意味着微观粒子既离域又定域。那么很多时候，宏观能够唯一决定的状态，在微观就不能够决定了，经典运动轨迹就不会有了。
 
@@ -289,17 +295,21 @@ Maxwell 方程中的一维单色平面波满足的波动方程是
 \begin{equation}
     \ee^0 = \exp (\pm \sqrt K \lambda) = 1,
 \end{equation}
+\chat{%
 分类讨论 $K$，
 \begin{enumerate}
     \item $K > 0$，此时有平凡解 $\lambda = 0$，不考虑，
     \item $K = 0$，$\phi(x) = \text{constant}$，不考虑，
     \item $K < 0$，令 $p = -K >0$，则 $\exp (\pm \ii \sqrt p \lambda) = 1$，得到 $\sqrt p \lambda = 2\pi$，即 $p = \frac{4\pi^2}{\lambda^2}$，$K = -\frac{4\pi^2}{\lambda^2}$。
 \end{enumerate}
+}
 将解代回通解 \eqref{eq:mono_wave_phi_general}，有
 \begin{equation}
     \phi(x) = A \exp(\pm \ii \sqrt p x) = A \exp(\pm \ii k x), \quad k = \frac{2\pi}{\lambda}. \label{eq:mono_wave_phi_sol}
 \end{equation}
-其中 $k$ 称为光的波矢。同理，对于时间变量的微分方程 \eqref{eq:mono_wave_time}，仿照坐标分量的求解过程，
+其中 $k$ 称为光的波矢。
+\chat{%
+同理，对于时间变量的微分方程 \eqref{eq:mono_wave_time}，仿照坐标分量的求解过程，
 设通解
 \begin{equation}
     f(t) = B \exp (b t), \label{eq:mono_wave_time_general}
@@ -308,7 +318,9 @@ Maxwell 方程中的一维单色平面波满足的波动方程是
 \begin{equation}
     \ee^0 = \exp \left(\pm c \sqrt K \frac\lambda{c}\right) = 1,
 \end{equation}
-分类讨论可知 $ k \geqslant 0$ 应舍去，当 $k<0$ 时，设 $q = -k>0$，则 $\exp(\pm \sqrt K \lambda) = \exp(\pm \ii\sqrt q \lambda) = 0$，得到 $\sqrt q \lambda = 2\pi$，即 $b = \pm \ii c \frac{2\pi}\lambda$。将解代回通解 \eqref{eq:mono_wave_time_general} 有
+分类讨论可知 $ k \geqslant 0$ 应舍去，当 $k<0$ 时，设 $q = -k>0$，则 $\exp(\pm \sqrt K \lambda) = \exp(\pm \ii\sqrt q \lambda) = 0$，得到 $\sqrt q \lambda = 2\pi$，即 $b = \pm \ii c \frac{2\pi}\lambda$。
+}
+将解代回通解 \eqref{eq:mono_wave_time_general} 有
 \begin{equation}
     f(t) = B \exp\left(\pm\ii \,\omega t\right) = B \exp \left(\pm \ii \,c \frac{2\pi}\lambda t\right),\quad \omega = \frac{2\pi c}{\lambda} = 2\pi \nu,
 \end{equation}
@@ -321,7 +333,7 @@ Maxwell 方程中的一维单色平面波满足的波动方程是
 注意到，其中的 $\omega$ 和 $k$ 有\boldtext{线性关系} $\omega = k c$。
 
 % 讨论传播方向
-定义约化 Planck 常量 $\hbar = \frac{h}{2\pi}$，又成为 Dirac 常量，类似角频率的定义。于是有
+定义约化 Planck 常量 $\hbar = \frac{h}{2\pi}$，又称为 Dirac 常量，类似角频率的定义。于是有
 \begin{equation}
     E = h\nu = \hbar \, 2\pi \nu = \hbar \omega. 
 \end{equation}
@@ -368,6 +380,7 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
 有无定域的波也满足波动方程？
 
 \section{光波的波包}
+\subsection{波包}
 动力学中常用\boldtext{波包}描述具有粒子行为的光波。定义
 \begin{equation}
     \label{eq:wp_def} % wave packet definition
@@ -510,9 +523,9 @@ Integrate[
 但这里或许会遇到一个问题，实物粒子不会以 $c$ 的光速传播，因此 $\omega = ck$ 的表达式不成立。我们要如何定义角频率 $\omega$ 与波矢 $k$？
 }
 
-假设现在并不是狭义相对论的，或者说实物粒子以较低速度运动。在经典力学下，自由粒子 (不受外势场 $V (x)$ 影响的粒子) 的能量（即动量）为
+假设现在并不是狭义相对论的，或者说实物粒子以较低速度运动。在经典力学下，自由粒子（不受外势场 $V (x)$ 影响的粒子）的能量（即动量）为
 \begin{equation}
-    E = \frac{p^2}{2m}, \quad \text{for particle}
+    E = \frac{p^2}{2m} \quad \text{（粒子）},
 \end{equation}
 考虑波粒二象性，粒子的能量必然也有物质波所对应的能量表述，
 \begin{align}
@@ -529,7 +542,7 @@ Integrate[
 同样使用波包 \eqref{eq:wp_def} 和高斯波包 \eqref{eq:wp_gaussian_def} 的原始定义，得到 $t =0$ 时刻的波函数与光波 \eqref{eq:wp_photon_t0} 是一样的，但 $t > 0$ 的波函数就完全不一样了。
 }
 
-\subsection{精确解}
+% \subsection{精确解}
 尽管积分非常复杂，但这仍然是有解析解的。当 $t > 0$ 时，
 \begin{equation}
     \psi(x,t) = \left(\frac{2}{\pi a^2}\right)^4 \frac1 {\sqrt{ 1 + \dfrac{2\hbar t}{ma^2}\ii}} \exp \frac {\displaystyle -\frac{x^2}{a^2}-\frac{\ii k_0^2 t \hbar }{2 m}+\ii
@@ -540,14 +553,16 @@ Integrate[
     |\psi(x, t)|^2 = \sqrt{\frac{2}{\pi a^2}} \frac{1}{\sqrt{1 + \displaystyle \frac{4 \hbar^2 t^2}{m^2 a^4}}} \exp \left[ - \frac{2}{a^2} \frac{\left( x - \displaystyle \frac{\hbar k_0}{m} t \right)^2}{1 + \displaystyle \frac{4 \hbar^2 t^2}{m^2 a^4}} \right]. 
 \end{equation}
 
+\chat{%
 我们应当得到以下的结论：
-\begin{itemize}[nosep]
+\begin{enumerate}[nosep]
   \item 指前因子可以表示波包的最大振幅。对于光波，其振幅恒定；但对于实物粒子，其振幅会依 $t$ 增长而递减，且递减的程度表现为类双曲线型；
   \item 指数项分母表示波包展宽。对于光波，其展宽恒定；但对于实物粒子，其展宽依 $t$ 增长而递增，且递增的程度表现为类双曲线型；
-  \item 指数项分子表示波包的移动速度。对于光波，其移动速度为 $c$，与每个波矢 $k$ 分项的移动速度相同；而实物粒子的移动速度 (波包群速度) 为 $\hbar k_0 / m$，而波矢为 $k_0$ 的单色波对应的移动速度 (相速度) $\omega(k_0) = \hbar k_0 / 2m$，两者相差两倍。
-\end{itemize}
+  \item 指数项分子表示波包的移动速度。对于光波，其移动速度为 $c$，与每个波矢 $k$ 分项的移动速度相同；而实物粒子的移动速度（波包群速度）为 $\hbar k_0 / m$，而波矢为 $k_0$ 的单色波对应的移动速度（相速度）$\omega(k_0) = \hbar k_0 / 2m$，两者相差两倍。
+\end{enumerate}
+}
 
-这也就意味着，如果用 Gaussian 波包的方式描述自由粒子，即使规定 $t = 0$ 时具有较窄的波包展宽，足够长时间后也总会扩散。“足够长的时间”与物质的质量有关。假设电子的半径大约为 \SI{2.81E-15}{\metre}；在一秒时间内仍然处于自由粒子状态。若使用波包解释，那么它现在的半径就在一秒钟内扩大了如下倍数：
+这也就意味着，如果用 Gaussian 波包的方式描述自由粒子，即使规定 $t = 0$ 时具有较窄的波包展宽，足够长时间后也总会扩散。「足够长的时间」与物质的质量有关。假设电子的半径大约为 \SI{2.81E-15}{\metre}；在一秒时间内仍然处于自由粒子状态。若使用波包解释，那么它现在的半径就在一秒钟内扩大了如下倍数：
 \begin{equation}
 \sqrt{1 + \frac{4 \hbar^2 t^2}{m_\mathrm{e}^2 r_\mathrm{e}^4}} 
 = \sqrt{1 + \frac
@@ -564,15 +579,15 @@ re = 2.8179*10^-15;
 Sqrt[1 + (4 \[HBar]^2 1)/(me^2 re^4)]
 >>2.91586*10^25
 \end{lstlisting}
-短短一秒，电子似乎会变得比太阳还要大。当然，对于宏观的物体而言，情况就不太一样了。假设一个人在宇宙大爆炸时期诞生，重 \SI{76}{\kilo\gram}，想象成为 \SI{1}{\metre} 展宽的波，那么他可能在 2021 年时膨胀了 \num{7.20E-37} 倍。
+短短一秒，电子似乎会变得比太阳还要大。当然，对于宏观的物体而言，情况就不太一样了。假设一个人在宇宙大爆炸时期诞生，重 \SI{76}{\kilo\gram}，想象成为 \SI{1}{\metre} 展宽的波，那么他可能在 2022 年时膨胀了 \num{7.20E-37} 倍。
 
-\iffalse
-目前为止，我们还不能说实物粒子波包的物理模型是错误的 (事实上，实物粒子波包模型确实是 Schr\"odinger 方程的解)。只有当物质质量足够大、初始时刻展宽足够宽时，波包能重现经典物理的图像。但想要通过波来刻画粒子的行为，似乎会在微观世界变得不太直观。我们会说这是朴素的波粒二象性的理解，它仍然是试图将粒子通过波的行为描述，而产生看似谬误的结论。
+\chat{%
+目前为止，我们还不能说实物粒子波包的物理模型是错误的（事实上，实物粒子波包模型确实是 Schr\"odinger 方程的解）。只有当物质质量足够大、初始时刻展宽足够宽时，波包能重现经典物理的图像。但想要通过波来刻画粒子的行为，似乎会在微观世界变得不太直观。我们会说这是朴素的波粒二象性的理解，它仍然是试图将粒子通过波的行为描述，而产生看似谬误的结论。
 
 一种可能的理解是，所谓波性与粒性不应朴素地理解，物质的行为在长时间未观测时是不可知的；而在测量时，若使用检测波形的手段就会使得波函数坍缩到接近平面光波的形式；若使用检测粒子的手段则会使波函数接近 $\delta$ 函数的粒子形貌。这称为波包的收缩；依据一些量子力学表述，这比较接近关于波函数投影的假设。
 
-但这不仅是 Gaussian 波包的困难。事实上，对于任意的 $A(k)$ 即任意波包，当时间足够长，波包总会弥散。这可以通过求取不确定度 $\langle x^2 \rangle - \langle x \rangle^2$ 给出；这需要使用到 Ehrenfest 定理。(Cohen-Tannoudji, LIII, Exercise 4)
-\fi
+但这不仅是 Gaussian 波包的困难。事实上，对于任意的 $A(k)$ 即任意波包，当时间足够长，波包总会弥散。这可以通过求取不确定度 $\langle x^2 \rangle - \langle x \rangle^2$ 给出；这需要使用到 Ehrenfest 定理。\footnote{Cohen-Tannoudji, LIII, Exercise 4.}
+}
 
 \section{从自由粒子波函数到 Schr\"odinger 方程}
 
@@ -609,3 +624,66 @@ Schr\"odinger 方程\textbf{不可导出} ，它一般会作为量子力学的�
 \end{equation}
 这就是自由粒子所满足的 Schr\"odinger 方程。
 
+
+\subsection{相对论对 Schr\"odinger 方程的拓展 (Klein–Gordon)}
+
+方才我们解决了实物波的方程；但它无法描述光波的行为。如果我们希望同时描述好光波与实物波，我们就需要使用狭义相对论的原理了。
+
+我们先作假定：物体的运动质量 $m$ 与静止质量 $m_0$ 存在关系
+$$
+m = \frac{m_0}{\sqrt{1 - v^2/c^2}}
+$$
+整理得到
+$$
+\frac{m_0^2}{m^2} = 1 - \frac{v^2}{c^2}
+$$
+留意到 $p = mv$，那么
+$$
+m^2 = m_0^2 + \frac{p^2}{c^2}
+$$
+根据 Einstein 质能关系 $E = m c^2$，可知
+$$
+E^2 = m_0^2 c^4 + p^2 c^2
+$$
+该式原本是描述实物波的；但如果置光子质量 $m_0 = 0$，那么上式也恰好对光子成立。一般来说，光子的静止质量为零是假设，几乎没有实验现象表明光子的质量对现有理论框架产生冲击。
+
+我们仍然认为自由粒子满足波包波函数，并且 $E = \hbar \omega, \quad p = \hbar k$；那么波包将波包波函数中的 $\omega, k$ 分别替换为 $E, p$ (留意到 $E, p$ 应当视作关于波数的变量)，就得到
+$$
+\psi(x, t) = \int_{- \infty}^{+ \infty} A(k) \exp \big[ \frac{i}{\hbar} \big( p x - E t \big) \big] \, \mathrm{d} k
+$$
+容易验证，上述波函数满足
+$$
+\frac{1}{c^2} \frac{\partial^2 \psi}{\partial t^2} - \frac{\partial^2 \psi}{\partial x^2} + \frac{m_0^2 c^2}{\hbar^2} \psi = 0
+$$
+
+这就是 (Spin-0 的) 相对论对 Schr\"odinger 公式的拓展；由于是 Klein 与 Gordon 在 1926 年较早公开提出该公式，因此以这两人命名。事实上，该公式已经出现在 Schr\"odinger 在 1925 年的草稿中，但由于无法很好地与氢原子精细光谱进行比对 (现在认为是由自旋引起)，因此 Schr\"odinger 在 1926 年仅仅发表了上述公式的非相对论的弱化版本。
+
+我们不对上述公式在非相对论情形下与 Schr\"odinger 方程的等价性作说明；也不对真正解释了自旋现象的另一个相对论方程，即 Dirac 方程作说明。
+
+\extraInfo{助教补充}{
+\begin{itemize}[nosep]
+\item 光子的能量 $E$、动量 $p$、波矢 $k$、角频率 $\omega$ 关系式：Wikipedia \href{https://en.wikipedia.org/wiki/Photon\#Relativistic_energy_and_momentum}{Photon: Relativistic energy and momentum}
+\item de Brogile 对实物波的猜想：博士论文 (法语) 的英语翻译 \href{https://www.relativitycalculator.com/pdfs/On_Theory_Quanta.pdf}{\emph{On the Theory of Quanta}}
+\item 通过波包理论对朴素波粒二象性的批判：\emph{唐敖庆之量子力学}，徐元植，浙江大学出版社
+\begin{itemize}[nosep]
+    \item \S 2.1 平面波
+    \item \S 2.3 德布罗意波
+    \item \S 3.4 量子力学与经典力学的关系
+    \item 该书中可能有公式或表述错误或不当
+\end{itemize}
+\item 自由实物粒子波包的讨论：\emph{量子力学（第一卷）}，C. Cohen-Tannoudji 等著，刘家谟、陈星奎译，高等教育出版社
+\begin{itemize}[nosep]
+    \item 第一章 \S C 对一个粒子的量子描述；波包
+    \item $\mathrm{G_I}$ 一维高斯型波包；波包的扩展
+    \item $\mathrm{L_{III}}$ 第 4 题
+\end{itemize}
+\item 自由实物粒子波包的习题：\emph{量子力学概论（原书第二版）}，David J. Griffiths 著，贾瑜等译，机械工业出版社，习题 2.22
+\item Klein-Gordon 方程：How to Derive the Schrodinger Equation; David W. Ward, Sabine M. Volkmer; \href{https://arxiv.org/abs/physics/0610121}{arXiv:physics/0610121}
+\item Schr\"odinger 方程的历史：Wikipedia \href{https://en.wikipedia.org/wiki/Klein\%E2\%80\%93Gordon_equation\#History}{Klein-Gordon equation: History}
+\item 从 Dirac-von Neumann 公理导出 Schr\"odinger 方程：\href{https://en.wikipedia.org/wiki/Schr\%C3\%B6dinger_equation\#Derivation}{Schrödinger equation: derivation}
+\end{itemize}
+
+关于波函数的收缩或坍缩 (测量对波函数的影响)，这在 Cohen-Tannoudji 的书中当作第五假定。
+
+Schr\"odinger 的波动表述现在并不认为是完善的。我们的讨论是从单色光开始；但关于单色光是否能以波函数形式写出，应当认为不可以，因为函数不可归一化。费曼的路径积分表述可能可以解决该问题。
+}

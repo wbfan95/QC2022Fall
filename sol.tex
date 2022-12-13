@@ -1593,7 +1593,7 @@ $
 
 剩下的部分是关于 $1/r_{12}$ 的积分。对于当前的体系，任何的中心对称波函数 (不含角向部分) $f(r_1, r_2)$ 可以写为下述积分：
 \begin{align*}
-    \iint  \frac{f(r_1, r_2)}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2 
+    &\phantom{=} {}\iint  \frac{f(r_1, r_2)}{r_{12}} \, \mathrm{d} \vec{r}_1 \, \mathrm{d} \vec{r}_2 \\
     &= 4\pi \int_0^{+\infty} r_1^2 \dd r_1 \int_0^{2\pi} \dd\phi_2 \int_0^\pi \sin\theta_2 \dd\theta_2 \int_0^{+\infty}   \dfrac{\dd r_2 \;r_2^2 f(r_1, r_2) }{\sqrt{r_1^2 + r_2^2 - 2r_1 r_2\cos\theta_2}} \notag\\
     &= 4\pi \int_0^{+\infty} r_1^2 \dd r_1  (2\pi)  \int_0^{+\infty}  \dd r_2 r_2^2 f(r_1, r_2) \dfrac{2}{\max(r_1,r_2)} \notag\\
     &= (4 \pi)^2 \int_0^{+\infty} r_1^2 \, \mathrm{d} r_1 
@@ -1602,13 +1602,13 @@ $
 \end{align*}
 如果 $f(r_1, r_2)$ 是 $\psi_{\zeta_1}^2 (r_1) \psi_{\zeta_2}^2 (r_2)$，那么
 \begin{equation*}
-    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2
+    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \vec{r}_1 \, \mathrm{d} \vec{r}_2
     = \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2^3 (4 \zeta_1 + \zeta_2)}{(\zeta_1 + \zeta_2)^4} \right)
     = \frac{1}{a_0} \left( \frac{\zeta_1 \zeta_2}{\zeta_1 + \zeta_2} + \frac{(\zeta_1 \zeta_2)^2}{(\zeta_1 + \zeta_2)^3} \right)
 \end{equation*}
 如果 $f(r_1, r_2)$ 是 $\psi_{\zeta_1} (r_1) \psi_{\zeta_2} (r_2) \psi_{\zeta_2} (r_1) \psi_{\zeta_1} (r_2)$，那么
 \begin{equation*}
-    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \bm{r}_1 \, \mathrm{d} \bm{r}_2
+    \iint f(r_1, r_2) \frac{1}{r_{12}} \, \mathrm{d} \vec{r}_1 \, \mathrm{d} \vec{r}_2
     = \frac{1}{a_0} \left( \frac{10 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} + \frac{10 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5} \right)
     = \frac{1}{a_0} \frac{20 (\zeta_1 \zeta_2)^3}{(\zeta_1 + \zeta_2)^5}
 \end{equation*}
