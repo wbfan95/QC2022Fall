@@ -239,7 +239,7 @@
 \end{align}
 定态薛定谔方程就可以写为
 \begin{align}
-    -\frac{\hbar^2}{2m} \pdv[2]{\psi}{x} + \frac 12 m\omega^2 x^2 = E\psi,
+    -\frac{\hbar^2}{2m} \pdv[2]{\psi}{x} + \frac 12 m\omega^2 x^2 \psi = E\psi,
     \label{eq:harm_seq_original}
 \end{align}
 看起来有点太复杂了，能否简化其中的常数？
@@ -368,7 +368,7 @@
 % $f(y)$ 为待求解函数，当 $y \rightarrow \pm\infty$ 时，$f(y) = A$，$\psi(y) \rightarrow \ee^{-y^2/2}$，
 % 偏导为
 \begin{align}
-    &\frac{\partial \varphi(y)}{\partial y}=\frac{\partial f(y) e^{-y^2/2}}{\partial y}=f(y) e^{-y^2 / 2}-y e^{-y^2 / 2} f(y) \\
+    &\frac{\partial \varphi(y)}{\partial y}=\frac{\partial f(y) e^{-y^2/2}}{\partial y}=f'(y) e^{-y^2 / 2}-y e^{-y^2 / 2} f(y) \\
     &\frac{\partial^2 \varphi(y)}{\partial y^2}=f^{\prime \prime}(y) e^{-y^2 / 2}-2 y e^{-y^2 / 2} f^{\prime}(y)+\left(y^2-1\right) e^{-y^2 / 2} f(y)
 \end{align}
 \begin{lstlisting}
@@ -413,8 +413,8 @@ D[f[y] Exp[-y^2/2], {y, 2}] // Simplify
 导数的下限取值从 1、2 开始，写成从 0 开始是完全一样的，
 \begin{align}
     & \sum_{n=2}^{\infty} n(n-1) c_n y^{n-2}-2 y \sum_{n=1}^{\infty} n c_n y^{n-1}+(\lambda-1) \sum_{n=0}^{\infty} c_n y^n \\
-    =& \sum_{n=2}^n n(n-1) c_n y^{n-2}-\sum_{n=1}^{\infty} 2 n c_n y^n+\sum_{n=0}^{\infty}(\lambda-1) c_n y^n \\
-    =& \sum_{n=2}^n n(n-1) c_n y^{n-2}-\sum_{n=0}^{\infty}(2 n-\lambda+1) c_n y^n
+    =& \sum_{n=2}^{\infty} n(n-1) c_n y^{n-2}-\sum_{n=1}^{\infty} 2 n c_n y^n+\sum_{n=0}^{\infty}(\lambda-1) c_n y^n \\
+    =& \sum_{n=2}^{\infty} n(n-1) c_n y^{n-2}-\sum_{n=0}^{\infty}(2 n-\lambda+1) c_n y^n
 \end{align}
 设 $m=n-2$，有
 \begin{align}
@@ -436,7 +436,7 @@ D[f[y] Exp[-y^2/2], {y, 2}] // Simplify
 
 做两件事，(1) 从 $c_0$ 开始推，
 \begin{align}
-    &n =0, \quad c_2 = \frac{1-\lambda}{2-1} c_0, \\
+    &n =0, \quad c_2 = \frac{1-\lambda}{2\times 1} c_0, \\
     &n=2, \quad c_4 = \frac{4 + 1 - \lambda}{4\times 3} c_2 = \frac{(1-\lambda)(4+1 - \lambda)}{4\times3\times2\times1} c_0, \\
     &n = 4, \quad c_6 = \frac{(1-\lambda) (4+1-\lambda) (8+1-\lambda)}{6!} c_0,
 \end{align}

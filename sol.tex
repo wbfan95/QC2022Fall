@@ -641,11 +641,11 @@ Griffiths，\S 2.1 与 \S 2.4，习题 2.20。它讨论了离散谱、连续谱�
     &C_3 = \frac12 \left[
         \left(1 + \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
         \left(1 - \frac{k_2}{k_3}\right) \ee^{-\ii k_2 l}
-    \right] \ee^{-\ii k_3 l }C_1, \label{eq:half_inf_scat_c3}\\
+    \right] \ee^{-\ii k_3 l }C_1, \\
     &C_4 = \frac12 \left[
         \left(1 - \frac{k_2}{k_3}\right) \ee^{\ii k_2 l} - 
         \left(1 + \frac{k_2}{k_3}\right) \ee^{-\ii k_2 l}
-    \right] \ee^{\ii k_3 l} C_1, \label{eq:half_inf_scat_c4}
+    \right] \ee^{\ii k_3 l} C_1, 
 \end{align}
 }
 \begin{align}
@@ -1251,7 +1251,7 @@ E_{n_r n_\phi n_z} &= \frac{\beta_{n_r n_\phi}^2 \hbar^2}{2 m R^2} + \frac{n_z^2
 \right). 
 \end{align}
 }
-\begin{equation}\label{key}
+\begin{equation}
 x = r\sin\theta\cos\phi ,\; y = r\sin\theta\sin\phi, z = r\cos\theta
 \end{equation}
 \begin{align}
@@ -1275,7 +1275,7 @@ x = r\sin\theta\cos\phi ,\; y = r\sin\theta\sin\phi, z = r\cos\theta
 \pdv{y} &= \pdv{r}{y} \pdv{r} + \pdv{\theta}{y} \pdv{\theta} + \pdv{\phi}{y} \pdv{\phi} = \sin\theta\sin\phi \pdv{r} + \dfrac{1}{r}\cos\theta\sin\phi \pdv{\theta} +\dfrac{\cos\phi}{r\sin\theta} \pdv{\phi} \\
 \pdv{z} &= \pdv{r}{z} \pdv{r} + \pdv{\theta}{z} \pdv{\theta} + \pdv{\phi}{z} \pdv{\phi} = \cos\theta \pdv{r} - \dfrac{1}{r}\sin\theta \pdv{\theta}
 \end{align}
-\begin{align}\label{key}
+\begin{align}
 \hat L_x &= y \hat p_z - z \hat p_y = -i\hbar \qty(y \pdv{z} - z\pdv{y}) \notag\\
 &= ... = i\hbar \qty(\sin\phi \pdv{\theta} + \cot\theta\cos\phi\pdv{\phi}) \\
 \hat L_y &= z \hat p_x - x \hat p_z = -i\hbar \qty(z \pdv{x} - x\pdv{z}) \notag\\
@@ -1502,13 +1502,13 @@ b. 分别画出 $\mathrm{p}_x$、$\mathrm{p}_y$、$\mathrm{p}_z$ 和 $\mathrm{p}
 	\dfrac{\Braket{ \Phi | \hat H | \Phi }}{\Braket{ \Phi | \Phi }} \geq E_0
 \end{equation}
 把 $ \Phi $用$\hat H$的正交归一本征波函数展开
-\begin{align}\label{key}
+\begin{align}
 	\dfrac{\Braket{ \Phi | \hat H | \Phi }}{\Braket{ \Phi | \Phi }} &= \dfrac{\sum_i\sum_j c_i^* c_j \Braket{\psi_i | \hat H | \psi_j}}{\sum_i\sum_j c_i^* c_j \Braket{\psi_i |  \psi_j}} 
 	= \dfrac{\sum_i\sum_j c_i^* c_j E_j \delta_{ij}}{\sum_i \sum_j c_i^* c_j \delta_{ij}} \notag\\
 	&= \dfrac{ \sum_i |c_i|^2 E_i }{\sum_i  |c_i|^2} 
 \end{align}
 那么取等号的条件是$ c_0 = 1, c_{i\neq 0} = 0$。所以$ \Phi = \psi_0 $，满足
-\begin{equation}\label{key}
+\begin{equation}
 	\hat H \Phi = E_0 \Phi
 \end{equation}
 %\tcbline
@@ -1687,7 +1687,7 @@ $
 
 感谢前辈们的付出。
 
-谢谢胡椒柚、Shijin Sun 等同学帮助改进此文档。
+谢谢胡椒柚、Shijin Sun、吟月等同学帮助改进此文档。
 
 ~
 

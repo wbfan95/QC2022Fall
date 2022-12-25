@@ -10,6 +10,7 @@ subject*
 *.doc
 *.tmp
 *time
+final*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

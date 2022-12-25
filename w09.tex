@@ -146,7 +146,7 @@
 (2) 重叠积分
 \begin{align}
     \langle \psi_0 | \hat H | \psi_0 \rangle = 
-    \sum_i \sum_j c_j^* c_j \langle f_i | \hat H | f_i \rangle = \sum_i \sum_j c_i^* c_j H_{ij},
+    \sum_i \sum_i c_j^* c_j \langle f_i | \hat H | f_j \rangle = \sum_i \sum_j c_i^* c_j H_{ij},
 \end{align}
 其中
 \begin{align}
@@ -235,7 +235,7 @@
         \pdv{\nu}{x} = -\pdv{\mu}{y},
     \end{cases}
 \end{align}
-称作\boldtext{柯西--黎曼方程} Cauchy--Riemann。复空间的函数连续性要更严格。
+称作\boldtext{柯西$--$黎曼方程} Cauchy--Riemann。复空间的函数连续性要更严格。
 
 对本例来说，前设 $c_i$ 满足 CR 方程，但 $c_i^*$ 不满足。
 因此我们得到了复变函数中的结论，如果一个函数是连续可导的，那么它的共轭一定不是连续可导的。
@@ -446,12 +446,12 @@
 \end{align}
 对于 $\lambda^1$，
 \begin{align}
-    \hat H' \psi_n^{(0)} + \hat H_0 \psi_n^{(1)} &= E_n^{(1)} \psi_n^{(0)} + E_n^{(0)} \psi_n^{(0)} \\
-    (\hat H_0 - E_n^{(1)})\psi_n^{(1)}&= - (\hat H' - E_n^{(1)}) \psi_n^{(0)},
+    \hat H' \psi_n^{(0)} + \hat H_0 \psi_n^{(1)} &= E_n^{(1)} \psi_n^{(0)} + E_n^{(0)} \psi_n^{(1)} \\
+    (\hat H_0 - E_n^{(0)})\psi_n^{(1)}&= - (\hat H' - E_n^{(1)}) \psi_n^{(0)},
 \end{align}
 左边是一级波函数。因为 $\hat H_0$ 是线性厄米算符，$\{\psi_n^{(0)}\}$ 正交归一，构成完备集，
 \begin{align}
-    \psi_n^{(0)} = \sum_j a_j \psi_j^{(0)}
+    \psi_n^{(1)} = \sum_j a_j \psi_j^{(0)}
 \end{align}
 用零级波函数展开一级波函数，
 \begin{align}
@@ -501,11 +501,11 @@
 % 有些忘记微扰法的整体思路了。这样板书推导定理，容易陷在局部，对整体缺少把握。应该多做题就好了
 未微扰的一级波函数
 \begin{align}
-    \psi_n^{(1)} = \sum_{j\neq n} a_j \psi_j^{(0)} = \sum_{j\neq n} \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}\psi_j^{(0)}. 
+    \psi_n^{(1)} = \sum_{j\neq n} a_j \psi_j^{(0)} = \sum_{j\neq n} \frac{H'_{jn}}{E_n^{(0)} - E_j^{(0)}}\psi_j^{(0)}. 
 \end{align}
 利用 \eqref{eq:perb_bb_4}，当 $\lambda = 1$，
 \begin{align}
-    \psi_n \approx \psi_n^{(0)} + \sum_{m\neq n} \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}\psi_j^{(0)}. 
+    \psi_n \approx \psi_n^{(0)} + \sum_{m\neq n} \frac{H'_{mn}}{E_n^{(0)} - E_m^{(0)}}\psi_m^{(0)}. 
 \end{align}
 % 当 $\lambda = 1$，
 % \begin{align}
@@ -529,7 +529,7 @@
 左乘 $\langle \psi_m^{(0)}|$ 并积分
 \begin{align}
     \sum_j b_j (E_j^{(0)} - E_n^{(0)}) \delta_{mj} &= E_n^{(2)} \delta_{mn} + E_n^{(1)} \langle \psi_m^{(0)} | \psi_n^{(1)} \rangle - \langle \psi_m | \hat H' | \psi_n^{(1)} \rangle \notag \\
-    b_m (E_j^{(0)} - E_n^{(0)}) &= \cdots
+    b_m (E_m^{(0)} - E_n^{(0)}) &= \cdots
 \end{align}
 只考虑 $m=n$ 的情况，
 \begin{align}
