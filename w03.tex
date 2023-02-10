@@ -37,7 +37,7 @@
 
 势函数为 0，定态薛定谔方程
 \begin{eqnarray}
-    -\frac{\hbar}{2m} \frac{\partial}{\partial x^2}\psi(x) = E \psi(x),
+    -\frac{\hbar}{2m} \frac{\partial^2}{\partial x^2}\psi(x) = E \psi(x),
 \end{eqnarray}
 设波函数 $\psi(x) = \ee^{s x}$，得到
 \begin{eqnarray}
@@ -351,7 +351,7 @@ Plot[Table[Sqrt[2/l] Sin[(n \[Pi] x)/l], {n, 0, 5}] // Evaluate, {x, 0, l}, Fill
 
 当 $m \neq n$ 时，
 \begin{align}
-    \left\langle \psi_n \middle | \psi_n \right\rangle 
+    \left\langle \psi_n \middle | \psi_m \right\rangle 
     &= \intinf \psi_n^* (x) \psi_m(x) \dd x \\
     &= \frac2l \int_0^l \sin \frac{n\pi x}{l} \sin \frac{n\pi m }{l} \dd x, \\
     &= \frac 1l \int_0^l \left[
@@ -361,7 +361,7 @@ Plot[Table[Sqrt[2/l] Sin[(n \[Pi] x)/l], {n, 0, 5}] // Evaluate, {x, 0, l}, Fill
 \end{align}
 因此波函数之间均满足正交归一，
 \begin{eqnarray}
-    \left\langle \psi_n \middle | \psi_n \right\rangle = \delta_{mn} = \begin{cases}
+    \left\langle \psi_n \middle | \psi_m \right\rangle = \delta_{mn} = \begin{cases}
         1, \quad &m=n,\\
         0, \quad &m\neq n,
     \end{cases}
@@ -395,7 +395,7 @@ Simplify[res, Assumptions -> {n \[Element] Integers}]
 首先求出动量平方的平均值，
 \begin{align}
     \ev{\hat p^2} &= \langle \psi_n | \hat p^2 | \psi_m \rangle \\
-    &= \frac{n^2\pi^2\hbar^2}{l^2} = \frac{n^2h^2}{l^2}
+    &= \frac{n^2\pi^2\hbar^2}{l^2} = \frac{n^2h^2}{4 l^2}
 \end{align}
 所以动量绝对值的平均值为
 \begin{align}

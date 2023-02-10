@@ -395,12 +395,12 @@ ExpToTrig[C Exp[-I (k x + \[Omega] t)]]
 
 这个波包是否满足波动方程 \eqref{eq:mono_wave}？证明之。分别对坐标和时间求偏导，有
 \begin{align*}
-    \frac{\partial^2\psi(x,t)}{x^2} 
+    \frac{\partial^2\psi(x,t)}{\partial x^2} 
     &= \int_{-\infty}^{+\infty} A(k) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp(-\ii\,\omega(k) t) \,\dd k \\ 
     &= \int_{-\infty}^{+\infty} A(k) (-k^2) \frac{\partial \ee^{\ii kx}}{\partial x^2} \exp[\ii(kx - \omega(k)t)] \,\dd k,
 \end{align*}
 \begin{align*}
-    \frac{\partial^2\psi(x,t)}{t^2} 
+    \frac{\partial^2\psi(x,t)}{\partial t^2} 
     &= \int_{-\infty}^{+\infty} A(k) \ee^{\ii kx} \frac{\partial}{\partial t^2}\exp(-\ii\,\omega(k) t) \,\dd k \\ 
     &= \int_{-\infty}^{+\infty} A(k) \left[-\omega(k)\right]^2 \ee^{\ii kx} \exp[\ii(kx - \omega(k)t)] \,\dd k, 
 \end{align*}
@@ -447,13 +447,13 @@ Simplify[res, Assumptions -> {a > 0}]
 \end{equation}
 设 $b = \frac a2$，$l = k-k_0$，则上式为
 \begin{equation}
-    \psi(x, 0) = \frac{2b}{(2 \pi)^{3/4}} \ee^{i  k_0 x} \int_{-\infty}^{+\infty} 
+    \psi(x, 0) = \frac{\sqrt{2b}}{(2 \pi)^{3/4}} \ee^{i  k_0 x} \int_{-\infty}^{+\infty} 
     \ee^{-b^2l^2} \ee^{\ii l x} \dd l, 
 \end{equation}
 凑出 \eqref{eq:ift_gaussian} 中的形式，在积分内乘 $\frac b{\sqrt{\pi}}$，同时令 $x = - 2\pi x'$，
 \begin{align}
-    \psi(x,0) &= \frac{2b}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b \underbrace{\int_{-\infty}^{+\infty} \frac b{\sqrt{\pi}} \ee^{-b^2l^2} \ee^{\ii l (-2\pi x')} \dd l}_{\text{inverse Fourier transform}} \\
-    &= \frac{2b}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b  \exp\left(-\frac{\pi^2x'^2}{4 b^2}\right) \\
+    \psi(x,0) &= \frac{\sqrt{2b}}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b \underbrace{\int_{-\infty}^{+\infty} \frac b{\sqrt{\pi}} \ee^{-b^2l^2} \ee^{\ii l (-2\pi x')} \dd l}_{\text{inverse Fourier transform}} \\
+    &= \frac{\sqrt{2b}}{(2 \pi)^{3/4}} \ee^{\ii k_0 x} \frac{\sqrt{\pi}}b  \exp\left(-\frac{\pi^2x'^2}{4 b^2}\right) \\
     &= \left(\frac{2}{a^2\pi}\right)^{1/4} \ee^{\ii k_0 x} \exp\left(-\frac{x^2}{a^2}\right). \label{eq:wp_photon_t0}
 \end{align}
 \begin{lstlisting}

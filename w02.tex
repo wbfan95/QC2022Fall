@@ -414,10 +414,11 @@ f (t) = \exp \left( - \frac{i}{\hbar} E t \right),
 \begin{theorem}[等价算符]
     若 $\AA f=\BB f$ 对任意函数均成立，那么 $\AA =\BB$。
 \end{theorem}
-如
-\begin{eqnarray}
-    \frac{\partial}{\partial x} = 1 + \frac{\partial}{\partial x}.
-\end{eqnarray}
+% 如
+% \begin{eqnarray}
+%     \frac{\partial}{\partial x} = 1 + \frac{\partial}{\partial x}.
+% \end{eqnarray}
+%%%% 上面这个式子似乎解释不通，我猜是想说 f' = (f + 1)'
 
 \begin{theorem}[基本算符]
     单位算符 unit operator $\hat 1 = 1$，空算符 null operator $\hat 0 = 0$，常数算符通常不加 $\hat\cdot$。
@@ -567,7 +568,7 @@ Hermite 算符之后，还有个重要的约定。
 
 它是用来描述期望值。如果算符作用在波函数上，
 \begin{eqnarray}
-    \int \phi_m^* \hat A \phi_n \dd\tau = \langle \phi_m | \hat A | \phi_m \rangle \equiv \langle m | \hat A | m \rangle \equiv A_{mn}
+    \int \phi_m^* \hat A \phi_n \dd\tau = \langle \phi_m | \hat A | \phi_n \rangle \equiv \langle m | \hat A | n \rangle \equiv A_{mn}
 \end{eqnarray}
 如果 $m = n$ 则表示期望值，如果不等于则表示跃迁矩阵元，
 \begin{eqnarray}
